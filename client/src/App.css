@@ -47,3 +47,7 @@ margin-bottom: 20px;
     font-weight: bold;
     text-decoration: none;
 }
+
+textarea {
+    resize: none;
+  }

@@ -7,7 +7,11 @@ import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import GiveFeedback from "./components/GiveFeedback";
 import NoMatch from "./components/NoMatch";
+import InputFeedback from "./components/InputFeedback";
+import ListFeedbacks from "./components/ListFeedbacks";
+import MentorDash from "./components/MentorDash";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -74,8 +78,12 @@ function App() {
             )
           }
         />
-
         <Route path="*" element={<NoMatch />} />
+
+        <Route path="give-feedback" element={<GiveFeedback />} />
+        <Route path="/feedbacks" element={<InputFeedback />} />
+        <Route path="/list-feedbacks" element={<ListFeedbacks />} />
+        <Route path="mentor-dash" element={<MentorDash />} />
       </Routes>
     </>
   );
