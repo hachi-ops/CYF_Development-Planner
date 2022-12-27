@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function InputFeedback() {
-  const navigate = useNavigate();
   const [feedback, setFeedback] = useState("");
   console.log(feedback);
 
@@ -24,7 +22,6 @@ function InputFeedback() {
   return (
     <>
       <h1>Input Feedback</h1>
-      <button onClick={() => navigate(-1)}>back</button>
 
       <form onSubmit={onSubmitForm}>
         <label for="feedback">Feedback</label>
