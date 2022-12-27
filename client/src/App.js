@@ -4,6 +4,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 //components
 import Home from "./components/Home";
+import Back from "./components/Back";
 import Dashboard from "./components/Dashboard";
 import Login from "./components/signupLogin/Login";
 import Register from "./components/signupLogin/Register";
@@ -51,6 +52,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <Back />
       <Routes>
         <Route
           path="/"
