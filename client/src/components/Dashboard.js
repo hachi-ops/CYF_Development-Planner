@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import MentorDash from "./mentor/MentorDash";
 
 function Dashboard({ setAuth }) {
   const [name, setName] = useState("");
@@ -32,6 +33,7 @@ function Dashboard({ setAuth }) {
     <>
       <h1>Dashboard {name}</h1>
       <button onClick={(e) => logout(e)}>Logout</button>
+      <MentorDash />
     </>
   );
 }

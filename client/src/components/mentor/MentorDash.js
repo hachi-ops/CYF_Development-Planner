@@ -1,6 +1,6 @@
 import React from "react";
-import messageIcon from "../images/message-icon-72.png";
-import fileIcon from "../images/file-icon.png";
+import messageIcon from "../../images/message-icon-72.png";
+import fileIcon from "../../images/file-icon.png";
 import { Link } from "react-router-dom";
 
 function MentorDash() {

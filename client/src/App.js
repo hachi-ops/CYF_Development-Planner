@@ -5,22 +5,22 @@ import { Routes, Route, Navigate } from "react-router-dom";
 //components
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Login from "./components/signupLogin/Login";
+import Register from "./components/signupLogin/Register";
 
 import NoMatch from "./components/NoMatch";
 
-import Message from "./components/Message";
-import Feedbacks from "./components/Feedbacks";
-import MentorDash from "./components/MentorDash";
-import NewMessages from "./components/NewMessages";
-import InputFeedback from "./components/InputFeedback";
-import SignupConfirmed from "./components/SignupConfirmed";
-import Inbox from "./components/Inbox";
-import Sent from "./components/Sent";
+import Message from "./components/mentor/Message";
+import Feedbacks from "./components/mentor/Feedbacks";
+import MentorDash from "./components/mentor/MentorDash";
+import NewMessages from "./components/mentor/NewMessages";
+import InputFeedback from "./components/mentor/InputFeedback";
+import SignupConfirmed from "./components/signupLogin/SignupConfirmed";
+import Inbox from "./components/mentor/Inbox";
+import Sent from "./components/mentor/Sent";
 import Navbar from "./components/Navbar";
-import All from "./components/All";
-import FeedbackDetails from "./components/FeedbackDetails";
+import All from "./components/mentor/All";
+import FeedbackDetails from "./components/mentor/FeedbackDetails";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
