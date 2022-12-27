@@ -1,13 +1,12 @@
 import React from "react";
-import InputFeedback from "./InputFeedback";
 
-function Plan() {
+import { Link } from "react-router-dom";
+
+function Message() {
   return (
     <>
-      <h2>Give feedback</h2>
-
       <section>
-        <h2>Plan</h2>
+        <h2>message</h2>{" "}
         <p>
           Es irrt der Mensch, wenn er sie beim Kragen hätte. Vernunft fängt
           wieder an zu sprechen Und Hoffnung wieder an zu blühn; Man sehnt sich
@@ -29,10 +28,17 @@ function Plan() {
           (Theater, Bühne) Den ganzen Kreis der Schöpfung aus, Und wandelt mit
           bedächt'ger Schnelle Vom Himmel durch die Welt zur Hölle!
         </p>
-        <InputFeedback />
+        <button>Link to file</button>
+      </section>
+      <section>
+        <h2>GiveFeedback</h2>
+
+        <button>
+          <Link to="/give-feedback">give feedback</Link>
+        </button>
       </section>
     </>
   );
 }
 
-export default Plan;
+export default Message;

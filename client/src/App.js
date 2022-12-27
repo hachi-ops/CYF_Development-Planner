@@ -7,11 +7,20 @@ import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import GiveFeedback from "./components/GiveFeedback";
+
 import NoMatch from "./components/NoMatch";
-import InputFeedback from "./components/InputFeedback";
-import ListFeedbacks from "./components/ListFeedbacks";
+
+import Message from "./components/Message";
+import Feedbacks from "./components/Feedbacks";
 import MentorDash from "./components/MentorDash";
+import NewMessages from "./components/NewMessages";
+import InputFeedback from "./components/InputFeedback";
+import SignupConfirmed from "./components/SignupConfirmed";
+import Inbox from "./components/Inbox";
+import Sent from "./components/Sent";
+import Navbar from "./components/Navbar";
+import All from "./components/All";
+import FeedbackDetails from "./components/FeedbackDetails";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -41,6 +50,7 @@ function App() {
   }, []);
   return (
     <>
+      <Navbar />
       <Routes>
         <Route
           path="/"
@@ -78,12 +88,22 @@ function App() {
             )
           }
         />
-        <Route path="*" element={<NoMatch />} />
 
-        <Route path="give-feedback" element={<GiveFeedback />} />
-        <Route path="/feedbacks" element={<InputFeedback />} />
-        <Route path="/list-feedbacks" element={<ListFeedbacks />} />
+        <Route path="signup-confirmed" element={<SignupConfirmed />} />
+        <Route path="*" element={<NoMatch />} />
         <Route path="mentor-dash" element={<MentorDash />} />
+        <Route path="message" element={<Message />} />
+        <Route path="give-feedback" element={<InputFeedback />} />
+
+        <Route path="inbox" element={<Inbox />}>
+          <Route index element={<All />} />
+          <Route path="all" element={<All />} />
+          <Route path="sent" element={<Sent />} />
+          <Route path="new" element={<NewMessages />} />
+        </Route>
+        <Route path="feedbacks" element={<Feedbacks />}>
+          <Route path=":feedbackId" element={<FeedbackDetails />} />
+        </Route>
       </Routes>
     </>
   );

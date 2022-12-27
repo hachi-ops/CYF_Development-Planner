@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Register({ setAuth }) {
+  const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     fname: "",
     lname: "",
@@ -103,7 +104,7 @@ function Register({ setAuth }) {
             <label htmlFor="mentor">Mentor</label>
           </fieldset>
 
-          <button>Submit</button>
+          <button onClick={() => navigate("/signup-confirmed")}>Submit</button>
         </form>
         <Link to="/login">Login</Link>
       </main>

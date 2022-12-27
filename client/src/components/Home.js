@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <>
+      <Link to="/login">
+        <button> Login</button>
+      </Link>
+      <Link to="/register">
+        <button>Signup</button>
+      </Link>
       <main>
         <h1>Development Planner</h1>
         <p>
@@ -21,12 +27,6 @@ function Home() {
           ea voluptate velit esse quam nihil molestiae consequatur, vel illum
           qui dolorem eum fugiat quo voluptas nulla pariatur?
         </p>
-        <Link to="/login">
-          <button> Login</button>
-        </Link>
-        <Link to="/register">
-          <button>Signup</button>
-        </Link>
       </main>
     </>
   );

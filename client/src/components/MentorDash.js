@@ -1,49 +1,21 @@
 import React from "react";
+import messageIcon from "../images/message-icon-72.png";
+import fileIcon from "../images/file-icon.png";
+import { Link } from "react-router-dom";
 
-const messages = [
-  { date: "1/1/23", sender: "Boris", message: "hi there" },
-  { date: "1/2/23", sender: "Kyloren", message: "Revenge time" },
-  { date: "1/3/23", sender: "Anakin", message: "oopsie doopsie" },
-];
-
-function Inbox() {
-  const headings = ["date", "sender", "preview"];
-  return (
-    <>
-      <section className="inbox">
-        <table>
-          <caption>Your messages</caption>
-          <thead>
-            <tr>
-              {headings.map((heading) => {
-                return <th>{heading}</th>;
-              })}
-            </tr>
-          </thead>
-          <tbody>
-            {messages.map((message) => {
-              return (
-                <tr>
-                  <td>{message.date}</td>
-                  <td>{message.sender}</td>
-                  <td>{message.message}</td>
-                  <td>
-                    {" "}
-                    <button>open</button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </section>
-    </>
-  );
-}
 function MentorDash() {
   return (
     <>
-      <Inbox />
+      <h1>Mentor dashboard</h1>
+      <h2>Inbox</h2>
+      <Link to="/inbox">
+        <img src={messageIcon} alt="message" />
+      </Link>
+
+      <h2>Feedbacks</h2>
+      <Link to="/feedbacks">
+        <img src={fileIcon} alt="file" />
+      </Link>
     </>
   );
 }

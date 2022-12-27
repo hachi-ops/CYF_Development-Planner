@@ -43,9 +43,14 @@ margin-bottom: 20px;
 .primary-nav{
     background-color: beige;
 }
+
+nav a {
+    text-decoration: none;
+}
+
 .active {
     font-weight: bold;
-    text-decoration: none;
+   
 }
 
 textarea {
