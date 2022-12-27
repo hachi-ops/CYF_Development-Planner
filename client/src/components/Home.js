@@ -4,12 +4,15 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <>
-      <Link to="/login">
-        <button> Login</button>
-      </Link>
-      <Link to="/register">
-        <button>Signup</button>
-      </Link>
+      <div className="btns">
+        <Link to="/login">
+          <button> Login</button>
+        </Link>
+        <Link to="/register">
+          <button>Signup</button>
+        </Link>
+      </div>
+
       <main>
         <h1>Development Planner</h1>
         <p>
