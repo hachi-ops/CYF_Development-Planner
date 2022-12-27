@@ -10,6 +10,7 @@ function All() {
   return (
     <>
       <h1>All Messages</h1>
+
       <section>
         {" "}
         <section className="inbox">
