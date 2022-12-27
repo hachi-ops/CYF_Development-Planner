@@ -61,4 +61,14 @@ button {
 }
   .feedbacks-btn, .btns, .dash-nav {
 display: flex;
+width: 200px;
+/* border: 1px solid red; */
+justify-content: space-around;
+
   }
+
+img{
+ width: 50px;
+ display: block;
+  }
+

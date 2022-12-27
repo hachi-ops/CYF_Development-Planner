@@ -19,10 +19,9 @@ import InputFeedback from "./components/mentor/InputFeedback";
 import SignupConfirmed from "./components/signupLogin/SignupConfirmed";
 import Inbox from "./components/mentor/Inbox";
 import Sent from "./components/mentor/Sent";
-import Navbar from "./components/Navbar";
+import NavigateHome from "./components/NavigateHome";
 import All from "./components/mentor/All";
 import FeedbackDetails from "./components/mentor/FeedbackDetails";
-
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -51,8 +50,9 @@ function App() {
   }, []);
   return (
     <>
-      <Navbar />
       <Back />
+      <NavigateHome />
+
       <Routes>
         <Route
           path="/"

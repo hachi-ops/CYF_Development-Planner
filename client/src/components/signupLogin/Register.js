@@ -104,7 +104,7 @@ function Register({ setAuth }) {
             <label htmlFor="mentor">Mentor</label>
           </fieldset>
 
-          <button onClick={() => navigate("/signup-confirmed")}>Submit</button>
+          <button>Submit</button>
         </form>
         <Link to="/login">Login</Link>
       </main>
