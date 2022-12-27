@@ -56,3 +56,9 @@ nav a {
 textarea {
     resize: none;
   }
+button {
+    display: block;
+}
+  .feedbacks-btn, .btns, .dash-nav {
+display: flex;
+  }
