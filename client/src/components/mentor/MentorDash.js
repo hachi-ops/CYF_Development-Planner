@@ -7,15 +7,17 @@ function MentorDash() {
   return (
     <>
       <h1>Mentor dashboard</h1>
-      <h2>Inbox</h2>
-      <Link to="/inbox">
-        <img src={messageIcon} alt="message" />
-      </Link>
+      <nav className="dash-nav">
+        <Link to="/inbox">
+          <h2>Inbox</h2>
+          <img src={messageIcon} alt="message" />
+        </Link>
 
-      <h2>Feedbacks</h2>
-      <Link to="/feedbacks">
-        <img src={fileIcon} alt="file" />
-      </Link>
+        <Link to="/feedbacks">
+          <h2>Feedbacks</h2>
+          <img src={fileIcon} alt="file" />
+        </Link>
+      </nav>
     </>
   );
 }
