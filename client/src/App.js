@@ -4,24 +4,25 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 //components
 import Home from "./components/Home";
-import Back from "./components/Back";
-import Dashboard from "./components/Dashboard";
-import Login from "./components/signupLogin/Login";
 import Register from "./components/signupLogin/Register";
+import Login from "./components/signupLogin/Login";
+import Dashboard from "./components/dashboard/Dashboard";
 
 import NoMatch from "./components/NoMatch";
 
 import Message from "./components/mentor/Message";
-import Feedbacks from "./components/mentor/Feedbacks";
-import MentorDash from "./components/mentor/MentorDash";
+// import Feedbacks from "./components/mentor/Feedbacks";
+
 import NewMessages from "./components/mentor/NewMessages";
-import InputFeedback from "./components/mentor/InputFeedback";
+
 import SignupConfirmed from "./components/signupLogin/SignupConfirmed";
 import Inbox from "./components/mentor/Inbox";
 import Sent from "./components/mentor/Sent";
-import NavigateHome from "./components/NavigateHome";
-import All from "./components/mentor/All";
+import Feedbacks from "./components/dashboard/Feedbacks";
 import FeedbackDetails from "./components/mentor/FeedbackDetails";
+
+import All from "./components/dashboard/All";
+// import FeedbackDetails from "./components/mentor/FeedbackDetails";
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -50,14 +51,12 @@ function App() {
   }, []);
   return (
     <>
-      <Back />
-      <NavigateHome />
-
       <Routes>
         <Route
           path="/"
           element={!isAuthenticated ? <Home /> : <Navigate to="/dashboard" />}
         />
+
         <Route
           path="register"
           element={
@@ -68,8 +67,8 @@ function App() {
             )
           }
         />
+
         <Route
-          exact
           path="login"
           element={
             !isAuthenticated ? (
@@ -79,8 +78,8 @@ function App() {
             )
           }
         />
+
         <Route
-          exact
           path="dashboard"
           element={
             isAuthenticated ? (
@@ -93,9 +92,8 @@ function App() {
 
         <Route path="signup-confirmed" element={<SignupConfirmed />} />
         <Route path="*" element={<NoMatch />} />
-        <Route path="mentor-dash" element={<MentorDash />} />
+
         <Route path="message" element={<Message />} />
-        <Route path="give-feedback" element={<InputFeedback />} />
 
         <Route path="inbox" element={<Inbox />}>
           <Route index element={<All />} />

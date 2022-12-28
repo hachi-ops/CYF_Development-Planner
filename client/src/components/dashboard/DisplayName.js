@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import MentorDash from "./mentor/MentorDash";
 
-function Dashboard({ setAuth }) {
+function DisplayName() {
   const [name, setName] = useState("");
 
   const getName = async () => {
@@ -14,16 +13,11 @@ function Dashboard({ setAuth }) {
       const parseRes = await res.json();
 
       console.log(parseRes);
-      setName(parseRes.username);
+
+      setName(parseRes[0].username);
     } catch (err) {
       console.error(err.message);
     }
-  };
-
-  const logout = async (e) => {
-    e.preventDefault();
-    localStorage.removeItem("token");
-    setAuth(false);
   };
 
   useEffect(() => {
@@ -31,11 +25,10 @@ function Dashboard({ setAuth }) {
   }, []);
   return (
     <>
-      <h1>Dashboard {name}</h1>
-      <button onClick={(e) => logout(e)}>Logout</button>
-      <MentorDash />
+      {" "}
+      <h1>{name}'s dashboard</h1>
     </>
   );
 }
 
-export default Dashboard;
+export default DisplayName;

@@ -68,7 +68,11 @@ justify-content: space-around;
   }
 
 img{
- width: 50px;
+
  display: block;
   }
 
+
+  .back-arrow{
+    width: 20px;
+  }

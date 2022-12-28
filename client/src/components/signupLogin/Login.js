@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+//components
+import Back from "../Back";
+import NavigateHome from "../NavigateHome";
 function Login({ setAuth }) {
   const [inputs, setInputs] = useState({
     email: "",
@@ -38,6 +41,8 @@ function Login({ setAuth }) {
   };
   return (
     <>
+      <Back />
+      <NavigateHome />
       <main>
         <form onSubmit={onSubmitForm}>
           <h1>Login</h1>

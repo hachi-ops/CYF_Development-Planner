@@ -29,10 +29,6 @@ function Message() {
           bedächt'ger Schnelle Vom Himmel durch die Welt zur Hölle!
         </p>
         <button>Link to file</button>
-      </section>
-      <section>
-        <h2>GiveFeedback</h2>
-
         <button>
           <Link to="/give-feedback">give feedback</Link>
         </button>

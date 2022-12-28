@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+//components
+import Back from "../Back";
+import NavigateHome from "../NavigateHome";
 
 function Register({ setAuth }) {
-  const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     fname: "",
     lname: "",
@@ -39,6 +42,8 @@ function Register({ setAuth }) {
   };
   return (
     <>
+      <Back />
+      <NavigateHome />
       <main>
         <form onSubmit={onSubmitForm}>
           <h1>Signup</h1>
