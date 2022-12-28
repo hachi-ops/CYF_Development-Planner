@@ -6,12 +6,14 @@ const validInfo = require("../middleware/validInfo");
 const authorization = require("../middleware/authorization");
 
 //register new user
-router.post("/register", validInfo, async (req, res) => {
-  try {
-    // 1. destructure the req.body (name, email, password)
-    const { fname, lname, username, email, password, role } = req.body;
-    console.log(fname, lname, username, password, email, role);
 
+router.post("/register", validInfo, async (req, res) => {
+  // 1. destructure the req.body (name, email, password)
+
+  const { fname, lname, username, email, password, role } = req.body;
+  console.log(fname, lname, username, password, email, role);
+
+  try {
     // 2. check if user exists (if user exists throw error)
     const user = await pool.query("SELECT * FROM users WHERE user_email= $1", [
       email,
@@ -23,7 +25,7 @@ router.post("/register", validInfo, async (req, res) => {
       return res.status(401).send("User already exists");
     }
 
-    // // 3. bcrypt the user password
+    // 3. bcrypt the user password
 
     const saltRound = 10;
     const salt = await bcrypt.genSalt(saltRound);
@@ -49,15 +51,14 @@ router.post("/register", validInfo, async (req, res) => {
   }
 });
 
-// //login route
+//login route
 
 router.post("/login", validInfo, async (req, res) => {
+  // 1. destructure the req.body
+  const { email, password } = req.body;
+
   try {
-    // 1. destructure the req.body
-
-    const { email, password } = req.body;
-
-    //     // 2. check if user doesn't exist (if not then throw error)
+    // 2. check if user doesn't exist (if not then throw error)
 
     const user = await pool.query("SELECT * FROM users WHERE user_email = $1", [
       email,
@@ -86,8 +87,7 @@ router.post("/login", validInfo, async (req, res) => {
     // 4. generate jwt token
 
     const token = jwtGenerator(user.rows[0].user_id);
-
-    res.json({ token });
+    return res.json({ token });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
@@ -95,6 +95,7 @@ router.post("/login", validInfo, async (req, res) => {
 });
 
 //verify the user
+
 router.get("/is-verify", authorization, async (req, res) => {
   try {
     res.json(true);
