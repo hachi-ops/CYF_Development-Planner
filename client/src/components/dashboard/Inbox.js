@@ -8,9 +8,9 @@ function Inbox() {
 
   const getMessages = async () => {
     try {
-      const response = await fetch("http://localhost:4000/dashboard/messages", {
+      const response = await fetch("http://localhost:4000/messages", {
         method: "GET",
-        headers: { token: localStorage.token },
+        headers: { "Content-Type": "aplication/json" },
       });
       const jsonData = await response.json();
 
@@ -26,9 +26,8 @@ function Inbox() {
 
   async function deleteMessage(id) {
     try {
-      await fetch(`http://localhost:4000/dashboard/messages/${id}`, {
+      await fetch(`http://localhost:4000/messages/${id}`, {
         method: "DELETE",
-        headers: { token: localStorage.token },
       });
       setMessages(messages.filter((message) => message.message_id !== id));
     } catch (err) {

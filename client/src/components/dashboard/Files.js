@@ -8,13 +8,10 @@ function Files() {
 
   const getFeedbacks = async () => {
     try {
-      const response = await fetch(
-        "http://localhost:4000/dashboard/feedbacks",
-        {
-          method: "GET",
-          headers: { token: localStorage.token },
-        }
-      );
+      const response = await fetch("http://localhost:4000/feedbacks", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
       const jsonData = await response.json();
 
       setAllFeedbacks(jsonData);
@@ -29,9 +26,8 @@ function Files() {
 
   async function deleteFeedback(id) {
     try {
-      await fetch(`http://localhost:4000/dashboard/feedbacks/${id}`, {
+      await fetch(`http://localhost:4000/feedbacks/${id}`, {
         method: "DELETE",
-        headers: { token: localStorage.token },
       });
       setFeedbacks(feedbacks.filter((feedback) => feedback.feedback_id !== id));
     } catch (err) {
