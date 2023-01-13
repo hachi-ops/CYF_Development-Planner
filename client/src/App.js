@@ -1,15 +1,15 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-// import FeedbacksForm from "./components/dashboard/FeedbacksForm";
-//components
+import React, { useState } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+
+// components
 import Login from "./components/Login";
 import Register from "./components/Register";
 import NoMatch from "./components/NoMatch";
 import Navbar from "./components/dashboard/Navbar";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
-// //dashboard components
+// dashboard components
 import Inbox from "./components/dashboard/Inbox";
 import Files from "./components/dashboard/Files";
 import Messages from "./components/dashboard/Messages";
@@ -21,6 +21,7 @@ import PlanEditor from "./components/dashboard/PlanEditor";
 
 
 function App() {
+
 /*
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -103,16 +104,17 @@ function App() {
     </>
   );
 }
+
 */
 
 const [username, setUsername] = useState(null);
 
 let location = useLocation();
-console.log(location);
 
+  // Don't show Home Icon for Plan's menus
   return (
     <>
-      {location.pathname !== "/plans" && <Navbar />}
+      {!location.pathname.startsWith("/plan") && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route

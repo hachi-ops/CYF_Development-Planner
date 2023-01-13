@@ -38,9 +38,6 @@ function Inbox() {
   useEffect(() => {
     setMessages(allMessages);
   }, [allMessages]);
-  console.log(allMessages)
-  console.log(messages)
-  console.log(messages.length, messages[0]);
 
   return (
     <>

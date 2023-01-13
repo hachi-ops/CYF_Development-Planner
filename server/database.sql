@@ -34,7 +34,10 @@ CREATE TABLE messages (
   FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
--- Plans
+-- Users
+INSERT INTO users (user_fname, user_lname, username, user_email, user_password, user_role) 
+                                VALUES ('abc','abc','abc','abc@gmail.com','abc','mentor');
+
 INSERT INTO users (user_fname, user_lname, username, user_email, user_password, user_role) 
                                 VALUES ('joe','bloggs','joeb', 'joeb','joeb@gmail.com','student');
 
@@ -42,6 +45,7 @@ INSERT INTO users (user_fname, user_lname, username, user_email, user_password, 
 INSERT INTO users (user_fname, user_lname, username, user_email, user_password, user_role) 
                                 VALUES ('fred','bloggs','fredb', 'fredb','fredb@gmail.com','student');
 
+-- Plans
 CREATE TABLE plans(    
     plan_serial_id SERIAL,
     username VARCHAR(50) NOT NULL,

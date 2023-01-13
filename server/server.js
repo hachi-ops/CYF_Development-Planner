@@ -45,7 +45,7 @@ app.get("/feedbacks", async (req, res) => {
 // Get one feedback (Mentor Dashboard)
 app.get("/feedbacks/:id", async (req, res) => {
   try {
-    console.log(req.params);
+    // console.log(req.params);
     const { id } = req.params;
 
     const feedback = await pool.query(
@@ -120,7 +120,7 @@ app.get("/messages", async (req, res) => {
 
 app.get("/messages/:id", async (req, res) => {
   try {
-    console.log(req.params);
+    // console.log(req.params);
     const { id } = req.params;
 
     const feedback = await pool.query(
@@ -136,7 +136,7 @@ app.get("/messages/:id", async (req, res) => {
 
 app.post("/messages", async (req, res) => {
   try {
-    console.log(req.body);
+    // console.log(req.body);
     const { messageText } = req.body;
     const newMessage = await pool.query(
       "INSERT INTO messages (message_text) VALUES ($1) RETURNING *",
@@ -181,7 +181,7 @@ app.delete("/messages/:id", async (req, res) => {
 
 
 // Does the user have any plans?
-// Ordered from the latest to the oldest
+// Ordered from the newest to the oldest
 app.get("/plans/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -203,7 +203,6 @@ app.delete("/plans/:id", async (req, res) => {
   //res.send("DELETE Request Called");
   try {
     const { id } = req.params;
-    console.log(1000,id) // DG
     const thePlan = await pool.query(
       `DELETE FROM plans 
               WHERE plan_serial_id = $1
@@ -214,6 +213,87 @@ app.delete("/plans/:id", async (req, res) => {
   } catch (err) {
     console.error(err.message);
     res.status(500).json("Server error: " + err.message);
+  }
+});
+
+// Write a new plan
+app.post("/plans/writeplan", async (request, result) => {
+  try {
+    // Destructuring
+    const {
+      username,
+      created_timestamp,
+      amended_timestamp,
+      splan,
+      mplan,
+      aplan,
+      rplan,
+      tplan,
+      preamble,
+    } = request.body;
+    // Insert New Record
+    const query = `INSERT INTO plans (username, created_timestamp,  amended_timestamp,
+                                splan, mplan, aplan, rplan, tplan, preamble) 
+                                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+                                RETURNING *`;
+
+    const newPlan = await pool.query(query, [username, created_timestamp, amended_timestamp,
+                       splan, mplan, aplan, rplan, tplan, preamble]); 
+    result.json(newPlan.rows);
+  } catch (error) {
+    console.error(error.message);
+    result.status(500).json("Server error: " + error.message);
+  }
+});
+
+// Update a plan
+app.put("/plans/updateplan", async (request, result) => {
+  try {
+    // Destructuring
+    const {
+      username,
+      created_timestamp,
+      amended_timestamp,
+      splan,
+      mplan,
+      aplan,
+      rplan,
+      tplan,
+      preamble,
+    } = request.body;
+
+    // update plans_table SET splan = 'SSS', mplan = 'MMM', aplan = 'AAA', rplan = 'RRR', tplan = 'TTT'  
+    //where username = 'abc' and created_timestamp = ':20230007:084445';
+    // Update Record
+    const query = `UPDATE plans
+                          SET amended_timestamp = $1,
+                          splan = $2, mplan = $3, aplan = $4, rplan = $5, tplan = $6,
+                              preamble = $7
+                          WHERE username = $8 and created_timestamp = $9`; 
+
+    pool.query(
+      query,
+      [
+        amended_timestamp,
+        splan,
+        mplan,
+        aplan,
+        rplan,
+        tplan,
+        preamble,
+        username,
+        created_timestamp,
+      ],
+      (error) => {
+        if (error) {
+          throw error;
+        }
+      }
+    );
+    result.status(200).send("Plan updated.");
+  } catch (error) {
+    console.error(error.message);
+    result.status(500).json("Server error: " + error.message);
   }
 });
 

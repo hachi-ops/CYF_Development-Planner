@@ -1,39 +1,32 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import PlansNavbar from "../../../src/components/dashboard/PlansNavBar";
 import DisplayListItem from "./DisplayListItem";
 import "../../../src/styles.css";
 
 function Plans() {
   const [allPlansFetched, setAllPlansFetched] = useState([]);
-  const [planSelected, setPlanSelected] = useState(null);
+  const [planSelectedInfo, setPlanSelectedInfo] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  const theUserName = location.state.name;
 
-  const theUserName = "joeb";
-
-  const getPlans = async () => {
-    try {
-      const response = await fetch("http://localhost:4000/plans/joeb");
-      console.log(response)
-      const jsonData = await response.json();
-      console.log(jsonData);
-      setAllPlansFetched(jsonData);
-    } catch (err) {
-      console.error(err.message);
-    }
+  const handleClick = (_, theIndex) => {
+  
+    // Need to subtract one because the 0th item represents the "Create Plan" message
+    // So the first plan is indexed with the value 1
+    // The second is indexed as 2, etc.
+    // Therefore subtract 1 to determine the actual true index
+    const actualIndex = theIndex - 1;
+    setPlanSelectedInfo({
+      theIndex: theIndex,
+      theUserName: theUserName,
+      thePlan: allPlansFetched[actualIndex],
+    });
   };
-
-  const handleClick = (event, theIndex, theKey = null) => {
-    //  setSelectedRecordInfo({ theIndex: theIndex, theKey: theKey });
-    //  setStage(2); // Second Stage: Allow User to enter/edit plan
-    console.log(event)
-    console.log(theIndex, theKey)
-    setPlanSelected({theIndex: theIndex, theKey:theKey, theUserName:theUserName})
-   };
 
   function deletePlan(index) {
     let answer = window.confirm("Are You Sure?");
-    console.log(index)
-    console.log(allPlansFetched);
     if (answer) {
       deletePlan2(index)
     } 
@@ -43,10 +36,10 @@ function Plans() {
     // Need to subtract one because the 0th item represents the "Create Plan" message
     // So the first plan is indexed with the value 1
     // The second is indexed as 2, etc.
+    // Therefore subtract 1 to determine the actual true index
+
     const actualIndex = deleteIndex - 1;
     const serialId = allPlansFetched[actualIndex].plan_serial_id;
-    console.log(actualIndex,serialId)
-    console.log(deleteIndex)
     try {
       await fetch(`http://localhost:4000/plans/${serialId}`, {
         method: "DELETE",
@@ -55,25 +48,35 @@ function Plans() {
       setAllPlansFetched(
         allPlansFetched.filter((_, index) => index !== actualIndex)
       );
-      console.log(allPlansFetched)
     } catch (err) {
-      console.error(err.message);
+        console.error(err.message);
     }
   }
 
+  // Fetch all the user's plans
   useEffect(() => {
-    getPlans();
-  }, []);
 
-  useEffect(() => {
-    setAllPlansFetched(allPlansFetched);
-  }, [allPlansFetched]);
+    const getPlans = async () => {
+        try {
+          const response = await fetch("http://localhost:4000/plans/" + theUserName);
+          const jsonData = await response.json();
+          setAllPlansFetched(jsonData);
+        } catch (err) {
+            console.error(err.message);
+        }
+    };
+
+    getPlans();
+  }, [theUserName]);
 
   useEffect(() => {    
-    if (planSelected) {
-        navigate("/plan-editor");
+    if (planSelectedInfo) {
+                    navigate("/plan-editor", {
+                        state: { planSelectedInfo: planSelectedInfo },
+                        replace: false,
+                    });
     };
-  }, [planSelected, navigate]);
+  }, [planSelectedInfo, navigate]);
 
   const keysArray = [];
   const preambleTextArray = [];
@@ -105,13 +108,14 @@ function Plans() {
   );
 
   return (
-      <>
-        <div className="username-header">{theUserName}</div>
-        <div className="main-menu-container">
-          <div className="main-menu">{orderedList}</div>
-        </div>
-      </>
-    );
+    <>
+      <PlansNavbar />
+      <div className="username-header">{theUserName}</div>
+      <div className="main-menu-container">
+        <div className="main-menu">{orderedList}</div>
+      </div>
+    </>
+  );
 
 }
 

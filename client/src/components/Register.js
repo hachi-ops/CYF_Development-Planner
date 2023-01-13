@@ -83,7 +83,7 @@ function Register({ setAuth }) {
             required
           />
 
-          <fieldset>
+          <fieldset className="role-fieldset">
             <legend>Your CYF role:</legend>
             <input
               id="student"
@@ -91,6 +91,7 @@ function Register({ setAuth }) {
               name="role"
               value="student"
               onChange={(e) => onChange(e)}
+              checked
             ></input>
             <label htmlFor="student">Student</label>
             <input

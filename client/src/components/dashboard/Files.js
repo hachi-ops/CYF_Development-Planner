@@ -31,7 +31,7 @@ function Files() {
       });
       setFeedbacks(feedbacks.filter((feedback) => feedback.feedback_id !== id));
     } catch (err) {
-      console.log(allFeedbacks);
+      console.error(allFeedbacks);
     }
   }
 

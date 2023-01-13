@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import messagesIcon72 from "../images/messages-icon-72.png";
 import filesIcon72 from "../images/files-icon-72.png";
-import { Link, useLocation } from "react-router-dom";
 
 /*
    Replaced 
@@ -46,9 +46,7 @@ function Dashboard() {
 
   const location = useLocation();
 
-  console.log(location)
   const name = location.state.username;
-  // const setUsername = location.state.setUsername;
 
   return (
     <>
@@ -57,6 +55,10 @@ function Dashboard() {
         <button onClick={(e) => logout(e)}>Logout</button>
       </header>
       <nav className="inbox-and-files">
+        <Link to="/plans" state= {{name:name}} >
+          <h2>Plans</h2>
+          <img src={messagesIcon72} alt="plans icon" />
+        </Link>
         <Link to="/inbox">
           <h2>Inbox</h2>
           <img src={messagesIcon72} alt="messages icon" />

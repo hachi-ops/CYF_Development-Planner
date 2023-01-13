@@ -73,13 +73,9 @@ function createPreamble(preambleTextArray) {
       break;
     }
   }
-  return result.slice(0, PREAMBLE_SIZE) + ` TESTING 123 JDNFKF DJJFE
-  DBFJDNKJ#FKDLK
-  FKKFJGK
-  KFJFDKGKL#LKDFKFKJKMD,
-  FKGKFJKDK
-  
-  FLJGFKKFK`;
+  return (
+    result.slice(0, PREAMBLE_SIZE)
+  );
 }
 
 export default DisplayListItem;

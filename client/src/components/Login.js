@@ -30,14 +30,14 @@ function Login({ setUsername }) {
       // const body = { email, password };
 
       const theUrl =
-        "http://localhost:4000/auth/login/" + email + "/" + password;
+        "http://localhost:4000/auth/login/" + email.toLowerCase() + "/" + password;
       const response = await fetch(theUrl, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
 
       const parseRes = await response.json();
-      console.log(parseRes);
+      // console.log(parseRes);
       
       if (parseRes.length !== 0) {
          const theUserName = parseRes[0].username; 
@@ -95,10 +95,10 @@ function Login({ setUsername }) {
 
   useEffect(() => {
      if (loggedIn) {
-      console.log(loggedIn, setUsername)
-              navigate("/dashboard", {
+           navigate("/dashboard", {
                 state: { username: loggedIn },
-              });
+                replace: false,
+           });
      }
   }, [loggedIn,navigate,setUsername]);
 
