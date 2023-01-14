@@ -4,7 +4,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import PlanDefinition from "./PlanDefinition";
 
 import {
-  monthNames,
   S_PLAN,
   M_PLAN,
   A_PLAN,
@@ -12,7 +11,7 @@ import {
   T_PLAN,
 } from "../../../src/data/constants.js";
 
-import { determine_current_timestamp, savePlan } from "./planFunctions";
+import { savePlan, setupTimeValues } from "./planFunctions";
 
 import "../../../src/styles.css";
 
@@ -28,8 +27,12 @@ const PlanEditor = () => {
   const [changed, setChanged] = useState(false);
   const [saved, setSaved] = useState(false);
   const [planCreatedTimeStamp, setPlanCreatedTimeStamp] = useState(null);
-
+  const [timeValues,] = useState(setupTimeValues());
+  
   const navigate = useNavigate();
+
+  let [displayTimeStamp, theCurrentTimeStamp] = timeValues;
+  
 
   const saveThenGotoPlans = () => {
     savePlan(
@@ -53,10 +56,6 @@ const PlanEditor = () => {
   };
 
   const allEmpty = () => planCharacterCount.every((element) => element === 0);
-
-  const setupTime = () => {
-    
-  }
 
   const discardPlan = () => {
     let leavePage, answer;
@@ -100,7 +99,6 @@ const PlanEditor = () => {
   useEffect(() => {
     // ONLY DO THIS THE ONCE! USE 'newPlan' TO DETERMINE THIS I.E. AS IF useEffect({...}, [])
     if (newPlan === null) { // Ensure done ONCE!
-      setupTime();
       let { theIndex, thePlan, theUserName } = location.state.planSelectedInfo;
       setSelectedRecordInfo({ theIndex: theIndex, thePlan: thePlan });
       setUserName(theUserName);
@@ -135,34 +133,6 @@ const PlanEditor = () => {
     }
     // Otherwise for a new plan the above fields will be empty and 0
   }, [selectedRecordInfo, newPlan]);
-
-  let [
-    dayNumber,
-    monthNumber,
-    yearNumber,
-    hoursNumber,
-    minutesNumber,
-    secondsNumber,
-  ] = determine_current_timestamp();
-
-/* EG FOR new Date("2022-03-01") 
-   displayTimeStamp => 01 Mar 2022 00:00:00 - shown onscreen
-*/
-
-  const displayTimeStamp =
-    `${String(dayNumber).padStart(2, "0")} ${monthNames[monthNumber]} ${yearNumber}` +
-    ` ${String(hoursNumber).padStart(2, "0")}:${String(minutesNumber).padStart(2,"0")}:` +
-    `${String(secondsNumber).padStart(2, "0")}`;
-
-/* EG FOR new Date("2022-03-01" 
-   theCurrentTimeStamp => USERNAME:20220301:000000
-                          This is used as the unique key for the Plan SQL records
-*/
-
-  const theCurrentTimeStamp = // EG :20221122:184715
-    `:${yearNumber}${String(monthNumber).padStart(2, "0")}${String(dayNumber).padStart(2, "0")}:` +
-    `${String(hoursNumber).padStart(2, "0")}${String(minutesNumber).padStart(2,"0")}` +
-    `${String(secondsNumber).padStart(2, "0")}`;
 
   return (
     <div className="plans-page-style">
