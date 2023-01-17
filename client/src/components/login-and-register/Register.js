@@ -11,7 +11,8 @@ function Register({ setAuth }) {
     role: "",
   });
 
-  const { fname, lname, username, email, password, role } = inputs;
+  const { fname, lname, username, email, password, passwordConfirm, role } =
+    inputs;
 
   const onChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -19,14 +20,27 @@ function Register({ setAuth }) {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
+
     try {
-      const body = { fname, lname, username, email, password, role };
+      const body = {
+        fname,
+        lname,
+        username,
+        email,
+        password,
+        passwordConfirm,
+        role,
+      };
       const response = await fetch("/authentication/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-
+      if (password === passwordConfirm) {
+        console.log("passwords match");
+      } else {
+        console.log("passwords do not match");
+      }
       const parseRes = await response.json();
       localStorage.setItem("token", parseRes.jwtToken);
       console.log(parseRes);
@@ -77,7 +91,15 @@ function Register({ setAuth }) {
             onChange={(e) => onChange(e)}
             required
           />
-
+          <label htmlFor="passwordConfirm">Retype password</label>
+          <input
+            id="passwordConfirm"
+            type="password"
+            name="passwordConfirm"
+            value={passwordConfirm}
+            onChange={(e) => onChange(e)}
+            required
+          />
           <label htnlFor="email">Email</label>
           <input
             id="email"
