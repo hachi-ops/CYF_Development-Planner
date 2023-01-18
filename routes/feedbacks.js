@@ -38,13 +38,13 @@ router.post("/", async (req, res) => {
     console.log(req.body);
     const { feedbackText } = req.body;
     const newFeedback = await pool.query(
-      "INSERT INTO feedbacks (feedback_text) VALUES ($1) RETURNING *",
-      [feedbackText]
+      "INSERT INTO feedbacks (user_id, feedback_text) VALUES ($1, $2) RETURNING *",
+      [req.user.id, feedbackText]
     );
-    res.json(newFeedback.rows);
+
+    res.json(newFeedback.rows[0]);
   } catch (err) {
     console.error(err.message);
-    res.status(500).json("server error");
   }
 });
 

@@ -2,10 +2,12 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 function jwtGenerator(user_id) {
+  // const payload = {
+  //   user: {
+  //     id: user_id,
+  //   },
   const payload = {
-    user: {
-      id: user_id,
-    },
+    user: user_id,
   };
 
   //the code below was the code written from the tutorial

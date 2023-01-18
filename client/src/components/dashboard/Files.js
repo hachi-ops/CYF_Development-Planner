@@ -10,7 +10,8 @@ function Files() {
     try {
       const response = await fetch("/dashboard/feedbacks", {
         method: "GET",
-        headers: { token: localStorage.token },
+        // headers: { jwt_token: localStorage.token },
+        headers: { "Content-Type": "application/json" },
       });
       const jsonData = await response.json();
 
@@ -58,6 +59,13 @@ function Files() {
           <h1>Files</h1>
           <img alt="files icon" src={filesIcon} />
         </div>
+        <section>
+          {feedbacks.map((feedback) => (
+            <div key={feedback.feedback_id}>
+              <div>{feedback.feedback_text}</div>
+            </div>
+          ))}
+        </section>
 
         <div className="login-signin-buttons">
           <Link to="/new-feedback">

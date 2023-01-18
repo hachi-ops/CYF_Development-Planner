@@ -121,6 +121,7 @@ nav a.active {
     line-height: 2.6rem;
     padding: 40px 30px;
     margin: auto;
+    text-align: center;
 }
 
 .header-img {
@@ -262,6 +263,7 @@ h1 {
 
     .subheading {
         font-size: 1.4rem;
+     
     }
 }
 
@@ -320,3 +322,31 @@ form h1 {
     font-size: 1rem;
     margin-bottom: 30px;
 }
+
+.no-match {
+background-image: url("./images/hidden-cat.jpg");
+background-repeat: no-repeat;
+background-size: 100%;
+padding: 120px 0 600px 0;
+
+}
+
+
+    .center-text{
+  
+       line-height: 2.6rem;
+       position: absolute;
+       top: 30%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+    }
+
+    .center-text h1, .center-text h2 {
+        color: #fff;
+        font-family: "Montserrat";
+        font-size: 2rem;
+        font-weight: 500;
+        text-align: center;
+        max-width: 700px;
+       margin: 0 auto;
+    }
