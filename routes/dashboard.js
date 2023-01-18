@@ -1,10 +1,11 @@
 const router = require("express").Router();
+const authorize = require("../middleware/authorize");
 
-router.get("/", async (req, res) => {
+router.get("/", authorize, async (req, res) => {
   try {
     const user = await pool.query(
       "SELECT username FROM users WHERE user_id = $1",
-      [req.user]
+      [req.user.id]
     );
 
     res.json(user.rows);
@@ -13,21 +14,6 @@ router.get("/", async (req, res) => {
     res.status(500).send("Server error");
   }
 });
-
-// // mentor dashboard: get all feedbacks
-// router.get("/", async (req, res) => {
-//   try {
-//     const { userId } = req.params;
-//     const userName = await pool.query(
-//       "SELECT * FROM users WHERE user_id = $1",
-//       [userId]
-//     );
-//     res.json(userName.rows);
-//   } catch (err) {
-//     console.error(err.message);
-//     res.status(500).json("server error");
-//   }
-// });
 
 router.use("/feedbacks", require("./feedbacks"));
 

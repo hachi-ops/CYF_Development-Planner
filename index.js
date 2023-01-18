@@ -21,7 +21,7 @@ app.get("/*", function (req, res) {
 
 app.use("/authentication", require("./routes/jwtAuth"));
 
-app.use("/dashboard", authorize, require("./routes/dashboard"));
+app.use("/dashboard", require("./routes/dashboard"));
 
 app.use("/feedbacks", require("./routes/feedbacks"));
 
