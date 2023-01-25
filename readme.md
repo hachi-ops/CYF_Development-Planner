@@ -4,7 +4,7 @@ More detailed information about how your application uses its data connections
 A link to an application website
 Licensing information
 
-# Getting started with CYF_Developer-Planner
+# Getting started with CYF_Development-Planner
 
 To run this project locally:
 
