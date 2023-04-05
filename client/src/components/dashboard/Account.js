@@ -20,6 +20,7 @@ function Account({ user }) {
   // function to check input errors and set new password
   const changePassword = ()=> {
     setValidationError(false);
+    console.log("test");
   }
 
   // function to send typed password for comparison with existing hashed password
