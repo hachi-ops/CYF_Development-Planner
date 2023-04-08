@@ -56,11 +56,12 @@ const ListFiles = ({ senderUsername }) => {
 
   return (
     <>
-      {drafts.length !== 0 &&
-        drafts[0].draft_id !== null &&
-        drafts.map((draft, index) => {
-          return (
-            <>
+      <div data-testid="list-files">
+        {" "}
+        {drafts.length !== 0 &&
+          drafts[0].draft_id !== null &&
+          drafts.map((draft, index) => {
+            return (
               <>
                 <div className="flex">
                   <h2 className="subheading">{draft.draft_title}</h2>
@@ -78,9 +79,9 @@ const ListFiles = ({ senderUsername }) => {
                   <></>
                 )}
               </>
-            </>
-          );
-        })}
+            );
+          })}
+      </div>
     </>
   );
 };
