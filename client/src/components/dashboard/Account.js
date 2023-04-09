@@ -4,9 +4,12 @@ function Account({ user }) {
   const [password, setPassword] = useState("");
   const [newPass, setNewPass] = useState({ first: "", second: "" });
   const [validationError, setValidationError] = useState(false);
+  const [matchError, setMatchError] = useState(false);
   console.log(password);
   console.log(newPass);
 
+  // handler for inputs
+  // maybe ternary operators here?
   const handleChange = (e) => {
     if (e.target.id === "old-password") {
       setPassword(e.target.value);
@@ -17,17 +20,18 @@ function Account({ user }) {
     }
   };
 
-  // function to check input errors and set new password
-  const changePassword = ()=> {
-    setValidationError(false);
-    console.log("test");
-  }
+  // function to check new passwords are entered and they match, triggering errors if they don't
+  const changePassword = (newPassOne, newPassTwo) => {
+    if (newPassOne === newPassTwo && newPassOne && newPassTwo) {
+      return true;
+    }
+    return false;
+  };
 
   // function to send typed password for comparison with existing hashed password
-  const confirmPassword = async (e) => {
-    e.preventDefault();
+  const confirmPassword = async (entered) => {
     try {
-      const body = { enteredPwd: password, hashedPwd: user.user_password };
+      const body = { enteredPwd: entered, hashedPwd: user.user_password };
       const headers = {
         "Content-Type": "application/json",
         "jwt_token": localStorage.token,
@@ -38,13 +42,24 @@ function Account({ user }) {
         body: JSON.stringify(body),
       });
       const result = await response.json();
-      console.log(result);
-      if (!result) {
-        setValidationError(true);
-      } else {
-        changePassword();
-      }
-    } catch {}
+      return result;
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  // function to submit typed passwords
+  const submitPassChange = async (e) => {
+    e.preventDefault();
+    setMatchError(false);
+    setValidationError(false);
+    let isOldPass = await confirmPassword(password);
+    let matched = changePassword(newPass.first, newPass.second);
+    if(!isOldPass) setValidationError(true);
+    if(!matched) setMatchError(true);
+    if(isOldPass && matched) {
+      console.log("change database")
+    }
   };
 
   return (
@@ -61,7 +76,7 @@ function Account({ user }) {
         </section>
 
         <section>
-          <form onSubmit={confirmPassword}>
+          <form onSubmit={submitPassChange}>
             <h3>change password</h3>
             <button>submit</button>
 
@@ -73,7 +88,7 @@ function Account({ user }) {
               onChange={(e) => handleChange(e)}
             />
             {validationError && (
-              <h5 style={{ color: "red" }}>
+              <h5 style={{ color: "rgb(219, 104, 104)" }}>
                 Incorrect password.
               </h5>
             )}
@@ -92,6 +107,11 @@ function Account({ user }) {
               placeholder="type here..."
               onChange={(e) => handleChange(e)}
             />
+            {matchError && (
+              <h5 style={{ color: "rgb(219, 104, 104)" }}>
+                Please enter two matching passwords.
+              </h5>
+            )}
           </form>
         </section>
 
