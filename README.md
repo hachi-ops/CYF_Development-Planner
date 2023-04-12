@@ -2,7 +2,7 @@
 
 ## Requirements
 
-Currently for developing purposes the app requires developers to have access to a local database. 
+Currently for developing purposes the app requires developers to have access to a local database.
 I used psql / postgres, but you may use which ever postgres variant you prefer.
 
 If you haven't already go ahead and download psql / postgres.
@@ -12,7 +12,7 @@ If you haven't already go ahead and download psql / postgres.
 There are two main folders.
 
 1. The root directory - where database related work is kept.
-2. the client directorty - where the main app is housed.
+2. the client directory - where the main app is housed.
 
 Start by installing with `npm i`
 
