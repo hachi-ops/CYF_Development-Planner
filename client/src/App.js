@@ -28,7 +28,8 @@ function App() {
 
   async function isAuth() {
     try {
-      const response = await fetch("/authentication/verify", {
+      // /authentication/verify is an endpoint that triggers |./routes/jwtAuth.js|
+      const response = await fetch("http://localhost:5000/authentication/verify", {
         method: "GET",
         headers: { jwt_token: localStorage.token },
       });
