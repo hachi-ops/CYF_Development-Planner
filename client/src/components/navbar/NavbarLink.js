@@ -1,6 +1,6 @@
 import React from "react";
 import homeIcon from "../../images/icons8-home-page-24.png";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import dashIcon from "../../images/icons8-dashboard-48.png";
 
 function NavbarLink() {

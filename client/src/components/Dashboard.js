@@ -28,7 +28,7 @@ function Dashboard({ setAuth }) {
 
   return (
     <>
-      <div className="flex">
+      <div className="flex" data-testid="dashboard">
         <h1 className="heading">Dashboard {name}</h1>
         <Logout setAuth={setAuth} />
       </div>

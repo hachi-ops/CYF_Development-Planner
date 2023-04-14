@@ -25,7 +25,11 @@ function Element({
 
   return (
     <>
-      <div className="flex" key={`elem-${draft.draft_id}`}>
+      <div
+        data-testid="element"
+        className="flex"
+        key={`elem-${draft.draft_id}`}
+      >
         <button onClick={handleEdit}>edit</button>
         <button onClick={() => deleteDraft(draft.draft_id)}>Delete</button>
       </div>

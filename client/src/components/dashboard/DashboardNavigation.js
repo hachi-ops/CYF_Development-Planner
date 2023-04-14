@@ -35,7 +35,7 @@ function DashboardNavigation({ name }) {
 
   return (
     <>
-      <div className="flex">
+      <div className="flex" data-testid="dashboard-navigation">
         <div className="icon-heading" onClick={handleToggleFiles}>
           <h2>Files</h2>
           <img src={filesIcon} alt="files icon" />
