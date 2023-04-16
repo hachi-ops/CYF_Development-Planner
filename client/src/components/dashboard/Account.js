@@ -33,7 +33,6 @@ function Account({ user, handleUpdate }) {
 
   // function to send inputted password for comparison with existing hashed password
   const confirmPassword = async (entered) => {
-    console.log("userData password", user.user_password);
     try {
       const body = { enteredPwd: entered, hashedPwd: user.user_password };
       const headers = {
