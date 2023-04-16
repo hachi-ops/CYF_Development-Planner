@@ -1,15 +1,13 @@
 import { useState, React } from "react";
 
-function Account({ user }) {
+function Account({ user, handleUpdate }) {
   const [password, setPassword] = useState("");
   const [newPass, setNewPass] = useState({ first: "", second: "" });
   const [validationError, setValidationError] = useState(false);
   const [matchError, setMatchError] = useState(false);
-  console.log(password);
-  console.log(newPass);
+  const [success, setSuccess] = useState(false);
 
   // handler for inputs
-  // maybe ternary operators here?
   const handleChange = (e) => {
     if (e.target.id === "old-password") {
       setPassword(e.target.value);
@@ -21,15 +19,21 @@ function Account({ user }) {
   };
 
   // function to check new passwords are entered and they match, triggering errors if they don't
-  const changePassword = (newPassOne, newPassTwo) => {
-    if (newPassOne === newPassTwo && newPassOne && newPassTwo) {
+  const checkPassword = (newPassOne, newPassTwo) => {
+    if (
+      newPassOne === newPassTwo &&
+      newPassOne &&
+      newPassTwo &&
+      (newPassOne || newPassTwo) !== password
+    ) {
       return true;
     }
     return false;
   };
 
-  // function to send typed password for comparison with existing hashed password
+  // function to send inputted password for comparison with existing hashed password
   const confirmPassword = async (entered) => {
+    console.log("userData password", user.user_password);
     try {
       const body = { enteredPwd: entered, hashedPwd: user.user_password };
       const headers = {
@@ -48,17 +52,42 @@ function Account({ user }) {
     }
   };
 
+  // update database with new user password
+  const updatePassword = async (updated) => {
+    try {
+      const body = { updatedPwd: updated, userId: user.user_id };
+      const headers = {
+        "Content-Type": "application/json",
+        "jwt_token": localStorage.token,
+      };
+      const response = await fetch("/dashboard/updatePword", {
+        method: "PUT",
+        headers: headers,
+        body: JSON.stringify(body),
+      });
+      const result = await response.json();
+      console.log(result)
+      handleUpdate();
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
   // function to submit typed passwords
   const submitPassChange = async (e) => {
     e.preventDefault();
     setMatchError(false);
     setValidationError(false);
+    setSuccess(false);
     let isOldPass = await confirmPassword(password);
-    let matched = changePassword(newPass.first, newPass.second);
-    if(!isOldPass) setValidationError(true);
-    if(!matched) setMatchError(true);
-    if(isOldPass && matched) {
-      console.log("change database")
+    let matched = checkPassword(newPass.first, newPass.second);
+    if (!isOldPass) setValidationError(true);
+    if (!matched) setMatchError(true);
+    if (isOldPass && matched) {
+      updatePassword(newPass.first);
+      setPassword("");
+      setNewPass({ first: "", second: "" });
+      setSuccess(true);
     }
   };
 
@@ -86,6 +115,7 @@ function Account({ user }) {
               type="text"
               placeholder="type here..."
               onChange={(e) => handleChange(e)}
+              value={password}
             />
             {validationError && (
               <h5 style={{ color: "rgb(219, 104, 104)" }}>
@@ -98,6 +128,7 @@ function Account({ user }) {
               type="text"
               placeholder="type here..."
               onChange={(e) => handleChange(e)}
+              value={newPass.first}
             />
 
             <label htmlFor="retype-new-password">retype new password</label>
@@ -106,11 +137,15 @@ function Account({ user }) {
               type="text"
               placeholder="type here..."
               onChange={(e) => handleChange(e)}
+              value={newPass.second}
             />
             {matchError && (
               <h5 style={{ color: "rgb(219, 104, 104)" }}>
-                Please enter two matching passwords.
+                Please enter two new matching passwords.
               </h5>
+            )}
+            {success && (
+              <h5 style={{ color: "rgb(25, 135, 84)" }}>Password Updated</h5>
             )}
           </form>
         </section>

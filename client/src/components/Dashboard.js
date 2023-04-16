@@ -5,6 +5,7 @@ import DashboardNavigation from "./dashboard/DashboardNavigation";
 // import Menu from "./dashboard/Menu";
 function Dashboard({ setAuth }) {
   const [user, setUser] = useState({});
+  const [updateUser, setUpdateUser] = useState(false)
 
   const getUser = async () => {
     try {
@@ -22,9 +23,13 @@ function Dashboard({ setAuth }) {
     }
   };
 
+  const handleUpdate=()=> {
+    setUpdateUser(!updateUser)
+  }
+
   useEffect(() => {
     getUser();
-  }, []);
+  }, [updateUser]);
 
   return (
     <>
@@ -32,7 +37,7 @@ function Dashboard({ setAuth }) {
         <h1 className="heading">Dashboard {user.username}</h1>
         <Logout setAuth={setAuth} />
       </div>
-      <DashboardNavigation user={user} />
+      <DashboardNavigation user={user} handleUpdate={handleUpdate}/>
       {/* <Menu /> */}
     </>
   );

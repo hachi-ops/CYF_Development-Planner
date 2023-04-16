@@ -57,6 +57,24 @@ router.post("/validPword", async (req, res) => {
   }
 });
 
+// Updating password
+router.put("/updatePword", async (req, res) => {
+  try {
+    const { updatedPwd, userId } = req.body;
+    
+    const salt = await bcrypt.genSalt(10);
+    const bcryptPassword = await bcrypt.hash(updatedPwd, salt);
+
+    const hasUpdated = await pool.query(
+      "UPDATE users SET user_password=$1 WHERE user_id=$2 RETURNING *",
+      [bcryptPassword, userId]
+    );
+    res.json(hasUpdated.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 router.use("/drafts", require("./drafts"));
 
 router.use("/messages", require("./messages"));
