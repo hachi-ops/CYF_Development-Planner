@@ -36,11 +36,17 @@ function MessagesControls({ name }) {
 
   return (
     <>
-      <div className="controls">
+      <div className="controls" data-testid="messages-controls">
         <h2 className="icon-heading">Messages</h2>
-        <button onClick={handleShowMessages}>{allTextButton}</button>
-        <button onClick={handleShowUnreadMessages}>{unreadTextButton}</button>
-        <button onClick={handleShowSentMessages}>{sentTextButton}</button>
+        <button onClick={handleShowMessages} className="all">
+          {allTextButton}
+        </button>
+        <button onClick={handleShowUnreadMessages} className="unread">
+          {unreadTextButton}
+        </button>
+        <button onClick={handleShowSentMessages} className="sent">
+          {sentTextButton}
+        </button>
       </div>
       <div>{showAllMessages ? <AllMessages name={name} /> : false}</div>
       <div> {showUnreadMessages ? <UnreadMessages name={name} /> : false}</div>
