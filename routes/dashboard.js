@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const pool = require("../db");
+const bcrypt = require("bcrypt");
 
 router.get("/", async (req, res) => {
   try {
@@ -36,6 +37,39 @@ router.get("/mentors/:id", async (req, res) => {
       [mentorId]
     );
     res.json(mentor.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+// checking password that is entered is the same as the existing one
+router.post("/validPword", async (req, res) => {
+  try {
+    const { enteredPwd, hashedPwd } = req.body;
+    let matches = await bcrypt.compare(enteredPwd, hashedPwd);
+    if (matches) {
+      res.json(true);
+    } else {
+      res.json(false);
+    }
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+// Updating password
+router.put("/updatePword", async (req, res) => {
+  try {
+    const { updatedPwd, userId } = req.body;
+    
+    const salt = await bcrypt.genSalt(10);
+    const bcryptPassword = await bcrypt.hash(updatedPwd, salt);
+
+    const hasUpdated = await pool.query(
+      "UPDATE users SET user_password=$1 WHERE user_id=$2 RETURNING *",
+      [bcryptPassword, userId]
+    );
+    res.json(hasUpdated.rows);
   } catch (err) {
     console.error(err.message);
   }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Account from "../Account";
 
-function AccountControls() {
+function AccountControls( { user, handleUpdate }) {
   const [showAccount, setShowAccount] = useState(false);
 
   const handleShowAccount = () => {
@@ -13,7 +13,7 @@ function AccountControls() {
         <h2 className="icon-heading">Account</h2>
         <button onClick={handleShowAccount}>settings</button>
       </div>
-      <div> {showAccount ? <Account /> : false}</div>
+      <div> {showAccount ? <Account user={user} handleUpdate={handleUpdate}/> : false}</div>
     </>
   );
 }
