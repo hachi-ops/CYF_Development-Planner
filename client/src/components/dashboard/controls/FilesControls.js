@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ListFiles from "../drafts/ListFiles";
 import Drafts from "../drafts/Drafts";
-import CompletedFiles from "../drafts/CompletedFiles";
+import SentFiles from "../drafts/CompletedFiles";
 import AddNewFile from "../drafts/AddNewFile";
 
 function FilesControls({ name }) {
@@ -16,6 +16,9 @@ function FilesControls({ name }) {
     setShowDrafts(false);
     setShowCompleted(false);
     setShowAddNew(false);
+    setDraftsButtonText("drafts");
+    setSentButtonText("sent");
+    setNewButtonText("new");
     setAllButtonText((state) => (state === "all" ? "close" : "all"));
   };
 
@@ -26,16 +29,22 @@ function FilesControls({ name }) {
     setShowAll(false);
     setShowCompleted(false);
     setShowAddNew(false);
+    setAllButtonText("all");
+    setSentButtonText("sent");
+    setNewButtonText("new");
     setDraftsButtonText((state) => (state === "drafts" ? "close" : "drafts"));
   };
 
   const [showCompleted, setShowCompleted] = useState(false);
 
-  const handleShowCompleted = () => {
+  const handleShowSent = () => {
     setShowCompleted(!showCompleted);
     setShowAll(false);
     setShowDrafts(false);
     setShowAddNew(false);
+    setAllButtonText("all");
+    setDraftsButtonText("drafts");
+    setNewButtonText("new");
     setSentButtonText((state) => (state === "sent" ? "close" : "sent"));
   };
 
@@ -45,6 +54,9 @@ function FilesControls({ name }) {
     setShowCompleted(false);
     setShowAll(false);
     setShowDrafts(false);
+    setAllButtonText("all");
+    setDraftsButtonText("drafts");
+    setSentButtonText("sent");
     setNewButtonText((state) => (state === "new" ? "close" : "new"));
   };
 
@@ -55,12 +67,12 @@ function FilesControls({ name }) {
         <button onClick={handleShowAll}>{allButtonText}</button>
 
         <button onClick={handleShowDrafts}>{draftsButtonText}</button>
-        <button onClick={handleShowCompleted}>{sentButtonText}</button>
+        <button onClick={handleShowSent}>{sentButtonText}</button>
         <button onClick={handleShowAddNew}>{newButtonText}</button>
       </div>
       <div> {showAll ? <ListFiles senderUsername={name} /> : false}</div>
       <div>{showDrafts ? <Drafts /> : <></>}</div>
-      <div>{showCompleted ? <CompletedFiles /> : false}</div>
+      <div>{showCompleted ? <SentFiles /> : false}</div>
       <div> {showAddNew ? <AddNewFile senderUsername={name} /> : false}</div>
     </>
   );

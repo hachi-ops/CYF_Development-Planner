@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function CompletedFiles() {
+function SentFiles() {
   const [allSentDrafts, setAllSentDrafts] = useState([]);
 
   const getSentFiles = async () => {
@@ -35,4 +35,4 @@ function CompletedFiles() {
   );
 }
 
-export default CompletedFiles;
+export default SentFiles;
