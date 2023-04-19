@@ -4,9 +4,10 @@ import Logout from "./dashboard/Logout";
 import DashboardNavigation from "./dashboard/DashboardNavigation";
 // import Menu from "./dashboard/Menu";
 function Dashboard({ setAuth }) {
-  const [name, setName] = useState("");
+  const [user, setUser] = useState({});
+  const [updateUser, setUpdateUser] = useState(false)
 
-  const getName = async () => {
+  const getUser = async () => {
     try {
       const res = await fetch("/dashboard/", {
         method: "GET",
@@ -16,23 +17,27 @@ function Dashboard({ setAuth }) {
       const parseRes = await res.json();
 
       console.log(parseRes);
-      setName(parseRes.username);
+      setUser(parseRes);
     } catch (err) {
       console.error(err.message);
     }
   };
 
+  const handleUpdate=()=> {
+    setUpdateUser(!updateUser)
+  }
+
   useEffect(() => {
-    getName();
-  }, []);
+    getUser();
+  }, [updateUser]);
 
   return (
     <>
-      <div className="flex" data-testid="dashboard">
-        <h1 className="heading">Dashboard {name}</h1>
+      <div className="flex">
+        <h1 className="heading">Dashboard {user.username}</h1>
         <Logout setAuth={setAuth} />
       </div>
-      <DashboardNavigation name={name} />
+      <DashboardNavigation user={user} handleUpdate={handleUpdate}/>
       {/* <Menu /> */}
     </>
   );
