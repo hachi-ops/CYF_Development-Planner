@@ -2,18 +2,19 @@
 
 * {
     margin: 0;
-    padding:0;
-    box-sizing:border-box;
+    padding: 0;
+    box-sizing: border-box;
     /* outline: 1px solid red; */
 }
 
 body {
-    background-color: rgb(252, 249, 249);   
-    font-family: "Montserrat"; 
+    background-color: rgb(252, 249, 249);
+    font-family: "Montserrat";
     text-align: center;
+
 }
 
-main{
+main {
     padding: 40px 20px;
 }
 
@@ -36,10 +37,10 @@ a {
 label,
 input,
 button,
-textarea, 
+textarea,
 fieldset {
     display: block;
-    margin:  auto;
+    margin: auto;
     border: none;
     outline: none;
     font-family: inherit;
@@ -50,13 +51,15 @@ section {
     margin: 30px auto;
     border: 1px dotted black;
     border-radius: 12px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     max-width: 700px;
- 
+
 }
 
 .header-img {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 80%;
+    margin: auto;
 }
 
 .icon-heading-container {
@@ -65,7 +68,7 @@ section {
 }
 
 .icon-heading {
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -76,7 +79,8 @@ section {
     cursor: pointer;
 }
 
-
-
-
-
+.dashboard-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
