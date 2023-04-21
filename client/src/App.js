@@ -12,8 +12,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 //components
 
 import Login from "./components/login-and-register/Login";
-import Register from "./components/login-and-register/Register";
-import RegisterConfirmation from "./components/login-and-register/RegisterConfirmation";
+import Register from "./components/login-and-register/signUp";
+import RegisterConfirmation from "./components/login-and-register/signUpConfirmation";
 import Navbar from "./components/navbar/Navbar";
 import Home from "./components/home/Home";
 import Dashboard from "./components/Dashboard";
@@ -29,7 +29,7 @@ function App() {
   async function isAuth() {
     try {
       // /authentication/verify is an endpoint that triggers |./routes/jwtAuth.js|
-      const response = await fetch("http://localhost:5000/authentication/verify", {
+      const response = await fetch("authentication/verify", {
         method: "GET",
         headers: { jwt_token: localStorage.token },
       });
@@ -38,7 +38,7 @@ function App() {
 
       // Could this be simpified to not need two calls to `setIsAuthenticated`?
       parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
-      console.log(parseRes);
+      // console.log(parseRes);
     } catch (err) {
       console.error(err.message);
     }
