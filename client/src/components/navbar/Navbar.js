@@ -1,7 +1,7 @@
 import React from "react";
 
+// components
 import NavbarLink from "./NavbarLink";
-
 import Logo from "./Logo";
 
 function Navbar() {
