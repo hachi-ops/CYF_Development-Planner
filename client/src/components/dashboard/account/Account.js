@@ -37,7 +37,7 @@ function Account({ user, handleUpdate }) {
       const body = { enteredPwd: entered, hashedPwd: user.user_password };
       const headers = {
         "Content-Type": "application/json",
-        "jwt_token": localStorage.token,
+        jwt_token: localStorage.token,
       };
       const response = await fetch("/dashboard/validPword", {
         method: "POST",
@@ -57,7 +57,7 @@ function Account({ user, handleUpdate }) {
       const body = { updatedPwd: updated, userId: user.user_id };
       const headers = {
         "Content-Type": "application/json",
-        "jwt_token": localStorage.token,
+        jwt_token: localStorage.token,
       };
       const response = await fetch("/dashboard/updatePword", {
         method: "PUT",
@@ -65,7 +65,7 @@ function Account({ user, handleUpdate }) {
         body: JSON.stringify(body),
       });
       const result = await response.json();
-      console.log(result)
+      console.log(result);
       handleUpdate();
     } catch (err) {
       console.error(err.message);

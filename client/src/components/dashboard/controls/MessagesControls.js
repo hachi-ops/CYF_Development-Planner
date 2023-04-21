@@ -59,8 +59,8 @@ function MessagesControls({ name }) {
 
   return (
     <>
-      <div className="controls" data-testid="messages-controls">
-        <h2 className="icon-heading">Messages</h2>
+      <h2 className="icon-heading">Messages</h2>
+      <div className="buttons" data-testid="messages-controls">
         <button onClick={handleShowAllMessages} className="all">
           {allTextButton}
         </button>
@@ -74,7 +74,7 @@ function MessagesControls({ name }) {
           {sentTextButton}
         </button>
       </div>
-      <div>{showAllMessages ? <AllMessages name={name} /> : false}</div>
+      {showAllMessages ? <AllMessages name={name} /> : false}
       <div> {showUnreadMessages ? <UnreadMessages name={name} /> : false}</div>
       <div> {showSentMessages ? <SentMessages /> : false}</div>
       <div>{showReadMessages ? <ReadMessages /> : false}</div>

@@ -1,32 +1,25 @@
-@media only screen and (min-width: 496px) {
-    .heading {
-        font-size: 1.8rem;
-        max-width: 350px;
-    }
-
-    .flex {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        max-width: 80%;
-        margin: auto;  
-    }
-
-}
-
-@media only screen and (min-width: 864px) {
-
-
+@media only screen and (min-width: 764px) {
     .header-flex {
         display: flex;
         flex-direction: row-reverse;
         align-items: center;
         justify-content: space-around;
         gap: 30px;
-        margin: 0 30px;    
+        margin: 30px;
     }
 
     .header-img {
         width: 50%;
     }
+}
+
+@media only screen and (max-width: 495px) {
+    section {
+        max-width: 80%;
+    }
+
+    .form {
+        max-width: 80%;
+    }
+
 }
