@@ -1,13 +1,14 @@
 import React from "react";
-import homeIcon from "../../images/icons8-home-page-24.png";
+
 import { NavLink } from "react-router-dom";
+
 import dashIcon from "../../images/icons8-dashboard-48.png";
+import homeIcon from "../../images/icons8-home-page-24.png";
 
 function NavbarLink() {
   return (
     <>
       <div className="nav-links-container">
-        {" "}
         <NavLink to="/" className="nav-link">
           <img alt="home nav link icon" src={homeIcon} />
           <p className="icon-p">Home</p>
