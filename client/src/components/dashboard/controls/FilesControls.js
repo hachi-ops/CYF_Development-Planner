@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ListFiles from "../drafts/ListFiles";
 import Drafts from "../drafts/Drafts";
-import SentFiles from "../drafts/CompletedFiles";
+import SentFiles from "../drafts/SentFiles";
 import AddNewFile from "../drafts/AddNewFile";
 
 function FilesControls({ name }) {
@@ -14,7 +14,7 @@ function FilesControls({ name }) {
   const handleShowAll = () => {
     setShowAll(!showAll);
     setShowDrafts(false);
-    setShowCompleted(false);
+    setShowSent(false);
     setShowAddNew(false);
     setDraftsButtonText("drafts");
     setSentButtonText("sent");
@@ -27,7 +27,7 @@ function FilesControls({ name }) {
   const handleShowDrafts = () => {
     setShowDrafts(!showDrafts);
     setShowAll(false);
-    setShowCompleted(false);
+    setShowSent(false);
     setShowAddNew(false);
     setAllButtonText("all");
     setSentButtonText("sent");
@@ -35,10 +35,10 @@ function FilesControls({ name }) {
     setDraftsButtonText((state) => (state === "drafts" ? "close" : "drafts"));
   };
 
-  const [showCompleted, setShowCompleted] = useState(false);
+  const [showSent, setShowSent] = useState(false);
 
   const handleShowSent = () => {
-    setShowCompleted(!showCompleted);
+    setShowSent(!showSent);
     setShowAll(false);
     setShowDrafts(false);
     setShowAddNew(false);
@@ -51,7 +51,7 @@ function FilesControls({ name }) {
   const [showAddNew, setShowAddNew] = useState(false);
   const handleShowAddNew = () => {
     setShowAddNew(!showAddNew);
-    setShowCompleted(false);
+    setShowSent(false);
     setShowAll(false);
     setShowDrafts(false);
     setAllButtonText("all");
@@ -62,18 +62,21 @@ function FilesControls({ name }) {
 
   return (
     <>
-      <div className="controls">
+      <section>
+        {" "}
         <h2 className="icon-heading">Files</h2>
-        <button onClick={handleShowAll}>{allButtonText}</button>
+        <div className="buttons">
+          <button onClick={handleShowAll}>{allButtonText}</button>
 
-        <button onClick={handleShowDrafts}>{draftsButtonText}</button>
-        <button onClick={handleShowSent}>{sentButtonText}</button>
-        <button onClick={handleShowAddNew}>{newButtonText}</button>
-      </div>
-      <div> {showAll ? <ListFiles senderUsername={name} /> : false}</div>
-      <div>{showDrafts ? <Drafts /> : <></>}</div>
-      <div>{showCompleted ? <SentFiles /> : false}</div>
-      <div> {showAddNew ? <AddNewFile senderUsername={name} /> : false}</div>
+          <button onClick={handleShowDrafts}>{draftsButtonText}</button>
+          <button onClick={handleShowSent}>{sentButtonText}</button>
+          <button onClick={handleShowAddNew}>{newButtonText}</button>
+        </div>
+        <div> {showAll ? <ListFiles senderUsername={name} /> : false}</div>
+        <div>{showDrafts ? <Drafts /> : <></>}</div>
+        <div>{showSent ? <SentFiles /> : false}</div>
+        <div> {showAddNew ? <AddNewFile senderUsername={name} /> : false}</div>
+      </section>
     </>
   );
 }
