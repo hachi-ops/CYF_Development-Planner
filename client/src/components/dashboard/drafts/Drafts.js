@@ -25,10 +25,11 @@ function Drafts() {
     <>
       {allDrafts.map((draft, index) => {
         return (
-          <section>
-            <section>{`Title: ${draft.draft_title}`}</section>
-            <section>{`Text: ${draft.draft_text}`}</section>
-          </section>
+          <div className="form">
+            <div>{`Title: ${draft.draft_title}`}</div>
+
+            <div>{`Text: ${draft.draft_text}`}</div>
+          </div>
         );
       })}
     </>

@@ -67,7 +67,7 @@ const ListFiles = ({ senderUsername }) => {
                   <h2 className="subheading">{draft.draft_title}</h2>
                   <button onClick={handleOpen}>open</button>
                 </div>
-                {open ? (
+                {open && (
                   <Element
                     draft={draft}
                     deleteDraft={deleteDraft}
@@ -75,8 +75,6 @@ const ListFiles = ({ senderUsername }) => {
                     setDraftsChange={setDraftsChange}
                     senderUsername={senderUsername}
                   />
-                ) : (
-                  <></>
                 )}
               </>
             );

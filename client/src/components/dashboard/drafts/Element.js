@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import EditDraft from "./EditDraft";
-import ShowMentors from "./ShowMentors";
+
+import MentorsDropdown from "./MentorsDropdown";
 
 function Element({
   draft,
@@ -12,11 +13,11 @@ function Element({
   // console.log(allDrafts);
   // console.log(draft);
   // console.log(senderUsername);
-  const [toggle, setToggle] = useState(false);
+  const [toggleEdit, setToggleEdit] = useState(false);
   const [toggleSendToMentor, setToggleSendToMentor] = useState(false);
 
   const handleEdit = () => {
-    setToggle(!toggle);
+    setToggleEdit(!toggleEdit);
   };
 
   const handleToggleSendToMentor = () => {
@@ -27,28 +28,22 @@ function Element({
     <>
       <div
         data-testid="element"
-        className="flex"
+        className="buttons"
         key={`elem-${draft.draft_id}`}
       >
         <button onClick={handleEdit}>edit</button>
         <button onClick={() => deleteDraft(draft.draft_id)}>Delete</button>
-      </div>
-      <>{draft.draft_text}</>
-      <div className="flex">
-        {" "}
-        <button onClick={handleToggleSendToMentor}>send to mentor</button>
-        {toggleSendToMentor ? (
-          <ShowMentors senderUsername={senderUsername} draft={draft} />
-        ) : (
-          <></>
-        )}
+        <button onClick={handleToggleSendToMentor}>send</button>
       </div>
 
-      {toggle ? (
-        <EditDraft draft={draft} setDraftsChange={setDraftsChange} />
-      ) : (
-        <></>
+      {toggleSendToMentor && (
+        <MentorsDropdown senderUsername={senderUsername} draft={draft} />
       )}
+
+      {toggleEdit && (
+        <EditDraft draft={draft} setDraftsChange={setDraftsChange} />
+      )}
+      <>{draft.draft_text}</>
     </>
   );
 }

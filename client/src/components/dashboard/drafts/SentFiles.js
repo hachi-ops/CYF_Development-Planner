@@ -25,10 +25,10 @@ function SentFiles() {
     <>
       {allSentDrafts.map((draft, index) => {
         return (
-          <section>
-            <section>{`Title: ${draft.message_title}`}</section>
-            <section>{`Text: ${draft.message_text}`}</section>
-          </section>
+          <div className="form">
+            <div>{`Title: ${draft.message_title}`}</div>
+            <div>{`Text: ${draft.message_text}`}</div>
+          </div>
         );
       })}
     </>

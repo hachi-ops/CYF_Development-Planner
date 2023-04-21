@@ -62,21 +62,17 @@ function FilesControls({ name }) {
 
   return (
     <>
-      <section>
-        {" "}
-        <h2 className="icon-heading">Files</h2>
-        <div className="buttons">
-          <button onClick={handleShowAll}>{allButtonText}</button>
-
-          <button onClick={handleShowDrafts}>{draftsButtonText}</button>
-          <button onClick={handleShowSent}>{sentButtonText}</button>
-          <button onClick={handleShowAddNew}>{newButtonText}</button>
-        </div>
-        <div> {showAll ? <ListFiles senderUsername={name} /> : false}</div>
-        <div>{showDrafts ? <Drafts /> : <></>}</div>
-        <div>{showSent ? <SentFiles /> : false}</div>
-        <div> {showAddNew ? <AddNewFile senderUsername={name} /> : false}</div>
-      </section>
+      <h2 className="icon-heading">Files</h2>
+      <div className="buttons">
+        <button onClick={handleShowAll}>{allButtonText}</button>
+        <button onClick={handleShowDrafts}>{draftsButtonText}</button>
+        <button onClick={handleShowSent}>{sentButtonText}</button>
+        <button onClick={handleShowAddNew}>{newButtonText}</button>
+      </div>
+      {showAll ? <ListFiles senderUsername={name} /> : false}
+      {showDrafts ? <Drafts /> : false}
+      {showSent ? <SentFiles /> : false}
+      {showAddNew ? <AddNewFile senderUsername={name} /> : false}
     </>
   );
 }

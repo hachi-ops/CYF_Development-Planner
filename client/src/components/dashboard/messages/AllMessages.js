@@ -44,32 +44,24 @@ function AllMessages({ name }) {
       {allMessages.map((message) => {
         return (
           <>
-            <div>
-              <h3>{`message from: ${message.sender_username}`}</h3>
-              <div>
-                {/* <h3>{`Title: ${message.message_title}`}</h3>
-                <h3> {`Id: ${message.sender_id}`}</h3> */}
-              </div>
+            <div className="flex">
+              <h3>{`from: ${message.sender_username}`}</h3>
               <button onClick={handleMessageClicked}>{buttonText}</button>
             </div>
-            <div>
-              {messageClicked ? (
-                <section>
-                  {message.message_text}
-                  <button onClick={sendAnswer}>{answerButtonText}</button>
-                  {answerField ? (
-                    <SendNewMessage
-                      senderUsername={name}
-                      receipientId={message.sender_id}
-                    />
-                  ) : (
-                    <></>
-                  )}
-                </section>
-              ) : (
-                <></>
-              )}
-            </div>
+
+            {messageClicked && (
+              <>
+                <button onClick={sendAnswer}>{answerButtonText}</button>
+                {answerField && (
+                  <SendNewMessage
+                    senderUsername={name}
+                    receipientId={message.sender_id}
+                  />
+                )}
+              </>
+            )}
+
+            {message.message_text}
           </>
         );
       })}

@@ -84,3 +84,12 @@ main {
     width: 90%;
     margin: auto;
 }
+
+.flex {
+    display: flex;
+    width: 80%;
+    max-width: 500px;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}

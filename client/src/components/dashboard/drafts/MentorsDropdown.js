@@ -75,8 +75,7 @@ function MentorsDropdown({ senderUsername, draft }) {
   };
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <button onClick={onClickButton}>send</button>
+      <form onSubmit={onSubmit} className="form">
         <div>{messageTitle}</div>
         <div>{messageText}</div>
         <select onChange={onMentorDropdownMenuChange}>
@@ -87,6 +86,7 @@ function MentorsDropdown({ senderUsername, draft }) {
             </option>
           ))}
         </select>
+        <button onClick={onClickButton}>send</button>
       </form>
     </>
   );
