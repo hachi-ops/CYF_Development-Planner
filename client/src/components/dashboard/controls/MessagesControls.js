@@ -18,10 +18,11 @@ function MessagesControls({ name }) {
     setShowAllMessages(!showAllMessages);
     setAllTextButton((state) => (state === "all" ? "close" : "all"));
     setShowUnreadMessages(false);
-    setShowReadMessages(false);
     setShowSentMessages(false);
+    setShowReadMessages(false);
     setUnreadTextButton("unread");
     setSentTextButton("sent");
+    setReadTextButton("read");
   };
 
   const handleShowUnreadMessages = () => {
@@ -74,10 +75,10 @@ function MessagesControls({ name }) {
           {sentTextButton}
         </button>
       </div>
-      {showAllMessages ? <AllMessages name={name} /> : false}
-      <div> {showUnreadMessages ? <UnreadMessages name={name} /> : false}</div>
-      <div> {showSentMessages ? <SentMessages /> : false}</div>
-      <div>{showReadMessages ? <ReadMessages /> : false}</div>
+      {showAllMessages && <AllMessages name={name} />}
+      {showUnreadMessages && <UnreadMessages name={name} />}
+      {showSentMessages && <SentMessages />}
+      {showReadMessages && <ReadMessages />}
     </>
   );
 }

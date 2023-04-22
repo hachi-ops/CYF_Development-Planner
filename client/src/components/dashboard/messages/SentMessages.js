@@ -20,13 +20,14 @@ function SentMessages() {
   useEffect(() => {
     getMessages();
   }, []);
+
   return (
     <>
       {allMessages.map((message) => {
         return (
           <div>
             <div>{message.message_title}</div>
-            <div>{message.message_text}</div>
+            <MessageText message={message} />
           </div>
         );
       })}
@@ -34,4 +35,19 @@ function SentMessages() {
   );
 }
 
+function MessageText({ message }) {
+  const [openButton, setOpenButton] = useState(false);
+  const handleOpenButton = () => {
+    setOpenButton(!openButton);
+  };
+
+  return (
+    <>
+      <button onClick={handleOpenButton}>open text</button>
+      <div className="flex">
+        {openButton && <div>{message.message_text}</div>}
+      </div>
+    </>
+  );
+}
 export default SentMessages;

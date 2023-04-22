@@ -14,7 +14,6 @@ function AccountControls({ user, handleUpdate }) {
         <button onClick={handleShowAccount}>settings</button>
       </div>
       <div>
-        {" "}
         {showAccount ? (
           <Account user={user} handleUpdate={handleUpdate} />
         ) : (

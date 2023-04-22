@@ -15,7 +15,7 @@ function Element({
   // console.log(senderUsername);
   const [toggleEdit, setToggleEdit] = useState(false);
   const [toggleSendToMentor, setToggleSendToMentor] = useState(false);
-
+  const [openText, setOpenText] = useState(false);
   const handleEdit = () => {
     setToggleEdit(!toggleEdit);
   };
@@ -24,26 +24,43 @@ function Element({
     setToggleSendToMentor(!toggleSendToMentor);
   };
 
+  const handleOpenText = () => {
+    setOpenText(!openText);
+  };
+
   return (
     <>
-      <div
+      {/* <div
         data-testid="element"
         className="buttons"
         key={`elem-${draft.draft_id}`}
-      >
-        <button onClick={handleEdit}>edit</button>
-        <button onClick={() => deleteDraft(draft.draft_id)}>Delete</button>
-        <button onClick={handleToggleSendToMentor}>send</button>
+      ></div> */}
+      <div>
+        {" "}
+        {toggleSendToMentor && (
+          <MentorsDropdown senderUsername={senderUsername} draft={draft} />
+        )}
+        {toggleEdit && (
+          <EditDraft draft={draft} setDraftsChange={setDraftsChange} />
+        )}
+        <button onClick={handleOpenText}>open</button>
+        <div>
+          {openText && (
+            <>
+              <div className="buttons">
+                {" "}
+                <button onClick={handleEdit}>edit</button>
+                <button onClick={() => deleteDraft(draft.draft_id)}>
+                  Delete
+                </button>
+                <button onClick={handleToggleSendToMentor}>send</button>
+              </div>
+              <div> {draft.draft_text}</div>
+              <div>{draft.draft_text}</div>
+            </>
+          )}
+        </div>
       </div>
-
-      {toggleSendToMentor && (
-        <MentorsDropdown senderUsername={senderUsername} draft={draft} />
-      )}
-
-      {toggleEdit && (
-        <EditDraft draft={draft} setDraftsChange={setDraftsChange} />
-      )}
-      <>{draft.draft_text}</>
     </>
   );
 }

@@ -2,16 +2,6 @@ import React, { useState, useEffect } from "react";
 import SendNewMessage from "./SendNewMessage";
 
 function AllMessages({ name }) {
-  const [messageClicked, setMessageClicked] = useState(false);
-  const [buttonText, setButtonText] = useState("open");
-  const [answerField, setAnswerField] = useState(false);
-  const [answerButtonText, setAnswerButtonText] = useState("answer");
-
-  function handleMessageClicked() {
-    setMessageClicked(!messageClicked);
-    setButtonText((state) => (state === "open" ? "close" : "open"));
-  }
-
   const [allMessages, setAllMessages] = useState([]);
 
   const getMessages = async () => {
@@ -29,12 +19,6 @@ function AllMessages({ name }) {
     }
   };
 
-  const sendAnswer = () => {
-    // console.log("I was clicked");
-    setAnswerField(!answerField);
-    setAnswerButtonText((state) => (state === "answer" ? "cancel" : "answer"));
-  };
-
   useEffect(() => {
     getMessages();
   }, []);
@@ -46,25 +30,45 @@ function AllMessages({ name }) {
           <>
             <div className="flex">
               <h3>{`from: ${message.sender_username}`}</h3>
-              <button onClick={handleMessageClicked}>{buttonText}</button>
+              <div>{message.message_title}</div>
             </div>
-
-            {messageClicked && (
-              <>
-                <button onClick={sendAnswer}>{answerButtonText}</button>
-                {answerField && (
-                  <SendNewMessage
-                    senderUsername={name}
-                    receipientId={message.sender_id}
-                  />
-                )}
-              </>
-            )}
-
-            {message.message_text}
+            <Message message={message} name={name} />
           </>
         );
       })}
+    </>
+  );
+}
+
+function Message({ message, name }) {
+  const [messageClicked, setMessageClicked] = useState(false);
+  function handleMessageClicked() {
+    setMessageClicked(!messageClicked);
+  }
+
+  const [answerField, setAnswerField] = useState(false);
+  const [answerButtonText, setAnswerButtonText] = useState("answer");
+
+  const sendAnswer = () => {
+    // console.log("I was clicked");
+    setAnswerField(!answerField);
+    setAnswerButtonText((state) => (state === "answer" ? "cancel" : "answer"));
+  };
+  return (
+    <>
+      <button onClick={handleMessageClicked}>open message</button>
+      {messageClicked && (
+        <div>
+          <button onClick={sendAnswer}>{answerButtonText}</button>
+          {message.message_text}
+          {answerField && (
+            <SendNewMessage
+              senderUsername={name}
+              receipientId={message.sender_id}
+            />
+          )}
+        </div>
+      )}
     </>
   );
 }
