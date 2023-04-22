@@ -47,12 +47,6 @@ const ListFiles = ({ senderUsername }) => {
     setDrafts(allDrafts);
   }, [allDrafts]);
 
-  // const [open, setOpen] = useState(false);
-
-  // const handleOpen = () => {
-  //   setOpen(!open);
-  // };
-
   return (
     <>
       <div data-testid="list-files">
