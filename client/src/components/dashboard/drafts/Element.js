@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import EditDraft from "./EditDraft";
-import ShowMentors from "./ShowMentors";
+
+import MentorsDropdown from "./MentorsDropdown";
 
 function Element({
   draft,
@@ -12,43 +13,53 @@ function Element({
   // console.log(allDrafts);
   // console.log(draft);
   // console.log(senderUsername);
-  const [toggle, setToggle] = useState(false);
+  const [toggleEdit, setToggleEdit] = useState(false);
   const [toggleSendToMentor, setToggleSendToMentor] = useState(false);
-
+  const [openText, setOpenText] = useState(false);
   const handleEdit = () => {
-    setToggle(!toggle);
+    setToggleEdit(!toggleEdit);
   };
 
   const handleToggleSendToMentor = () => {
     setToggleSendToMentor(!toggleSendToMentor);
   };
 
+  const handleOpenText = () => {
+    setOpenText(!openText);
+  };
+
   return (
     <>
-      <div
+      {/* <div
         data-testid="element"
-        className="flex"
+        className="buttons"
         key={`elem-${draft.draft_id}`}
-      >
-        <button onClick={handleEdit}>edit</button>
-        <button onClick={() => deleteDraft(draft.draft_id)}>Delete</button>
-      </div>
-      <>{draft.draft_text}</>
-      <div className="flex">
+      ></div> */}
+      <div>
         {" "}
-        <button onClick={handleToggleSendToMentor}>send to mentor</button>
-        {toggleSendToMentor ? (
-          <ShowMentors senderUsername={senderUsername} draft={draft} />
-        ) : (
-          <></>
+        {toggleSendToMentor && (
+          <MentorsDropdown senderUsername={senderUsername} draft={draft} />
         )}
+        {toggleEdit && (
+          <EditDraft draft={draft} setDraftsChange={setDraftsChange} />
+        )}
+        <button onClick={handleOpenText}>open</button>
+        <div>
+          {openText && (
+            <>
+              <div className="buttons">
+                {" "}
+                <button onClick={handleEdit}>edit</button>
+                <button onClick={() => deleteDraft(draft.draft_id)}>
+                  Delete
+                </button>
+                <button onClick={handleToggleSendToMentor}>send</button>
+              </div>
+              <div> {draft.draft_text}</div>
+            </>
+          )}
+        </div>
       </div>
-
-      {toggle ? (
-        <EditDraft draft={draft} setDraftsChange={setDraftsChange} />
-      ) : (
-        <></>
-      )}
     </>
   );
 }

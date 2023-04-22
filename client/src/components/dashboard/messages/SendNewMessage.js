@@ -44,13 +44,17 @@ function SendNewMessage({ senderUsername, receipientId }) {
 
   return (
     <>
-      <form>
-        <button type="button" onClick={() => sendMessage(false)}>
-          send
-        </button>
-        <button type="button" onClick={() => sendMessage(true)}>
-          save
-        </button>
+      <form className="form">
+        <div className="buttons">
+          {" "}
+          <button type="button" onClick={() => sendMessage(false)}>
+            send
+          </button>
+          <button type="button" onClick={() => sendMessage(true)}>
+            save
+          </button>
+        </div>
+
         {/* <section>{`message to: ${receipientId}`}</section> */}
         <input
           type="text"

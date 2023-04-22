@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
 //images
-import filesIcon from "../../images/Documents-icon-48.png";
-import messagesIcon from "../../images/E-mail-icon.png";
-import accountIcon from "../../images/icons8-test-account-48.png";
+import filesIcon from "../../../images/Documents-icon-48.png";
+import messagesIcon from "../../../images/E-mail-icon.png";
+import accountIcon from "../../../images/icons8-test-account-48.png";
 
 //components
-import FilesControls from "./controls/FilesControls";
-import MessagesControls from "./controls/MessagesControls";
-import AccountControls from "./controls/AccountControls";
+import FilesControls from "./FilesControls";
+import MessagesControls from "./MessagesControls";
+import AccountControls from "./AccountControls";
 
-function DashboardNavigation({ user, handleUpdate}) {
+function DashboardNavigation({ user, handleUpdate }) {
   const [filesControlButtons, setFilesControlButtons] = useState(false);
   const [messagesControlButtons, setMessagesControlButtons] = useState(false);
   const [accountControlButtons, setAccountControlButtons] = useState(false);
@@ -35,7 +35,7 @@ function DashboardNavigation({ user, handleUpdate}) {
 
   return (
     <>
-      <div className="flex" data-testid="dashboard-navigation">
+      <div className="dashboard-navigation" data-testid="dashboard-navigation">
         <div className="icon-heading" onClick={handleToggleFiles}>
           <h2>Files</h2>
           <img src={filesIcon} alt="files icon" />
@@ -51,27 +51,13 @@ function DashboardNavigation({ user, handleUpdate}) {
           <img src={accountIcon} alt="account icon" />
         </div>
       </div>
-      {filesControlButtons ? (
-        <section>
-          <FilesControls name={user.username} />
-        </section>
-      ) : (
-        <></>
-      )}
-      {messagesControlButtons ? (
-        <section>
-          <MessagesControls name={user.username} />
-        </section>
-      ) : (
-        <></>
-      )}
 
-      {accountControlButtons ? (
-        <section>
-          <AccountControls user={user} handleUpdate={handleUpdate}/>
-        </section>
-      ) : (
-        <></>
+      {filesControlButtons && <FilesControls name={user.username} />}
+
+      {messagesControlButtons && <MessagesControls name={user.username} />}
+
+      {accountControlButtons && (
+        <AccountControls user={user} handleUpdate={handleUpdate} />
       )}
     </>
   );

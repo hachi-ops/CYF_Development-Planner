@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Logout from "./dashboard/Logout";
 
-import DashboardNavigation from "./dashboard/DashboardNavigation";
-// import Menu from "./dashboard/Menu";
+// components
+import Logout from "./controls/Logout";
+import DashboardNavigation from "./controls/DashboardNavigation";
+
 function Dashboard({ setAuth }) {
   const [user, setUser] = useState({});
-  const [updateUser, setUpdateUser] = useState(false)
+  const [updateUser, setUpdateUser] = useState(false);
 
   const getUser = async () => {
     try {
@@ -23,9 +24,9 @@ function Dashboard({ setAuth }) {
     }
   };
 
-  const handleUpdate=()=> {
-    setUpdateUser(!updateUser)
-  }
+  const handleUpdate = () => {
+    setUpdateUser(!updateUser);
+  };
 
   useEffect(() => {
     getUser();
@@ -33,12 +34,11 @@ function Dashboard({ setAuth }) {
 
   return (
     <>
-      <div className="flex">
-        <h1 className="heading">Dashboard {user.username}</h1>
+      <main>
         <Logout setAuth={setAuth} />
-      </div>
-      <DashboardNavigation user={user} handleUpdate={handleUpdate}/>
-      {/* <Menu /> */}
+        <h1>{user.username}'s Dashboard</h1>
+        <DashboardNavigation user={user} handleUpdate={handleUpdate} />
+      </main>
     </>
   );
 }

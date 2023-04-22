@@ -48,7 +48,7 @@ function Register({ setAuth }) {
     <>
       <form onSubmit={onSubmitForm} className="form">
         <h1>Sign Up</h1>
-        <label htmlFor="fname">First Name</label>
+        <label htmlFor="fname">first Name</label>
         <input
           id="fname"
           type="text"
