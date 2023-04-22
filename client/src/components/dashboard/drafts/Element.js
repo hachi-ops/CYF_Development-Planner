@@ -56,7 +56,6 @@ function Element({
                 <button onClick={handleToggleSendToMentor}>send</button>
               </div>
               <div> {draft.draft_text}</div>
-              <div>{draft.draft_text}</div>
             </>
           )}
         </div>

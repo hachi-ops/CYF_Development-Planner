@@ -27,8 +27,7 @@ function Drafts() {
         return (
           <div className="form">
             <div>{`Title: ${draft.draft_title}`}</div>
-
-            <div>{`Text: ${draft.draft_text}`}</div>
+            <DraftText draft={draft} />
           </div>
         );
       })}
@@ -36,4 +35,17 @@ function Drafts() {
   );
 }
 
+function DraftText({ draft }) {
+  const [openDraft, setOpenDraft] = useState(false);
+
+  const handleOpenDraft = () => {
+    setOpenDraft(!openDraft);
+  };
+  return (
+    <>
+      <button onClick={handleOpenDraft}> open draft</button>
+      {openDraft && <div>{`Text: ${draft.draft_text}`}</div>}
+    </>
+  );
+}
 export default Drafts;
