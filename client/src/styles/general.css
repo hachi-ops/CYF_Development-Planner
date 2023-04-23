@@ -86,7 +86,8 @@ main {
 }
 
 .flex {
-    display: flex;
+    display: flex;  
+    gap: 10px;
     width: 80%;
     max-width: 500px;
     justify-content: space-between;

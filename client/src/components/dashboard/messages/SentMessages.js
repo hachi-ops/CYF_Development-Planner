@@ -24,12 +24,7 @@ function SentMessages() {
   return (
     <>
       {allMessages.map((message) => {
-        return (
-          <div>
-            <div>{message.message_title}</div>
-            <MessageText message={message} />
-          </div>
-        );
+        return <MessageText message={message} />;
       })}
     </>
   );
@@ -43,10 +38,15 @@ function MessageText({ message }) {
 
   return (
     <>
-      <button onClick={handleOpenButton}>open text</button>
       <div className="flex">
-        {openButton && <div>{message.message_text}</div>}
+        <div className="flex">
+          {" "}
+          <div>{message.message_title}</div>
+        </div>
+        <button onClick={handleOpenButton}>open</button>
       </div>
+      {openButton && <div>{message.message_text}</div>}
+      <hr />
     </>
   );
 }
