@@ -23,14 +23,39 @@ function SentFiles() {
   }, []);
   return (
     <>
-      {allSentDrafts.map((draft, index) => {
-        return (
-          <div className="form">
-            <div>{`Title: ${draft.message_title}`}</div>
-            <div>{`Text: ${draft.message_text}`}</div>
-          </div>
-        );
+      {allSentDrafts.map((draft) => {
+        return <Text draft={draft} />;
       })}
+    </>
+  );
+}
+
+function Text({ draft }) {
+  const [showText, setShowText] = useState(false);
+
+  const handleShowText = () => {
+    setShowText(!showText);
+  };
+
+  return (
+    <>
+      <hr />
+      <div className="flex">
+        <div className="flex">
+          <div>Title</div>
+          <div>{draft.message_title}</div>
+        </div>
+        <button onClick={handleShowText}>open</button>
+      </div>
+
+      {showText && (
+        <div>
+          {/* <button onClick={() => deleteDraft(draft.draft_id)}>Delete</button> */}
+          <h2 className="icon-heading">Text</h2>
+          <br /> {draft.message_text}
+        </div>
+      )}
+      <hr />
     </>
   );
 }

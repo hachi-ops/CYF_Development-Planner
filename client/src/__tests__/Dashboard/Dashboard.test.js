@@ -10,7 +10,7 @@ import DashboardNavigation from "../../components/dashboard/DashboardNavigation"
 test("should render Dashboard component", () => {
   render(<Dashboard />);
 
-  const dashboardElement = screen.getByTestId("dashboard");
+  const dashboard = screen.getByTestId("dashboard");
 
   expect(dashboardElement).toBeInTheDocument();
 });
