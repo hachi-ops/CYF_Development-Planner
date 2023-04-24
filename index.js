@@ -19,9 +19,9 @@ app.use("/authentication", require("./routes/jwtAuth"));
 
 app.use("/dashboard", authorize, require("./routes/dashboard"));
 
-// app.get("/*", function (req, res) {
-//   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-// });
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
