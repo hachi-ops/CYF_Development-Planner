@@ -92,75 +92,83 @@ function Account({ user, handleUpdate }) {
 
   return (
     <>
-      <section>
+      <div className="details">
         <h2>your profile</h2>
-        <section>
+        <div className="details">
           <h3>
-            Name: {user.user_fname} {user.user_lname}{" "}
+            <span>Name: </span>
+            {user.user_fname} {user.user_lname}{" "}
           </h3>
-          <h3>User Name: {user.username}</h3>
-          <h3>Email: {user.user_email}</h3>
-          <h3>Role: {user.user_role}</h3>
-        </section>
+          <h3>
+            <span>Username: </span>
+            {user.username}
+          </h3>
+          <h3>
+            <span>Email: </span>
+            {user.user_email}
+          </h3>
+          <h3>
+            <span>Role: </span>
+            {user.user_role}
+          </h3>
+        </div>
+      </div>
 
-        <section>
-          <form onSubmit={submitPassChange}>
-            <h3>change password</h3>
-            <button>submit</button>
+      <div className="details">
+        <form onSubmit={submitPassChange}>
+          <h3>change password</h3>
 
-            <label htmlFor="old-password">type old password</label>
-            <input
-              id="old-password"
-              type="text"
-              placeholder="type here..."
-              onChange={(e) => handleChange(e)}
-              value={password}
-            />
-            {validationError && (
-              <h5 style={{ color: "rgb(219, 104, 104)" }}>
-                Incorrect password.
-              </h5>
-            )}
-            <label htmlFor="new-password">type new password</label>
-            <input
-              id="new-password"
-              type="text"
-              placeholder="type here..."
-              onChange={(e) => handleChange(e)}
-              value={newPass.first}
-            />
+          <label htmlFor="old-password">current password</label>
+          <input
+            id="old-password"
+            type="text"
+            placeholder="type here..."
+            onChange={(e) => handleChange(e)}
+            value={password}
+          />
+          {validationError && (
+            <h5 style={{ color: "rgb(219, 104, 104)" }}>Incorrect password.</h5>
+          )}
+          <label htmlFor="new-password">new password</label>
+          <input
+            id="new-password"
+            type="text"
+            placeholder="type here..."
+            onChange={(e) => handleChange(e)}
+            value={newPass.first}
+          />
 
-            <label htmlFor="retype-new-password">retype new password</label>
-            <input
-              id="retype-new-password"
-              type="text"
-              placeholder="type here..."
-              onChange={(e) => handleChange(e)}
-              value={newPass.second}
-            />
-            {matchError && (
-              <h5 style={{ color: "rgb(219, 104, 104)" }}>
-                Please enter two new matching passwords.
-              </h5>
-            )}
-            {success && (
-              <h5 style={{ color: "rgb(25, 135, 84)" }}>Password Updated</h5>
-            )}
-          </form>
-        </section>
-
-        <section>
+          <label htmlFor="retype-new-password">retype new password</label>
+          <input
+            id="retype-new-password"
+            type="text"
+            placeholder="type here..."
+            onChange={(e) => handleChange(e)}
+            value={newPass.second}
+          />
+          <button>submit</button>
+          {matchError && (
+            <h5 style={{ color: "rgb(219, 104, 104)" }}>
+              Please enter two new matching passwords.
+            </h5>
+          )}
+          {success && (
+            <h5 style={{ color: "rgb(25, 135, 84)" }}>Password Updated</h5>
+          )}
+        </form>
+      </div>
+      <div className="details">
+        <form>
           <h3> change email</h3>
-          <label htmlFor="new-email">type old email</label>
-          <input id="new-email" type="text" placeholder="type here..." />s
-        </section>
-        <section>
-          {" "}
-          <label htmlFor="retype-new-email">type new email</label>
+          <label htmlFor="new-email">current email</label>
+          <input id="new-email" type="text" placeholder="type here..." />
+          <label htmlFor="type-new-email">new email</label>
+          <input id="new-email" type="text" placeholder="type here..." />
+          <label htmlFor="retype-new-email">new email</label>
           <input id="retype-new-email" type="text" placeholder="type here..." />
-          s
-        </section>
-      </section>
+          <button>submit</button>
+        </form>
+      </div>
     </>
   );
 }

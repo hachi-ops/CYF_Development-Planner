@@ -55,8 +55,8 @@ const ListFiles = ({ senderUsername }) => {
           drafts.map((draft, index) => {
             return (
               <>
-                <h2 className="subheading">{draft.draft_title}</h2>
-
+                <hr />
+                <br />
                 <Element
                   draft={draft}
                   deleteDraft={deleteDraft}

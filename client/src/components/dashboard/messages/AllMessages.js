@@ -28,10 +28,6 @@ function AllMessages({ name }) {
       {allMessages.map((message) => {
         return (
           <>
-            <div className="flex">
-              <h3>{`from: ${message.sender_username}`}</h3>
-              <div>{message.message_title}</div>
-            </div>
             <Message message={message} name={name} />
           </>
         );
@@ -56,7 +52,16 @@ function Message({ message, name }) {
   };
   return (
     <>
-      <button onClick={handleMessageClicked}>open message</button>
+      <hr />
+      <div className="flex">
+        <div className="flex">
+          {" "}
+          <h4>{message.sender_username}</h4>
+          <div>{message.message_title}</div>
+        </div>
+        <button onClick={handleMessageClicked}>open</button>
+      </div>
+
       {messageClicked && (
         <div>
           <button onClick={sendAnswer}>{answerButtonText}</button>
