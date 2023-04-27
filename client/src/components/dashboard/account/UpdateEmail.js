@@ -11,7 +11,7 @@ const UpdateEmail = () => {
   return (
     <div className="details">
       <form>
-        <div>
+        <div className="change-details">
           <button onClick={(e) => handleContainer(e)}>
             {openContainer ? "close" : "open"}
           </button>

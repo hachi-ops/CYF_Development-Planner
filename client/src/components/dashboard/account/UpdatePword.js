@@ -14,6 +14,8 @@ const UpdatePword = ({ user, handleUpdate }) => {
     setSuccess(false)
     setValidationError(false)
     setMatchError(false)
+    setPassword("");
+    setNewPass({ first: "", second: "" });
     setopenContainer(!openContainer);
   };
 
@@ -30,6 +32,7 @@ const UpdatePword = ({ user, handleUpdate }) => {
 
   // function to check new passwords are entered and they match, triggering errors if they don't
   const checkPassword = (newPassOne, newPassTwo) => {
+    console.log(user.password);
     if (
       newPassOne === newPassTwo &&
       newPassOne &&
@@ -104,7 +107,7 @@ const UpdatePword = ({ user, handleUpdate }) => {
     <>
       <div className="details">
         <form onSubmit={submitPassChange}>
-          <div>
+          <div className="change-details">
             <button onClick={(e) => handleContainer(e)}>
               {openContainer ? "close" : "open"}
             </button>
