@@ -28,7 +28,8 @@ function App() {
 
   async function isAuth() {
     try {
-      const response = await fetch("/authentication/verify", {
+      // /authentication/verify is an endpoint that triggers |./routes/jwtAuth.js|
+      const response = await fetch("authentication/verify", {
         method: "GET",
         headers: { jwt_token: localStorage.token },
       });
@@ -37,7 +38,7 @@ function App() {
 
       // Could this be simpified to not need two calls to `setIsAuthenticated`?
       parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
-      console.log(parseRes);
+      // console.log(parseRes);
     } catch (err) {
       console.error(err.message);
     }
