@@ -5,6 +5,7 @@ const server = setupServer(
   rest.get("/authentication/verify", (req, res, ctx) => {
     return res(ctx.json({ status: 200, verification: true }));
   }),
+  // Login Component (onSubmitForm fn)
   rest.post("/authentication/login", (req, res, ctx) => {
     return res(ctx.json({jwtToken: 'test_token', role: 'mentor'}))
   })

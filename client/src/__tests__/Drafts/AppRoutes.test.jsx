@@ -52,6 +52,6 @@ describe('App Routes', () => {
       screen.getByRole('heading', {
         level: 1
       })
-    ).toHaveTextContent('Sign Up')
+    ).toHaveTextContent('Register')
   })
 });
