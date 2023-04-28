@@ -42,7 +42,7 @@ function FilesControls({ name }) {
 
   return (
     <>
-      <h2 className="icon-heading">Files</h2>
+      {/* <h2 className="icon-heading">Files</h2> */}
       <div className="buttons">
         <button onClick={handleShowDrafts}>{draftsButtonText}</button>
         <button onClick={handleShowSent}>{sentButtonText}</button>

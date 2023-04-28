@@ -9,7 +9,6 @@ function AccountControls({ user, handleUpdate }) {
   };
   return (
     <>
-      <h2 className="icon-heading">Account</h2>
       <div className="buttons">
         <button onClick={handleShowAccount}>settings</button>
       </div>

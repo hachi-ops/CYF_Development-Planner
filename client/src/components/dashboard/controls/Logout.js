@@ -9,7 +9,11 @@ function Logout({ setAuth }) {
 
   return (
     <>
-      <button onClick={(e) => logout(e)} data-testid="logout">
+      <button
+        onClick={(e) => logout(e)}
+        data-testid="logout"
+        className="logout-button"
+      >
         Logout
       </button>
     </>
