@@ -53,11 +53,13 @@ router.post("/login", validInfo, async (req, res) => {
       user.rows[0].user_password
     );
 
+    
     if (!validPassword) {
       return res.status(401).json("Invalid Credential");
     }
     const jwtToken = jwtGenerator(user.rows[0].user_id);
-
+    
+    console.log({ jwtToken, role: user.rows[0].user_role })
     return res.json({ jwtToken, role: user.rows[0].user_role });
   } catch (err) {
     console.error(err.message);
@@ -65,9 +67,10 @@ router.post("/login", validInfo, async (req, res) => {
   }
 });
 
-router.post("/verify", authorize, (req, res) => {
+router.get("/verify", authorize, (req, res) => {
   try {
-    res.json(true);
+    // If the authorize function runs without issue, next() will run this code after. This is logged as parsedRes on the client side.
+    res.json({ status: 200, verification: true });
   } catch (err) {
     // How could the above code fail? When would this catch get invoked?
     console.error(err.message);

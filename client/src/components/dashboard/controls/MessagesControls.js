@@ -27,7 +27,7 @@ function MessagesControls({ name }) {
 
   return (
     <>
-      <h2 className="icon-heading">Messages</h2>
+      {/* <h2 className="icon-heading">Messages</h2> */}
       <div className="buttons" data-testid="messages-controls">
         <button onClick={handleShowAllMessages} className="all">
           {allTextButton}
