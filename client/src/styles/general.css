@@ -2,27 +2,23 @@
 
 * {
     margin: 0;
-    padding:0;
-    box-sizing:border-box;
+    padding: 0;
+    box-sizing: border-box;
     /* outline: 1px solid red; */
 }
 
 body {
-    background-color: rgb(252, 249, 249);   
-    font-family: "Montserrat"; 
+    background-color: rgb(252, 249, 249);
+    font-family: "Montserrat";
     text-align: center;
 }
 
-main{
-    padding: 40px 20px;
-}
 
 img {
     display: block;
     max-width: 100%;
     height: auto;
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
-}
+ }
 
 a {
     text-decoration: none;
@@ -36,10 +32,10 @@ a {
 label,
 input,
 button,
-textarea, 
+textarea,
 fieldset {
     display: block;
-    margin:  auto;
+    margin: auto;
     border: none;
     outline: none;
     font-family: inherit;
@@ -50,13 +46,15 @@ section {
     margin: 30px auto;
     border: 1px dotted black;
     border-radius: 12px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     max-width: 700px;
- 
+
 }
 
 .header-img {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 80%;
+    margin: auto;
 }
 
 .icon-heading-container {
@@ -65,18 +63,70 @@ section {
 }
 
 .icon-heading {
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
     color: #b55151;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     margin-bottom: 30px;
     cursor: pointer;
 }
 
+.dashboard-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
 
+main {
+    width: 90%;
+    margin: auto;
+}
 
+.flex {
+    display: flex;  
+    gap: 10px;
+    width: 80%;
+    max-width: 500px;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+}
 
+.details {
+    color: #b55151;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+    text-align: left;
+  
+    margin: 0 auto;
+max-width: 500px;
+    padding: 20px;
+    margin: 40px auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 10px;
+    color: #7a2929;
+}
 
+.details h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.details h3 {
+    display: flex;
+    justify-content: space-between;
+padding: 10px 0;
+
+}
+
+hr {
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+hr{
+border: 1px solid #e19292;
+}

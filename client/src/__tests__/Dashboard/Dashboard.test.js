@@ -10,7 +10,7 @@ import DashboardNavigation from "../../components/dashboard/DashboardNavigation"
 test("should render Dashboard component", () => {
   render(<Dashboard />);
 
-  const dashboardElement = screen.getByTestId("dashboard");
+  const dashboard = screen.getByTestId("dashboard");
 
   expect(dashboardElement).toBeInTheDocument();
 });
@@ -44,5 +44,17 @@ describe("should render: icons on dashboard, icons captions, open link on click 
 
     const accountIcon = screen.getByAltText("account icon");
     expect(accountIcon).toBeInTheDocument();
+  });
+
+  test("should render icons captions", () => {
+    render(<DashboardNavigation />);
+    const filesCaption = screen.getByText("Files");
+    expect(filesCaption).toBeInTheDocument();
+
+    const messagesCaption = screen.getByText("Messages");
+    expect(messagesCaption).toBeInTheDocument();
+
+    const accountCaption = screen.getByText("Account");
+    expect(accountCaption).toBeInTheDocument();
   });
 });

@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-console.log(process.env.NODE_ENV);
+// console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "./client/build")));
 }
@@ -19,9 +19,9 @@ app.use("/authentication", require("./routes/jwtAuth"));
 
 app.use("/dashboard", authorize, require("./routes/dashboard"));
 
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
+// app.get("/*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+// });
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);

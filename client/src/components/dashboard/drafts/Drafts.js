@@ -25,14 +25,27 @@ function Drafts() {
     <>
       {allDrafts.map((draft, index) => {
         return (
-          <section>
-            <section>{`Title: ${draft.draft_title}`}</section>
-            <section>{`Text: ${draft.draft_text}`}</section>
-          </section>
+          <div className="form">
+            <div>{`Title: ${draft.draft_title}`}</div>
+            <DraftText draft={draft} />
+          </div>
         );
       })}
     </>
   );
 }
 
+function DraftText({ draft }) {
+  const [openDraft, setOpenDraft] = useState(false);
+
+  const handleOpenDraft = () => {
+    setOpenDraft(!openDraft);
+  };
+  return (
+    <>
+      <button onClick={handleOpenDraft}> open draft</button>
+      {openDraft && <div>{`Text: ${draft.draft_text}`}</div>}
+    </>
+  );
+}
 export default Drafts;

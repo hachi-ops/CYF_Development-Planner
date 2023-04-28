@@ -2,16 +2,6 @@ import React, { useState, useEffect } from "react";
 import SendNewMessage from "./SendNewMessage";
 
 function AllMessages({ name }) {
-  const [messageClicked, setMessageClicked] = useState(false);
-  const [buttonText, setButtonText] = useState("open");
-  const [answerField, setAnswerField] = useState(false);
-  const [answerButtonText, setAnswerButtonText] = useState("answer");
-
-  function handleMessageClicked() {
-    setMessageClicked(!messageClicked);
-    setButtonText((state) => (state === "open" ? "close" : "open"));
-  }
-
   const [allMessages, setAllMessages] = useState([]);
 
   const getMessages = async () => {
@@ -29,12 +19,6 @@ function AllMessages({ name }) {
     }
   };
 
-  const sendAnswer = () => {
-    // console.log("I was clicked");
-    setAnswerField(!answerField);
-    setAnswerButtonText((state) => (state === "answer" ? "cancel" : "answer"));
-  };
-
   useEffect(() => {
     getMessages();
   }, []);
@@ -44,35 +28,52 @@ function AllMessages({ name }) {
       {allMessages.map((message) => {
         return (
           <>
-            <div>
-              <h3>{`message from: ${message.sender_username}`}</h3>
-              <div>
-                {/* <h3>{`Title: ${message.message_title}`}</h3>
-                <h3> {`Id: ${message.sender_id}`}</h3> */}
-              </div>
-              <button onClick={handleMessageClicked}>{buttonText}</button>
-            </div>
-            <div>
-              {messageClicked ? (
-                <section>
-                  {message.message_text}
-                  <button onClick={sendAnswer}>{answerButtonText}</button>
-                  {answerField ? (
-                    <SendNewMessage
-                      senderUsername={name}
-                      receipientId={message.sender_id}
-                    />
-                  ) : (
-                    <></>
-                  )}
-                </section>
-              ) : (
-                <></>
-              )}
-            </div>
+            <Message message={message} name={name} />
           </>
         );
       })}
+    </>
+  );
+}
+
+function Message({ message, name }) {
+  const [messageClicked, setMessageClicked] = useState(false);
+  function handleMessageClicked() {
+    setMessageClicked(!messageClicked);
+  }
+
+  const [answerField, setAnswerField] = useState(false);
+  const [answerButtonText, setAnswerButtonText] = useState("answer");
+
+  const sendAnswer = () => {
+    // console.log("I was clicked");
+    setAnswerField(!answerField);
+    setAnswerButtonText((state) => (state === "answer" ? "cancel" : "answer"));
+  };
+  return (
+    <>
+      <hr />
+      <div className="flex">
+        <div className="flex">
+          {" "}
+          <h4>{message.sender_username}</h4>
+          <div>{message.message_title}</div>
+        </div>
+        <button onClick={handleMessageClicked}>open</button>
+      </div>
+
+      {messageClicked && (
+        <div>
+          <button onClick={sendAnswer}>{answerButtonText}</button>
+          {message.message_text}
+          {answerField && (
+            <SendNewMessage
+              senderUsername={name}
+              receipientId={message.sender_id}
+            />
+          )}
+        </div>
+      )}
     </>
   );
 }

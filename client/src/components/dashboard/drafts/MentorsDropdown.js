@@ -38,7 +38,7 @@ function MentorsDropdown({ senderUsername, draft }) {
     setReceipientId(e.target.value);
   };
 
-  const onSubmit = async (e, onClickButton) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -71,12 +71,12 @@ function MentorsDropdown({ senderUsername, draft }) {
   console.log(receipientId);
 
   const onClickButton = () => {
-    setMessageTitle(messageTitle);
+    setMessageTitle(msgTitle);
+    setMessageText(msgText);
   };
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <button onClick={onClickButton}>send</button>
+      <form onSubmit={onSubmit} className="form">
         <div>{messageTitle}</div>
         <div>{messageText}</div>
         <select onChange={onMentorDropdownMenuChange}>
@@ -87,6 +87,7 @@ function MentorsDropdown({ senderUsername, draft }) {
             </option>
           ))}
         </select>
+        <button onClick={onClickButton}>send it</button>
       </form>
     </>
   );
