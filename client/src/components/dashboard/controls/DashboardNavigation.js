@@ -46,6 +46,7 @@ function DashboardNavigation({ user, handleUpdate }) {
           <h2
             style={{
               borderBottom: filesControlButtons ? "3px solid #b55151" : "none",
+              transform: filesControlButtons ? "scale(1.4)" : false,
             }}
           >
             Files
@@ -54,7 +55,7 @@ function DashboardNavigation({ user, handleUpdate }) {
             src={filesIcon}
             alt="files icon"
             className="dashboard-icon"
-            style={{ transform: filesControlButtons ? "scale(1.5)" : false }}
+            style={{ transform: filesControlButtons ? "scale(1.9)" : false }}
           />
         </div>
 
@@ -64,6 +65,7 @@ function DashboardNavigation({ user, handleUpdate }) {
               borderBottom: messagesControlButtons
                 ? "3px solid #b55151"
                 : "none",
+              transform: messagesControlButtons ? "scale(1.4)" : false,
             }}
           >
             Messages
@@ -72,7 +74,7 @@ function DashboardNavigation({ user, handleUpdate }) {
             src={messagesIcon}
             alt="messages icon"
             className="dashboard-icon"
-            style={{ transform: messagesControlButtons ? "scale(1.5)" : false }}
+            style={{ transform: messagesControlButtons ? "scale(1.9)" : false }}
           />
         </div>
 
@@ -82,6 +84,7 @@ function DashboardNavigation({ user, handleUpdate }) {
               borderBottom: accountControlButtons
                 ? "3px solid #b55151"
                 : "none",
+              transform: accountControlButtons ? "scale(1.4)" : false,
             }}
           >
             Account
@@ -90,7 +93,7 @@ function DashboardNavigation({ user, handleUpdate }) {
             src={accountIcon}
             alt="account icon"
             className="dashboard-icon"
-            style={{ transform: accountControlButtons ? "scale(1.5)" : false }}
+            style={{ transform: accountControlButtons ? "scale(1.9)" : false }}
           />
         </div>
       </div>

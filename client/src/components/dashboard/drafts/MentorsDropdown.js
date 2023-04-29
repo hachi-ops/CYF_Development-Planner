@@ -61,7 +61,7 @@ function MentorsDropdown({ senderUsername, draft }) {
       // console.log(messageTitle);
       setMessageText(msgText);
       console.log(msgText);
-
+      setConfirmation("file sent");
       // setDraftsChange(true);
     } catch (err) {
       console.error(err.message);
@@ -70,15 +70,18 @@ function MentorsDropdown({ senderUsername, draft }) {
 
   console.log(receipientId);
 
+  const [confirmation, setConfirmation] = useState("");
   const onClickButton = () => {
     setMessageTitle(msgTitle);
     setMessageText(msgText);
+    setConfirmation(confirmation);
   };
   return (
     <>
       <form onSubmit={onSubmit} className="form">
-        <div>{messageTitle}</div>
-        <div>{messageText}</div>
+        {/* <div>{messageTitle}</div>
+        <div>{messageText}</div> */}
+        <div>{confirmation}</div>
         <select onChange={onMentorDropdownMenuChange}>
           <option>--select mentor--</option>
           {list.map((mentor) => (
