@@ -30,7 +30,7 @@ const UpdatePword = ({ user, handleUpdate }) => {
     }
   };
 
-  // function to check new passwords are entered and they match, triggering errors if they don't
+  // function to check only new passwords are entered and they match, triggering errors if they don't
   const checkPassword = (newPassOne, newPassTwo) => {
     console.log(user.password);
     if (
