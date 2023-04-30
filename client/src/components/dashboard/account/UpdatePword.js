@@ -32,7 +32,6 @@ const UpdatePword = ({ user, handleUpdate }) => {
 
   // function to check only new passwords are entered and they match, triggering errors if they don't
   const checkPassword = (newPassOne, newPassTwo) => {
-    console.log(user.password);
     if (
       newPassOne === newPassTwo &&
       newPassOne &&
@@ -154,7 +153,7 @@ const UpdatePword = ({ user, handleUpdate }) => {
                 )}
                 {success && (
                   <h5 style={{ color: "rgb(25, 135, 84)" }}>
-                    Password Updated
+                    Password Updated!
                   </h5>
                 )}
               </div>
