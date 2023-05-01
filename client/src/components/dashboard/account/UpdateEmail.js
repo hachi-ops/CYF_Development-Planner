@@ -1,24 +1,29 @@
 import { useState, React } from "react";
 
-const UpdateEmail = ({ user }) => {
+const UpdateEmail = ({ user, handleUpdate}) => {
   const [current, setCurrent] = useState("");
   const [newEmail, setNewEmail] = useState({ typedNew: "", retypedNew: "" });
-  const [openContainer, setopenContainer] = useState(false);
+  const [openContainer, setOpenContainer] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [newEmailError, setNewEmailError] = useState(false);
   const [notValid, setNotValid] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  // function to open and close container
-  const handleContainer = (e) => {
-    e.preventDefault();
+  // function to reset errors
+  const resetErrors = () => {
     setEmailError(false);
     setNewEmailError(false);
     setNotValid(false);
     setSuccess(false);
+  };
+
+  // function to open and close container
+  const handleContainer = (e) => {
+    e.preventDefault();
+    resetErrors();
     setCurrent("");
     setNewEmail({ typedNew: "", retypedNew: "" });
-    setopenContainer(!openContainer);
+    setOpenContainer(!openContainer);
   };
 
   // function to handle inputs from text boxes
@@ -66,26 +71,40 @@ const UpdateEmail = ({ user }) => {
   };
 
   // function to update email in database
-  const updateEmail = async (updated)=> {
-    
-  }
+  const updateEmail = async (email) => {
+    try {
+      const body = { newEmail: email, userId: user.user_id };
+      const headers = {
+        "Content-Type": "application/json",
+        jwt_token: localStorage.token,
+      };
+      const response = await fetch("/dashboard/updateEmail", {
+        method: "PUT",
+        headers: headers,
+        body: JSON.stringify(body),
+      });
+      const result = await response.json();
+      console.log(result);
+      handleUpdate();
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
 
   // function handler to submit form
   const handleSubmit = (e) => {
     e.preventDefault();
-    setEmailError(false);
-    setNewEmailError(false);
-    setNotValid(false);
-    setSuccess(false);
+    resetErrors();
     let isCurrent = confirmEmail(current);
-    // console.log("is current", isCurrent);
     let emailMatch = validNewEmail(newEmail.typedNew, newEmail.retypedNew);
     if (emailMatch.every((check) => check === false) || emailMatch[0] === false)
       setNewEmailError(true);
     if (emailMatch[0] === true && emailMatch[1] === false) setNotValid(true);
     if (!isCurrent) setEmailError(true);
-    // console.log(emailMatch.every((check) => check === true));
     if (emailMatch.every((check) => check === true) && isCurrent) {
+      updateEmail(newEmail.typedNew);
+      setCurrent("");
+      setNewEmail({ typedNew: "", retypedNew: "" });
       setSuccess(true);
     }
   };

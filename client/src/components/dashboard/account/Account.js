@@ -27,7 +27,7 @@ function Account({ user, handleUpdate }) {
         </div>
       </div>
       <UpdatePword user={user} handleUpdate={handleUpdate} />
-      <UpdateEmail user={user} />
+      <UpdateEmail user={user} handleUpdate={handleUpdate}/>
     </>
   );
 }

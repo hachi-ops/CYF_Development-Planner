@@ -8,12 +8,17 @@ const UpdatePword = ({ user, handleUpdate }) => {
   const [success, setSuccess] = useState(false);
   const [openContainer, setopenContainer] = useState(false);
 
+  //function to reset error states
+  const resetErrors = () => {
+    setSuccess(false);
+    setValidationError(false);
+    setMatchError(false);
+  };
+
   // function to open/close input container
   const handleContainer = (e) => {
     e.preventDefault();
-    setSuccess(false)
-    setValidationError(false)
-    setMatchError(false)
+    resetErrors();
     setPassword("");
     setNewPass({ first: "", second: "" });
     setopenContainer(!openContainer);
@@ -87,9 +92,7 @@ const UpdatePword = ({ user, handleUpdate }) => {
   // function to submit typed passwords
   const submitPassChange = async (e) => {
     e.preventDefault();
-    setMatchError(false);
-    setValidationError(false);
-    setSuccess(false);
+    resetErrors()
     let isOldPass = await confirmPassword(password);
     let matched = checkPassword(newPass.first, newPass.second);
     if (!isOldPass) setValidationError(true);
