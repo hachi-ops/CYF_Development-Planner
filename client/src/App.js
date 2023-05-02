@@ -17,7 +17,6 @@ import RegisterConfirmation from "./components/login-and-register/RegisterConfir
 import Navbar from "./components/navbar/Navbar";
 import Home from "./components/home/Home";
 import Dashboard from "./components/dashboard/Dashboard";
-import Hi from "./components/Hi";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -51,7 +50,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Hi />
+
       <Routes>
         <Route
           path="/"
