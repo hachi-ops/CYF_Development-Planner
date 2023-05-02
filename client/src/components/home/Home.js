@@ -1,18 +1,32 @@
 import React from "react";
 
-import Intro from "./Intro";
+// styles
+import "../../styles/landing.css";
 
+// components
+import Intro from "./Intro";
 import Heading from "./Heading";
 import LoginSignInButtons from "./LoginSignInButtons";
+
+// images
+import cat from "../../images/cat.jpg";
 
 function Home() {
   return (
     <>
-      <header className="header">
+      <div className="landing">
         <Heading />
-        <LoginSignInButtons />
-      </header>
-      <Intro />
+        <Intro />
+        <div className="landing-flex">
+          {" "}
+          <img
+            alt="cat paw on a computer keyboard"
+            src={cat}
+            className="landing-img"
+          />
+          <LoginSignInButtons />
+        </div>
+      </div>
     </>
   );
 }
