@@ -72,7 +72,6 @@ function Element({
             </div>
           </>
         )}
-        <hr />
       </div>
     </>
   );

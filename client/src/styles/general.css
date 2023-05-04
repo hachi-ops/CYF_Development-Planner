@@ -11,8 +11,6 @@
 body {
     background-color: rgb(252, 249, 249);
     font-family: "Montserrat";
-    text-align: center;
-
 }
 
 
@@ -50,18 +48,6 @@ section {
     border-radius: 12px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     max-width: 700px;
-
-}
-
-.header-img {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    width: 80%;
-    margin: auto;
-}
-
-.icon-heading-container {
-    max-width: 200px;
-    margin: 30px auto;
 }
 
 .icon-heading {
@@ -74,6 +60,7 @@ section {
     font-size: 0.7rem;
     margin-bottom: 30px;
     cursor: pointer;
+    padding: 20px;
 
 }
 
@@ -146,6 +133,7 @@ hr {
 }
 
 .icon-heading h2 {
-    margin: 1rem;
+    margin: 2rem;
+padding-bottom: 3px;
 
 }
