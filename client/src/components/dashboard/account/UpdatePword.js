@@ -92,16 +92,19 @@ const UpdatePword = ({ user, handleUpdate }) => {
   // function to submit typed passwords
   const submitPassChange = async (e) => {
     e.preventDefault();
-    resetErrors()
+    resetErrors();
     let isOldPass = await confirmPassword(password);
     let matched = checkPassword(newPass.first, newPass.second);
     if (!isOldPass) setValidationError(true);
-    if (!matched) setMatchError(true);
-    if (isOldPass && matched) {
-      updatePassword(newPass.first);
-      setPassword("");
-      setNewPass({ first: "", second: "" });
-      setSuccess(true);
+    if (isOldPass) {
+      if (matched) {
+        updatePassword(newPass.first);
+        setPassword("");
+        setNewPass({ first: "", second: "" });
+        setSuccess(true);
+      } else {
+        setMatchError(true);
+      }
     }
   };
 

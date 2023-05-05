@@ -1,19 +1,17 @@
 import { useState, React } from "react";
 
-const UpdateEmail = ({ user, handleUpdate}) => {
+const UpdateEmail = ({ user, handleUpdate }) => {
   const [current, setCurrent] = useState("");
   const [newEmail, setNewEmail] = useState({ typedNew: "", retypedNew: "" });
   const [openContainer, setOpenContainer] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [newEmailError, setNewEmailError] = useState(false);
-  const [notValid, setNotValid] = useState(false);
   const [success, setSuccess] = useState(false);
 
   // function to reset errors
   const resetErrors = () => {
     setEmailError(false);
     setNewEmailError(false);
-    setNotValid(false);
     setSuccess(false);
   };
 
@@ -41,24 +39,15 @@ const UpdateEmail = ({ user, handleUpdate}) => {
 
   // function to check new emails are correctly inputted and the right format
   function validNewEmail(newEmailFirst, newEmailSecond) {
-    let validArray = [];
     if (
       newEmailFirst === newEmailSecond &&
       newEmailFirst &&
       newEmailSecond &&
-      (newEmailFirst && newEmailSecond) !== user.user_email
-    ) {
-      validArray.push(true);
-    } else {
-      validArray.push(false);
-    }
-
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(newEmailFirst)) {
-      validArray.push(true);
-    } else {
-      validArray.push(false);
-    }
-    return validArray;
+      (newEmailFirst && newEmailSecond) !== user.user_email &&
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(newEmailFirst)
+    )
+      return true;
+    return false;
   }
 
   // confirm entered email is the same as existing
@@ -97,16 +86,16 @@ const UpdateEmail = ({ user, handleUpdate}) => {
     resetErrors();
     let isCurrent = confirmEmail(current);
     let emailMatch = validNewEmail(newEmail.typedNew, newEmail.retypedNew);
-    if (emailMatch.every((check) => check === false) || emailMatch[0] === false)
-      setNewEmailError(true);
-    if (emailMatch[0] === true && emailMatch[1] === false) setNotValid(true);
     if (!isCurrent) setEmailError(true);
-    if (emailMatch.every((check) => check === true) && isCurrent) {
-      updateEmail(newEmail.typedNew);
-      setCurrent("");
-      setNewEmail({ typedNew: "", retypedNew: "" });
-      setSuccess(true);
-    }
+    if (isCurrent)
+      if (emailMatch) {
+        updateEmail(newEmail.typedNew);
+        setCurrent("");
+        setNewEmail({ typedNew: "", retypedNew: "" });
+        setSuccess(true);
+      } else {
+        setNewEmailError(true);
+      }
   };
 
   return (
@@ -155,13 +144,6 @@ const UpdateEmail = ({ user, handleUpdate}) => {
               <div>
                 <h5 style={{ color: "rgb(219, 104, 104)" }}>
                   Please enter two new matching email addresses.
-                </h5>
-              </div>
-            )}
-            {notValid && (
-              <div>
-                <h5 style={{ color: "rgb(219, 104, 104)" }}>
-                  Error: Emails not valid.
                 </h5>
               </div>
             )}
