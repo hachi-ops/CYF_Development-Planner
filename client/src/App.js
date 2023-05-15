@@ -5,6 +5,7 @@ import "./styles/buttons.css";
 import "./styles/form.css";
 import "./styles/typography.css";
 import "./styles/media.css";
+import "./styles/account.css";
 
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
