@@ -27,6 +27,27 @@ a {
     font-weight: bold;
 }
 
+
+h1 {
+    color: #b55151;
+    margin-bottom: 3rem;
+    text-align: center;
+    font-size: 1.65rem;
+    line-height: 2.6rem;
+    font-weight: 600;
+    letter-spacing: 0.07rem;
+}
+
+.subheading {
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 2rem;
+    padding: 30px;
+    width: 80%;
+    margin: auto;
+    text-align: left;
+  }
+  
 label,
 input,
 button,

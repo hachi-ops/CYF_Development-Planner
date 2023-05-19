@@ -2,6 +2,7 @@ import React from "react";
 
 import { NavLink } from "react-router-dom";
 
+// images
 import dashIcon from "../../images/icons8-dashboard-48.png";
 import homeIcon from "../../images/icons8-home-page-24.png";
 

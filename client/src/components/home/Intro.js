@@ -1,6 +1,8 @@
 import React from "react";
-import cat from "../../images/cat.jpg";
+
+// styles
 import "../../styles/landing.css";
+
 function Intro() {
   return (
     <>

@@ -3,7 +3,6 @@ import "./styles/general.css";
 import "./styles/navbar.css";
 import "./styles/buttons.css";
 import "./styles/form.css";
-import "./styles/typography.css";
 import "./styles/media.css";
 import "./styles/account.css";
 
