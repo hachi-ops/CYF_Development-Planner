@@ -1,11 +1,9 @@
 import React from "react";
 
-// styles
-import "../../styles/landing.css";
-
+import "../../styles/media.css";
 // components
-import Intro from "./Intro";
 import Heading from "./Heading";
+import Intro from "./Intro";
 import LoginSignInButtons from "./LoginSignInButtons";
 
 // images
@@ -16,15 +14,16 @@ function Home() {
     <>
       <div className="landing">
         <Heading />
-        <Intro />
-        <div className="landing-flex">
-          {" "}
-          <img
-            alt="cat paw on a computer keyboard"
-            src={cat}
-            className="landing-img"
-          />
-          <LoginSignInButtons />
+        <div className="flex-reverse">
+          <Intro />
+          <div className="landing-flex">
+            <img
+              alt="cat paw on a computer keyboard"
+              src={cat}
+              className="landing-img"
+            />
+            <LoginSignInButtons />
+          </div>
         </div>
       </div>
     </>

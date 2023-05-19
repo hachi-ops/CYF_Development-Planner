@@ -1,18 +1,17 @@
+/* ---- FORM ---- */
+
 .form {
-    margin: auto;
+    margin: 50px auto;
     font-size: 1.1rem;
-    padding: 40px;
-    max-width: 500px;
+    padding: 0 40px 40px;   
     border: 2px solid rgb(186, 63, 63);
     border-radius: 12px;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
 }
 
-form h1 {
-    margin-bottom: 30px;
-    color: #b55151;
+.form {
+    max-width: 80%;
 }
 
 input[type=text],
@@ -22,7 +21,6 @@ textarea {
     width: 100%;
     padding: 15px 20px;
     margin-bottom: 30px;
-
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 6px;
     font-size: inherit;

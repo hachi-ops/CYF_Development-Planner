@@ -18,6 +18,7 @@ function DashboardNavigation({ user, handleUpdate }) {
   const [messagesControlButtons, setMessagesControlButtons] = useState(false);
   const [accountControlButtons, setAccountControlButtons] = useState(false);
   const [active, setActive] = useState(false);
+
   const handleToggleFiles = () => {
     setFilesControlButtons(!filesControlButtons);
     setActive(!active);

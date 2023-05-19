@@ -5,14 +5,12 @@
     padding: 0;
     box-sizing: border-box;
     /* outline: 1px solid red; */
-
 }
 
-body {
+body { 
     background-color: rgb(252, 249, 249);
     font-family: "Montserrat";
 }
-
 
 img {
     display: block;
@@ -29,6 +27,27 @@ a {
     font-weight: bold;
 }
 
+
+h1 {
+    color: #b55151;
+    margin: 3rem auto;
+    text-align: center;
+    font-size: 1.65rem;
+    line-height: 2.6rem;
+    font-weight: 600;
+    letter-spacing: 0.07rem;
+}
+
+.subheading {
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 2rem;
+    padding: 30px;
+    width: 80%;
+    margin: auto;
+    text-align: left;
+  }
+  
 label,
 input,
 button,
@@ -64,19 +83,7 @@ section {
 
 }
 
-.dashboard-navigation {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 90%;
-    padding: 20px;
-    gap: 20px;
-}
 
-main {
-    width: 90%;
-    margin: auto;
-}
 
 .flex {
     display: flex;
