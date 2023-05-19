@@ -8,11 +8,12 @@
 .intro {
     font-weight: 500;
     padding: 0 15px;
-    line-height: 1.8rem;
+    line-height: 1.7rem;
     font-size: 1.1rem;
     margin: 0 auto;
     color: rgb(100, 24, 24);
     max-width: 600px;
+    padding:  40px 0;
 }
 
 .landing-img {
@@ -36,9 +37,9 @@
 }
 
 .flex-reverse {
+    margin: 40px auto;
     display: flex;
     flex-direction: column;
-    gap: 30px;
 }
 
 @media only screen and (min-width: 800px) {
@@ -56,6 +57,7 @@
     }
 
     .intro {
-        max-width: 50%;
+        max-width: 50%;    
+        padding: 0 40px;
     }
 }

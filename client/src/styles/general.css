@@ -30,7 +30,7 @@ a {
 
 h1 {
     color: #b55151;
-    margin-bottom: 3rem;
+    margin: 3rem auto;
     text-align: center;
     font-size: 1.65rem;
     line-height: 2.6rem;
@@ -83,13 +83,7 @@ section {
 
 }
 
-.dashboard-navigation {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 90%;
 
-}
 
 .flex {
     display: flex;

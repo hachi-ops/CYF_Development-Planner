@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/dashboard.css";
+
 // components
 import Logout from "./controls/Logout";
 import DashboardNavigation from "./controls/DashboardNavigation";
@@ -34,7 +34,7 @@ function Dashboard({ setAuth }) {
 
   return (
     <div className="dashboard-container">
-      <header className="dashboard-header">
+      <header className="flex-reverse">
         <Logout setAuth={setAuth} />
         <h1>{user.username}'s Dashboard</h1>
       </header>

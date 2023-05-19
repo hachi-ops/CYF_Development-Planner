@@ -1,14 +1,4 @@
-@media only screen and (max-width: 495px) {
-    section {
-        max-width: 80%;
-    }
-    
-    .form {
-        max-width: 80%;
-    }
-}
-
-@media only screen and (min-width: 764px) {
+@media only screen and (min-width: 600px) {
     .header-flex {
         display: flex;
         flex-direction: row-reverse;
@@ -21,15 +11,26 @@
     .dashboard-icon {
         width: 70px;
     }
+    .form {
+        max-width: 500px;
+    }
 }
 
-@media only screen and (min-width: 350px) {
-    .dashboard-navigation {
+@media only screen and (min-width: 800px) {
+
+    .flex-reverse {
         display: flex;
-        flex-direction: row;
-        justify-content: center;
+        flex-direction: row-reverse;
         align-items: center;
-        margin: auto;
-        gap: 20px;
+        justify-content: center;
+    }
+
+    .heading-landing-page {
+        font-size: 1.85rem;
+        line-height: 3rem;
+    }
+
+    .intro {
+        max-width: 50%;
     }
 }

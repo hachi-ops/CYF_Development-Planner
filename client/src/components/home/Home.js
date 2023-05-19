@@ -1,8 +1,6 @@
 import React from "react";
 
-// styles
-import "../../styles/landing.css";
-
+import "../../styles/media.css";
 // components
 import Heading from "./Heading";
 import Intro from "./Intro";

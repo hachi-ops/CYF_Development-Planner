@@ -1,8 +1,5 @@
 import React from "react";
 
-// styles
-import "../../styles/landing.css";
-
 function Intro() {
   return (
     <>

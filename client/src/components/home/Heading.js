@@ -1,7 +1,5 @@
 import React from "react";
 
-// styles
-import "../../styles/landing.css";
 function Heading() {
   return (
     <>
