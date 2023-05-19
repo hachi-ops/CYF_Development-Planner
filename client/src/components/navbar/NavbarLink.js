@@ -10,12 +10,12 @@ function NavbarLink() {
     <>
       <div className="nav-links-container">
         <NavLink to="/" className="nav-link">
-          <img alt="home nav link icon" src={homeIcon} />
-          <p className="icon-p">Home</p>
+          <img alt="home link icon" src={homeIcon} />
+          <p>Home</p>
         </NavLink>
         <NavLink to="dashboard" className="nav-link">
-          <img alt="dashboard nav link icon" src={dashIcon} />
-          <p className="icon-p">Dashboard</p>
+          <img alt="dashboard link icon" src={dashIcon} />
+          <p>Dashboard</p>
         </NavLink>
       </div>
     </>

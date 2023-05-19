@@ -1,0 +1,17 @@
+.dashboard-container{
+    border: 1px solid red;
+}
+
+.dashboard-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    width: 90%;
+    margin: 40px auto;
+    text-align: center;    
+}
+
+.dahboard-navigation {
+    display: flex;
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import "../../styles/dashboard.css";
 // components
 import Logout from "./controls/Logout";
 import DashboardNavigation from "./controls/DashboardNavigation";
@@ -33,13 +33,14 @@ function Dashboard({ setAuth }) {
   }, [updateUser]);
 
   return (
-    <>
-      <main>
+    <div className="dashboard-container">
+      <header className="dashboard-header">
         <Logout setAuth={setAuth} />
         <h1>{user.username}'s Dashboard</h1>
-        <DashboardNavigation user={user} handleUpdate={handleUpdate} />
-      </main>
-    </>
+      </header>
+
+      <DashboardNavigation user={user} handleUpdate={handleUpdate} />
+    </div>
   );
 }
 

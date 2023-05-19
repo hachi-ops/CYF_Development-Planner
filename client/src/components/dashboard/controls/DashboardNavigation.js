@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "../../../styles/dashboard.css";
 //images
 // import filesIcon from "../../../images/Documents-icon-48.png";
 import messagesIcon from "../../../images/Harwen-Pleasant-E-mail.128.png";
@@ -18,6 +18,7 @@ function DashboardNavigation({ user, handleUpdate }) {
   const [messagesControlButtons, setMessagesControlButtons] = useState(false);
   const [accountControlButtons, setAccountControlButtons] = useState(false);
   const [active, setActive] = useState(false);
+
   const handleToggleFiles = () => {
     setFilesControlButtons(!filesControlButtons);
     setActive(!active);
