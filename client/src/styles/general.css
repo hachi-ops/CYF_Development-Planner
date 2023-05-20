@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* outline: 1px solid red; */
+    outline: 1px solid red;
 }
 
 body { 
@@ -27,6 +27,10 @@ a {
     font-weight: bold;
 }
 
+.wrapper {
+    width: 90%;
+    margin: 70px auto;
+}
 
 h1 {
     color: #b55151;

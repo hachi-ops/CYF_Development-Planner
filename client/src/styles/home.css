@@ -1,9 +1,6 @@
-/* --- LANDING PAGE ---- */
+/* ---  PAGE ---- */
 
-.landing {
-    width: 90%;
-    margin: 70px auto;
-}
+
 
 .intro {
     font-weight: 500;
@@ -13,7 +10,7 @@
     margin: 0 auto;
     color: rgb(100, 24, 24);
     max-width: 600px;
-    padding:  40px 0;
+    padding:  40px;
 }
 
 .landing-img {
