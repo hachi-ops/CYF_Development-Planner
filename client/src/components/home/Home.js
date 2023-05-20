@@ -12,7 +12,7 @@ import cat from "../../images/cat.jpg";
 function Home() {
   return (
     <>
-      <div className="landing">
+      <div className="wrapper">
         <Heading />
         <div className="flex-reverse">
           <Intro />

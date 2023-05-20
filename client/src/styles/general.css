@@ -27,6 +27,10 @@ a {
     font-weight: bold;
 }
 
+.wrapper {
+    width: 90%;
+    margin: 70px auto;
+}
 
 h1 {
     color: #b55151;
@@ -38,16 +42,6 @@ h1 {
     letter-spacing: 0.07rem;
 }
 
-.subheading {
-    font-size: 1.1rem;
-    font-weight: 500;
-    line-height: 2rem;
-    padding: 30px;
-    width: 80%;
-    margin: auto;
-    text-align: left;
-  }
-  
 label,
 input,
 button,
@@ -58,15 +52,6 @@ fieldset {
     border: none;
     outline: none;
     font-family: inherit;
-}
-
-section {
-    padding: 10px;
-    margin: 30px auto;
-    border: 1px dotted black;
-    border-radius: 12px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    max-width: 700px;
 }
 
 .icon-heading {
@@ -80,19 +65,21 @@ section {
     margin-bottom: 30px;
     cursor: pointer;
     padding: 20px;
-
+    width: 100px;
 }
 
 
 
 .flex {
     display: flex;
+    flex-direction: column;
     gap: 10px;
-    width: 80%;
+    width: 90%;
     max-width: 500px;
     justify-content: space-between;
     align-items: center;
     margin: auto;
+ 
 }
 
 .details {
@@ -131,16 +118,24 @@ hr {
 }
 
 .dashboard-icon {
-    width: 40px;
+    width: 50px;    
 }
 
 .dashboard-icon:hover {
-    transform: scale(1.5);
     transition: transform .3s;
 }
 
 .icon-heading h2 {
-    margin: 2rem;
+    margin-bottom: 1rem;
 padding-bottom: 3px;
+}
 
+.register-confirmation {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    height: 100vh; 
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
 }

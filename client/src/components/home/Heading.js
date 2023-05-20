@@ -3,7 +3,7 @@ import React from "react";
 function Heading() {
   return (
     <>
-      <h1 className="heading-landing-page">
+      <h1>
         Welcome to CYF
         <br /> Development Planner
       </h1>

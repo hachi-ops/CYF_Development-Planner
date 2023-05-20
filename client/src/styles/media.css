@@ -1,20 +1,17 @@
 @media only screen and (min-width: 600px) {
-    .header-flex {
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-        justify-content: space-around;
-        gap: 30px;
-        margin: 30px;
-    }
 
     .dashboard-icon {
-        width: 70px;
+        width: 60px;
     }
     .form {
         max-width: 500px;
     }
+
+    .flex {
+        flex-direction: row;
+    }
 }
+
 
 @media only screen and (min-width: 800px) {
 
@@ -25,7 +22,7 @@
         justify-content: center;
     }
 
-    .heading-landing-page {
+h1{
         font-size: 1.85rem;
         line-height: 3rem;
     }
