@@ -1,43 +1,45 @@
 import React, { useState } from "react";
 
 //images
-// import filesIcon from "../../../images/Documents-icon-48.png";
 import messagesIcon from "../../../images/Harwen-Pleasant-E-mail.128.png";
 import accountIcon from "../../../images/icons8-test-account-96.png";
+import filesIcon from "../../../images/Rokey-Eicodesign-Folder-with-file.128.png";
 
 //components
 import FilesControls from "./FilesControls";
 import MessagesControls from "./MessagesControls";
 import AccountControls from "./AccountControls";
 
-// import filesIcon from "../../../images/Rimshotdesign-Nod-Folder-Document-Alt.128.png";
-import filesIcon from "../../../images/Rokey-Eicodesign-Folder-with-file.128.png";
-
 function DashboardNavigation({ user, handleUpdate }) {
   const [filesControlButtons, setFilesControlButtons] = useState(false);
   const [messagesControlButtons, setMessagesControlButtons] = useState(false);
   const [accountControlButtons, setAccountControlButtons] = useState(false);
-  const [active, setActive] = useState(false);
 
   const handleToggleFiles = () => {
     setFilesControlButtons(!filesControlButtons);
-    setActive(!active);
     setMessagesControlButtons(false);
     setAccountControlButtons(false);
   };
 
   const handleToggleMessages = () => {
     setMessagesControlButtons(!messagesControlButtons);
-    setActive(!active);
     setFilesControlButtons(false);
     setAccountControlButtons(false);
   };
 
   const handleToggleAccount = () => {
     setAccountControlButtons(!accountControlButtons);
-    setActive(!active);
     setFilesControlButtons(false);
     setMessagesControlButtons(false);
+  };
+
+  const [clickThis, setClickThis] = useState("close");
+
+  const handleClick3 = (e) => {
+    console.log(e.target.innerText);
+
+    const change = e.target.innerText === "close" ? "clickThis" : "close";
+    setClickThis(change);
   };
 
   return (
@@ -106,6 +108,7 @@ function DashboardNavigation({ user, handleUpdate }) {
       {accountControlButtons && (
         <AccountControls user={user} handleUpdate={handleUpdate} />
       )}
+      <button onClick={(e) => handleClick3(e)}>{clickThis}</button>
     </>
   );
 }

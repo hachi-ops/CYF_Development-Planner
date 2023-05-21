@@ -1,0 +1,17 @@
+.list-files {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 140px;
+}
+
+.titleCloseBtn {
+    /* background-color: transparent; */
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+
+    text-align: right;
+    margin: 20px;
+}

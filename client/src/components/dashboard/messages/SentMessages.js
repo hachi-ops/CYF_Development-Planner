@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function SentMessages() {
+function SentMessages({ setShowSentMessages }) {
   const [allMessages, setAllMessages] = useState([]);
   const getMessages = async () => {
     try {
@@ -26,7 +26,10 @@ function SentMessages() {
       {allMessages.map((message) => {
         return (
           <div>
-            <MessageText message={message} />
+            <MessageText
+              message={message}
+              setShowSentMessages={setShowSentMessages}
+            />
           </div>
         );
       })}
@@ -34,7 +37,7 @@ function SentMessages() {
   );
 }
 
-function MessageText({ message }) {
+function MessageText({ message, setShowSentMessages }) {
   const [openButton, setOpenButton] = useState(false);
   const handleOpenButton = () => {
     setOpenButton(!openButton);
@@ -42,14 +45,27 @@ function MessageText({ message }) {
 
   return (
     <>
-      <div className="flex">
-        <div className="flex">
-          <div>{message.message_title}</div>
+      <div className="list-files">
+        <div className="modalContainer">
+          <div className="titleCloseBtn">
+            <div
+              onClick={() => {
+                setShowSentMessages(false);
+              }}
+            >
+              X
+            </div>
+          </div>
         </div>
-        <button onClick={handleOpenButton}>open</button>
+        <div className="flex">
+          <div className="flex">
+            <div>{message.message_title}</div>
+          </div>
+          <button onClick={handleOpenButton}>open</button>
+        </div>
+        <hr />
+        {openButton && <div>{message.message_text}</div>}
       </div>
-      <hr />
-      {openButton && <div>{message.message_text}</div>}
     </>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SendNewMessage from "../messages/SendNewMessage";
 
-function AddNewFile({ senderUsername }) {
+function AddNewFile({ senderUsername, setShowAddNew }) {
   const [list, setList] = useState([]);
 
   const getMentors = async () => {
@@ -34,18 +34,30 @@ function AddNewFile({ senderUsername }) {
 
   return (
     <>
-      <select onChange={onMentorDropdownMenuChange}>
-        <option>--select mentor--</option>
-        {list.map((mentor) => (
-          <option value={mentor.user_id} key={mentor.mentor_id}>
-            {mentor.username}
-          </option>
-        ))}
-      </select>
-      <SendNewMessage
-        senderUsername={senderUsername}
-        receipientId={receipientId}
-      />
+      <div className="list-files">
+        <div className="titleCloseBtn">
+          <div
+            className="titleCloseBtn"
+            onClick={() => {
+              setShowAddNew(false);
+            }}
+          >
+            X
+          </div>
+        </div>
+        <select onChange={onMentorDropdownMenuChange}>
+          <option>--select mentor--</option>
+          {list.map((mentor) => (
+            <option value={mentor.user_id} key={mentor.mentor_id}>
+              {mentor.username}
+            </option>
+          ))}
+        </select>
+        <SendNewMessage
+          senderUsername={senderUsername}
+          receipientId={receipientId}
+        />
+      </div>
     </>
   );
 }

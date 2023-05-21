@@ -5,40 +5,34 @@ import SentMessages from "../messages/SentMessages";
 
 function MessagesControls({ name }) {
   const [showAllMessages, setShowAllMessages] = useState(false);
-
   const [showSentMessages, setShowSentMessages] = useState(false);
-  const [allTextButton, setAllTextButton] = useState("all");
-
-  const [sentTextButton, setSentTextButton] = useState("sent");
 
   const handleShowAllMessages = () => {
-    setShowAllMessages(!showAllMessages);
-    setAllTextButton((state) => (state === "all" ? "close" : "all"));
-    setShowSentMessages(false);
+    setShowAllMessages(true);
   };
 
   const handleShowSentMessages = () => {
-    setShowSentMessages(!showSentMessages);
-
-    setAllTextButton("all");
-
-    setSentTextButton((state) => (state === "sent" ? "close" : "sent"));
+    setShowSentMessages(true);
   };
 
   return (
     <>
       <div className="buttons" data-testid="messages-controls">
         <button onClick={handleShowAllMessages} className="all">
-          {allTextButton}
+          all
         </button>
 
         <button onClick={handleShowSentMessages} className="sent">
-          {sentTextButton}
+          sent
         </button>
       </div>
-      {showAllMessages && <AllMessages name={name} />}
+      {showAllMessages && (
+        <AllMessages name={name} setShowAllMessages={setShowAllMessages} />
+      )}
 
-      {showSentMessages && <SentMessages />}
+      {showSentMessages && (
+        <SentMessages setShowSentMessages={setShowSentMessages} />
+      )}
     </>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import "../../../styles/listFiles.css";
 
-function SentFiles() {
+function SentFiles({ setShowSent }) {
   const [allSentDrafts, setAllSentDrafts] = useState([]);
 
   const getSentFiles = async () => {
@@ -24,13 +25,13 @@ function SentFiles() {
   return (
     <>
       {allSentDrafts.map((draft) => {
-        return <Text draft={draft} />;
+        return <Text draft={draft} setShowSent={setShowSent} />;
       })}
     </>
   );
 }
 
-function Text({ draft }) {
+function Text({ draft, setShowSent = { setShowSent } }) {
   const [showText, setShowText] = useState(false);
 
   const handleShowText = () => {
@@ -39,23 +40,33 @@ function Text({ draft }) {
 
   return (
     <>
-      <hr />
-      <div className="flex">
+      <div className="list-files">
+        <div className="titleCloseBtn">
+          <div
+            className="titleCloseBtn"
+            onClick={() => {
+              setShowSent(false);
+            }}
+          >
+            X
+          </div>
+        </div>
+        <hr />
         <div className="flex">
-          <div>Title</div>
-          <div>{draft.message_title}</div>
+          <div className="flex">
+            <div>Title</div>
+            <div>{draft.message_title}</div>
+          </div>
+          <button onClick={handleShowText}>open</button>
         </div>
-        <button onClick={handleShowText}>open</button>
+        {showText && (
+          <div>
+            <h2 className="icon-heading">Text</h2>
+            <br /> {draft.message_text}
+          </div>
+        )}
+        <hr />
       </div>
-
-      {showText && (
-        <div>
-          {/* <button onClick={() => deleteDraft(draft.draft_id)}>Delete</button> */}
-          <h2 className="icon-heading">Text</h2>
-          <br /> {draft.message_text}
-        </div>
-      )}
-      <hr />
     </>
   );
 }

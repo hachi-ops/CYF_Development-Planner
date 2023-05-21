@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 
+import "../../../styles/listFiles.css";
 // components
 import Element from "./Element";
 
-const ListFiles = ({ senderUsername }) => {
+const ListFiles = ({ senderUsername, setShowDrafts }) => {
   const [allDrafts, setAllDrafts] = useState([]);
   const [draftsChange, setDraftsChange] = useState(false);
 
@@ -49,24 +50,39 @@ const ListFiles = ({ senderUsername }) => {
 
   return (
     <>
-      <div data-testid="list-files">
-        {drafts.length !== 0 &&
-          drafts[0].draft_id !== null &&
-          drafts.map((draft, index) => {
-            return (
-              <>
-                <hr />
-                <br />
-                <Element
-                  draft={draft}
-                  deleteDraft={deleteDraft}
-                  allDrafts={allDrafts}
-                  setDraftsChange={setDraftsChange}
-                  senderUsername={senderUsername}
-                />
-              </>
-            );
-          })}
+      <div className="list-files">
+        <div className="modalContainer">
+          <div className="titleCloseBtn">
+            <div
+              onClick={() => {
+                setShowDrafts(false);
+              }}
+            >
+              X
+            </div>
+          </div>
+        </div>
+        <div data-testid="list-files">
+          {drafts.length !== 0 && drafts[0].draft_id !== null ? (
+            drafts.map((draft, index) => {
+              return (
+                <>
+                  <hr />
+                  <br />
+                  <Element
+                    draft={draft}
+                    deleteDraft={deleteDraft}
+                    allDrafts={allDrafts}
+                    setDraftsChange={setDraftsChange}
+                    senderUsername={senderUsername}
+                  />
+                </>
+              );
+            })
+          ) : (
+            <div> your list is empty</div>
+          )}
+        </div>
       </div>
     </>
   );
