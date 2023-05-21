@@ -26,17 +26,34 @@ function AllMessages({ name, setShowAllMessages }) {
 
   return (
     <>
-      {allMessages.map((message) => {
-        return (
-          <>
-            <Message
-              message={message}
-              name={name}
-              setShowAllMessages={setShowAllMessages}
-            />
-          </>
-        );
-      })}
+      <div className="list-files">
+        <div className="modalContainer">
+          <div className="titleCloseBtn">
+            <div
+              onClick={() => {
+                setShowAllMessages(false);
+              }}
+            >
+              X
+            </div>
+          </div>
+          {allMessages.length !== 0 && allMessages[0].messageid !== null ? (
+            allMessages.map((message) => {
+              return (
+                <>
+                  <Message
+                    message={message}
+                    name={name}
+                    setShowAllMessages={setShowAllMessages}
+                  />
+                </>
+              );
+            })
+          ) : (
+            <div> your list is empty</div>
+          )}
+        </div>
+      </div>
     </>
   );
 }
@@ -57,40 +74,27 @@ function Message({ message, name, setShowAllMessages }) {
   };
   return (
     <>
-      <div className="list-files">
-        <div className="modalContainer">
-          <div className="titleCloseBtn">
-            <div
-              onClick={() => {
-                setShowAllMessages(false);
-              }}
-            >
-              X
-            </div>
-          </div>
-        </div>
-        <hr />
+      <hr />
+      <div className="flex">
         <div className="flex">
-          <div className="flex">
-            <h4>{message.sender_username}</h4>
-            <div>{message.message_title}</div>
-          </div>
-          <button onClick={handleMessageClicked}>open</button>
+          <h4>{message.sender_username}</h4>
+          <div>{message.message_title}</div>
         </div>
-
-        {messageClicked && (
-          <div>
-            <button onClick={sendAnswer}>{answerButtonText}</button>
-            {message.message_text}
-            {answerField && (
-              <SendNewMessage
-                senderUsername={name}
-                receipientId={message.sender_id}
-              />
-            )}
-          </div>
-        )}
+        <button onClick={handleMessageClicked}>open</button>
       </div>
+
+      {messageClicked && (
+        <div>
+          <button onClick={sendAnswer}>{answerButtonText}</button>
+          {message.message_text}
+          {answerField && (
+            <SendNewMessage
+              senderUsername={name}
+              receipientId={message.sender_id}
+            />
+          )}
+        </div>
+      )}
     </>
   );
 }

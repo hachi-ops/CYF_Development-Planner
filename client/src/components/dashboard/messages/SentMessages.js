@@ -23,28 +23,6 @@ function SentMessages({ setShowSentMessages }) {
 
   return (
     <>
-      {allMessages.map((message) => {
-        return (
-          <div>
-            <MessageText
-              message={message}
-              setShowSentMessages={setShowSentMessages}
-            />
-          </div>
-        );
-      })}
-    </>
-  );
-}
-
-function MessageText({ message, setShowSentMessages }) {
-  const [openButton, setOpenButton] = useState(false);
-  const handleOpenButton = () => {
-    setOpenButton(!openButton);
-  };
-
-  return (
-    <>
       <div className="list-files">
         <div className="modalContainer">
           <div className="titleCloseBtn">
@@ -55,17 +33,44 @@ function MessageText({ message, setShowSentMessages }) {
             >
               X
             </div>
+            {allMessages.length !== 0 && allMessages[0].message_id !== null ? (
+              allMessages.map((message) => {
+                return (
+                  <div>
+                    <MessageText
+                      message={message}
+                      setShowSentMessages={setShowSentMessages}
+                    />
+                  </div>
+                );
+              })
+            ) : (
+              <div>your list is empty</div>
+            )}
           </div>
         </div>
-        <div className="flex">
-          <div className="flex">
-            <div>{message.message_title}</div>
-          </div>
-          <button onClick={handleOpenButton}>open</button>
-        </div>
-        <hr />
-        {openButton && <div>{message.message_text}</div>}
       </div>
+    </>
+  );
+}
+
+function MessageText({ message }) {
+  const [openButton, setOpenButton] = useState(false);
+  const handleOpenButton = () => {
+    setOpenButton(!openButton);
+  };
+
+  return (
+    <>
+      <hr />
+      <div className="flex">
+        <div className="flex">
+          <div> {message.message_title}</div>
+        </div>
+        <button onClick={handleOpenButton}>open</button>
+      </div>
+
+      {openButton && <div>{message.message_text}</div>}
     </>
   );
 }

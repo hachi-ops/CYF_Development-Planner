@@ -24,9 +24,24 @@ function SentFiles({ setShowSent }) {
   }, []);
   return (
     <>
-      {allSentDrafts.map((draft) => {
-        return <Text draft={draft} setShowSent={setShowSent} />;
-      })}
+      <div className="list-files">
+        <div
+          className="titleCloseBtn"
+          onClick={() => {
+            setShowSent(false);
+          }}
+        >
+          X
+        </div>
+
+        {allSentDrafts.length !== 0 && allSentDrafts[0].draft_id !== null ? (
+          allSentDrafts.map((draft) => {
+            return <Text draft={draft} setShowSent={setShowSent} />;
+          })
+        ) : (
+          <div> your list is empty</div>
+        )}
+      </div>
     </>
   );
 }
@@ -40,33 +55,19 @@ function Text({ draft, setShowSent = { setShowSent } }) {
 
   return (
     <>
-      <div className="list-files">
-        <div className="titleCloseBtn">
-          <div
-            className="titleCloseBtn"
-            onClick={() => {
-              setShowSent(false);
-            }}
-          >
-            X
-          </div>
-        </div>
-        <hr />
+      <hr />
+      <div className="flex">
         <div className="flex">
-          <div className="flex">
-            <div>Title</div>
-            <div>{draft.message_title}</div>
-          </div>
-          <button onClick={handleShowText}>open</button>
+          <div>Title</div>
+          <div>{draft.message_title}</div>
         </div>
-        {showText && (
-          <div>
-            <h2 className="icon-heading">Text</h2>
-            <br /> {draft.message_text}
-          </div>
-        )}
-        <hr />
+        <button onClick={handleShowText}>open</button>
       </div>
+      {showText && (
+        <div>
+          <br /> {draft.message_text}
+        </div>
+      )}
     </>
   );
 }
