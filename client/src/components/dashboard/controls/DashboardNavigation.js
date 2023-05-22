@@ -44,8 +44,8 @@ function DashboardNavigation({ user, handleUpdate }) {
 
   return (
     <>
-      <div className="buttons" data-testid="dashboard-navigation">
-        <div className="icon-heading" onClick={handleToggleFiles}>
+      <div className="buttons flex" data-testid="dashboard-navigation">
+        <div className="icon-heading flex" onClick={handleToggleFiles}>
           <h2
             style={{
               borderBottom: filesControlButtons ? "2px solid #b55151" : "none",
@@ -61,8 +61,8 @@ function DashboardNavigation({ user, handleUpdate }) {
             style={{ transform: filesControlButtons ? "scale(1.4)" : false }}
           />
         </div>
-
-        <div className="icon-heading" onClick={handleToggleMessages}>
+        {filesControlButtons && <FilesControls name={user.username} />}
+        <div className="icon-heading flex" onClick={handleToggleMessages}>
           <h2
             style={{
               borderBottom: messagesControlButtons
@@ -80,8 +80,8 @@ function DashboardNavigation({ user, handleUpdate }) {
             style={{ transform: messagesControlButtons ? "scale(1.4)" : false }}
           />
         </div>
-
-        <div className="icon-heading" onClick={handleToggleAccount}>
+        {messagesControlButtons && <MessagesControls name={user.username} />}
+        <div className="icon-heading flex" onClick={handleToggleAccount}>
           <h2
             style={{
               borderBottom: accountControlButtons
@@ -100,11 +100,6 @@ function DashboardNavigation({ user, handleUpdate }) {
           />
         </div>
       </div>
-
-      {filesControlButtons && <FilesControls name={user.username} />}
-
-      {messagesControlButtons && <MessagesControls name={user.username} />}
-
       {accountControlButtons && (
         <AccountControls user={user} handleUpdate={handleUpdate} />
       )}

@@ -3,7 +3,14 @@
     height: 100vh;
     background-color: rgb(255, 255, 255);
     position: absolute;
-    top: 70px;
+    top: 20%;
+    /* position: absolute;
+    margin: 0;
+    top: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    background-color: aliceblue;
+    z-index: 1; */
 }
 
 .titleCloseBtn {

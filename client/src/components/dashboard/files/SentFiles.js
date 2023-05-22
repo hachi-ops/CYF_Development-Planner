@@ -23,6 +23,7 @@ function SentFiles({ setShowSent }) {
   useEffect(() => {
     getSentFiles();
   }, []);
+
   return (
     <>
       <div className="list-files">
@@ -51,24 +52,33 @@ function Text({ draft, setShowSent = { setShowSent } }) {
   const [showText, setShowText] = useState(false);
 
   const handleShowText = () => {
-    setShowText(!showText);
+    setShowText(true);
   };
-
   return (
     <>
-      <hr />
-      <div className="flex">
+      <div className="list-files">
+        <div
+          className="titleCloseBtn"
+          onClick={() => {
+            setShowText(false);
+          }}
+        >
+          X
+        </div>
+        <hr />
         <div className="flex">
-          <div>Title</div>
-          <div>{draft.message_title}</div>
+          <div className="flex">
+            <div>Title</div>
+            <div>{draft.message_title}</div>
+          </div>
+          <button onClick={handleShowText}>open</button>
         </div>
-        <button onClick={handleShowText}>open</button>
+        {showText && (
+          <div>
+            <br /> {draft.message_text}
+          </div>
+        )}
       </div>
-      {showText && (
-        <div>
-          <br /> {draft.message_text}
-        </div>
-      )}
     </>
   );
 }

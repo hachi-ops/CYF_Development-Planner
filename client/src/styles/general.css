@@ -63,6 +63,7 @@ fieldset {
     cursor: pointer;
     padding: 20px;
     width: 100px;
+   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .flex {
@@ -70,7 +71,7 @@ fieldset {
     flex-direction: column;
     gap: 10px;
     width: 90%;
-    max-width: 500px;
+    max-width: 700px;
     justify-content: space-between;
     align-items: center;
     margin: auto;
@@ -83,13 +84,15 @@ fieldset {
     margin-bottom: 30px;
     text-align: left;
     margin: 0 auto;
-    max-width: 90%;
+    width: 90%;
     height: 100vh;
     padding: 20px;
     margin: 40px auto;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 10px;
     color: #7a2929;
+    height: auto;
+    max-width: 500px;
 }
 
 .details h2 {
@@ -153,7 +156,7 @@ hr {
 
 
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 400px) {
 
     .dashboard-icon {
         width: 60px;
@@ -161,7 +164,12 @@ hr {
 
     .flex {
         flex-direction: row;
+        max-width: 700px;
     }
+
+
+
+   
 }
 
 
@@ -170,5 +178,5 @@ hr {
 }
 
 .text {
-    max-width: 90%;
+    max-width: 80%;
 }

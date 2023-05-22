@@ -9,7 +9,6 @@ function EmptyList() {
         <img src={hungryCat} alt="sad cat looking at the empty food bowl" />
         <p>nothing to see here</p>
       </div>
-      ;
     </>
   );
 }
