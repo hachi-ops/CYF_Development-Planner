@@ -5,11 +5,13 @@
     padding: 0;
     box-sizing: border-box;
     /* outline: 1px solid red; */
+
 }
 
 body {
     background-color: rgb(252, 249, 249);
     font-family: "Montserrat";
+
 }
 
 img {
@@ -81,7 +83,8 @@ fieldset {
     margin-bottom: 30px;
     text-align: left;
     margin: 0 auto;
-    max-width: 500px;
+    max-width: 90%;
+    height: 100vh;
     padding: 20px;
     margin: 40px auto;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -159,4 +162,13 @@ hr {
     .flex {
         flex-direction: row;
     }
+}
+
+
+.title {
+    max-width: 50%;
+}
+
+.text {
+    max-width: 90%;
 }
