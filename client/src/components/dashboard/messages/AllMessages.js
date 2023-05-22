@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SendNewMessage from "./SendNewMessage";
+import EmptyList from "../EmptyList";
 
-import "../../../styles/listFiles.css";
 function AllMessages({ name, setShowAllMessages }) {
   const [allMessages, setAllMessages] = useState([]);
 
@@ -50,7 +50,7 @@ function AllMessages({ name, setShowAllMessages }) {
               );
             })
           ) : (
-            <div> your list is empty</div>
+            <EmptyList />
           )}
         </div>
       </div>

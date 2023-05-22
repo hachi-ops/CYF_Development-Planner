@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 // components
-import ListFiles from "../drafts/ListFiles";
-import SentFiles from "../drafts/SentFiles";
-import AddNewFile from "../drafts/AddNewFile";
+import ListFiles from "../files/ListFiles";
+import SentFiles from "../files/SentFiles";
+import AddNewFile from "../files/AddNewFile";
 
 function FilesControls({ name }) {
   const [showDrafts, setShowDrafts] = useState(false);
@@ -12,7 +12,6 @@ function FilesControls({ name }) {
   };
 
   const [showSent, setShowSent] = useState(false);
-
   const handleShowSent = () => {
     setShowSent(true);
   };

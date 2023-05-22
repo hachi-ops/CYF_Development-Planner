@@ -33,14 +33,14 @@ function DashboardNavigation({ user, handleUpdate }) {
     setMessagesControlButtons(false);
   };
 
-  const [clickThis, setClickThis] = useState("close");
+  // const [clickThis, setClickThis] = useState("close");
 
-  const handleClick3 = (e) => {
-    console.log(e.target.innerText);
+  // const handleClick3 = (e) => {
+  //   console.log(e.target.innerText);
 
-    const change = e.target.innerText === "close" ? "clickThis" : "close";
-    setClickThis(change);
-  };
+  //   const change = e.target.innerText === "close" ? "clickThis" : "close";
+  //   setClickThis(change);
+  // };
 
   return (
     <>
@@ -48,7 +48,7 @@ function DashboardNavigation({ user, handleUpdate }) {
         <div className="icon-heading" onClick={handleToggleFiles}>
           <h2
             style={{
-              borderBottom: filesControlButtons ? "3px solid #b55151" : "none",
+              borderBottom: filesControlButtons ? "2px solid #b55151" : "none",
               transform: filesControlButtons ? "scale(1.2)" : false,
             }}
           >
@@ -66,7 +66,7 @@ function DashboardNavigation({ user, handleUpdate }) {
           <h2
             style={{
               borderBottom: messagesControlButtons
-                ? "3px solid #b55151"
+                ? "2px solid #b55151"
                 : "none",
               transform: messagesControlButtons ? "scale(1.2)" : false,
             }}
@@ -85,7 +85,7 @@ function DashboardNavigation({ user, handleUpdate }) {
           <h2
             style={{
               borderBottom: accountControlButtons
-                ? "3px solid #b55151"
+                ? "2px solid #b55151"
                 : "none",
               transform: accountControlButtons ? "scale(1.2)" : false,
             }}
@@ -108,7 +108,7 @@ function DashboardNavigation({ user, handleUpdate }) {
       {accountControlButtons && (
         <AccountControls user={user} handleUpdate={handleUpdate} />
       )}
-      <button onClick={(e) => handleClick3(e)}>{clickThis}</button>
+      {/* <button onClick={(e) => handleClick3(e)}>{clickThis}</button> */}
     </>
   );
 }

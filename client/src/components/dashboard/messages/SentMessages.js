@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import EmptyList from "../EmptyList";
+
 function SentMessages({ setShowSentMessages }) {
   const [allMessages, setAllMessages] = useState([]);
   const getMessages = async () => {
@@ -45,7 +47,7 @@ function SentMessages({ setShowSentMessages }) {
                 );
               })
             ) : (
-              <div>your list is empty</div>
+              <EmptyList />
             )}
           </div>
         </div>

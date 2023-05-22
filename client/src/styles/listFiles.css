@@ -3,15 +3,21 @@
     height: 100vh;
     background-color: rgb(255, 255, 255);
     position: absolute;
-    top: 140px;
+    top: 145px;
 }
 
 .titleCloseBtn {
     /* background-color: transparent; */
-    border: none;
-    font-size: 22px;
+   font-weight: 900;
+    font-size: 1.5rem;
     cursor: pointer;
-
     text-align: right;
-    margin: 20px;
+    margin: 30px;
+    color: brown;
+}
+
+@media only screen and (max-width: 400px){
+    .list-files{
+        top: 35%;
+    }
 }

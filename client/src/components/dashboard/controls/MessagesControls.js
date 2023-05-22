@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import AllMessages from "../messages/AllMessages";
-
 import SentMessages from "../messages/SentMessages";
 
 function MessagesControls({ name }) {

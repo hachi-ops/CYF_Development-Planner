@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import "../../../styles/listFiles.css";
 // components
 import Element from "./Element";
+import EmptyList from "../EmptyList";
 
 const ListFiles = ({ senderUsername, setShowDrafts }) => {
+  console.log(senderUsername);
   const [allDrafts, setAllDrafts] = useState([]);
   const [draftsChange, setDraftsChange] = useState(false);
 
@@ -80,7 +81,7 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
               );
             })
           ) : (
-            <div> your list is empty</div>
+            <EmptyList />
           )}
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "../../../styles/listFiles.css";
+
+import EmptyList from "../EmptyList";
 
 function SentFiles({ setShowSent }) {
   const [allSentDrafts, setAllSentDrafts] = useState([]);
@@ -39,7 +40,7 @@ function SentFiles({ setShowSent }) {
             return <Text draft={draft} setShowSent={setShowSent} />;
           })
         ) : (
-          <div> your list is empty</div>
+          <EmptyList />
         )}
       </div>
     </>

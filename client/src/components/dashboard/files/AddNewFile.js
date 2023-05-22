@@ -45,6 +45,23 @@ function AddNewFile({ senderUsername, setShowAddNew }) {
             X
           </div>
         </div>
+        <SelectMentor
+          onMentorDropdownMenuChange={onMentorDropdownMenuChange}
+          list={list}
+        />
+        <SendNewMessage
+          senderUsername={senderUsername}
+          receipientId={receipientId}
+        />
+      </div>
+    </>
+  );
+}
+
+function SelectMentor({ onMentorDropdownMenuChange, list }) {
+  return (
+    <>
+      <div className="select-dropdown">
         <select onChange={onMentorDropdownMenuChange}>
           <option>--select mentor--</option>
           {list.map((mentor) => (
@@ -53,10 +70,6 @@ function AddNewFile({ senderUsername, setShowAddNew }) {
             </option>
           ))}
         </select>
-        <SendNewMessage
-          senderUsername={senderUsername}
-          receipientId={receipientId}
-        />
       </div>
     </>
   );

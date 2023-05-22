@@ -28,7 +28,7 @@ function Login({ setAuth }) {
       });
 
       const parseRes = await response.json();
-      console.log('Login file line 31 => ', parseRes);
+      console.log("Login file line 31 => ", parseRes);
       if (parseRes.jwtToken) {
         localStorage.setItem("token", parseRes.jwtToken);
 
