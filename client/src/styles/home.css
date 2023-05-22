@@ -1,54 +1,54 @@
 /* --- HOME PAGE ---- */
 
 .intro {
-    font-weight: 500;
-    padding: 0 15px;
-    line-height: 1.7rem;
-    font-size: 1.1rem;
-    margin: 0 auto;
-    color: rgb(100, 24, 24);
-    max-width: 600px;
-    padding: 40px;
+  font-weight: 500;
+  line-height: 1.7rem;
+  font-size: 1.1rem;
+  margin: 20px auto;
+  color: rgb(100, 24, 24);
+  max-width: 600px;
+  padding: 10px 30px;
 }
 
+ h1 {
+  max-width: 80%;
+ }
 .landing-img {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .landing-flex {
-    position: relative;
+  position: relative;
+  margin: auto;
 }
 
 .login-register-buttons {
-    position: absolute;
-    margin: 0;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .flex-reverse {
-    margin: 40px auto;
-    display: flex;
-    flex-direction: column;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 720px) {
+  .flex-reverse {
+    flex-direction: row-reverse;
+  }
 
-    .flex-reverse {
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-        justify-content: center;
-    }
+  h1 {
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+  }
 
-    h1 {
-        font-size: 1.85rem;
-        line-height: 3rem;
-    }
-
-    .intro {
-        max-width: 50%;
-        padding: 0 40px;
-    }
+  .intro {
+    max-width: 50%;
+  }
 }

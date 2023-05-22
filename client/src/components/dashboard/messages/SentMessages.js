@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-function SentMessages() {
+import EmptyList from "../EmptyList";
+
+function SentMessages({ setShowSentMessages }) {
   const [allMessages, setAllMessages] = useState([]);
   const getMessages = async () => {
     try {
@@ -23,13 +25,33 @@ function SentMessages() {
 
   return (
     <>
-      {allMessages.map((message) => {
-        return (
-          <div>
-            <MessageText message={message} />
+      <div className="list-files">
+        <div className="modalContainer">
+          <div className="titleCloseBtn">
+            <div
+              onClick={() => {
+                setShowSentMessages(false);
+              }}
+            >
+              X
+            </div>
+            {allMessages.length !== 0 && allMessages[0].message_id !== null ? (
+              allMessages.map((message) => {
+                return (
+                  <div>
+                    <MessageText
+                      message={message}
+                      setShowSentMessages={setShowSentMessages}
+                    />
+                  </div>
+                );
+              })
+            ) : (
+              <EmptyList />
+            )}
           </div>
-        );
-      })}
+        </div>
+      </div>
     </>
   );
 }
@@ -42,13 +64,14 @@ function MessageText({ message }) {
 
   return (
     <>
+      <hr />
       <div className="flex">
         <div className="flex">
-          <div>{message.message_title}</div>
+          <div> {message.message_title}</div>
         </div>
         <button onClick={handleOpenButton}>open</button>
       </div>
-      <hr />
+
       {openButton && <div>{message.message_text}</div>}
     </>
   );

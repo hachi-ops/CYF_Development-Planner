@@ -3,13 +3,7 @@ import EditDraft from "./EditDraft";
 
 import MentorsDropdown from "./MentorsDropdown";
 
-function Element({
-  draft,
-  deleteDraft,
-  setDraftsChange,
-  senderUsername,
-  allDrafts,
-}) {
+function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
   // console.log(allDrafts);
   // console.log(draft);
   // console.log(senderUsername);
@@ -28,6 +22,11 @@ function Element({
     setOpenText(!openText);
   };
 
+  // const [cancelBtn, setCancelBtn] = useState("cancel");
+  // const cancel = () => {
+  //   setCancelBtn();
+  // };
+
   return (
     <>
       <div>
@@ -44,37 +43,48 @@ function Element({
               <div>Title</div>
               <div onClick={handleOpenText}>{draft.draft_title}</div>
             </div>
-
+            {/* <button onClick={cancel}>{cancelBtn}</button> */}
             <button onClick={handleOpenText}>open</button>
           </div>
-        </div>
-        {openText && (
-          <>
-            <div className="details">
-              <div className="buttons">
-                {" "}
-                <div className="buttons">
-                  <button onClick={handleEdit}>edit</button>
-                  <button onClick={() => deleteDraft(draft.draft_id)}>
-                    Delete
-                  </button>
-                  <button onClick={handleToggleSendToMentor}>send</button>
-                </div>
-              </div>
-
-              <div>
+          {openText && (
+            <>
+              <div className="details">
+                <NavigationButtons
+                  handleEdit={handleEdit}
+                  deleteDraft={deleteDraft}
+                  draft={draft}
+                  handleToggleSendToMentor={handleToggleSendToMentor}
+                />
                 <div>
-                  {" "}
-                  <h2 className="icon-heading">Text</h2>
-                  <br /> {draft.draft_text}
+                  <div>
+                    <br /> {draft.draft_text}
+                  </div>
                 </div>
               </div>
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </div>
       </div>
     </>
   );
 }
 
+function NavigationButtons({
+  handleEdit,
+  deleteDraft,
+  draft,
+  handleToggleSendToMentor,
+}) {
+  return (
+    <>
+      <div className="buttons">
+        <div className="buttons">
+          <button onClick={handleEdit}>edit</button>
+          <button onClick={() => deleteDraft(draft.draft_id)}>Delete</button>
+          <button onClick={handleToggleSendToMentor}>send</button>
+        </div>
+      </div>
+    </>
+  );
+}
 export default Element;

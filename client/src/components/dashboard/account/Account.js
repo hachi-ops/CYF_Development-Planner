@@ -7,7 +7,7 @@ function Account({ user, handleUpdate }) {
     <>
       <div className="details">
         <h2>your profile</h2>
-        <div className="details">
+        <div className="">
           <h3>
             <span>Name: </span>
             {user.user_fname} {user.user_lname}{" "}
@@ -26,8 +26,9 @@ function Account({ user, handleUpdate }) {
           </h3>
         </div>
       </div>
+
       <UpdatePword user={user} handleUpdate={handleUpdate} />
-      <UpdateEmail user={user} handleUpdate={handleUpdate}/>
+      <UpdateEmail user={user} handleUpdate={handleUpdate} />
     </>
   );
 }

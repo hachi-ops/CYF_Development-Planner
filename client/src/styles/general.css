@@ -5,11 +5,13 @@
     padding: 0;
     box-sizing: border-box;
     /* outline: 1px solid red; */
+
 }
 
-body { 
+body {
     background-color: rgb(252, 249, 249);
     font-family: "Montserrat";
+
 }
 
 img {
@@ -25,11 +27,6 @@ a {
 
 .active {
     font-weight: bold;
-}
-
-.wrapper {
-    width: 90%;
-    margin: 70px auto;
 }
 
 h1 {
@@ -66,20 +63,19 @@ fieldset {
     cursor: pointer;
     padding: 20px;
     width: 100px;
+   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-
-
 
 .flex {
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 90%;
-    max-width: 500px;
+    max-width: 700px;
     justify-content: space-between;
     align-items: center;
     margin: auto;
- 
+
 }
 
 .details {
@@ -88,12 +84,15 @@ fieldset {
     margin-bottom: 30px;
     text-align: left;
     margin: 0 auto;
-    max-width: 500px;
+    width: 90%;
+    height: 100vh;
     padding: 20px;
     margin: 40px auto;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 10px;
     color: #7a2929;
+    height: auto;
+    max-width: 500px;
 }
 
 .details h2 {
@@ -105,20 +104,16 @@ fieldset {
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
-
 }
 
 hr {
-    max-width: 800px;
+    max-width: 80%;
     margin: 20px auto;
-}
-
-hr {
     border: 1px solid #e19292;
 }
 
 .dashboard-icon {
-    width: 50px;    
+    width: 50px;
 }
 
 .dashboard-icon:hover {
@@ -126,16 +121,62 @@ hr {
 }
 
 .icon-heading h2 {
-    margin-bottom: 1rem;
-padding-bottom: 3px;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
 }
 
 .register-confirmation {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    height: 100vh; 
+    height: 100vh;
     justify-content: center;
     align-items: center;
     width: 100vw;
+}
+
+.empty-list {
+    display: flex;
+    flex-direction: column;
+    color: #7a2929;
+    font-size: 1.3rem;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    gap: 30px;
+    font-weight: 600;
+    letter-spacing: 0.08rem;
+
+}
+
+.empty-list img {
+    width: 150px;
+}
+
+
+
+@media only screen and (min-width: 400px) {
+
+    .dashboard-icon {
+        width: 60px;
+    }
+
+    .flex {
+        flex-direction: row;
+        max-width: 700px;
+    }
+
+
+
+   
+}
+
+
+.title {
+    max-width: 50%;
+}
+
+.text {
+    max-width: 80%;
 }

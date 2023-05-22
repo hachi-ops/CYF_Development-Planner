@@ -1,7 +1,7 @@
 import { render, screen, cleanup } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom";
-import ListFiles from "../../components/dashboard/drafts/ListFiles";
+import ListFiles from "../../components/dashboard/files/ListFiles";
 
 afterEach(() => {
   cleanup();
