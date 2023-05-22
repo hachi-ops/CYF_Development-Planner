@@ -56,15 +56,7 @@ function Text({ draft, setShowSent = { setShowSent } }) {
   };
   return (
     <>
-      <div className="list-files">
-        <div
-          className="titleCloseBtn"
-          onClick={() => {
-            setShowText(false);
-          }}
-        >
-          X
-        </div>
+      <div>
         <hr />
         <div className="flex">
           <div className="flex">
