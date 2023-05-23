@@ -164,7 +164,8 @@ hr {
 
     .flex {
         flex-direction: row;
-        max-width: 700px;
+        max-width: 500px;
+      
     }   
 }
 
@@ -241,4 +242,41 @@ hr {
     background-color: rgb(255, 255, 255);
     position: absolute;
     top: 60px;
+}
+
+.select-dropdown{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 60px;
+}
+
+.element-heading {
+ 
+    /* outline: 1px solid red; */
+/* padding: 0 10px; */
+
+/* border-style: dashed;
+border-color: #e19292; */
+font-weight: 500;
+font-size: 1.1rem;
+}
+
+
+.element-text {
+       margin: auto;
+}
+
+.show-element {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 0;
+    margin: auto;
+}
+
+.element-wrapper{
+    position: relative;
 }

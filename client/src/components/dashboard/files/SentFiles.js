@@ -52,24 +52,19 @@ function Text({ draft, setShowSent = { setShowSent } }) {
   const [showText, setShowText] = useState(false);
 
   const handleShowText = () => {
-    setShowText(true);
+    setShowText(!showText);
   };
   return (
     <>
-      <div>
+      <div className="element-wrapper">
         <hr />
-        <div className="flex">
+        <div className="flex element-heading">
           <div className="flex">
-            <div>Title</div>
             <div>{draft.message_title}</div>
           </div>
           <button onClick={handleShowText}>open</button>
         </div>
-        {showText && (
-          <div>
-            <br /> {draft.message_text}
-          </div>
-        )}
+        {showText && <div className="element-text">{draft.message_text}</div>}
       </div>
     </>
   );

@@ -83,9 +83,6 @@ function SendNewMessage({ senderUsername }) {
     <>
       <form className="add-form">
         <div className="buttons">
-          <button type="button" onClick={() => sendMessage(false)}>
-            send
-          </button>
           <button type="button" onClick={handleShowDropdown}>
             send
           </button>
@@ -94,6 +91,7 @@ function SendNewMessage({ senderUsername }) {
               onMentorDropdownMenuChange={onMentorDropdownMenuChange}
               list={list}
               setShowDropdown={setShowDropdown}
+              sendMessage={sendMessage}
             />
           )}
           <button
@@ -129,15 +127,6 @@ function SavedDraftConfirmation({ setOpenSaveDraftModal }) {
       <div className="save-confirmation-modal">
         <div className="modalBackground">
           <div className="modalContainer">
-            {/* <div
-              className="x-button"
-              onClick={() => {
-                setOpenSaveDraftModal(false);
-              }}
-            >
-              X
-            </div> */}
-
             <p>file saved</p>
 
             <button
@@ -154,10 +143,17 @@ function SavedDraftConfirmation({ setOpenSaveDraftModal }) {
     </>
   );
 }
-function SelectMentor({ onMentorDropdownMenuChange, list }) {
+
+// messages folder
+function SelectMentor({ onMentorDropdownMenuChange, list, sendMessage }) {
   return (
     <>
-      <div className="select-dropdown">
+      <SentConfirmation />
+      {/* <div className="select-dropdown">
+        <button type="button" onClick={() => sendMessage(false)}>
+          send
+        </button>
+
         <select onChange={onMentorDropdownMenuChange}>
           <option>--select mentor--</option>
           {list.map((mentor) => (
@@ -166,9 +162,13 @@ function SelectMentor({ onMentorDropdownMenuChange, list }) {
             </option>
           ))}
         </select>
-      </div>
+      </div> */}
     </>
   );
+}
+
+function SentConfirmation() {
+  return <div>file sent</div>;
 }
 
 export default SendNewMessage;
