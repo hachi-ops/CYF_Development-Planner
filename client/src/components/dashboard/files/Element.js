@@ -19,7 +19,7 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
   };
 
   const handleOpenText = () => {
-    setOpenText(!openText);
+    setOpenText(true);
   };
 
   // const [cancelBtn, setCancelBtn] = useState("cancel");
@@ -38,28 +38,26 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
         )}
 
         <div>
-          <div className="flex">
-            <div className="flex">
-              <div>Title</div>
-              <div onClick={handleOpenText}>{draft.draft_title}</div>
+          <div className="flex ">
+            <div className="flex element-heading">
+              <div onClick={handleOpenText}>
+                <p>{draft.draft_title}</p>
+              </div>
             </div>
             {/* <button onClick={cancel}>{cancelBtn}</button> */}
             <button onClick={handleOpenText}>open</button>
           </div>
           {openText && (
             <>
-              <div className="details">
+              <div className="details show-element">
                 <NavigationButtons
                   handleEdit={handleEdit}
                   deleteDraft={deleteDraft}
                   draft={draft}
                   handleToggleSendToMentor={handleToggleSendToMentor}
+                  setOpenText={setOpenText}
                 />
-                <div>
-                  <div>
-                    <br /> {draft.draft_text}
-                  </div>
-                </div>
+                <div>{draft.draft_text}</div>
               </div>
             </>
           )}
@@ -74,10 +72,21 @@ function NavigationButtons({
   deleteDraft,
   draft,
   handleToggleSendToMentor,
+  handleCloseElement,
+  setOpenText,
 }) {
   return (
     <>
       <div className="buttons">
+        <div className="titleCloseBtn">
+          <div
+            onClick={() => {
+              setOpenText(false);
+            }}
+          >
+            X
+          </div>
+        </div>
         <div className="buttons">
           <button onClick={handleEdit}>edit</button>
           <button onClick={() => deleteDraft(draft.draft_id)}>Delete</button>

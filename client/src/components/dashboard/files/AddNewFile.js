@@ -1,13 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import SendNewMessage from "../messages/SendNewMessage";
 
 function AddNewFile({ senderUsername, setShowAddNew }) {
-  const [receipientId, setReceipientId] = useState("");
-
-  // const onMentorDropdownMenuChange = (e) => {
-  //   setReceipientId(e.target.value);
-  // };
-
   return (
     <>
       <div className="list-files">
@@ -22,7 +16,7 @@ function AddNewFile({ senderUsername, setShowAddNew }) {
 
         <SendNewMessage
           senderUsername={senderUsername}
-          receipientId={receipientId}
+          // receipientId={receipientId}
         />
       </div>
     </>

@@ -49,6 +49,11 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
     setDrafts(allDrafts);
   }, [allDrafts]);
 
+  const [closeElement, setCloseElement] = useState(false);
+
+  const handleCloseElement = () => {
+    setCloseElement(true);
+  };
   return (
     <>
       <div className="list-files">
@@ -69,7 +74,6 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
               return (
                 <>
                   <hr />
-                  <br />
                   <Element
                     draft={draft}
                     deleteDraft={deleteDraft}
