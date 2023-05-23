@@ -177,15 +177,18 @@ function SentConfirmation({ setShowSentConfirmation }) {
   return (
     <>
       {" "}
-      <button
-        onClick={() => {
-          setShowSentConfirmation(false);
-        }}
-        id="cancelBtn"
-      >
-        OK
-      </button>
-      <div className="show-element">file sent</div>
+      <div className="show-element">
+        {" "}
+        <button
+          onClick={() => {
+            setShowSentConfirmation(false);
+          }}
+          id="cancelBtn"
+        >
+          OK
+        </button>
+        <div>file sent</div>
+      </div>
     </>
   );
 }
