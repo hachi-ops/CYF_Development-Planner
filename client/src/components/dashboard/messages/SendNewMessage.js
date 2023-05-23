@@ -143,13 +143,17 @@ function SavedDraftConfirmation({ setOpenSaveDraftModal }) {
     </>
   );
 }
+
+// messages folder
 function SelectMentor({ onMentorDropdownMenuChange, list, sendMessage }) {
   return (
     <>
-      <div className="select-dropdown">
+      <SentConfirmation />
+      {/* <div className="select-dropdown">
         <button type="button" onClick={() => sendMessage(false)}>
-          OK
+          send
         </button>
+
         <select onChange={onMentorDropdownMenuChange}>
           <option>--select mentor--</option>
           {list.map((mentor) => (
@@ -158,9 +162,13 @@ function SelectMentor({ onMentorDropdownMenuChange, list, sendMessage }) {
             </option>
           ))}
         </select>
-      </div>
+      </div> */}
     </>
   );
+}
+
+function SentConfirmation() {
+  return <div>file sent</div>;
 }
 
 export default SendNewMessage;

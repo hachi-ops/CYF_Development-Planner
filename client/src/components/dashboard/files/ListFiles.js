@@ -54,6 +54,7 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
   const handleCloseElement = () => {
     setCloseElement(true);
   };
+
   return (
     <>
       <div className="list-files">

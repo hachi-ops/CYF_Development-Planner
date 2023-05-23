@@ -69,7 +69,7 @@ function MentorsDropdown({ senderUsername, draft }) {
   };
 
   console.log(receipientId);
-
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const [confirmation, setConfirmation] = useState("");
   const onClickButton = () => {
     setMessageTitle(msgTitle);
@@ -81,7 +81,22 @@ function MentorsDropdown({ senderUsername, draft }) {
       <form onSubmit={onSubmit} className="form">
         {/* <div>{messageTitle}</div>
         <div>{messageText}</div> */}
-        <div>{confirmation}</div>
+        {showConfirmation && (
+          <div className="show-element">
+            {" "}
+            <div className="titleCloseBtn">
+              <div
+                onClick={() => {
+                  setShowConfirmation(false);
+                }}
+              >
+                X
+              </div>
+            </div>
+            {confirmation}
+            <button onClick={() => setShowConfirmation(false)}>cancel</button>
+          </div>
+        )}
         <select onChange={onMentorDropdownMenuChange}>
           <option>--select mentor--</option>
           {list.map((mentor) => (
@@ -90,7 +105,7 @@ function MentorsDropdown({ senderUsername, draft }) {
             </option>
           ))}
         </select>
-        <button onClick={onClickButton}>send it</button>
+        <button onClick={onClickButton}>send</button>
       </form>
     </>
   );
