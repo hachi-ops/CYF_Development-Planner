@@ -26,30 +26,28 @@ function SentMessages({ setShowSentMessages }) {
   return (
     <>
       <div className="list-files">
-        <div className="modalContainer">
-          <div className="titleCloseBtn">
-            <div
-              onClick={() => {
-                setShowSentMessages(false);
-              }}
-            >
-              X
-            </div>
-            {allMessages.length !== 0 && allMessages[0].message_id !== null ? (
-              allMessages.map((message) => {
-                return (
-                  <div>
-                    <MessageText
-                      message={message}
-                      setShowSentMessages={setShowSentMessages}
-                    />
-                  </div>
-                );
-              })
-            ) : (
-              <EmptyList />
-            )}
+        <div className="titleCloseBtn">
+          <div
+            onClick={() => {
+              setShowSentMessages(false);
+            }}
+          >
+            X
           </div>
+          {allMessages.length !== 0 && allMessages[0].message_id !== null ? (
+            allMessages.map((message) => {
+              return (
+                <div>
+                  <MessageText
+                    message={message}
+                    setShowSentMessages={setShowSentMessages}
+                  />
+                </div>
+              );
+            })
+          ) : (
+            <EmptyList />
+          )}
         </div>
       </div>
     </>

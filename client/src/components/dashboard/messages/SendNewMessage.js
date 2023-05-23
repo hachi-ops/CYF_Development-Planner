@@ -1,12 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-function SendNewMessage({ senderUsername, receipientId }) {
+function SendNewMessage({ senderUsername }) {
   const [messageTitle, setMessageTitle] = useState("");
   const [messageText, setMessageText] = useState("");
 
-  console.log(senderUsername);
-  console.log(receipientId);
+  // console.log(senderUsername);
+  // console.log(receipientId);
 
+  const [openSaveDraftModal, setOpenSaveDraftModal] = useState(false);
+  const handleOpenSaveModal = () => {
+    setOpenSaveDraftModal(true);
+  };
+
+  const [list, setList] = useState([]);
+
+  const getMentors = async () => {
+    try {
+      const res = await fetch("/dashboard/mentors", {
+        method: "GET",
+        headers: { jwt_token: localStorage.token },
+      });
+
+      const parseData = await res.json();
+      console.log(parseData);
+
+      setList(parseData);
+
+      console.log(parseData.user_id);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  useEffect(() => {
+    getMentors();
+  }, []);
+
+  const [receipientId, setReceipientId] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
+  const onMentorDropdownMenuChange = (e) => {
+    setReceipientId(e.target.value);
+  };
   async function sendMessage(isDraft) {
     try {
       const myHeaders = new Headers();
@@ -42,20 +76,34 @@ function SendNewMessage({ senderUsername, receipientId }) {
     }
   }
 
+  const handleShowDropdown = () => {
+    setShowDropdown(true);
+  };
   return (
     <>
-      <form className="form">
+      <form className="add-form">
         <div className="buttons">
-          {" "}
           <button type="button" onClick={() => sendMessage(false)}>
             send
           </button>
-          <button type="button" onClick={() => sendMessage(true)}>
+          <button type="button" onClick={handleShowDropdown}>
+            send
+          </button>
+          {showDropdown && (
+            <SelectMentor
+              onMentorDropdownMenuChange={onMentorDropdownMenuChange}
+              list={list}
+              setShowDropdown={setShowDropdown}
+            />
+          )}
+          <button
+            type="button"
+            onClick={() => handleOpenSaveModal(sendMessage(true))}
+          >
             save
           </button>
         </div>
 
-        {/* <section>{`message to: ${receipientId}`}</section> */}
         <input
           type="text"
           placeholder="add title"
@@ -68,6 +116,57 @@ function SendNewMessage({ senderUsername, receipientId }) {
           onChange={(e) => setMessageText(e.target.value)}
         />
       </form>
+      {openSaveDraftModal && (
+        <SavedDraftConfirmation setOpenSaveDraftModal={setOpenSaveDraftModal} />
+      )}
+    </>
+  );
+}
+
+function SavedDraftConfirmation({ setOpenSaveDraftModal }) {
+  return (
+    <>
+      <div className="save-confirmation-modal">
+        <div className="modalBackground">
+          <div className="modalContainer">
+            {/* <div
+              className="x-button"
+              onClick={() => {
+                setOpenSaveDraftModal(false);
+              }}
+            >
+              X
+            </div> */}
+
+            <p>file saved</p>
+
+            <button
+              onClick={() => {
+                setOpenSaveDraftModal(false);
+              }}
+              id="cancelBtn"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+function SelectMentor({ onMentorDropdownMenuChange, list }) {
+  return (
+    <>
+      <div className="select-dropdown">
+        <select onChange={onMentorDropdownMenuChange}>
+          <option>--select mentor--</option>
+          {list.map((mentor) => (
+            <option value={mentor.user_id} key={mentor.mentor_id}>
+              {mentor.username}
+            </option>
+          ))}
+        </select>
+      </div>
     </>
   );
 }
