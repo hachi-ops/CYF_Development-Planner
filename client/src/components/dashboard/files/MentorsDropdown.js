@@ -61,7 +61,7 @@ function MentorsDropdown({ senderUsername, draft }) {
       // console.log(messageTitle);
       setMessageText(msgText);
       console.log(msgText);
-      setConfirmation("file sent");
+      // setConfirmation("file sent");
       // setDraftsChange(true);
     } catch (err) {
       console.error(err.message);

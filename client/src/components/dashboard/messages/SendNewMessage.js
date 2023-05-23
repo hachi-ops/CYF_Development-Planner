@@ -143,14 +143,20 @@ function SavedDraftConfirmation({ setOpenSaveDraftModal }) {
     </>
   );
 }
-
-// messages folder
 function SelectMentor({ onMentorDropdownMenuChange, list, sendMessage }) {
+  const [showSentConfirmation, setShowSentConfirmation] = useState(false);
+
+  const handleShowSentConfirmation = () => {
+    sendMessage(false);
+    setShowSentConfirmation(true);
+  };
   return (
     <>
-      <SentConfirmation />
-      {/* <div className="select-dropdown">
-        <button type="button" onClick={() => sendMessage(false)}>
+      {showSentConfirmation && (
+        <SentConfirmation setShowSentConfirmation={setShowSentConfirmation} />
+      )}
+      <div className="select-dropdown">
+        <button type="button" onClick={handleShowSentConfirmation}>
           send
         </button>
 
@@ -162,13 +168,26 @@ function SelectMentor({ onMentorDropdownMenuChange, list, sendMessage }) {
             </option>
           ))}
         </select>
-      </div> */}
+      </div>
     </>
   );
 }
 
-function SentConfirmation() {
-  return <div>file sent</div>;
+function SentConfirmation({ setShowSentConfirmation }) {
+  return (
+    <>
+      {" "}
+      <button
+        onClick={() => {
+          setShowSentConfirmation(false);
+        }}
+        id="cancelBtn"
+      >
+        OK
+      </button>
+      <div className="show-element">file sent</div>
+    </>
+  );
 }
 
 export default SendNewMessage;
