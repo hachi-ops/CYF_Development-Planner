@@ -52,7 +52,7 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
   return (
     <>
       <div className="list-files">
-        <div className="modalContainer">
+        <div className="">
           <div className="titleCloseBtn">
             <div
               onClick={() => {

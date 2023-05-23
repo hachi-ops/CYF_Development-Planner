@@ -27,32 +27,30 @@ function AllMessages({ name, setShowAllMessages }) {
   return (
     <>
       <div className="list-files">
-        <div className="modalContainer">
-          <div className="titleCloseBtn">
-            <div
-              onClick={() => {
-                setShowAllMessages(false);
-              }}
-            >
-              X
-            </div>
+        <div className="titleCloseBtn">
+          <div
+            onClick={() => {
+              setShowAllMessages(false);
+            }}
+          >
+            X
           </div>
-          {allMessages.length !== 0 && allMessages[0].messageid !== null ? (
-            allMessages.map((message) => {
-              return (
-                <>
-                  <Message
-                    message={message}
-                    name={name}
-                    setShowAllMessages={setShowAllMessages}
-                  />
-                </>
-              );
-            })
-          ) : (
-            <EmptyList />
-          )}
         </div>
+        {allMessages.length !== 0 && allMessages[0].messageid !== null ? (
+          allMessages.map((message) => {
+            return (
+              <>
+                <Message
+                  message={message}
+                  name={name}
+                  setShowAllMessages={setShowAllMessages}
+                />
+              </>
+            );
+          })
+        ) : (
+          <EmptyList />
+        )}
       </div>
     </>
   );

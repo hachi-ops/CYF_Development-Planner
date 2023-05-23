@@ -99,10 +99,15 @@ function DashboardNavigation({ user, handleUpdate }) {
             style={{ transform: accountControlButtons ? "scale(1.4)" : false }}
           />
         </div>
+        {accountControlButtons && (
+          <AccountControls
+            user={user}
+            handleUpdate={handleUpdate}
+            setAccountControlButtons={setAccountControlButtons}
+          />
+        )}
       </div>
-      {accountControlButtons && (
-        <AccountControls user={user} handleUpdate={handleUpdate} />
-      )}
+
       {/* <button onClick={(e) => handleClick3(e)}>{clickThis}</button> */}
     </>
   );

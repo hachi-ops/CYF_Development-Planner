@@ -34,11 +34,11 @@ function Dashboard({ setAuth }) {
 
   return (
     <>
-      <header className="flex-reverse">
+      <header className="header">
         <Logout setAuth={setAuth} />
         <h1>{user.username}'s Dashboard</h1>
+        <DashboardNavigation user={user} handleUpdate={handleUpdate} />
       </header>
-      <DashboardNavigation user={user} handleUpdate={handleUpdate} />
     </>
   );
 }
