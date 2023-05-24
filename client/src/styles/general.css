@@ -4,14 +4,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* outline: 1px solid red; */
-
+    outline: 1px solid red;
 }
 
 body {
     background-color: rgb(252, 249, 249);
     font-family: "Montserrat";
-
 }
 
 img {
@@ -34,8 +32,8 @@ h1 {
     margin: 3rem auto;
     text-align: center;
     font-size: 1.65rem;
-    line-height: 2.6rem;
     font-weight: 600;
+    line-height: 2.6rem;   
     letter-spacing: 0.07rem;
 }
 
@@ -75,7 +73,6 @@ fieldset {
     justify-content: space-between;
     align-items: center;
     margin: auto;
-
 }
 
 .details {
@@ -112,19 +109,11 @@ hr {
     border: 1px solid #e19292;
 }
 
-.dashboard-icon {
-    width: 50px;
-}
 
-.dashboard-icon:hover {
-    transition: transform .3s;
-}
 
-.icon-heading h2 {
-    margin-bottom: 0.6rem;
-    font-weight: 600;
-    letter-spacing: 0.05rem;
-}
+
+
+
 
 .register-confirmation {
     display: flex;
@@ -158,11 +147,7 @@ hr {
 
 @media only screen and (min-width: 400px) {
 
-    .dashboard-icon {
-        width: 60px;
-    }
-
-    .flex {
+       .flex {
         flex-direction: row;
         max-width: 500px;
       
@@ -184,9 +169,7 @@ hr {
     max-width: 1000px;
 }
 
-.header{
-    position: relative;
-}
+
 
 .save-confirmation-modal{
     width: 100vw;

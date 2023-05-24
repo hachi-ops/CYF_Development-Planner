@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+import SavedDraftConfirmation from "./SavedDraftConfirmation";
+import SelectMentor from "./SelectMentor";
 function SendNewMessage({ senderUsername }) {
   const [messageTitle, setMessageTitle] = useState("");
   const [messageText, setMessageText] = useState("");
@@ -117,78 +118,6 @@ function SendNewMessage({ senderUsername }) {
       {openSaveDraftModal && (
         <SavedDraftConfirmation setOpenSaveDraftModal={setOpenSaveDraftModal} />
       )}
-    </>
-  );
-}
-
-function SavedDraftConfirmation({ setOpenSaveDraftModal }) {
-  return (
-    <>
-      <div className="save-confirmation-modal">
-        <div className="modalBackground">
-          <div className="modalContainer">
-            <p>file saved</p>
-
-            <button
-              onClick={() => {
-                setOpenSaveDraftModal(false);
-              }}
-              id="cancelBtn"
-            >
-              OK
-            </button>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-}
-function SelectMentor({ onMentorDropdownMenuChange, list, sendMessage }) {
-  const [showSentConfirmation, setShowSentConfirmation] = useState(false);
-
-  const handleShowSentConfirmation = () => {
-    sendMessage(false);
-    setShowSentConfirmation(true);
-  };
-  return (
-    <>
-      {showSentConfirmation && (
-        <SentConfirmation setShowSentConfirmation={setShowSentConfirmation} />
-      )}
-      <div className="select-dropdown">
-        <button type="button" onClick={handleShowSentConfirmation}>
-          send
-        </button>
-
-        <select onChange={onMentorDropdownMenuChange}>
-          <option>--select mentor--</option>
-          {list.map((mentor) => (
-            <option value={mentor.user_id} key={mentor.mentor_id}>
-              {mentor.username}
-            </option>
-          ))}
-        </select>
-      </div>
-    </>
-  );
-}
-
-function SentConfirmation({ setShowSentConfirmation }) {
-  return (
-    <>
-      {" "}
-      <div className="show-element">
-        {" "}
-        <button
-          onClick={() => {
-            setShowSentConfirmation(false);
-          }}
-          id="cancelBtn"
-        >
-          OK
-        </button>
-        <div>file sent</div>
-      </div>
     </>
   );
 }

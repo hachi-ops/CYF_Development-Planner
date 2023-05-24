@@ -32,24 +32,30 @@ const EditDraft = ({ draft, setDraftsChange }) => {
   const [draftTitle, setDraftTitle] = useState(draft.draft_title);
   return (
     <>
-      <button type="button" onClick={() => editText(draft.draft_id)}>
-        save
-      </button>
-      <div
-        id={`id${draft.draft_id}`}
-        onClick={() => setDraftText(draft.draft_text)}
-      >
-        <input
-          type="text"
-          value={draftTitle}
-          onChange={(e) => setDraftTitle(e.target.value)}
-        />
+      <div className="show-element list-files">
+        <div className="buttons ">
+          <button>cancel</button>
+          <button type="button" onClick={() => editText(draft.draft_id)}>
+            save
+          </button>
+        </div>
 
-        <textarea
-          type="text"
-          value={draftText}
-          onChange={(e) => setDraftText(e.target.value)}
-        />
+        <div
+          id={`id${draft.draft_id}`}
+          onClick={() => setDraftText(draft.draft_text)}
+        >
+          <input
+            type="text"
+            value={draftTitle}
+            onChange={(e) => setDraftTitle(e.target.value)}
+          />
+
+          <textarea
+            type="text"
+            value={draftText}
+            onChange={(e) => setDraftText(e.target.value)}
+          />
+        </div>
       </div>
     </>
   );
