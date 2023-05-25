@@ -53,58 +53,62 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
             deleteDraft={deleteDraft}
           />
         )}
-        <div>
-          <NavigationButtons
-            handleShowEdit={handleShowEdit}
-            deleteDraft={deleteDraft}
-            draft={draft}
-            handleToggleSendToMentor={handleToggleSendToMentor}
-            setOpenText={setOpenText}
-            setShowDeletePrompt={setShowDeletePrompt}
-          />
-          <div className="flex ">
-            <div className="flex">
-              <div onClick={handleOpenText}>
-                <h2>Title</h2>
-                <p>{draft.draft_title}</p>
-              </div>
-            </div>
 
+        <div className="flex-list">
+          <div onClick={handleOpenText}>
+            <p className="">
+              <span>Title: </span>
+              {draft.draft_title}
+            </p>
+          </div>
+          <div className="element-buttons">
+            <NavigationButtons
+              handleShowEdit={handleShowEdit}
+              deleteDraft={deleteDraft}
+              draft={draft}
+              handleToggleSendToMentor={handleToggleSendToMentor}
+              setOpenText={setOpenText}
+              setShowDeletePrompt={setShowDeletePrompt}
+            />
             <button onClick={handleOpenText}>open</button>
           </div>
+        </div>
 
-          {openText && (
-            <>
-              <div className="show-element">
-                <div
-                  className="titleCloseBtn"
-                  onClick={() => {
-                    setOpenText(false);
-                  }}
-                >
-                  X
-                </div>
-                <NavigationButtons
-                  handleShowEdit={handleShowEdit}
-                  deleteDraft={deleteDraft}
-                  draft={draft}
-                  handleToggleSendToMentor={handleToggleSendToMentor}
-                  setOpenText={setOpenText}
-                  setShowDeletePrompt={setShowDeletePrompt}
-                  handleShowDeletePrompt={handleShowDeletePrompt}
-                />
+        {openText && (
+          <>
+            <div className="show-element">
+              <div
+                className="titleCloseBtn"
+                onClick={() => {
+                  setOpenText(false);
+                }}
+              >
+                X
+              </div>
+              <div className="element">
                 <div className="element-container">
-                  <h2 className="element-title">
-                    {`Title: ${draft.draft_title}`}{" "}
-                  </h2>
-                  <div className="element-text">
-                    <p>{draft.draft_text}</p>
+                  <div className="flex">
+                    {" "}
+                    <NavigationButtons
+                      handleShowEdit={handleShowEdit}
+                      deleteDraft={deleteDraft}
+                      draft={draft}
+                      handleToggleSendToMentor={handleToggleSendToMentor}
+                      setOpenText={setOpenText}
+                      setShowDeletePrompt={setShowDeletePrompt}
+                      handleShowDeletePrompt={handleShowDeletePrompt}
+                    />
+                    <h2 className="element-title">
+                      {`Title: ${draft.draft_title}`}{" "}
+                    </h2>
                   </div>
+
+                  <p className="element-text">{draft.draft_text}</p>
                 </div>
               </div>
-            </>
-          )}
-        </div>
+            </div>
+          </>
+        )}
       </div>
     </>
   );
