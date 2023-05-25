@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const EditDraft = ({ draft, setDraftsChange }) => {
+const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
   //editText function
 
   const editText = async (id) => {
@@ -32,9 +32,23 @@ const EditDraft = ({ draft, setDraftsChange }) => {
   const [draftTitle, setDraftTitle] = useState(draft.draft_title);
   return (
     <>
-      <div className="show-element list-files">
+      <div className="show-element">
+        <div
+          className="titleCloseBtn"
+          onClick={() => {
+            setShowEdit(false);
+          }}
+        >
+          X
+        </div>
         <div className="buttons ">
-          <button>cancel</button>
+          <button
+            onClick={() => {
+              setShowEdit(false);
+            }}
+          >
+            cancel
+          </button>
           <button type="button" onClick={() => editText(draft.draft_id)}>
             save
           </button>

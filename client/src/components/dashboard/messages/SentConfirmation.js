@@ -4,8 +4,8 @@ function SentConfirmation({ setShowSentConfirmation }) {
   return (
     <>
       <div className="show-element">
-        {" "}
         <button
+          className="titleCloseBtn"
           onClick={() => {
             setShowSentConfirmation(false);
           }}

@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
 }
 
 body {
@@ -109,12 +109,6 @@ hr {
     border: 1px solid #e19292;
 }
 
-
-
-
-
-
-
 .register-confirmation {
     display: flex;
     flex-direction: column;
@@ -150,7 +144,7 @@ hr {
        .flex {
         flex-direction: row;
         max-width: 500px;
-      
+
     }   
 }
 
@@ -169,15 +163,12 @@ hr {
     max-width: 1000px;
 }
 
-
-
 .save-confirmation-modal{
     width: 100vw;
     height: 100vh;
     background-color: rgb(255, 255, 255);
     position: absolute;
     top: 80px;
-
 }
 
 .modalContainer {
@@ -193,13 +184,6 @@ hr {
     justify-content: center;
     text-align: center;
   }
-  
-  /* .x-button {
- 
-    border: none;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    align-self: flex-end;
-  } */
   
   #cancelBtn {
     background-color:rgba(255, 0, 0, 0.125);
@@ -235,21 +219,6 @@ hr {
     top: 60px;
 }
 
-.element-heading {
- 
-    /* outline: 1px solid red; */
-/* padding: 0 10px; */
-
-/* border-style: dashed;
-border-color: #e19292; */
-font-weight: 500;
-font-size: 1.1rem;
-}
-
-
-.element-text {
-       margin: auto;
-}
 
 .show-element {
     width: 100vw;
@@ -262,4 +231,5 @@ font-size: 1.1rem;
 
 .element-wrapper{
     position: relative;
+
 }

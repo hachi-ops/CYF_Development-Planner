@@ -18,13 +18,12 @@ function Message({ message, name, setShowAllMessages }) {
   return (
     <>
       <hr />
+
       <div className="flex">
-        <div className="flex">
-          <h4>{message.sender_username}</h4>
-          <div>{message.message_title}</div>
-        </div>
-        <button onClick={handleMessageClicked}>open</button>
+        <h4>{message.sender_username}</h4>
+        <div>{message.message_title}</div>
       </div>
+      <button onClick={handleMessageClicked}>open</button>
 
       {messageClicked && (
         <div>

@@ -26,7 +26,7 @@ function SentFiles({ setShowSent }) {
 
   return (
     <>
-      <div className="list-files">
+      <div className="show-element">
         <div
           className="titleCloseBtn"
           onClick={() => {
@@ -58,12 +58,13 @@ function Text({ draft, setShowSent = { setShowSent } }) {
     <>
       <div className="element-wrapper">
         <hr />
-        <div className="flex element-heading">
-          <div className="flex">
-            <div>{draft.message_title}</div>
-          </div>
+        <div className="flex">
+          <div>{draft.message_title}</div>
+          <div className="flex"></div>
           <button onClick={handleShowText}>open</button>
+          <button>delete</button>
         </div>
+
         {showText && <div className="element-text">{draft.message_text}</div>}
       </div>
     </>

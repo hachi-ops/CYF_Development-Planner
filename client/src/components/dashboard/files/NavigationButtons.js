@@ -1,18 +1,16 @@
 import React from "react";
 
 function NavigationButtons({
-  handleEdit,
+  handleShowEdit,
   handleToggleSendToMentor,
   setShowDeletePrompt,
 }) {
   return (
     <>
       <div className="buttons">
-        <div className="buttons">
-          <button onClick={handleEdit}>edit</button>
-          <button onClick={() => setShowDeletePrompt(true)}>delete</button>
-          <button onClick={handleToggleSendToMentor}>send</button>
-        </div>
+        <button onClick={handleShowEdit}>edit</button>
+        <button onClick={() => setShowDeletePrompt(true)}>delete</button>
+        <button onClick={handleToggleSendToMentor}>send</button>
       </div>
     </>
   );

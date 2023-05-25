@@ -11,15 +11,15 @@ function DeletePrompt({ setShowDeletePrompt, draft, deleteDraft }) {
   return (
     <>
       <div className="show-element">
-        <div className="titleCloseBtn">
-          <div
-            onClick={() => {
-              setShowDeletePrompt(false);
-            }}
-          >
-            X
-          </div>
+        <div
+          className="titleCloseBtn"
+          onClick={() => {
+            setShowDeletePrompt(false);
+          }}
+        >
+          X
         </div>
+
         <p className="prompt">do you want to delete this file?</p>
         <div className="buttons">
           <button onClick={handleSetShowDeleteConfirmation}>yes</button>

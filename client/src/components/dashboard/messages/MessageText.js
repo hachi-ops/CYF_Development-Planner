@@ -9,12 +9,11 @@ function MessageText({ message }) {
   return (
     <>
       <hr />
+
       <div className="flex">
-        <div className="flex">
-          <div> {message.message_title}</div>
-        </div>
-        <button onClick={handleOpenButton}>open</button>
+        <div> {message.message_title}</div>
       </div>
+      <button onClick={handleOpenButton}>open</button>
 
       {openButton && <div>{message.message_text}</div>}
     </>

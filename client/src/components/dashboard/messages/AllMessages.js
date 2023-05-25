@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+// components
 import EmptyList from "../EmptyList";
 import Message from "./Message";
 
@@ -27,15 +28,14 @@ function AllMessages({ name, setShowAllMessages }) {
 
   return (
     <>
-      <div className="list-files">
-        <div className="titleCloseBtn">
-          <div
-            onClick={() => {
-              setShowAllMessages(false);
-            }}
-          >
-            X
-          </div>
+      <div className="show-element">
+        <div
+          className="titleCloseBtn"
+          onClick={() => {
+            setShowAllMessages(false);
+          }}
+        >
+          X
         </div>
         {allMessages.length !== 0 && allMessages[0].messageid !== null ? (
           allMessages.map((message) => {

@@ -49,29 +49,20 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
     setDrafts(allDrafts);
   }, [allDrafts]);
 
-  const [closeElement, setCloseElement] = useState(false);
-
-  const handleCloseElement = () => {
-    setCloseElement(true);
-  };
-
   return (
     <>
-      <div className="list-files">
-        <div className="">
-          <div className="titleCloseBtn">
-            <div
-              onClick={() => {
-                setShowDrafts(false);
-              }}
-            >
-              X
-            </div>
-          </div>
+      <div className="show-element">
+        <div
+          className="titleCloseBtn"
+          onClick={() => {
+            setShowDrafts(false);
+          }}
+        >
+          X
         </div>
         <div data-testid="list-files">
           {drafts.length !== 0 && drafts[0].draft_id !== null ? (
-            drafts.map((draft, index) => {
+            drafts.map((draft) => {
               return (
                 <>
                   <hr />

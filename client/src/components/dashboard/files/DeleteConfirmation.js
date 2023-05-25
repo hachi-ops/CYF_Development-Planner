@@ -7,16 +7,16 @@ function DeleteConfirmation({
   return (
     <>
       <div className="show-element">
-        <div className="titleCloseBtn">
-          <div
-            onClick={() => {
-              setShowDeleteConfirmation(false);
-              setShowDeletePrompt(false);
-            }}
-          >
-            X
-          </div>
+        <div
+          className="titleCloseBtn"
+          onClick={() => {
+            setShowDeleteConfirmation(false);
+            setShowDeletePrompt(false);
+          }}
+        >
+          X
         </div>
+
         <div>file deleted</div>
         <button
           onClick={() => {
