@@ -7,6 +7,7 @@ function DeleteConfirmation({
   return (
     <>
       <div className="show-element">
+        <h1>Draft Deleted</h1>
         <div
           className="titleCloseBtn"
           onClick={() => {

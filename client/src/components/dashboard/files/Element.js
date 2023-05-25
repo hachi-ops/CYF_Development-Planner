@@ -65,6 +65,7 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
           <div className="flex ">
             <div className="flex">
               <div onClick={handleOpenText}>
+                <h2>Title</h2>
                 <p>{draft.draft_title}</p>
               </div>
             </div>
@@ -74,7 +75,7 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
 
           {openText && (
             <>
-              <div className="details show-element">
+              <div className="show-element">
                 <div
                   className="titleCloseBtn"
                   onClick={() => {
@@ -83,7 +84,6 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
                 >
                   X
                 </div>
-
                 <NavigationButtons
                   handleShowEdit={handleShowEdit}
                   deleteDraft={deleteDraft}
@@ -93,7 +93,14 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
                   setShowDeletePrompt={setShowDeletePrompt}
                   handleShowDeletePrompt={handleShowDeletePrompt}
                 />
-                <div>{draft.draft_text}</div>
+                <div className="element-container">
+                  <h2 className="element-title">
+                    {`Title: ${draft.draft_title}`}{" "}
+                  </h2>
+                  <div className="element-text">
+                    <p>{draft.draft_text}</p>
+                  </div>
+                </div>
               </div>
             </>
           )}

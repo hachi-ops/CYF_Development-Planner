@@ -11,6 +11,7 @@ function DeletePrompt({ setShowDeletePrompt, draft, deleteDraft }) {
   return (
     <>
       <div className="show-element">
+        <h1>Delete Draft</h1>
         <div
           className="titleCloseBtn"
           onClick={() => {

@@ -35,7 +35,7 @@ function SentFiles({ setShowSent }) {
         >
           X
         </div>
-
+        <h1>Sent Files</h1>
         {allSentDrafts.length !== 0 && allSentDrafts[0].draft_id !== null ? (
           allSentDrafts.map((draft) => {
             return <Text draft={draft} setShowSent={setShowSent} />;
@@ -56,16 +56,36 @@ function Text({ draft, setShowSent = { setShowSent } }) {
   };
   return (
     <>
-      <div className="element-wrapper">
+      <div className="">
         <hr />
         <div className="flex">
-          <div>{draft.message_title}</div>
-          <div className="flex"></div>
-          <button onClick={handleShowText}>open</button>
-          <button>delete</button>
+          <div className="title">{draft.message_title}</div>
+          <div className="buttons">
+            <button onClick={handleShowText}>open</button>
+            <button>delete</button>
+          </div>
         </div>
 
-        {showText && <div className="element-text">{draft.message_text}</div>}
+        {showText && (
+          <div className="show-element">
+            <div
+              className="titleCloseBtn"
+              onClick={() => {
+                setShowSent(false);
+              }}
+            >
+              X
+            </div>
+            <button onClick={handleShowText}>cancel</button>
+
+            <div className="element-container">
+              <h2 className="element-title">{draft.message_title}</h2>
+              <div>
+                <p className="element-text">{draft.message_text}</p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

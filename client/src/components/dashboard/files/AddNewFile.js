@@ -13,7 +13,7 @@ function AddNewFile({ senderUsername, setShowAddNew }) {
         >
           X
         </div>
-
+        <h1>New Draft</h1>
         <SendNewMessage
           senderUsername={senderUsername}
           // receipientId={receipientId}
