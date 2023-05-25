@@ -47,9 +47,34 @@ function Register({ setAuth }) {
   return (
     <>
       <form onSubmit={onSubmitForm} className="form">
-
         <h1>Register</h1>
-        <label htmlFor="fname">First Name</label>
+
+        <fieldset>
+          <legend>Your CYF role:</legend>
+
+          <label htmlFor="student">
+            trainee{" "}
+            <input
+              id="student"
+              type="radio"
+              name="role"
+              value="student"
+              onChange={(e) => handleChange(e)}
+            />
+          </label>
+
+          <label htmlFor="mentor">
+            mentor{" "}
+            <input
+              id="mentor"
+              type="radio"
+              name="role"
+              value="mentor"
+              onChange={(e) => handleChange(e)}
+            ></input>
+          </label>
+        </fieldset>
+        <label htmlFor="fname">first name</label>
         <input
           id="fname"
           type="text"
@@ -98,31 +123,6 @@ function Register({ setAuth }) {
           required
         />
 
-        <fieldset>
-          <legend>Your CYF role:</legend>
-
-          <label htmlFor="student">
-            trainee{" "}
-            <input
-              id="student"
-              type="radio"
-              name="role"
-              value="student"
-              onChange={(e) => handleChange(e)}
-            />
-          </label>
-
-          <label htmlFor="mentor">
-            mentor{" "}
-            <input
-              id="mentor"
-              type="radio"
-              name="role"
-              value="mentor"
-              onChange={(e) => handleChange(e)}
-            ></input>
-          </label>
-        </fieldset>
         <div className="buttons">
           <button>submit</button>
         </div>

@@ -1,52 +1,55 @@
 import React, { useState } from "react";
 
 //images
-// import filesIcon from "../../../images/Documents-icon-48.png";
 import messagesIcon from "../../../images/Harwen-Pleasant-E-mail.128.png";
 import accountIcon from "../../../images/icons8-test-account-96.png";
+import filesIcon from "../../../images/Rokey-Eicodesign-Folder-with-file.128.png";
 
 //components
 import FilesControls from "./FilesControls";
 import MessagesControls from "./MessagesControls";
 import AccountControls from "./AccountControls";
 
-// import filesIcon from "../../../images/Rimshotdesign-Nod-Folder-Document-Alt.128.png";
-import filesIcon from "../../../images/Rokey-Eicodesign-Folder-with-file.128.png";
-
 function DashboardNavigation({ user, handleUpdate }) {
   const [filesControlButtons, setFilesControlButtons] = useState(false);
   const [messagesControlButtons, setMessagesControlButtons] = useState(false);
   const [accountControlButtons, setAccountControlButtons] = useState(false);
-  const [active, setActive] = useState(false);
+
   const handleToggleFiles = () => {
     setFilesControlButtons(!filesControlButtons);
-    setActive(!active);
     setMessagesControlButtons(false);
     setAccountControlButtons(false);
   };
 
   const handleToggleMessages = () => {
     setMessagesControlButtons(!messagesControlButtons);
-    setActive(!active);
     setFilesControlButtons(false);
     setAccountControlButtons(false);
   };
 
   const handleToggleAccount = () => {
     setAccountControlButtons(!accountControlButtons);
-    setActive(!active);
     setFilesControlButtons(false);
     setMessagesControlButtons(false);
   };
 
+  const [clickThis, setClickThis] = useState("close");
+
+  const handleClick3 = (e) => {
+    console.log(e.target.innerText);
+
+    const change = e.target.innerText === "close" ? "clickThis" : "close";
+    setClickThis(change);
+  };
+
   return (
     <>
-      <div className="dashboard-navigation" data-testid="dashboard-navigation">
-        <div className="icon-heading" onClick={handleToggleFiles}>
+      <div className="buttons flex" data-testid="dashboard-navigation">
+        <div className="icon-heading flex" onClick={handleToggleFiles}>
           <h2
             style={{
-              borderBottom: filesControlButtons ? "3px solid #b55151" : "none",
-              transform: filesControlButtons ? "scale(1.4)" : false,
+              borderBottom: filesControlButtons ? "2px solid #b55151" : "none",
+              transform: filesControlButtons ? "scale(1.2)" : false,
             }}
           >
             Files
@@ -55,17 +58,17 @@ function DashboardNavigation({ user, handleUpdate }) {
             src={filesIcon}
             alt="files icon"
             className="dashboard-icon"
-            style={{ transform: filesControlButtons ? "scale(1.9)" : false }}
+            style={{ transform: filesControlButtons ? "scale(1.4)" : false }}
           />
         </div>
-
-        <div className="icon-heading" onClick={handleToggleMessages}>
+        {filesControlButtons && <FilesControls name={user.username} />}
+        <div className="icon-heading flex" onClick={handleToggleMessages}>
           <h2
             style={{
               borderBottom: messagesControlButtons
-                ? "3px solid #b55151"
+                ? "2px solid #b55151"
                 : "none",
-              transform: messagesControlButtons ? "scale(1.4)" : false,
+              transform: messagesControlButtons ? "scale(1.2)" : false,
             }}
           >
             Messages
@@ -74,17 +77,17 @@ function DashboardNavigation({ user, handleUpdate }) {
             src={messagesIcon}
             alt="messages icon"
             className="dashboard-icon"
-            style={{ transform: messagesControlButtons ? "scale(1.9)" : false }}
+            style={{ transform: messagesControlButtons ? "scale(1.4)" : false }}
           />
         </div>
-
-        <div className="icon-heading" onClick={handleToggleAccount}>
+        {messagesControlButtons && <MessagesControls name={user.username} />}
+        <div className="icon-heading flex" onClick={handleToggleAccount}>
           <h2
             style={{
               borderBottom: accountControlButtons
-                ? "3px solid #b55151"
+                ? "2px solid #b55151"
                 : "none",
-              transform: accountControlButtons ? "scale(1.4)" : false,
+              transform: accountControlButtons ? "scale(1.2)" : false,
             }}
           >
             Account
@@ -93,18 +96,19 @@ function DashboardNavigation({ user, handleUpdate }) {
             src={accountIcon}
             alt="account icon"
             className="dashboard-icon"
-            style={{ transform: accountControlButtons ? "scale(1.9)" : false }}
+            style={{ transform: accountControlButtons ? "scale(1.4)" : false }}
           />
         </div>
+        {accountControlButtons && (
+          <AccountControls
+            user={user}
+            handleUpdate={handleUpdate}
+            setAccountControlButtons={setAccountControlButtons}
+          />
+        )}
       </div>
 
-      {filesControlButtons && <FilesControls name={user.username} />}
-
-      {messagesControlButtons && <MessagesControls name={user.username} />}
-
-      {accountControlButtons && (
-        <AccountControls user={user} handleUpdate={handleUpdate} />
-      )}
+      <button onClick={(e) => handleClick3(e)}>{clickThis}</button>
     </>
   );
 }

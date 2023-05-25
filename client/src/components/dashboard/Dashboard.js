@@ -34,11 +34,11 @@ function Dashboard({ setAuth }) {
 
   return (
     <>
-      <main>
+      <header className="header">
         <Logout setAuth={setAuth} />
         <h1>{user.username}'s Dashboard</h1>
         <DashboardNavigation user={user} handleUpdate={handleUpdate} />
-      </main>
+      </header>
     </>
   );
 }

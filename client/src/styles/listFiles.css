@@ -1,0 +1,12 @@
+
+
+.titleCloseBtn {
+    /* background-color: transparent; */
+   font-weight: 900;
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-align: right;
+    margin: 30px;
+    color: brown;
+}
+

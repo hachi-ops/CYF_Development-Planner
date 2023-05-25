@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import MessageText from "./MessageText";
+import EmptyList from "../EmptyList";
 
-function SentMessages() {
+function SentMessages({ setShowSentMessages }) {
   const [allMessages, setAllMessages] = useState([]);
   const getMessages = async () => {
     try {
@@ -23,34 +25,33 @@ function SentMessages() {
 
   return (
     <>
-      {allMessages.map((message) => {
-        return (
-          <div>
-            <MessageText message={message} />
-          </div>
-        );
-      })}
-    </>
-  );
-}
-
-function MessageText({ message }) {
-  const [openButton, setOpenButton] = useState(false);
-  const handleOpenButton = () => {
-    setOpenButton(!openButton);
-  };
-
-  return (
-    <>
-      <div className="flex">
-        <div className="flex">
-          <div>{message.message_title}</div>
+      <div className="show-element">
+        <div
+          className="titleCloseBtn"
+          onClick={() => {
+            setShowSentMessages(false);
+          }}
+        >
+          X
         </div>
-        <button onClick={handleOpenButton}>open</button>
+        <h1>Sent Messages</h1>
+        {allMessages.length !== 0 && allMessages[0].message_id !== null ? (
+          allMessages.map((message) => {
+            return (
+              <div>
+                <MessageText
+                  message={message}
+                  setShowSentMessages={setShowSentMessages}
+                />
+              </div>
+            );
+          })
+        ) : (
+          <EmptyList />
+        )}
       </div>
-      <hr />
-      {openButton && <div>{message.message_text}</div>}
     </>
   );
 }
+
 export default SentMessages;

@@ -1,12 +1,9 @@
 import React from "react";
 
-// styles
-import "../../styles/landing.css";
-
 // components
-import Intro from "./Intro";
-import Heading from "./Heading";
-import LoginSignInButtons from "./LoginSignInButtons";
+import Heading from "./home_components/Heading";
+import Intro from "./home_components/Intro";
+import LoginSignInButtons from "./home_components/LoginSignInButtons";
 
 // images
 import cat from "../../images/cat.jpg";
@@ -14,11 +11,10 @@ import cat from "../../images/cat.jpg";
 function Home() {
   return (
     <>
-      <div className="landing">
-        <Heading />
+      <Heading />
+      <div className="flex-reverse">
         <Intro />
         <div className="landing-flex">
-          {" "}
           <img
             alt="cat paw on a computer keyboard"
             src={cat}

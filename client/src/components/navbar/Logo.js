@@ -1,4 +1,6 @@
 import React from "react";
+
+// image
 import logo from "../../images/logo.png";
 
 function Logo() {

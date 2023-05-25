@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
-import SendNewMessage from "./SendNewMessage";
 
-function AllMessages({ name }) {
+// components
+import EmptyList from "../EmptyList";
+import Message from "./Message";
+
+function AllMessages({ name, setShowAllMessages }) {
   const [allMessages, setAllMessages] = useState([]);
 
   const getMessages = async () => {
@@ -25,55 +28,32 @@ function AllMessages({ name }) {
 
   return (
     <>
-      {allMessages.map((message) => {
-        return (
-          <>
-            <Message message={message} name={name} />
-          </>
-        );
-      })}
-    </>
-  );
-}
-
-function Message({ message, name }) {
-  const [messageClicked, setMessageClicked] = useState(false);
-  function handleMessageClicked() {
-    setMessageClicked(!messageClicked);
-  }
-
-  const [answerField, setAnswerField] = useState(false);
-  const [answerButtonText, setAnswerButtonText] = useState("answer");
-
-  const sendAnswer = () => {
-    // console.log("I was clicked");
-    setAnswerField(!answerField);
-    setAnswerButtonText((state) => (state === "answer" ? "cancel" : "answer"));
-  };
-  return (
-    <>
-      <hr />
-      <div className="flex">
-        <div className="flex">
-          {" "}
-          <h4>{message.sender_username}</h4>
-          <div>{message.message_title}</div>
+      <div className="show-element">
+        <div
+          className="titleCloseBtn"
+          onClick={() => {
+            setShowAllMessages(false);
+          }}
+        >
+          X
         </div>
-        <button onClick={handleMessageClicked}>open</button>
+        <h1>All Messages</h1>
+        {allMessages.length !== 0 && allMessages[0].messageid !== null ? (
+          allMessages.map((message) => {
+            return (
+              <>
+                <Message
+                  message={message}
+                  name={name}
+                  setShowAllMessages={setShowAllMessages}
+                />
+              </>
+            );
+          })
+        ) : (
+          <EmptyList />
+        )}
       </div>
-
-      {messageClicked && (
-        <div>
-          <button onClick={sendAnswer}>{answerButtonText}</button>
-          {message.message_text}
-          {answerField && (
-            <SendNewMessage
-              senderUsername={name}
-              receipientId={message.sender_id}
-            />
-          )}
-        </div>
-      )}
     </>
   );
 }

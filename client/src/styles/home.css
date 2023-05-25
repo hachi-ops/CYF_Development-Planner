@@ -1,0 +1,54 @@
+/* --- HOME PAGE ---- */
+
+.intro {
+  font-weight: 500;
+  line-height: 1.7rem;
+  font-size: 1.1rem;
+  margin: 20px auto;
+  color: rgb(100, 24, 24);
+  max-width: 600px;
+  padding: 10px 30px;
+}
+
+ h1 {
+  max-width: 80%;
+ }
+.landing-img {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.landing-flex {
+  position: relative;
+  margin: auto;
+}
+
+.login-register-buttons {
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.flex-reverse {
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 720px) {
+  .flex-reverse {
+    flex-direction: row-reverse;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+  }
+
+  .intro {
+    max-width: 50%;
+  }
+}

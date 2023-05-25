@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function MentorsDropdown({ senderUsername, draft }) {
+function MentorsDropdown({ senderUsername, draft, setToggleSendToMentor }) {
   // console.log(draft);
   // console.log(draft.draft_title);
   // console.log(draft.draft_text);
@@ -61,7 +61,7 @@ function MentorsDropdown({ senderUsername, draft }) {
       // console.log(messageTitle);
       setMessageText(msgText);
       console.log(msgText);
-      setConfirmation("file sent");
+      // setConfirmation("file sent");
       // setDraftsChange(true);
     } catch (err) {
       console.error(err.message);
@@ -69,7 +69,7 @@ function MentorsDropdown({ senderUsername, draft }) {
   };
 
   console.log(receipientId);
-
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const [confirmation, setConfirmation] = useState("");
   const onClickButton = () => {
     setMessageTitle(msgTitle);
@@ -78,20 +78,56 @@ function MentorsDropdown({ senderUsername, draft }) {
   };
   return (
     <>
-      <form onSubmit={onSubmit} className="form">
-        {/* <div>{messageTitle}</div>
+      <div className="show-element">
+        <h1>Send File</h1>
+        <div
+          className="titleCloseBtn"
+          onClick={() => {
+            setToggleSendToMentor(false);
+          }}
+        >
+          X
+        </div>
+        <form onSubmit={onSubmit} className="form">
+          {/* <div>{messageTitle}</div>
         <div>{messageText}</div> */}
-        <div>{confirmation}</div>
-        <select onChange={onMentorDropdownMenuChange}>
-          <option>--select mentor--</option>
-          {list.map((mentor) => (
-            <option value={mentor.user_id} key={mentor.mentor_id}>
-              {mentor.username}
-            </option>
-          ))}
-        </select>
-        <button onClick={onClickButton}>send it</button>
-      </form>
+          {showConfirmation && (
+            <div className="show-element">
+              <h1>Send File</h1>
+              <div className="titleCloseBtn">
+                <div
+                  onClick={() => {
+                    setShowConfirmation(false);
+                  }}
+                >
+                  X
+                </div>
+              </div>
+              {confirmation}
+            </div>
+          )}
+          <select onChange={onMentorDropdownMenuChange}>
+            <option>--select mentor--</option>
+            {list.map((mentor) => (
+              <option value={mentor.user_id} key={mentor.mentor_id}>
+                {mentor.username}
+              </option>
+            ))}
+          </select>
+          <div className="buttons">
+            {" "}
+            <button onClick={onClickButton}>send</button>
+            <button
+              onClick={() => {
+                setShowConfirmation(false);
+                setToggleSendToMentor(false);
+              }}
+            >
+              cancel
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }

@@ -2,23 +2,24 @@ import React, { useState } from "react";
 import Account from "../account/Account";
 
 function AccountControls({ user, handleUpdate }) {
-  const [showAccount, setShowAccount] = useState(false);
+  const [showAccountSettings, setShowAccountSettings] = useState(false);
 
-  const handleShowAccount = () => {
-    setShowAccount(!showAccount);
+  const handleSetShowAccountSettings = () => {
+    setShowAccountSettings(true);
   };
   return (
     <>
       <div className="buttons">
-        <button onClick={handleShowAccount}>settings</button>
+        <button onClick={handleSetShowAccountSettings}>settings</button>
       </div>
-      <div>
-        {showAccount ? (
-          <Account user={user} handleUpdate={handleUpdate} />
-        ) : (
-          false
-        )}
-      </div>
+
+      {showAccountSettings && (
+        <Account
+          user={user}
+          handleUpdate={handleUpdate}
+          setShowAccountSettings={setShowAccountSettings}
+        />
+      )}
     </>
   );
 }

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function RegisterConfirmation({ setAuth }) {
   return (
     <>
-      <section>
+      <section className="register-confirmation">
         <h2>You have succesfully signed up</h2>
         <h3>
           Go to your{" "}
