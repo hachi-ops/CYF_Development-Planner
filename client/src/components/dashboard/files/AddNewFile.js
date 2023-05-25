@@ -5,6 +5,7 @@ function AddNewFile({ senderUsername, setShowAddNew }) {
   return (
     <>
       <div className="show-element">
+        <h1>New Draft</h1>
         <div
           className="titleCloseBtn"
           onClick={() => {

@@ -26,6 +26,7 @@ function SentMessages({ setShowSentMessages }) {
   return (
     <>
       <div className="show-element">
+        <h1>Sent Messages</h1>
         <div
           className="titleCloseBtn"
           onClick={() => {

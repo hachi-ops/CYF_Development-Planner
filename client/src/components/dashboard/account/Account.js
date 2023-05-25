@@ -6,6 +6,7 @@ function Account({ user, handleUpdate, setShowAccountSettings }) {
   return (
     <>
       <div className="show-account">
+        <h1>Your Account</h1>
         <div className="titleCloseBtn">
           <div
             onClick={() => {

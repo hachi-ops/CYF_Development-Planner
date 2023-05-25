@@ -29,6 +29,7 @@ function AllMessages({ name, setShowAllMessages }) {
   return (
     <>
       <div className="show-element">
+        <h1>All Messages</h1>
         <div
           className="titleCloseBtn"
           onClick={() => {

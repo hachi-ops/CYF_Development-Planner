@@ -20,14 +20,35 @@ function Message({ message, name, setShowAllMessages }) {
       <hr />
 
       <div className="flex">
-        <h4>{message.sender_username}</h4>
-        <div>{message.message_title}</div>
+        <div className="flex">
+          {" "}
+          <h4>{message.sender_username}</h4>
+          <div>{message.message_title}</div>
+        </div>
+
+        <div className="flex">
+          {" "}
+          <button onClick={handleMessageClicked}>open</button>
+          <button>delete</button>
+        </div>
       </div>
-      <button onClick={handleMessageClicked}>open</button>
 
       {messageClicked && (
-        <div>
-          <button onClick={sendAnswer}>{answerButtonText}</button>
+        <div className="show-element">
+          <div
+            className="titleCloseBtn"
+            onClick={() => {
+              setMessageClicked(false);
+            }}
+          >
+            X
+          </div>
+
+          <div className="buttons">
+            <button onClick={() => setMessageClicked(false)}>cancel</button>
+            <button onClick={sendAnswer}>{answerButtonText}</button>
+          </div>
+
           {message.message_text}
           {answerField && (
             <SendNewMessage

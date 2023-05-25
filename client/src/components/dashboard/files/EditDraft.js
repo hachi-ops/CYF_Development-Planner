@@ -33,6 +33,7 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
   return (
     <>
       <div className="show-element">
+        <h1>Edit Draft</h1>
         <div
           className="titleCloseBtn"
           onClick={() => {

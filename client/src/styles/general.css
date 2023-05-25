@@ -143,14 +143,17 @@ hr {
 
        .flex {
         flex-direction: row;
-        max-width: 500px;
-
+        /* max-width: 500px; */
+        justify-content: space-between;
+outline: 1px solid red;
+align-items: center;
     }   
 }
 
 
 .title {
-    max-width: 50%;
+   width:300px;
+   outline: 1px solid blue;
 }
 
 .text {
@@ -225,11 +228,15 @@ hr {
     height: 100vh;
     background-color: rgb(255, 255, 255);
     position: absolute;
-    top: 0;
+    top: 0px;
     margin: auto;
 }
 
 .element-wrapper{
     position: relative;
+
+}
+
+.element-text{
 
 }
