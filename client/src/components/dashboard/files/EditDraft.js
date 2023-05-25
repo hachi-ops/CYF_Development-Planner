@@ -33,7 +33,6 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
   return (
     <>
       <div className="show-element">
-        <h1>Edit Draft</h1>
         <div
           className="titleCloseBtn"
           onClick={() => {
@@ -42,6 +41,7 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
         >
           X
         </div>
+        <h1>Edit Draft</h1>
         <div className="buttons ">
           <button
             onClick={() => {
@@ -56,16 +56,19 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
         </div>
 
         <div
+          className="element-container"
           id={`id${draft.draft_id}`}
           onClick={() => setDraftText(draft.draft_text)}
         >
           <input
+            className="element-title"
             type="text"
             value={draftTitle}
             onChange={(e) => setDraftTitle(e.target.value)}
           />
 
           <textarea
+            className="element-text"
             type="text"
             value={draftText}
             onChange={(e) => setDraftText(e.target.value)}

@@ -18,7 +18,8 @@ textarea {
     width: 100%;
     padding: 15px 20px;
     margin-bottom: 30px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
     border-radius: 6px;
     font-size: inherit;
     color: #4a2719;

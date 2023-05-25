@@ -26,7 +26,6 @@ function SentMessages({ setShowSentMessages }) {
   return (
     <>
       <div className="show-element">
-        <h1>Sent Messages</h1>
         <div
           className="titleCloseBtn"
           onClick={() => {
@@ -35,6 +34,7 @@ function SentMessages({ setShowSentMessages }) {
         >
           X
         </div>
+        <h1>Sent Messages</h1>
         {allMessages.length !== 0 && allMessages[0].message_id !== null ? (
           allMessages.map((message) => {
             return (

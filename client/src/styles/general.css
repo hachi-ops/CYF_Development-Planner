@@ -33,7 +33,7 @@ h1 {
     text-align: center;
     font-size: 1.65rem;
     font-weight: 600;
-    line-height: 2.6rem;   
+    line-height: 2.6rem;
     letter-spacing: 0.07rem;
 }
 
@@ -61,7 +61,7 @@ fieldset {
     cursor: pointer;
     padding: 20px;
     width: 100px;
-   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .flex {
@@ -104,7 +104,7 @@ fieldset {
 }
 
 hr {
-    max-width: 80%;
+    max-width: 90%;
     margin: 20px auto;
     border: 1px solid #e19292;
 }
@@ -141,19 +141,19 @@ hr {
 
 @media only screen and (min-width: 400px) {
 
-       .flex {
+    .flex {
         flex-direction: row;
         /* max-width: 500px; */
         justify-content: space-between;
-outline: 1px solid red;
-align-items: center;
-    }   
+       
+        align-items: center;
+    }
 }
 
 
 .title {
-   width:300px;
-   outline: 1px solid blue;
+    width: 300px;
+    outline: 1px solid blue;
 }
 
 .text {
@@ -166,7 +166,7 @@ align-items: center;
     max-width: 1000px;
 }
 
-.save-confirmation-modal{
+.save-confirmation-modal {
     width: 100vw;
     height: 100vh;
     background-color: rgb(255, 255, 255);
@@ -177,7 +177,7 @@ align-items: center;
 .modalContainer {
     width: 200px;
     height: 100px;
-    margin:auto;
+    margin: auto;
     border-radius: 12px;
     background-color: white;
     /* background-color: transparent; */
@@ -186,27 +186,28 @@ align-items: center;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-  }
-  
-  #cancelBtn {
-    background-color:rgba(255, 0, 0, 0.125);
+}
+
+#cancelBtn {
+    background-color: rgba(255, 0, 0, 0.125);
     color: rgba(255, 0, 0, 0.568);
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;  
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-    }
+}
 
 
-  button:hover, #logout-btn:hover {
+button:hover,
+#logout-btn:hover {
     background-color: rgb(239, 232, 232);
-    color:rgb(100, 24, 24);
+    color: rgb(100, 24, 24);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
-.show-account{
+.show-account {
     width: 100vw;
     height: 100vh;
     background-color: rgb(255, 255, 255);
@@ -214,7 +215,7 @@ align-items: center;
     top: 60px;
 }
 
-.select-dropdown{
+.select-dropdown {
     width: 100vw;
     height: 100vh;
     background-color: rgb(255, 255, 255);
@@ -232,11 +233,47 @@ align-items: center;
     margin: auto;
 }
 
-.element-wrapper{
+.element-wrapper {
     position: relative;
 
 }
 
-.element-text{
+.element-container {
+    margin-top: 40px;
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-size: 1.2rem;
+}
 
+.element-title {
+    padding: 20px;
+    border-radius: 4px;
+    color: #902323;
+    font-weight: 600;
+    font-size: 1.2rem;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    box-shadow: rgba(214, 3, 3, 0.3) 0px 0px 0px 3px;
+width: 90%;
+margin: 20px auto;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+
+.element-text {
+height: 500px;
+width: 90%;
+    margin: 0 auto;
+    border-style: none;
+    padding: 20px;
+    overflow-wrap: break-word;
+    overflow-y: scroll;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    box-shadow: rgba(214, 3, 3, 0.3) 0px 0px 0px 3px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    border-radius: 4px;
+    letter-spacing: 0.03rem;
+    line-height: 1.7rem;
+    font-size: 1.1rem;
 }

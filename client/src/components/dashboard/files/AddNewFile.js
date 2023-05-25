@@ -5,7 +5,6 @@ function AddNewFile({ senderUsername, setShowAddNew }) {
   return (
     <>
       <div className="show-element">
-        <h1>New Draft</h1>
         <div
           className="titleCloseBtn"
           onClick={() => {
@@ -14,7 +13,7 @@ function AddNewFile({ senderUsername, setShowAddNew }) {
         >
           X
         </div>
-
+        <h1>New Draft</h1>
         <SendNewMessage
           senderUsername={senderUsername}
           // receipientId={receipientId}

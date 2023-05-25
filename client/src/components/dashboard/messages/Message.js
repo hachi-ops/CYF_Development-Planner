@@ -48,8 +48,11 @@ function Message({ message, name, setShowAllMessages }) {
             <button onClick={() => setMessageClicked(false)}>cancel</button>
             <button onClick={sendAnswer}>{answerButtonText}</button>
           </div>
+          <div className="element-container">
+            <div className="element-title">{message.message_title}</div>
+            <div className="element-text">{message.message_text}</div>
+          </div>
 
-          {message.message_text}
           {answerField && (
             <SendNewMessage
               senderUsername={name}

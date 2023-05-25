@@ -52,7 +52,6 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
   return (
     <>
       <div className="show-element">
-        <h1>Drafts</h1>
         <div
           className="titleCloseBtn"
           onClick={() => {
@@ -61,6 +60,8 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
         >
           X
         </div>
+
+        <h1>Drafts</h1>
         <div data-testid="list-files">
           {drafts.length !== 0 && drafts[0].draft_id !== null ? (
             drafts.map((draft) => {
