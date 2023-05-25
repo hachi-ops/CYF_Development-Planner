@@ -4,7 +4,7 @@ import SendNewMessage from "../messages/SendNewMessage";
 function AddNewFile({ senderUsername, setShowAddNew }) {
   return (
     <>
-      <div className="list-files">
+      <div className="show-element">
         <div
           className="titleCloseBtn"
           onClick={() => {

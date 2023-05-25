@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+import SavedDraftConfirmation from "./SavedDraftConfirmation";
+import SelectMentor from "./SelectMentor";
 function SendNewMessage({ senderUsername }) {
   const [messageTitle, setMessageTitle] = useState("");
   const [messageText, setMessageText] = useState("");
@@ -119,56 +120,6 @@ function SendNewMessage({ senderUsername }) {
       )}
     </>
   );
-}
-
-function SavedDraftConfirmation({ setOpenSaveDraftModal }) {
-  return (
-    <>
-      <div className="save-confirmation-modal">
-        <div className="modalBackground">
-          <div className="modalContainer">
-            <p>file saved</p>
-
-            <button
-              onClick={() => {
-                setOpenSaveDraftModal(false);
-              }}
-              id="cancelBtn"
-            >
-              OK
-            </button>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-}
-
-// messages folder
-function SelectMentor({ onMentorDropdownMenuChange, list, sendMessage }) {
-  return (
-    <>
-      <SentConfirmation />
-      {/* <div className="select-dropdown">
-        <button type="button" onClick={() => sendMessage(false)}>
-          send
-        </button>
-
-        <select onChange={onMentorDropdownMenuChange}>
-          <option>--select mentor--</option>
-          {list.map((mentor) => (
-            <option value={mentor.user_id} key={mentor.mentor_id}>
-              {mentor.username}
-            </option>
-          ))}
-        </select>
-      </div> */}
-    </>
-  );
-}
-
-function SentConfirmation() {
-  return <div>file sent</div>;
 }
 
 export default SendNewMessage;

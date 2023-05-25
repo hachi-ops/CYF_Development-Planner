@@ -1,31 +1,26 @@
 import React, { useState } from "react";
-import EditDraft from "./EditDraft";
 
+// components
+import EditDraft from "./EditDraft";
 import MentorsDropdown from "./MentorsDropdown";
+import NavigationButtons from "./NavigationButtons";
+import DeletePrompt from "./DeletePrompt";
 
 function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
-  const [toggleEdit, setToggleEdit] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
   const [toggleSendToMentor, setToggleSendToMentor] = useState(false);
   const [openText, setOpenText] = useState(false);
-  const handleEdit = () => {
-    setToggleEdit(!toggleEdit);
+
+  const handleShowEdit = () => {
+    setShowEdit(true);
   };
 
   const handleToggleSendToMentor = () => {
-    setToggleSendToMentor(!toggleSendToMentor);
+    setToggleSendToMentor(true);
   };
 
   const handleOpenText = () => {
     setOpenText(true);
-  };
-
-  // const [cancelBtn, setCancelBtn] = useState("cancel");
-  // const cancel = () => {
-  //   setCancelBtn();
-  // };
-
-  const handleToggleEdit = () => {
-    setToggleEdit(true);
   };
 
   const [showDeletePrompt, setShowDeletePrompt] = useState(false);
@@ -33,14 +28,23 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
     console.log("file deleted");
     setShowDeletePrompt(!showDeletePrompt);
   };
+
   return (
     <>
       <div>
         {toggleSendToMentor && (
-          <MentorsDropdown senderUsername={senderUsername} draft={draft} />
+          <MentorsDropdown
+            senderUsername={senderUsername}
+            draft={draft}
+            setToggleSendToMentor={setToggleSendToMentor}
+          />
         )}
-        {toggleEdit && (
-          <EditDraft draft={draft} setDraftsChange={setDraftsChange} />
+        {showEdit && (
+          <EditDraft
+            draft={draft}
+            setDraftsChange={setDraftsChange}
+            setShowEdit={setShowEdit}
+          />
         )}
         {showDeletePrompt && (
           <DeletePrompt
@@ -51,7 +55,7 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
         )}
         <div>
           <NavigationButtons
-            handleEdit={handleEdit}
+            handleShowEdit={handleShowEdit}
             deleteDraft={deleteDraft}
             draft={draft}
             handleToggleSendToMentor={handleToggleSendToMentor}
@@ -59,29 +63,29 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
             setShowDeletePrompt={setShowDeletePrompt}
           />
           <div className="flex ">
-            <div className="flex element-heading">
+            <div className="flex">
               <div onClick={handleOpenText}>
                 <p>{draft.draft_title}</p>
               </div>
             </div>
-            {/* <button onClick={cancel}>{cancelBtn}</button> */}
+
             <button onClick={handleOpenText}>open</button>
           </div>
 
           {openText && (
             <>
               <div className="details show-element">
-                <div className="titleCloseBtn">
-                  <div
-                    onClick={() => {
-                      setOpenText(false);
-                    }}
-                  >
-                    X
-                  </div>
+                <div
+                  className="titleCloseBtn"
+                  onClick={() => {
+                    setOpenText(false);
+                  }}
+                >
+                  X
                 </div>
+
                 <NavigationButtons
-                  handleEdit={handleEdit}
+                  handleShowEdit={handleShowEdit}
                   deleteDraft={deleteDraft}
                   draft={draft}
                   handleToggleSendToMentor={handleToggleSendToMentor}
@@ -99,89 +103,4 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
   );
 }
 
-function DeletePrompt({ setShowDeletePrompt, draft, deleteDraft }) {
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-
-  const handleSetShowDeleteConfirmation = () => {
-    setShowDeleteConfirmation(true);
-    deleteDraft(draft.draft_id);
-  };
-  return (
-    <>
-      <div className="show-element">
-        <div className="titleCloseBtn">
-          <div
-            onClick={() => {
-              setShowDeletePrompt(false);
-            }}
-          >
-            X
-          </div>
-        </div>
-        <div>do you want to delete this file?</div>
-        <button onClick={() => setShowDeletePrompt(false)}>no</button>
-        {/* <button onClick={() => deleteDraft(draft.draft_id)}>Delete</button> */}
-        <button onClick={handleSetShowDeleteConfirmation}>yes</button>
-        {showDeleteConfirmation && (
-          <DeleteConfirmation
-            setShowDeleteConfirmation={setShowDeleteConfirmation}
-            setShowDeletePrompt={setShowDeletePrompt}
-          />
-        )}
-      </div>
-    </>
-  );
-}
-function NavigationButtons({
-  handleEdit,
-  deleteDraft,
-  draft,
-  handleToggleSendToMentor,
-  setShowDeletePrompt,
-  handleShowDeletePrompt,
-}) {
-  return (
-    <>
-      <div className="buttons">
-        <div className="buttons">
-          <button onClick={handleEdit}>edit</button>
-          <button onClick={() => setShowDeletePrompt(true)}>delete</button>
-
-          <button onClick={handleToggleSendToMentor}>send</button>
-        </div>
-      </div>
-    </>
-  );
-}
-
-function DeleteConfirmation({
-  setShowDeleteConfirmation,
-  setShowDeletePrompt,
-}) {
-  return (
-    <>
-      <div className="show-element">
-        <div className="titleCloseBtn">
-          <div
-            onClick={() => {
-              setShowDeleteConfirmation(false);
-              setShowDeletePrompt(false);
-            }}
-          >
-            X
-          </div>
-        </div>
-        <div>file deleted</div>
-        <button
-          onClick={() => {
-            setShowDeleteConfirmation(false);
-            setShowDeletePrompt(false);
-          }}
-        >
-          OK
-        </button>
-      </div>
-    </>
-  );
-}
 export default Element;
