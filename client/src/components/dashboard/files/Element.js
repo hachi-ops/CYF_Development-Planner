@@ -5,7 +5,7 @@ import EditDraft from "./EditDraft";
 import MentorsDropdown from "./MentorsDropdown";
 import NavigationButtons from "./NavigationButtons";
 import DeletePrompt from "./DeletePrompt";
-import XbuttonCloseDraft from "./XbuttonCloseDraft";
+
 import Draft from "./Draft";
 
 function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {

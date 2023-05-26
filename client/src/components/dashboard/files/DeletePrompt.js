@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DeleteConfirmation from "./DeleteConfirmation";
-import XbuttonCloseDeletePrompt from "./XbuttonCloseDeletePrompt";
+import XbuttonCloseDeletePrompt from "./xButtons/XbuttonCloseDeletePrompt";
 
 function DeletePrompt({ setShowDeletePrompt, draft, deleteDraft }) {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);

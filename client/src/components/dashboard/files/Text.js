@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SentElement from "./SentElement";
-import XbuttonSentDrafts from "./XbuttonSentDrafts";
+import XbuttonSentDrafts from "./xButtons/XbuttonSentDrafts";
 
 function Text({ draft, setShowSent, trashIcon }) {
   const [showText, setShowText] = useState(false);

@@ -1,5 +1,5 @@
 import React from "react";
-import XbuttonCloseDeleteConfirmation from "./XbuttonCloseDeleteConfirmation";
+import XbuttonCloseDeleteConfirmation from "./xButtons/XbuttonCloseDeleteConfirmation";
 
 function DeleteConfirmation({
   setShowDeleteConfirmation,

@@ -33,12 +33,12 @@ function DashboardNavigation({ user, handleUpdate }) {
     setMessagesControlButtons(false);
   };
 
-  const [clickThis, setClickThis] = useState("close");
+  const [clickThis, setClickThis] = useState("click this");
 
   const handleClick3 = (e) => {
     console.log(e.target.innerText);
 
-    const change = e.target.innerText === "close" ? "clickThis" : "close";
+    const change = e.target.innerText === "click this" ? "close" : "click this";
     setClickThis(change);
   };
 

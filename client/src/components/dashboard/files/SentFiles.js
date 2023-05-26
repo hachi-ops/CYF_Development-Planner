@@ -8,7 +8,7 @@ import editIcon3 from "../../../images/Graphicrating-Koloria-File-Edit.32.png";
 import Element from "./Element";
 import EmptyList from "../EmptyList";
 import Text from "./Text";
-import XbuttonSentDrafts from "./XbuttonSentDrafts";
+import XbuttonSentDrafts from "./xButtons/XbuttonSentDrafts";
 
 function SentFiles({ setShowSent }) {
   const [allSentDrafts, setAllSentDrafts] = useState([]);

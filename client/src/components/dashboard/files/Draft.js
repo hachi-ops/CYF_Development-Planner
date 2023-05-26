@@ -1,5 +1,5 @@
 import React from "react";
-import XbuttonCloseDraft from "./XbuttonCloseDraft";
+import XbuttonCloseDraft from "./xButtons/XbuttonCloseDraft";
 import NavigationButtons from "./NavigationButtons";
 
 function Draft({

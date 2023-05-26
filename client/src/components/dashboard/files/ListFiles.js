@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 // components
 import Element from "./Element";
 import EmptyList from "../EmptyList";
-import XbuttonDrafts from "./XbuttonDrafts";
+import XbuttonDrafts from "./xButtons/XbuttonDrafts";
+
 const ListFiles = ({ senderUsername, setShowDrafts }) => {
   console.log(senderUsername);
   const [allDrafts, setAllDrafts] = useState([]);
