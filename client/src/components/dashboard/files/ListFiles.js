@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 // components
 import Element from "./Element";
 import EmptyList from "../EmptyList";
+import XbuttonDrafts from "./xButtons/XbuttonDrafts";
 
 const ListFiles = ({ senderUsername, setShowDrafts }) => {
   console.log(senderUsername);
@@ -52,37 +53,28 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
   return (
     <>
       <div className="show-element">
-        <div
-          className="titleCloseBtn"
-          onClick={() => {
-            setShowDrafts(false);
-          }}
-        >
-          X
-        </div>
+        <XbuttonDrafts setShowDrafts={setShowDrafts} />
 
         <h1>Drafts</h1>
-        <div data-testid="list-files">
-          {drafts.length !== 0 && drafts[0].draft_id !== null ? (
-            drafts.map((draft) => {
-              return (
-                <>
-                  <hr />
 
-                  <Element
-                    draft={draft}
-                    deleteDraft={deleteDraft}
-                    allDrafts={allDrafts}
-                    setDraftsChange={setDraftsChange}
-                    senderUsername={senderUsername}
-                  />
-                </>
-              );
-            })
-          ) : (
-            <EmptyList />
-          )}
-        </div>
+        {drafts.length !== 0 && drafts[0].draft_id !== null ? (
+          drafts.map((draft) => {
+            return (
+              <>
+                <hr />
+                <Element
+                  draft={draft}
+                  deleteDraft={deleteDraft}
+                  allDrafts={allDrafts}
+                  setDraftsChange={setDraftsChange}
+                  senderUsername={senderUsername}
+                />
+              </>
+            );
+          })
+        ) : (
+          <EmptyList />
+        )}
       </div>
     </>
   );

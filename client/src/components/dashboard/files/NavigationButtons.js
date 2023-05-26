@@ -5,6 +5,7 @@ import editIcon2 from "../../../images/Saki-NuoveXT-Actions-pencil.64.png";
 import trashIcon from "../../../images/Graphicrating-Koloria-Trash-Delete.32.png";
 import sendIcon from "../../../images/icons8-send-64.png";
 import editIcon3 from "../../../images/Graphicrating-Koloria-File-Edit.32.png";
+import NavigationButtonsTrashIcon from "./NavigationButtonsTrashIcon";
 
 function NavigationButtons({
   handleShowEdit,
@@ -13,7 +14,7 @@ function NavigationButtons({
 }) {
   return (
     <>
-      <div className="buttons">
+      <div className="navigation-buttons">
         <img
           alt="edit"
           src={editIcon3}
@@ -21,11 +22,9 @@ function NavigationButtons({
           className="icon"
         />
 
-        <img
-          alt="delete"
-          src={trashIcon}
-          onClick={() => setShowDeletePrompt(true)}
-          className="icon"
+        <NavigationButtonsTrashIcon
+          setShowDeletePrompt={setShowDeletePrompt}
+          trashIcon={trashIcon}
         />
 
         <img

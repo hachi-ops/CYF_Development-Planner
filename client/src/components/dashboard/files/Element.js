@@ -6,6 +6,8 @@ import MentorsDropdown from "./MentorsDropdown";
 import NavigationButtons from "./NavigationButtons";
 import DeletePrompt from "./DeletePrompt";
 
+import Draft from "./Draft";
+
 function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
   const [showEdit, setShowEdit] = useState(false);
   const [toggleSendToMentor, setToggleSendToMentor] = useState(false);
@@ -61,7 +63,7 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
               {draft.draft_title}
             </p>
           </div>
-          <div className="element-buttons">
+          <div className="flex-list-buttons">
             <NavigationButtons
               handleShowEdit={handleShowEdit}
               deleteDraft={deleteDraft}
@@ -70,43 +72,21 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
               setOpenText={setOpenText}
               setShowDeletePrompt={setShowDeletePrompt}
             />
+
             <button onClick={handleOpenText}>open</button>
           </div>
         </div>
 
         {openText && (
-          <>
-            <div className="show-element">
-              <div
-                className="titleCloseBtn"
-                onClick={() => {
-                  setOpenText(false);
-                }}
-              >
-                X
-              </div>
-              <div className="element">
-                <div className="element-container">
-                  <div className="flex">
-                    <NavigationButtons
-                      handleShowEdit={handleShowEdit}
-                      deleteDraft={deleteDraft}
-                      draft={draft}
-                      handleToggleSendToMentor={handleToggleSendToMentor}
-                      setOpenText={setOpenText}
-                      setShowDeletePrompt={setShowDeletePrompt}
-                      handleShowDeletePrompt={handleShowDeletePrompt}
-                    />
-                    <h2 className="element-title">
-                      {`Title: ${draft.draft_title}`}{" "}
-                    </h2>
-                  </div>
-
-                  <p className="element-text">{draft.draft_text}</p>
-                </div>
-              </div>
-            </div>
-          </>
+          <Draft
+            draft={draft}
+            deleteDraft={deleteDraft}
+            handleShowEdit={handleShowEdit}
+            setOpenText={setOpenText}
+            handleToggleSendToMentor={handleToggleSendToMentor}
+            setShowDeletePrompt={setShowDeletePrompt}
+            handleShowDeletePrompt={handleShowDeletePrompt}
+          />
         )}
       </div>
     </>

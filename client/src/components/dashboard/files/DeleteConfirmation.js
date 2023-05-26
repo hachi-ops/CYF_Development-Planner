@@ -1,4 +1,5 @@
 import React from "react";
+import XbuttonCloseDeleteConfirmation from "./xButtons/XbuttonCloseDeleteConfirmation";
 
 function DeleteConfirmation({
   setShowDeleteConfirmation,
@@ -7,16 +8,10 @@ function DeleteConfirmation({
   return (
     <>
       <div className="show-element">
-        <div
-          className="titleCloseBtn"
-          onClick={() => {
-            setShowDeleteConfirmation(false);
-            setShowDeletePrompt(false);
-          }}
-        >
-          X
-        </div>
-
+        <XbuttonCloseDeleteConfirmation
+          setShowDeleteConfirmation={setShowDeleteConfirmation}
+          setShowDeletePrompt={setShowDeletePrompt}
+        />
         <div>file deleted</div>
         <button
           onClick={() => {
