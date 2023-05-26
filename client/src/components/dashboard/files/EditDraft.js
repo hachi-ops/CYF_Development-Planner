@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
+const EditDraft = ({ draft, setDraftsChange, setShowEdit, handleShowEdit }) => {
   //editText function
 
   const editText = async (id) => {
