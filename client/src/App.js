@@ -10,6 +10,7 @@ import "./styles/account.css";
 import "./styles/home.css";
 import "./styles/dashboard.css";
 import "./styles/listFiles.css";
+import "./styles/modal.css";
 
 //components
 

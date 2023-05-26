@@ -4,7 +4,7 @@ import "../../../styles/modal.css";
 function Modal({ setModalOpen }) {
   return (
     <div className="modalBackground">
-      <div className="modalContainer">
+      <div className="modal-container">
         <div className="titleCloseBtn">
           <button
             onClick={() => {

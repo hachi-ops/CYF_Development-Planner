@@ -79,7 +79,6 @@ function MentorsDropdown({ senderUsername, draft, setToggleSendToMentor }) {
   return (
     <>
       <div className="show-element">
-        <h1>Send File</h1>
         <div
           className="titleCloseBtn"
           onClick={() => {
@@ -88,9 +87,8 @@ function MentorsDropdown({ senderUsername, draft, setToggleSendToMentor }) {
         >
           X
         </div>
-        <form onSubmit={onSubmit} className="form">
-          {/* <div>{messageTitle}</div>
-        <div>{messageText}</div> */}
+        <h1>Send File</h1>
+        <form onSubmit={onSubmit} className="dropdown">
           {showConfirmation && (
             <div className="show-element">
               <h1>Send File</h1>
@@ -115,7 +113,6 @@ function MentorsDropdown({ senderUsername, draft, setToggleSendToMentor }) {
             ))}
           </select>
           <div className="buttons">
-            {" "}
             <button onClick={onClickButton}>send</button>
             <button
               onClick={() => {
@@ -127,6 +124,12 @@ function MentorsDropdown({ senderUsername, draft, setToggleSendToMentor }) {
             </button>
           </div>
         </form>
+
+        <div>
+          {" "}
+          <div>{messageTitle}</div>
+          <div>{messageText}</div>
+        </div>
       </div>
     </>
   );

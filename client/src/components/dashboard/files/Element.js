@@ -88,7 +88,6 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
               <div className="element">
                 <div className="element-container">
                   <div className="flex">
-                    {" "}
                     <NavigationButtons
                       handleShowEdit={handleShowEdit}
                       deleteDraft={deleteDraft}
