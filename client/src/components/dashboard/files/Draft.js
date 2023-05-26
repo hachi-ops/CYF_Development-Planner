@@ -13,7 +13,7 @@ function Draft({
 }) {
   return (
     <>
-      <div className="">
+      <div className="show-element">
         <XbuttonCloseDraft setOpenText={setOpenText} />
         <h1>{draft.draft_title}</h1>
         <NavigationButtons
