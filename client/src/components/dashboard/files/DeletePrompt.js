@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DeleteConfirmation from "./DeleteConfirmation";
+import XbuttonCloseDeletePrompt from "./XbuttonCloseDeletePrompt";
 
 function DeletePrompt({ setShowDeletePrompt, draft, deleteDraft }) {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
@@ -8,17 +9,11 @@ function DeletePrompt({ setShowDeletePrompt, draft, deleteDraft }) {
     setShowDeleteConfirmation(true);
     deleteDraft(draft.draft_id);
   };
+
   return (
     <>
       <div className="show-element">
-        <div
-          className="titleCloseBtn"
-          onClick={() => {
-            setShowDeletePrompt(false);
-          }}
-        >
-          X
-        </div>
+        <XbuttonCloseDeletePrompt setShowDeletePrompt={setShowDeletePrompt} />
         <h1>Delete Draft</h1>
         <p className="prompt">do you want to delete this file?</p>
         <div className="buttons">
