@@ -28,35 +28,13 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
   const [showDeletePrompt, setShowDeletePrompt] = useState(false);
   const handleShowDeletePrompt = () => {
     console.log("file deleted");
-    setShowDeletePrompt(!showDeletePrompt);
+    setShowDeletePrompt(true);
   };
 
   return (
     <>
       <div>
-        {toggleSendToMentor && (
-          <MentorsDropdown
-            senderUsername={senderUsername}
-            draft={draft}
-            setToggleSendToMentor={setToggleSendToMentor}
-          />
-        )}
-        {showEdit && (
-          <EditDraft
-            draft={draft}
-            setDraftsChange={setDraftsChange}
-            setShowEdit={setShowEdit}
-          />
-        )}
-        {showDeletePrompt && (
-          <DeletePrompt
-            setShowDeletePrompt={setShowDeletePrompt}
-            draft={draft}
-            deleteDraft={deleteDraft}
-          />
-        )}
-
-        <div className="flex-list">
+        <div className="flex-list ">
           <div onClick={handleOpenText}>
             <p className="">
               <span>Title: </span>
@@ -76,7 +54,6 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
             <button onClick={handleOpenText}>open</button>
           </div>
         </div>
-
         {openText && (
           <Draft
             draft={draft}
@@ -89,6 +66,28 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
           />
         )}
       </div>
+
+      {toggleSendToMentor && (
+        <MentorsDropdown
+          senderUsername={senderUsername}
+          draft={draft}
+          setToggleSendToMentor={setToggleSendToMentor}
+        />
+      )}
+      {showEdit && (
+        <EditDraft
+          draft={draft}
+          setDraftsChange={setDraftsChange}
+          setShowEdit={setShowEdit}
+        />
+      )}
+      {showDeletePrompt && (
+        <DeletePrompt
+          setShowDeletePrompt={setShowDeletePrompt}
+          draft={draft}
+          deleteDraft={deleteDraft}
+        />
+      )}
     </>
   );
 }
