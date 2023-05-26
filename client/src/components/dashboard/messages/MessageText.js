@@ -17,7 +17,27 @@ function MessageText({ message }) {
         <button onClick={handleOpenButton}>open</button>
       </div>
 
-      {openButton && <div>{message.message_text}</div>}
+      {openButton && (
+        <MessageModal message={message} setOpenButton={setOpenButton} />
+      )}
+    </>
+  );
+}
+
+function MessageModal({ message, setOpenButton }) {
+  return (
+    <>
+      <div className="show-element">
+        <div
+          className="titleCloseBtn"
+          onClick={() => {
+            setOpenButton(false);
+          }}
+        >
+          X
+        </div>
+        <div>{message.message_text}</div>
+      </div>
     </>
   );
 }

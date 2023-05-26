@@ -11,7 +11,6 @@ function DeletePrompt({ setShowDeletePrompt, draft, deleteDraft }) {
   return (
     <>
       <div className="show-element">
-        <h1>Delete Draft</h1>
         <div
           className="titleCloseBtn"
           onClick={() => {
@@ -20,14 +19,13 @@ function DeletePrompt({ setShowDeletePrompt, draft, deleteDraft }) {
         >
           X
         </div>
-
+        <h1>Delete Draft</h1>
         <p className="prompt">do you want to delete this file?</p>
         <div className="buttons">
           <button onClick={handleSetShowDeleteConfirmation}>yes</button>
           <button onClick={() => setShowDeletePrompt(false)}>no</button>
           {/* <button onClick={() => deleteDraft(draft.draft_id)}>Delete</button> */}
         </div>
-
         {showDeleteConfirmation && (
           <DeleteConfirmation
             setShowDeleteConfirmation={setShowDeleteConfirmation}

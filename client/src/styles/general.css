@@ -130,31 +130,15 @@ hr {
     gap: 30px;
     font-weight: 600;
     letter-spacing: 0.08rem;
-
 }
 
 .empty-list img {
     width: 150px;
 }
 
-
-
-@media only screen and (min-width: 400px) {
-
-    .flex {
-        flex-direction: row;
-        /* max-width: 500px; */
-        justify-content: space-between;
-       
-        align-items: center;
-    }
-}
-
-
 .title {
     width: 300px;
-    outline: 1px solid blue;
-}
+ }
 
 .text {
     max-width: 80%;
@@ -174,20 +158,6 @@ hr {
     top: 80px;
 }
 
-.modalContainer {
-    width: 200px;
-    height: 100px;
-    margin: auto;
-    border-radius: 12px;
-    background-color: white;
-    /* background-color: transparent; */
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-}
-
 #cancelBtn {
     background-color: rgba(255, 0, 0, 0.125);
     color: rgba(255, 0, 0, 0.568);
@@ -198,7 +168,6 @@ hr {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
-
 
 button:hover,
 #logout-btn:hover {
@@ -223,21 +192,6 @@ button:hover,
     top: 60px;
 }
 
-
-.show-element {
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(255, 255, 255);
-    position: absolute;
-    top: 0px;
-    margin: auto;
-}
-
-.element-wrapper {
-    position: relative;
-
-}
-
 .element-container {
     margin-top: 40px;
     width: 90%;
@@ -249,14 +203,15 @@ button:hover,
 }
 
 .element-title {
-    padding: 20px;
+    padding: 10px;
     border-radius: 4px;
     color: #902323;
     font-weight: 600;
     font-size: 1.2rem;
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
     box-shadow: rgba(214, 3, 3, 0.3) 0px 0px 0px 3px;
-width: 90%;
+width: 50%;
+
 margin: 20px auto;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 }
@@ -268,12 +223,57 @@ width: 90%;
     border-style: none;
     padding: 20px;
     overflow-wrap: break-word;
-    overflow-y: scroll;
-    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    overflow-y: scroll;    
     box-shadow: rgba(214, 3, 3, 0.3) 0px 0px 0px 3px;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
     border-radius: 4px;
     letter-spacing: 0.03rem;
     line-height: 1.7rem;
     font-size: 1.1rem;
+}
+
+.icon {
+    width: 30px;
+}
+
+.element{
+ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media only screen and (min-width: 400px) {
+
+    .flex {
+        flex-direction: row;
+        max-width: 500px;
+        justify-content: space-between;      
+        align-items: center;
+    }
+
+    .flex-list {
+        height: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .element-buttons {
+        display: flex;
+        width: 40%;
+    }
+}
+
+.dropdown {
+    /* outline: 1px solid red; */
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px 0;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+border-radius: 8px;
 }

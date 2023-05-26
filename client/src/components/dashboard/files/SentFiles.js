@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 
+import editIcon from "../../../images/Brainleaf-Free-Pencil-Pencil-red.64.png";
+import editIcon2 from "../../../images/Saki-NuoveXT-Actions-pencil.64.png";
+import trashIcon from "../../../images/Graphicrating-Koloria-Trash-Delete.32.png";
+import sendIcon from "../../../images/icons8-send-64.png";
+import editIcon3 from "../../../images/Graphicrating-Koloria-File-Edit.32.png";
+
 import EmptyList from "../EmptyList";
 
 function SentFiles({ setShowSent }) {
@@ -58,7 +64,7 @@ function Text({ draft, setShowSent = { setShowSent } }) {
     <>
       <div className="">
         <hr />
-        <div className="flex">
+        <div className="">
           <div className="title">{draft.message_title}</div>
           <div className="buttons">
             <button onClick={handleShowText}>open</button>
