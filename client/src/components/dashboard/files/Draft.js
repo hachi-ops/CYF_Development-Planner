@@ -13,9 +13,9 @@ function Draft({
 }) {
   return (
     <>
-      <div className="show-element">
+      <div className="">
         <XbuttonCloseDraft setOpenText={setOpenText} />
-
+        <h1>{draft.draft_title}</h1>
         <NavigationButtons
           handleShowEdit={handleShowEdit}
           deleteDraft={deleteDraft}
@@ -26,7 +26,6 @@ function Draft({
           handleShowDeletePrompt={handleShowDeletePrompt}
         />
         <h2 className="element-title">{`Title: ${draft.draft_title}`} </h2>
-
         <p className="element-text">{draft.draft_text}</p>
       </div>
     </>
