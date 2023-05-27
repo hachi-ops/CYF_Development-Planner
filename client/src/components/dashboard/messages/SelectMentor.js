@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SentConfirmation from "./SentConfirmation";
+import SentConfirmation from "../confirmations/SentConfirmation";
 
 function SelectMentor({ onMentorDropdownMenuChange, list, sendMessage }) {
   const [showSentConfirmation, setShowSentConfirmation] = useState(false);
@@ -8,11 +8,9 @@ function SelectMentor({ onMentorDropdownMenuChange, list, sendMessage }) {
     sendMessage(false);
     setShowSentConfirmation(true);
   };
+
   return (
     <>
-      {showSentConfirmation && (
-        <SentConfirmation setShowSentConfirmation={setShowSentConfirmation} />
-      )}
       <div className="select-dropdown">
         <button type="button" onClick={handleShowSentConfirmation}>
           send
@@ -26,6 +24,11 @@ function SelectMentor({ onMentorDropdownMenuChange, list, sendMessage }) {
             </option>
           ))}
         </select>
+        {showSentConfirmation && (
+          <SentConfirmation
+            setShowSentConfirmation={() => setShowSentConfirmation(true)}
+          />
+        )}
       </div>
     </>
   );
