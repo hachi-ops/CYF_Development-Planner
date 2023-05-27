@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
+import SentConfirmation from "../confirmations/SentConfirmation";
 
-function MentorsDropdown({ senderUsername, draft, setToggleSendToMentor }) {
+function MentorsDropdown({
+  senderUsername,
+  draft,
+  setToggleSendToMentor,
+  setShowSentConfirmation,
+}) {
   // console.log(draft);
   // console.log(draft.draft_title);
   // console.log(draft.draft_text);
@@ -74,7 +80,7 @@ function MentorsDropdown({ senderUsername, draft, setToggleSendToMentor }) {
   const onClickButton = () => {
     setMessageTitle(msgTitle);
     setMessageText(msgText);
-    setConfirmation(confirmation);
+    setConfirmation(true);
   };
   return (
     <>
@@ -95,13 +101,12 @@ function MentorsDropdown({ senderUsername, draft, setToggleSendToMentor }) {
               <div className="titleCloseBtn">
                 <div
                   onClick={() => {
-                    setShowConfirmation(false);
+                    setShowConfirmation(true);
                   }}
                 >
                   X
                 </div>
               </div>
-              {confirmation}
             </div>
           )}
           <select onChange={onMentorDropdownMenuChange}>
@@ -126,7 +131,11 @@ function MentorsDropdown({ senderUsername, draft, setToggleSendToMentor }) {
         </form>
 
         <div>
-          {" "}
+          {confirmation && (
+            <SentConfirmation
+              setShowSentConfirmation={setShowSentConfirmation}
+            />
+          )}
           <div>{messageTitle}</div>
           <div>{messageText}</div>
         </div>
