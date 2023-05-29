@@ -1,5 +1,5 @@
 import React from "react";
-import NavigationButtonsTrashIcon from "./NavigationButtonsTrashIcon";
+// import NavigationButtonsTrashIcon from "./NavigationButtonsTrashIcon";
 
 function SentElement({ draft, handleShowText, trashIcon }) {
   return (
@@ -10,7 +10,7 @@ function SentElement({ draft, handleShowText, trashIcon }) {
           <div className="">{draft.message_title}</div>
         </div>
         <div className="flex-list-buttons">
-          <NavigationButtonsTrashIcon trashIcon={trashIcon} />
+          {/* <NavigationButtonsTrashIcon trashIcon={trashIcon} /> */}
           <button onClick={handleShowText}>open</button>
         </div>
       </div>

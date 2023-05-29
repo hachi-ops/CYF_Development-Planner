@@ -4,11 +4,16 @@ import React, { useState } from "react";
 import EditDraft from "./EditDraft";
 import MentorsDropdown from "./MentorsDropdown";
 import NavigationButtons from "./NavigationButtons";
-import DeletePrompt from "./DeletePrompt";
 
 import Draft from "./Draft";
 
-function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
+function Element({
+  draft,
+  deleteDraft,
+  setDraftsChange,
+  senderUsername,
+  allDrafts,
+}) {
   const [showEdit, setShowEdit] = useState(false);
   const [toggleSendToMentor, setToggleSendToMentor] = useState(false);
   const [openText, setOpenText] = useState(false);
@@ -23,12 +28,6 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
 
   const handleOpenText = () => {
     setOpenText(true);
-  };
-
-  const [showDeletePrompt, setShowDeletePrompt] = useState(false);
-  const handleShowDeletePrompt = () => {
-    console.log("file deleted");
-    setShowDeletePrompt(true);
   };
 
   return (
@@ -48,7 +47,6 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
               draft={draft}
               handleToggleSendToMentor={handleToggleSendToMentor}
               setOpenText={setOpenText}
-              setShowDeletePrompt={setShowDeletePrompt}
             />
 
             <button onClick={handleOpenText}>open</button>
@@ -61,8 +59,7 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
             handleShowEdit={handleShowEdit}
             setOpenText={setOpenText}
             handleToggleSendToMentor={handleToggleSendToMentor}
-            setShowDeletePrompt={setShowDeletePrompt}
-            handleShowDeletePrompt={handleShowDeletePrompt}
+            allDrafts={allDrafts}
           />
         )}
       </div>
@@ -79,13 +76,6 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
           draft={draft}
           setDraftsChange={setDraftsChange}
           setShowEdit={setShowEdit}
-        />
-      )}
-      {showDeletePrompt && (
-        <DeletePrompt
-          setShowDeletePrompt={setShowDeletePrompt}
-          draft={draft}
-          deleteDraft={deleteDraft}
         />
       )}
     </>

@@ -1,16 +1,11 @@
-import React from "react";
+// import React from "react";
 
-function NavigationButtonsTrashIcon({ setShowDeletePrompt, trashIcon }) {
-  return (
-    <>
-      <img
-        alt="delete"
-        src={trashIcon}
-        onClick={() => setShowDeletePrompt(true)}
-        className="icon"
-      />
-    </>
-  );
-}
+// function NavigationButtonsTrashIcon({ trashIcon }) {
+//   return (
+//     <>
+//       <img alt="delete" src={trashIcon} className="icon" />
+//     </>
+//   );
+// }
 
-export default NavigationButtonsTrashIcon;
+// export default NavigationButtonsTrashIcon;
