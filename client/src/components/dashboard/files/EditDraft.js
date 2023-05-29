@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SaveEditedDraftConfirmation from "../confirmations/SaveEditedDraftConfirmation";
+import CloseButton from "../CloseButton";
 const EditDraft = ({ draft, setDraftsChange, setShowEdit, handleShowEdit }) => {
   //editText function
 
@@ -41,12 +42,11 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit, handleShowEdit }) => {
     <>
       <div className="show-element">
         <div
-          className="titleCloseBtn"
           onClick={() => {
             setShowEdit(false);
           }}
         >
-          X
+          <CloseButton />
         </div>
         <h1>Edit Draft</h1>
         <div className="buttons ">

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 // components
 import Element from "./Element";
 import EmptyList from "../EmptyList";
-import XbuttonDrafts from "./xButtons/XbuttonDrafts";
+
 const ListFiles = ({ senderUsername, setShowDrafts }) => {
   console.log(senderUsername);
   const [allDrafts, setAllDrafts] = useState([]);
@@ -49,13 +49,30 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
     setDrafts(allDrafts);
   }, [allDrafts]);
 
+  function Component() {
+    return <div>hello</div>;
+  }
+
+  const [openComponent, setOpenComponent] = useState(false);
+
+  const handleOpenComponent = () => {
+    setOpenComponent(!openComponent);
+  };
   return (
     <>
-      <div className="show-element">
-        <XbuttonDrafts setShowDrafts={setShowDrafts} />
+      <div className="relative">
+        <div
+          className="titleCloseBtn"
+          onClick={() => {
+            setShowDrafts(false);
+          }}
+        >
+          X
+        </div>
 
         <h1>Drafts</h1>
-
+        <button onClick={handleOpenComponent}>click</button>
+        {openComponent && <Component />}
         {drafts.length !== 0 && drafts[0].draft_id !== null ? (
           drafts.map((draft) => {
             return (
@@ -64,7 +81,6 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
                 <Element
                   draft={draft}
                   deleteDraft={deleteDraft}
-                  allDrafts={allDrafts}
                   setDraftsChange={setDraftsChange}
                   senderUsername={senderUsername}
                 />

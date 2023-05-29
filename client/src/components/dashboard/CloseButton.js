@@ -1,16 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 
 function CloseButton() {
-  const [showElement, setShowElement] = useState(false);
-
-  const handleShowElement = () => {
-    setShowElement(false);
-  };
   return (
     <>
-      <div className="titleCloseBtn" onClick={handleShowElement}>
-        X
-      </div>
+      <div className="titleCloseBtn">X</div>
     </>
   );
 }

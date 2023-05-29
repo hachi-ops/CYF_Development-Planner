@@ -1,6 +1,5 @@
 import { useState } from "react";
 import SentElement from "./SentElement";
-import XbuttonSentDrafts from "./xButtons/XbuttonSentDrafts";
 
 function Text({ draft, setShowSent, trashIcon }) {
   const [showText, setShowText] = useState(false);
@@ -15,11 +14,18 @@ function Text({ draft, setShowSent, trashIcon }) {
         <SentElement
           draft={draft}
           handleShowText={handleShowText}
-          trashIcon={trashIcon}
+          // trashIcon={trashIcon}
         />
         {showText && (
           <div className="show-element">
-            <XbuttonSentDrafts setShowSent={setShowSent} />
+            <div
+              className="titleCloseBtn"
+              onClick={() => {
+                setShowSent(false);
+              }}
+            >
+              X
+            </div>
             <button onClick={handleShowText}>cancel</button>
 
             <div className="element-container">

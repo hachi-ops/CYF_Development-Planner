@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import EditDraft from "./EditDraft";
 import MentorsDropdown from "./MentorsDropdown";
 import NavigationButtons from "./NavigationButtons";
-import DeletePrompt from "./DeletePrompt";
 
 import Draft from "./Draft";
 
@@ -25,12 +24,6 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
     setOpenText(true);
   };
 
-  const [showDeletePrompt, setShowDeletePrompt] = useState(false);
-  const handleShowDeletePrompt = () => {
-    console.log("file deleted");
-    setShowDeletePrompt(true);
-  };
-
   return (
     <>
       <div>
@@ -48,7 +41,6 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
               draft={draft}
               handleToggleSendToMentor={handleToggleSendToMentor}
               setOpenText={setOpenText}
-              setShowDeletePrompt={setShowDeletePrompt}
             />
 
             <button onClick={handleOpenText}>open</button>
@@ -61,8 +53,6 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
             handleShowEdit={handleShowEdit}
             setOpenText={setOpenText}
             handleToggleSendToMentor={handleToggleSendToMentor}
-            setShowDeletePrompt={setShowDeletePrompt}
-            handleShowDeletePrompt={handleShowDeletePrompt}
           />
         )}
       </div>
@@ -79,13 +69,6 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
           draft={draft}
           setDraftsChange={setDraftsChange}
           setShowEdit={setShowEdit}
-        />
-      )}
-      {showDeletePrompt && (
-        <DeletePrompt
-          setShowDeletePrompt={setShowDeletePrompt}
-          draft={draft}
-          deleteDraft={deleteDraft}
         />
       )}
     </>

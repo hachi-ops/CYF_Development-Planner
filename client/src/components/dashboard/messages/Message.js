@@ -29,7 +29,7 @@ function Message({ message, name, setShowAllMessages }) {
         <div className="flex">
           {" "}
           <button onClick={handleMessageClicked}>open</button>
-          <button>delete</button>
+          {/* <button>delete</button> */}
         </div>
       </div>
 
