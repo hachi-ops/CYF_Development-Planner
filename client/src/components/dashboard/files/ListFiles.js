@@ -83,6 +83,7 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
                   deleteDraft={deleteDraft}
                   setDraftsChange={setDraftsChange}
                   senderUsername={senderUsername}
+                  allDrafts={allDrafts}
                 />
               </>
             );

@@ -7,7 +7,13 @@ import NavigationButtons from "./NavigationButtons";
 
 import Draft from "./Draft";
 
-function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
+function Element({
+  draft,
+  deleteDraft,
+  setDraftsChange,
+  senderUsername,
+  allDrafts,
+}) {
   const [showEdit, setShowEdit] = useState(false);
   const [toggleSendToMentor, setToggleSendToMentor] = useState(false);
   const [openText, setOpenText] = useState(false);
@@ -53,6 +59,7 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
             handleShowEdit={handleShowEdit}
             setOpenText={setOpenText}
             handleToggleSendToMentor={handleToggleSendToMentor}
+            allDrafts={allDrafts}
           />
         )}
       </div>

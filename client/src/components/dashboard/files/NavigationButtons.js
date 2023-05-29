@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
-import editIcon from "../../../images/Brainleaf-Free-Pencil-Pencil-red.64.png";
-import editIcon2 from "../../../images/Saki-NuoveXT-Actions-pencil.64.png";
 import trashIcon from "../../../images/Graphicrating-Koloria-Trash-Delete.32.png";
 import sendIcon from "../../../images/icons8-send-64.png";
 import editIcon3 from "../../../images/Graphicrating-Koloria-File-Edit.32.png";
-import NavigationButtonsTrashIcon from "./NavigationButtonsTrashIcon";
+
+import DeletePrompt from "../prompts/DeletePrompt";
 
 function NavigationButtons({
   handleShowEdit,
   handleToggleSendToMentor,
-  setShowDeletePrompt,
+  draft,
+  deleteDraft,
 }) {
+  const [deletePrompt, setDeletePrompt] = useState(false);
+
+  const handleDeletePrompt = () => {
+    setDeletePrompt(!deletePrompt);
+  };
   return (
     <>
       <div className="navigation-buttons">
@@ -21,10 +26,11 @@ function NavigationButtons({
           onClick={handleShowEdit}
           className="icon"
         />
-
-        <NavigationButtonsTrashIcon
-          setShowDeletePrompt={setShowDeletePrompt}
-          trashIcon={trashIcon}
+        <img
+          className="icon"
+          alt="delete"
+          src={trashIcon}
+          onClick={handleDeletePrompt}
         />
 
         <img
@@ -34,6 +40,13 @@ function NavigationButtons({
           onClick={handleToggleSendToMentor}
         />
       </div>
+      {deletePrompt && (
+        <DeletePrompt
+          handleDeletePrompt={handleDeletePrompt}
+          draft={draft}
+          deleteDraft={deleteDraft}
+        />
+      )}
     </>
   );
 }
