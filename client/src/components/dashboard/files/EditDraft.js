@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SaveEditedDraftConfirmation from "../confirmations/SaveEditedDraftConfirmation";
 import CloseButton from "../CloseButton";
-const EditDraft = ({ draft, setDraftsChange, setShowEdit, handleShowEdit }) => {
+const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
   //editText function
 
   const editText = async (id) => {

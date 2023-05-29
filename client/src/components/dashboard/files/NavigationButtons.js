@@ -5,17 +5,24 @@ import sendIcon from "../../../images/icons8-send-64.png";
 import editIcon3 from "../../../images/Graphicrating-Koloria-File-Edit.32.png";
 
 import DeletePrompt from "../prompts/DeletePrompt";
+import EditDraft from "./EditDraft";
 
 function NavigationButtons({
-  handleShowEdit,
   handleToggleSendToMentor,
   draft,
   deleteDraft,
+  setDraftsChange,
 }) {
   const [deletePrompt, setDeletePrompt] = useState(false);
 
   const handleDeletePrompt = () => {
     setDeletePrompt(!deletePrompt);
+  };
+
+  const [showEdit, setShowEdit] = useState(false);
+
+  const handleShowEdit = () => {
+    setShowEdit(!showEdit);
   };
   return (
     <>
@@ -45,6 +52,14 @@ function NavigationButtons({
           handleDeletePrompt={handleDeletePrompt}
           draft={draft}
           deleteDraft={deleteDraft}
+        />
+      )}
+
+      {showEdit && (
+        <EditDraft
+          draft={draft}
+          setDraftsChange={setDraftsChange}
+          setShowEdit={setShowEdit}
         />
       )}
     </>

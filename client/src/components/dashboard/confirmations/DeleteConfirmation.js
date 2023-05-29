@@ -1,11 +1,7 @@
 import React from "react";
 import CloseButton from "../CloseButton";
 
-function DeleteConfirmation({
-  handleDeleteConfirmation,
-  setDeleteConfimation,
-  handleDeletePrompt,
-}) {
+function DeleteConfirmation({ handleDeleteConfirmation }) {
   return (
     <>
       <div className="show-element">

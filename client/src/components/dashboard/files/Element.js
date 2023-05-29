@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // components
-import EditDraft from "./EditDraft";
+
 import MentorsDropdown from "./MentorsDropdown";
 import NavigationButtons from "./NavigationButtons";
 
@@ -14,13 +14,8 @@ function Element({
   senderUsername,
   allDrafts,
 }) {
-  const [showEdit, setShowEdit] = useState(false);
   const [toggleSendToMentor, setToggleSendToMentor] = useState(false);
   const [openText, setOpenText] = useState(false);
-
-  const handleShowEdit = () => {
-    setShowEdit(true);
-  };
 
   const handleToggleSendToMentor = () => {
     setToggleSendToMentor(true);
@@ -42,11 +37,11 @@ function Element({
           </div>
           <div className="flex-list-buttons">
             <NavigationButtons
-              handleShowEdit={handleShowEdit}
               deleteDraft={deleteDraft}
               draft={draft}
               handleToggleSendToMentor={handleToggleSendToMentor}
               setOpenText={setOpenText}
+              setDraftsChange={setDraftsChange}
             />
 
             <button onClick={handleOpenText}>open</button>
@@ -56,7 +51,6 @@ function Element({
           <Draft
             draft={draft}
             deleteDraft={deleteDraft}
-            handleShowEdit={handleShowEdit}
             setOpenText={setOpenText}
             handleToggleSendToMentor={handleToggleSendToMentor}
             allDrafts={allDrafts}
@@ -69,13 +63,6 @@ function Element({
           senderUsername={senderUsername}
           draft={draft}
           setToggleSendToMentor={setToggleSendToMentor}
-        />
-      )}
-      {showEdit && (
-        <EditDraft
-          draft={draft}
-          setDraftsChange={setDraftsChange}
-          setShowEdit={setShowEdit}
         />
       )}
     </>
