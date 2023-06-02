@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SaveEditedDraftConfirmation from "../confirmations/SaveEditedDraftConfirmation";
 import CloseButton from "../CloseButton";
-const EditDraft = ({ draft, setDraftsChange, setShowEdit, handleShowEdit }) => {
+const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
   //editText function
 
   const editText = async (id) => {
@@ -32,10 +32,9 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit, handleShowEdit }) => {
   const [draftText, setDraftText] = useState(draft.draft_text);
   const [draftTitle, setDraftTitle] = useState(draft.draft_title);
 
-  const [openSaveEditedDraftModal, setOpenSaveEditedDraftModal] =
-    useState(false);
-  const handleOpenSaveEditedDraftModal = () => {
-    setOpenSaveEditedDraftModal(true);
+  const [editedDraftConfirmation, setEditedDraftConfimation] = useState(false);
+  const handleEitedDraftConfirmation = () => {
+    setEditedDraftConfimation(!editedDraftConfirmation);
   };
 
   return (
@@ -60,7 +59,7 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit, handleShowEdit }) => {
           <button
             type="button"
             onClick={() =>
-              handleOpenSaveEditedDraftModal(editText(draft.draft_id))
+              handleEitedDraftConfirmation(editText(draft.draft_id))
             }
           >
             save
@@ -87,9 +86,9 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit, handleShowEdit }) => {
           />
         </div>
       </div>
-      {openSaveEditedDraftModal && (
+      {editedDraftConfirmation && (
         <SaveEditedDraftConfirmation
-          setOpenSaveEditedDraftModal={setOpenSaveEditedDraftModal}
+          handleEditedDraftConfirmation={handleEitedDraftConfirmation}
         />
       )}
     </>

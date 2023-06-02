@@ -1,12 +1,15 @@
 import React from "react";
 import CloseButton from "../CloseButton";
 
-function SaveEditedDraftConfirmation() {
+function SaveEditedDraftConfirmation({ handleEditedDraftConfirmation }) {
   return (
     <>
       <div className="show-element">
-        <CloseButton />
+        <div onClick={handleEditedDraftConfirmation}>
+          <CloseButton />
+        </div>
         <div>edited draft saved</div>
+        <div>OK</div>
       </div>
     </>
   );
