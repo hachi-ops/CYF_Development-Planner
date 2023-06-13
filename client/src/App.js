@@ -22,7 +22,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+  
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
