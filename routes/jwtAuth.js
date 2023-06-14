@@ -12,14 +12,6 @@ router.post("/register", validInfo, async (req, res) => {
   const { fname, lname, username, email, password, role } = req.body;
 
   try {
-    const user = await pool.query("SELECT * FROM users WHERE user_email = $1", [
-      email,
-    ]);
-
-    if (user.rows.length > 0) {
-      return res.status(401).json("User already exist!");
-    }
-
     const salt = await bcrypt.genSalt(10);
     const bcryptPassword = await bcrypt.hash(password, salt);
 
@@ -53,13 +45,12 @@ router.post("/login", validInfo, async (req, res) => {
       user.rows[0].user_password
     );
 
-    
     if (!validPassword) {
       return res.status(401).json("Invalid Credential");
     }
     const jwtToken = jwtGenerator(user.rows[0].user_id);
-    
-    console.log({ jwtToken, role: user.rows[0].user_role })
+
+    console.log({ jwtToken, role: user.rows[0].user_role });
     return res.json({ jwtToken, role: user.rows[0].user_role });
   } catch (err) {
     console.error(err.message);
@@ -75,6 +66,26 @@ router.get("/verify", authorize, (req, res) => {
     // How could the above code fail? When would this catch get invoked?
     console.error(err.message);
     res.status(500).send("Server error");
+  }
+});
+
+router.post("/validUser", async (req, res) => {
+  const { username, email } = req.body;
+  const userObj = { name: true, e_mail: true };
+  try {
+    const getName = await pool.query(
+      "SELECT username FROM users WHERE LOWER(username)=LOWER($1)",
+      [username]
+    );
+    const getEmail = await pool.query(
+      "SELECT * FROM users WHERE user_email = $1",
+      [email]
+    );
+    if (getName.rows.length > 0) { userObj.name = false };
+    if (getEmail.rows.length > 0) { userObj.e_mail = false };
+    return res.json(userObj);
+  } catch (err) {
+    console.log(err.message);
   }
 });
 

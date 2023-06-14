@@ -10,6 +10,8 @@ function Register({ setAuth }) {
     password: "",
     role: "",
   });
+  const [nameError, setNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
 
   const { fname, lname, username, email, password, role } = inputs;
 
@@ -17,33 +19,61 @@ function Register({ setAuth }) {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
-  const onSubmitForm = async (e) => {
-    e.preventDefault();
-
+  const userDetailsCheck = async () => {
     try {
-      const lowerEmail = email.toLowerCase();
-      const body = {
-        fname,
-        lname,
-        username,
-        email: lowerEmail,
-        password,
-        role,
-      };
-      const response = await fetch("/authentication/register", {
+      const body = { username, email };
+      const response = await fetch("/authentication/validUser", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
 
-      const parseRes = await response.json();
-      localStorage.setItem("token", parseRes.jwtToken);
-
-      setAuth(true);
+      const result = await response.json();
+      
+      if (result.e_mail && result.name) {
+        return true;
+      } else {
+        setNameError(!result.name);
+        setEmailError(!result.e_mail);
+        return false;
+      }
     } catch (err) {
       console.error(err.message);
     }
   };
+
+  const onSubmitForm = async (e) => {
+    e.preventDefault();
+    setNameError(false);
+    setEmailError(false);
+    const correctInputs = await userDetailsCheck();
+
+    if (correctInputs) {
+      try {
+        const lowerEmail = email.toLowerCase();
+        const body = {
+          fname,
+          lname,
+          username,
+          email: lowerEmail,
+          password,
+          role,
+        };
+        const response = await fetch("/authentication/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+
+        const parseRes = await response.json();
+        localStorage.setItem("token", parseRes.jwtToken);
+        setAuth(true);
+      } catch (err) {
+        console.error(err.message);
+      }
+    }
+  };
+
   return (
     <>
       <form onSubmit={onSubmitForm} className="form">
@@ -60,6 +90,7 @@ function Register({ setAuth }) {
               name="role"
               value="student"
               onChange={(e) => handleChange(e)}
+              required
             />
           </label>
 
@@ -102,6 +133,11 @@ function Register({ setAuth }) {
           required
           minLength="3"
         />
+        {nameError && (
+          <h5 className="error-message">
+            This username is already being used!
+          </h5>
+        )}
         <label htmlFor="password">password</label>
         <input
           id="password"
@@ -122,7 +158,11 @@ function Register({ setAuth }) {
           onChange={(e) => handleChange(e)}
           required
         />
-
+        {emailError && (
+          <h5 className="error-message">
+            We’re sorry. This login email already exists.
+          </h5>
+        )}
         <div className="buttons">
           <button>submit</button>
         </div>

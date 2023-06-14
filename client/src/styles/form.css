@@ -75,6 +75,10 @@ select {
     outline: none;
 }
 
+.error-message {
+    color: rgb(219, 104, 104);
+}
+
 
 /* input:focus, select:focus {
   background-color:rgba(230, 210, 210, 0.404);
