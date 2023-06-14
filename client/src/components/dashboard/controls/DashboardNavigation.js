@@ -33,12 +33,12 @@ function DashboardNavigation({ user, handleUpdate }) {
     setMessagesControlButtons(false);
   };
 
-  const [clickThis, setClickThis] = useState("close");
+  const [clickThis, setClickThis] = useState("click this");
 
   const handleClick3 = (e) => {
     console.log(e.target.innerText);
 
-    const change = e.target.innerText === "close" ? "clickThis" : "close";
+    const change = e.target.innerText === "click this" ? "close" : "click this";
     setClickThis(change);
   };
 
@@ -49,7 +49,7 @@ function DashboardNavigation({ user, handleUpdate }) {
           <h2
             style={{
               borderBottom: filesControlButtons ? "2px solid #b55151" : "none",
-              transform: filesControlButtons ? "scale(1.2)" : false,
+              transform: filesControlButtons && "scale(1.2)",
             }}
           >
             Files
@@ -58,7 +58,7 @@ function DashboardNavigation({ user, handleUpdate }) {
             src={filesIcon}
             alt="files icon"
             className="dashboard-icon"
-            style={{ transform: filesControlButtons ? "scale(1.4)" : false }}
+            style={{ transform: filesControlButtons && "scale(1.4)" }}
           />
         </div>
         {filesControlButtons && <FilesControls name={user.username} />}
@@ -68,7 +68,7 @@ function DashboardNavigation({ user, handleUpdate }) {
               borderBottom: messagesControlButtons
                 ? "2px solid #b55151"
                 : "none",
-              transform: messagesControlButtons ? "scale(1.2)" : false,
+              transform: messagesControlButtons && "scale(1.2)",
             }}
           >
             Messages
@@ -77,7 +77,7 @@ function DashboardNavigation({ user, handleUpdate }) {
             src={messagesIcon}
             alt="messages icon"
             className="dashboard-icon"
-            style={{ transform: messagesControlButtons ? "scale(1.4)" : false }}
+            style={{ transform: messagesControlButtons && "scale(1.4)" }}
           />
         </div>
         {messagesControlButtons && <MessagesControls name={user.username} />}
@@ -87,7 +87,7 @@ function DashboardNavigation({ user, handleUpdate }) {
               borderBottom: accountControlButtons
                 ? "2px solid #b55151"
                 : "none",
-              transform: accountControlButtons ? "scale(1.2)" : false,
+              transform: accountControlButtons && "scale(1.2)",
             }}
           >
             Account
@@ -96,7 +96,7 @@ function DashboardNavigation({ user, handleUpdate }) {
             src={accountIcon}
             alt="account icon"
             className="dashboard-icon"
-            style={{ transform: accountControlButtons ? "scale(1.4)" : false }}
+            style={{ transform: accountControlButtons && "scale(1.4)" }}
           />
         </div>
         {accountControlButtons && (

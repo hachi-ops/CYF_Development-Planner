@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
+import SentConfirmation from "../confirmations/SentConfirmation";
 
-function MentorsDropdown({ senderUsername, draft, setToggleSendToMentor }) {
+function MentorsDropdown({
+  senderUsername,
+  draft,
+  setToggleSendToMentor,
+  setShowSentConfirmation,
+}) {
   // console.log(draft);
   // console.log(draft.draft_title);
   // console.log(draft.draft_text);
@@ -74,12 +80,11 @@ function MentorsDropdown({ senderUsername, draft, setToggleSendToMentor }) {
   const onClickButton = () => {
     setMessageTitle(msgTitle);
     setMessageText(msgText);
-    setConfirmation(confirmation);
+    setConfirmation(true);
   };
   return (
     <>
       <div className="show-element">
-        <h1>Send File</h1>
         <div
           className="titleCloseBtn"
           onClick={() => {
@@ -88,22 +93,20 @@ function MentorsDropdown({ senderUsername, draft, setToggleSendToMentor }) {
         >
           X
         </div>
-        <form onSubmit={onSubmit} className="form">
-          {/* <div>{messageTitle}</div>
-        <div>{messageText}</div> */}
+        <h1>Send File</h1>
+        <form onSubmit={onSubmit} className="dropdown">
           {showConfirmation && (
             <div className="show-element">
               <h1>Send File</h1>
               <div className="titleCloseBtn">
                 <div
                   onClick={() => {
-                    setShowConfirmation(false);
+                    setShowConfirmation(true);
                   }}
                 >
                   X
                 </div>
               </div>
-              {confirmation}
             </div>
           )}
           <select onChange={onMentorDropdownMenuChange}>
@@ -115,7 +118,6 @@ function MentorsDropdown({ senderUsername, draft, setToggleSendToMentor }) {
             ))}
           </select>
           <div className="buttons">
-            {" "}
             <button onClick={onClickButton}>send</button>
             <button
               onClick={() => {
@@ -127,6 +129,16 @@ function MentorsDropdown({ senderUsername, draft, setToggleSendToMentor }) {
             </button>
           </div>
         </form>
+
+        <div>
+          {confirmation && (
+            <SentConfirmation
+              setShowSentConfirmation={setShowSentConfirmation}
+            />
+          )}
+          <div>{messageTitle}</div>
+          <div>{messageText}</div>
+        </div>
       </div>
     </>
   );

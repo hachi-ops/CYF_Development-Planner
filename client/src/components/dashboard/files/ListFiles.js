@@ -49,9 +49,18 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
     setDrafts(allDrafts);
   }, [allDrafts]);
 
+  function Component() {
+    return <div>hello</div>;
+  }
+
+  const [openComponent, setOpenComponent] = useState(false);
+
+  const handleOpenComponent = () => {
+    setOpenComponent(!openComponent);
+  };
   return (
     <>
-      <div className="show-element">
+      <div className="relative">
         <div
           className="titleCloseBtn"
           onClick={() => {
@@ -62,27 +71,26 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
         </div>
 
         <h1>Drafts</h1>
-        <div data-testid="list-files">
-          {drafts.length !== 0 && drafts[0].draft_id !== null ? (
-            drafts.map((draft) => {
-              return (
-                <>
-                  <hr />
-
-                  <Element
-                    draft={draft}
-                    deleteDraft={deleteDraft}
-                    allDrafts={allDrafts}
-                    setDraftsChange={setDraftsChange}
-                    senderUsername={senderUsername}
-                  />
-                </>
-              );
-            })
-          ) : (
-            <EmptyList />
-          )}
-        </div>
+        <button onClick={handleOpenComponent}>click</button>
+        {openComponent && <Component />}
+        {drafts.length !== 0 && drafts[0].draft_id !== null ? (
+          drafts.map((draft) => {
+            return (
+              <>
+                <hr />
+                <Element
+                  draft={draft}
+                  deleteDraft={deleteDraft}
+                  setDraftsChange={setDraftsChange}
+                  senderUsername={senderUsername}
+                  allDrafts={allDrafts}
+                />
+              </>
+            );
+          })
+        ) : (
+          <EmptyList />
+        )}
       </div>
     </>
   );

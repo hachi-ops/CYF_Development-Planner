@@ -10,6 +10,7 @@ import "./styles/account.css";
 import "./styles/home.css";
 import "./styles/dashboard.css";
 import "./styles/listFiles.css";
+import "./styles/modal.css";
 
 //components
 
@@ -19,6 +20,7 @@ import RegisterConfirmation from "./components/login-and-register/RegisterConfir
 import Navbar from "./components/navbar/Navbar";
 import Home from "./components/home/Home";
 import Dashboard from "./components/dashboard/Dashboard";
+import Footer from "./components/Footer";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -102,6 +104,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </>
   );
 }

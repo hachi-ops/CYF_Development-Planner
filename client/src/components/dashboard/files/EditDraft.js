@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import SaveEditedDraftConfirmation from "../confirmations/SaveEditedDraftConfirmation";
+import CloseButton from "../CloseButton";
 const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
   //editText function
 
@@ -30,16 +31,21 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
 
   const [draftText, setDraftText] = useState(draft.draft_text);
   const [draftTitle, setDraftTitle] = useState(draft.draft_title);
+
+  const [editedDraftConfirmation, setEditedDraftConfimation] = useState(false);
+  const handleEitedDraftConfirmation = () => {
+    setEditedDraftConfimation(!editedDraftConfirmation);
+  };
+
   return (
     <>
       <div className="show-element">
         <div
-          className="titleCloseBtn"
           onClick={() => {
             setShowEdit(false);
           }}
         >
-          X
+          <CloseButton />
         </div>
         <h1>Edit Draft</h1>
         <div className="buttons ">
@@ -50,7 +56,12 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
           >
             cancel
           </button>
-          <button type="button" onClick={() => editText(draft.draft_id)}>
+          <button
+            type="button"
+            onClick={() =>
+              handleEitedDraftConfirmation(editText(draft.draft_id))
+            }
+          >
             save
           </button>
         </div>
@@ -75,6 +86,11 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
           />
         </div>
       </div>
+      {editedDraftConfirmation && (
+        <SaveEditedDraftConfirmation
+          handleEditedDraftConfirmation={handleEitedDraftConfirmation}
+        />
+      )}
     </>
   );
 };
