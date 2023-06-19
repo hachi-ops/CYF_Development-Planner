@@ -6,12 +6,12 @@ import Logo from "./Logo";
 
 function Navbar() {
   return (
-    <>
+    <div>
       <nav className="primary-nav">
         <Logo />
         <NavbarLink />
       </nav>
-    </>
+    </div>
   );
 }
 

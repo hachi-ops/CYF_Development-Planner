@@ -5,7 +5,7 @@ import Element from "./Element";
 import EmptyList from "../EmptyList";
 
 const ListFiles = ({ senderUsername, setShowDrafts }) => {
-  console.log(senderUsername);
+  // console.log(senderUsername);
   const [allDrafts, setAllDrafts] = useState([]);
   const [draftsChange, setDraftsChange] = useState(false);
 
@@ -45,22 +45,22 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
     }
   }
 
-  useEffect(() => {
-    setDrafts(allDrafts);
-  }, [allDrafts]);
+  // useEffect(() => {
+  //   setDrafts(allDrafts);
+  // }, [allDrafts]);
 
-  function Component() {
-    return <div>hello</div>;
-  }
+  // function Component() {
+  //   return <div>hello</div>;
+  // }
 
-  const [openComponent, setOpenComponent] = useState(false);
+  // const [openComponent, setOpenComponent] = useState(false);
 
-  const handleOpenComponent = () => {
-    setOpenComponent(!openComponent);
-  };
+  // const handleOpenComponent = () => {
+  //   setOpenComponent(!openComponent);
+  // };
   return (
     <>
-      <div className="relative">
+      <div className="relative" data-testid="list-files">
         <div
           className="titleCloseBtn"
           onClick={() => {
@@ -71,8 +71,8 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
         </div>
 
         <h1>Drafts</h1>
-        <button onClick={handleOpenComponent}>click</button>
-        {openComponent && <Component />}
+        {/* <button onClick={handleOpenComponent}>click</button> */}
+        {/* {openComponent && <Component />} */}
         {drafts.length !== 0 && drafts[0].draft_id !== null ? (
           drafts.map((draft) => {
             return (

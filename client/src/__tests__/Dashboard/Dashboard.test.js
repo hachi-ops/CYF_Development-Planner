@@ -1,38 +1,37 @@
-import { render, screen, cleanup } from "@testing-library/react";
-import renderer from "react-test-renderer";
-import "@testing-library/jest-dom";
+import { render, screen } from "@testing-library/react";
+import Dashboard from "../../components/dashboard/Dashboard";
+import Logout from "../../components/dashboard/controls/Logout";
+import DashboardNavigation from "../../components/dashboard/controls/DashboardNavigation";
 
-import Dashboard from "../../components/Dashboard";
-import Logout from "../../components/dashboard/Logout";
-import DashboardNavigation from "../../components/dashboard/DashboardNavigation";
-
-// render Dashboard component
-test("should render Dashboard component", () => {
+// render dashboard
+test("render Dashboard", () => {
   render(<Dashboard />);
-
   const dashboard = screen.getByTestId("dashboard");
-
-  expect(dashboardElement).toBeInTheDocument();
+  expect(dashboard).toBeInTheDocument();
 });
 
-// render Logout component
-test("should render Logout component", () => {
+// render dashboard header
+test("render dashboard header", () => {
+  render(<Dashboard />);
+  const header = screen.getByTitle("header");
+  expect(header).toBeInTheDocument();
+});
+
+// render logout button
+test("should render Logout button", () => {
   render(<Logout />);
-
-  const logoutElement = screen.getByTestId("logout");
-  expect(logoutElement).toBeInTheDocument();
+  const logoutButton = screen.getByTitle("logout");
+  expect(logoutButton).toBeInTheDocument();
 });
 
-// render DashboardNavigation component
+// render Dashboard Navigation
 test("should render DashboardNavigation component", () => {
   render(<DashboardNavigation />);
-
-  const dashboardNavigationEl = screen.getByTestId("dashboard-navigation");
-  expect(dashboardNavigationEl).toBeInTheDocument();
+  const dashboardNavigation = screen.getByTestId("dashboard-navigation");
+  expect(dashboardNavigation).toBeInTheDocument();
 });
 
 // render icons/icons text
-
 describe("should render: icons on dashboard, icons captions, open link on click of the icon, open link on click of the ico caption", () => {
   test("should render icons on dashboard", () => {
     render(<DashboardNavigation />);
@@ -58,3 +57,42 @@ describe("should render: icons on dashboard, icons captions, open link on click 
     expect(accountCaption).toBeInTheDocument();
   });
 });
+
+// render navigation buttons: files, messages, account
+
+// render files navigation buttons
+// render messages navigation buttons
+// render account navigation button
+
+// Files
+
+// render drafts list
+
+// render empty list when no items present
+// render open button
+// render delete button
+// render save button
+// render edit button
+// render X button
+
+// render sent list
+
+// render empty list when no items present
+// render open button
+// render delete button
+// render X button
+
+// render new list
+
+// render empty list when no items present
+// render open button
+// render save button
+// render X button
+
+// Messages
+// render all list
+// render sent list
+// render received list
+
+// Account
+// render account

@@ -44,7 +44,7 @@ const UpdateEmail = ({ user, handleUpdate }) => {
       newEmailFirst &&
       newEmailSecond &&
       (newEmailFirst && newEmailSecond) !== user.user_email &&
-      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(newEmailFirst)
+      /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/.test(newEmailFirst)
     )
       return true;
     return false;

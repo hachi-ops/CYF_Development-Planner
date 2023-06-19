@@ -33,13 +33,13 @@ function Dashboard({ setAuth }) {
   }, [updateUser]);
 
   return (
-    <>
-      <header className="header">
+    <div data-testid="dashboard">
+      <header className="header" title="header">
         <Logout setAuth={setAuth} />
         <h1>{user.username}'s Dashboard</h1>
-        <DashboardNavigation user={user} handleUpdate={handleUpdate} />
       </header>
-    </>
+      <DashboardNavigation user={user} handleUpdate={handleUpdate} />
+    </div>
   );
 }
 
