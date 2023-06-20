@@ -49,15 +49,15 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
     setDrafts(allDrafts);
   }, [allDrafts]);
 
-  function Component() {
-    return <div>hello</div>;
-  }
+  // function Component() {
+  //   return <div>hello</div>;
+  // }
 
-  const [openComponent, setOpenComponent] = useState(false);
+  // const [openComponent, setOpenComponent] = useState(false);
 
-  const handleOpenComponent = () => {
-    setOpenComponent(!openComponent);
-  };
+  // const handleOpenComponent = () => {
+  //   setOpenComponent(!openComponent);
+  // };
   return (
     <>
       <div className="relative">
@@ -71,8 +71,8 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
         </div>
 
         <h1>Drafts</h1>
-        <button onClick={handleOpenComponent}>click</button>
-        {openComponent && <Component />}
+        {/* <button onClick={handleOpenComponent}>click</button> */}
+        {/* {openComponent && <Component />} */}
         {drafts.length !== 0 && drafts[0].draft_id !== null ? (
           drafts.map((draft) => {
             return (

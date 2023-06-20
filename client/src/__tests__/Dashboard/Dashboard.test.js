@@ -1,38 +1,32 @@
-import { render, screen, cleanup } from "@testing-library/react";
-import renderer from "react-test-renderer";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import Dashboard from "../../components/Dashboard";
-import Logout from "../../components/dashboard/Logout";
-import DashboardNavigation from "../../components/dashboard/DashboardNavigation";
+import Dashboard from "../../components/dashboard/Dashboard";
+import Logout from "../../components/dashboard/controls/Logout";
+import DashboardNavigation from "../../components/dashboard/controls/DashboardNavigation";
 
 // render Dashboard component
 test("should render Dashboard component", () => {
   render(<Dashboard />);
-
   const dashboard = screen.getByTestId("dashboard");
-
-  expect(dashboardElement).toBeInTheDocument();
+  expect(dashboard).toBeInTheDocument();
 });
 
 // render Logout component
 test("should render Logout component", () => {
   render(<Logout />);
-
-  const logoutElement = screen.getByTestId("logout");
-  expect(logoutElement).toBeInTheDocument();
+  const logout = screen.getByTestId("logout");
+  expect(logout).toBeInTheDocument();
 });
 
 // render DashboardNavigation component
 test("should render DashboardNavigation component", () => {
   render(<DashboardNavigation />);
-
-  const dashboardNavigationEl = screen.getByTestId("dashboard-navigation");
-  expect(dashboardNavigationEl).toBeInTheDocument();
+  const dashboardNavigation = screen.getByTestId("dashboard-navigation");
+  expect(dashboardNavigation).toBeInTheDocument();
 });
 
 // render icons/icons text
-
 describe("should render: icons on dashboard, icons captions, open link on click of the icon, open link on click of the ico caption", () => {
   test("should render icons on dashboard", () => {
     render(<DashboardNavigation />);

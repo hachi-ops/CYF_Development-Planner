@@ -33,72 +33,38 @@ function DashboardNavigation({ user, handleUpdate }) {
     setMessagesControlButtons(false);
   };
 
-  const [clickThis, setClickThis] = useState("click this");
-
-  const handleClick3 = (e) => {
-    console.log(e.target.innerText);
-
-    const change = e.target.innerText === "click this" ? "close" : "click this";
-    setClickThis(change);
-  };
+  const headingItems = [
+    {
+      headingText: "Files",
+      imgSrc: filesIcon,
+      imgAlt: "files icon",
+      handleToggle: handleToggleFiles,
+      controlButtons: filesControlButtons,
+    },
+    {
+      headingText: "Messages",
+      imgSrc: messagesIcon,
+      imgAlt: "messages icon",
+      handleToggle: handleToggleMessages,
+      controlButtons: messagesControlButtons,
+    },
+    {
+      headingText: "Account",
+      imgSrc: accountIcon,
+      imgAlt: "messages icon",
+      handleToggle: handleToggleAccount,
+      controlButtons: accountControlButtons,
+    },
+  ];
 
   return (
     <>
       <div className="buttons flex" data-testid="dashboard-navigation">
-        <div className="icon-heading flex" onClick={handleToggleFiles}>
-          <h2
-            style={{
-              borderBottom: filesControlButtons ? "2px solid #b55151" : "none",
-              transform: filesControlButtons && "scale(1.2)",
-            }}
-          >
-            Files
-          </h2>
-          <img
-            src={filesIcon}
-            alt="files icon"
-            className="dashboard-icon"
-            style={{ transform: filesControlButtons && "scale(1.4)" }}
-          />
-        </div>
+        {headingItems.map((heading) => {
+          return <Buttons heading={heading} />;
+        })}
         {filesControlButtons && <FilesControls name={user.username} />}
-        <div className="icon-heading flex" onClick={handleToggleMessages}>
-          <h2
-            style={{
-              borderBottom: messagesControlButtons
-                ? "2px solid #b55151"
-                : "none",
-              transform: messagesControlButtons && "scale(1.2)",
-            }}
-          >
-            Messages
-          </h2>
-          <img
-            src={messagesIcon}
-            alt="messages icon"
-            className="dashboard-icon"
-            style={{ transform: messagesControlButtons && "scale(1.4)" }}
-          />
-        </div>
         {messagesControlButtons && <MessagesControls name={user.username} />}
-        <div className="icon-heading flex" onClick={handleToggleAccount}>
-          <h2
-            style={{
-              borderBottom: accountControlButtons
-                ? "2px solid #b55151"
-                : "none",
-              transform: accountControlButtons && "scale(1.2)",
-            }}
-          >
-            Account
-          </h2>
-          <img
-            src={accountIcon}
-            alt="account icon"
-            className="dashboard-icon"
-            style={{ transform: accountControlButtons && "scale(1.4)" }}
-          />
-        </div>
         {accountControlButtons && (
           <AccountControls
             user={user}
@@ -107,10 +73,30 @@ function DashboardNavigation({ user, handleUpdate }) {
           />
         )}
       </div>
-
-      <button onClick={(e) => handleClick3(e)}>{clickThis}</button>
     </>
   );
 }
 
+function Buttons({ heading }) {
+  return (
+    <>
+      <div className="icon-heading flex" onClick={heading.handleToggle}>
+        <h2
+          style={{
+            borderBottom: heading.controlButtons ? "2px solid #b55151" : "none",
+            transform: heading.controlButtons && "scale(1.2)",
+          }}
+        >
+          {heading.headingText}
+        </h2>
+        <img
+          src={heading.imgSrc}
+          alt={heading.imgAlt}
+          className="dashboard-icon"
+          style={{ transform: heading.controlButtons && "scale(1.4)" }}
+        />
+      </div>
+    </>
+  );
+}
 export default DashboardNavigation;
