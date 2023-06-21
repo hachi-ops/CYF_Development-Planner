@@ -35,7 +35,7 @@ function Dashboard({ setAuth }) {
   return (
     <>
       <div data-testid="dashboard">
-        <header className="header">
+        <header className="header" title="header">
           <Logout setAuth={setAuth} />
           <h1>{user.username}'s Dashboard</h1>
         </header>
