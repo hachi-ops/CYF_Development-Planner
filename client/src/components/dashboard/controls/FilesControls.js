@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import ListFiles from "../files/ListFiles";
 import SentFiles from "../files/SentFiles";
 import AddNewFile from "../files/AddNewFile";
+import AllMessages from "../messages/AllMessages";
+import ReceivedMessages from "../messages/ReceivedMessages";
 
 function FilesControls({ name }) {
   const [showDrafts, setShowDrafts] = useState(false);
@@ -21,11 +23,25 @@ function FilesControls({ name }) {
     setShowAddNew(true);
   };
 
+  const [showAllFiles, setShowAllFiles] = useState(false);
+
+  const handleShowAllFiles = () => {
+    setShowAllFiles(true);
+  };
+
+  const [showReceivedMessages, setShowReceivedMessages] = useState(false);
+
+  const handleShowReceivedMessages = () => {
+    setShowReceivedMessages(!showReceivedMessages);
+  };
+
   return (
     <>
       <div className="buttons">
-        <button onClick={handleShowDrafts}>drafts</button>
+        <button onClick={handleShowAllFiles}>all</button>
         <button onClick={handleShowSent}>sent</button>
+        <button onClick={handleShowReceivedMessages}>received</button>
+        <button onClick={handleShowDrafts}>drafts</button>
         <button onClick={handleShowAddNew}>new</button>
       </div>
       {showDrafts && (
@@ -34,6 +50,15 @@ function FilesControls({ name }) {
       {showSent && <SentFiles setShowSent={setShowSent} />}
       {showAddNew && (
         <AddNewFile senderUsername={name} setShowAddNew={setShowAddNew} />
+      )}
+      {showAllFiles && (
+        <AllMessages name={name} setShowAllMessages={setShowAllFiles} />
+      )}
+      {showReceivedMessages && (
+        <ReceivedMessages
+          name={name}
+          handleShowReceivedMessages={handleShowReceivedMessages}
+        />
       )}
     </>
   );
