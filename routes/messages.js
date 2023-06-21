@@ -18,11 +18,11 @@ router.get("/", async (req, res) => {
 // get all user received messages
 router.get("/received", async (req, res) => {
   try {
-    const allMessages = await pool.query(
+    const receivedMessages = await pool.query(
       "SELECT * FROM messages WHERE messages.receipient_id = $1",
       [req.user.id]
     );
-    res.json(allMessages.rows);
+    res.json(receivedMessages.rows);
   } catch (err) {
     console.error(err.message);
     res.status(500).json("server error");
