@@ -5,7 +5,7 @@ import UpdatePword from "./UpdatePword";
 function Account({ user, handleUpdate, setShowAccountSettings }) {
   return (
     <>
-      <div className="show-account">
+      <div className="show-element">
         <div className="titleCloseBtn">
           <div
             onClick={() => {

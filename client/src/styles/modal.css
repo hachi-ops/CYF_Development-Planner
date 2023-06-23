@@ -3,17 +3,18 @@
   height: 100vh;
   background-color: rgb(255, 255, 255);
   position: absolute;
-  top: 60px;
-
+  top:0;
   margin: auto; 
 }
+
+
 
 .show-element {
   width: 100vw;
   height: 100vh;
   background-color: rgb(255, 255, 255);
   position: absolute;
-  top: 0;
+  top: 200px;
   right: 0;
   margin: auto; 
 }

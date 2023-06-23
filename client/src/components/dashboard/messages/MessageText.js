@@ -27,7 +27,7 @@ function MessageText({ message }) {
 function MessageModal({ message, setOpenButton }) {
   return (
     <>
-      <div className="show-element">
+      <div className="relative">
         <div
           className="titleCloseBtn"
           onClick={() => {

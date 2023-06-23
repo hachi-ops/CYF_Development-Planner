@@ -4,8 +4,9 @@ import React, { useState } from "react";
 
 import MentorsDropdown from "./MentorsDropdown";
 import NavigationButtons from "./NavigationButtons";
-
+import EditDraft from "./EditDraft";
 import Draft from "./Draft";
+import DeletePrompt from "../prompts/DeletePrompt";
 
 function Element({
   draft,
@@ -25,6 +26,18 @@ function Element({
     setOpenText(true);
   };
 
+  const [showEdit, setShowEdit] = useState(false);
+
+  const handleShowEdit = () => {
+    setShowEdit(!showEdit);
+  };
+
+  const [deletePrompt, setDeletePrompt] = useState(false);
+
+  const handleDeletePrompt = () => {
+    setDeletePrompt(!deletePrompt);
+  };
+
   return (
     <>
       <div>
@@ -42,27 +55,46 @@ function Element({
               handleToggleSendToMentor={handleToggleSendToMentor}
               setOpenText={setOpenText}
               setDraftsChange={setDraftsChange}
+              handleShowEdit={handleShowEdit}
+              handleDeletePrompt={handleDeletePrompt}
             />
 
             <button onClick={handleOpenText}>open</button>
           </div>
         </div>
-        {openText && (
-          <Draft
-            draft={draft}
-            deleteDraft={deleteDraft}
-            setOpenText={setOpenText}
-            handleToggleSendToMentor={handleToggleSendToMentor}
-            allDrafts={allDrafts}
-          />
-        )}
       </div>
-
+      {openText && (
+        <Draft
+          draft={draft}
+          deleteDraft={deleteDraft}
+          setOpenText={setOpenText}
+          handleToggleSendToMentor={handleToggleSendToMentor}
+          allDrafts={allDrafts}
+          handleDeletePrompt={handleDeletePrompt}
+          handleShowEdit={handleShowEdit}
+        />
+      )}
       {toggleSendToMentor && (
         <MentorsDropdown
           senderUsername={senderUsername}
           draft={draft}
           setToggleSendToMentor={setToggleSendToMentor}
+        />
+      )}
+      {showEdit && (
+        <EditDraft
+          draft={draft}
+          setDraftsChange={setDraftsChange}
+          setShowEdit={setShowEdit}
+          handleShowEdit={handleShowEdit}
+        />
+      )}
+      {deletePrompt && (
+        <DeletePrompt
+          handleDeletePrompt={handleDeletePrompt}
+          draft={draft}
+          deleteDraft={deleteDraft}
+          setDeletePrompt={setDeletePrompt}
         />
       )}
     </>

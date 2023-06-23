@@ -3,7 +3,7 @@ import React from "react";
 function SentConfirmation({ setShowSentConfirmation }) {
   return (
     <>
-      <div className="show-element">
+      <div className="relative">
         <button
           className="titleCloseBtn"
           onClick={() => {

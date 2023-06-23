@@ -51,7 +51,7 @@ const ListDrafts = ({ senderUsername, setShowDrafts }) => {
 
   return (
     <>
-      <div className="relative">
+      <div className="show-element">
         <div
           className="titleCloseBtn"
           onClick={() => {

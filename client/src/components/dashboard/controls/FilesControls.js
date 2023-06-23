@@ -20,7 +20,6 @@ function FilesControls({ name }) {
     <>
       <div className="buttons">
         <button onClick={handleShowDrafts}>drafts</button>
-
         <button onClick={handleShowAddNew}>new</button>
       </div>
       {showDrafts && (

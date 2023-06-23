@@ -15,7 +15,7 @@ function DeletePrompt({
   };
   return (
     <>
-      <div className="show-element">
+      <div className="relative">
         <div onClick={handleDeletePrompt}>
           <CloseButton setDeleteConfirmation={setDeleteConfirmation} />
         </div>
@@ -33,13 +33,13 @@ function DeletePrompt({
           <button onClick={handleDeletePrompt}>no</button>
         </div>
       </div>
-      {deleteConfirmation && (
+      {/* {deleteConfirmation && (
         <DeleteConfirmation
           handleDeleteConfirmation={handleDeleteConfirmation}
           setDeleteConfirmation={setDeleteConfirmation}
           handleDeletePrompt={handleDeletePrompt}
         />
-      )}
+      )} */}
     </>
   );
 }

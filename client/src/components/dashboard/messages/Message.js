@@ -34,7 +34,7 @@ function Message({ message, name, setShowAllMessages }) {
       </div>
 
       {messageClicked && (
-        <div className="show-element">
+        <div className="relative">
           <div
             className="titleCloseBtn"
             onClick={() => {

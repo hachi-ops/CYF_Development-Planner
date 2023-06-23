@@ -4,26 +4,14 @@ import trashIcon from "../../../images/Graphicrating-Koloria-Trash-Delete.32.png
 import sendIcon from "../../../images/icons8-send-64.png";
 import editIcon3 from "../../../images/Graphicrating-Koloria-File-Edit.32.png";
 
-import DeletePrompt from "../prompts/DeletePrompt";
-import EditDraft from "./EditDraft";
-
 function NavigationButtons({
   handleToggleSendToMentor,
   draft,
   deleteDraft,
   setDraftsChange,
+  handleShowEdit,
+  handleDeletePrompt,
 }) {
-  const [deletePrompt, setDeletePrompt] = useState(false);
-
-  const handleDeletePrompt = () => {
-    setDeletePrompt(!deletePrompt);
-  };
-
-  const [showEdit, setShowEdit] = useState(false);
-
-  const handleShowEdit = () => {
-    setShowEdit(!showEdit);
-  };
   return (
     <>
       <div className="navigation-buttons">
@@ -47,21 +35,6 @@ function NavigationButtons({
           onClick={handleToggleSendToMentor}
         />
       </div>
-      {deletePrompt && (
-        <DeletePrompt
-          handleDeletePrompt={handleDeletePrompt}
-          draft={draft}
-          deleteDraft={deleteDraft}
-        />
-      )}
-
-      {showEdit && (
-        <EditDraft
-          draft={draft}
-          setDraftsChange={setDraftsChange}
-          setShowEdit={setShowEdit}
-        />
-      )}
     </>
   );
 }
