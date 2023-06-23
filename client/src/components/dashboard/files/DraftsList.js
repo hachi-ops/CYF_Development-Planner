@@ -4,12 +4,12 @@ import React, { useState, useEffect } from "react";
 import Element from "./Element";
 import EmptyList from "../EmptyList";
 
-const ListFiles = ({ senderUsername, setShowDrafts }) => {
+const ListDrafts = ({ senderUsername, setShowDrafts }) => {
   console.log(senderUsername);
   const [allDrafts, setAllDrafts] = useState([]);
   const [draftsChange, setDraftsChange] = useState(false);
 
-  const getFiles = async () => {
+  const getDrafts = async () => {
     try {
       const res = await fetch("/dashboard/drafts", {
         method: "GET",
@@ -25,7 +25,7 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
   };
 
   useEffect(() => {
-    getFiles();
+    getDrafts();
     setDraftsChange(false);
   }, [draftsChange]);
 
@@ -49,18 +49,9 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
     setDrafts(allDrafts);
   }, [allDrafts]);
 
-  function Component() {
-    return <div>hello</div>;
-  }
-
-  const [openComponent, setOpenComponent] = useState(false);
-
-  const handleOpenComponent = () => {
-    setOpenComponent(!openComponent);
-  };
   return (
     <>
-      <div className="relative">
+      <div className="show-element">
         <div
           className="titleCloseBtn"
           onClick={() => {
@@ -71,8 +62,7 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
         </div>
 
         <h1>Drafts</h1>
-        <button onClick={handleOpenComponent}>click</button>
-        {openComponent && <Component />}
+
         {drafts.length !== 0 && drafts[0].draft_id !== null ? (
           drafts.map((draft) => {
             return (
@@ -96,4 +86,4 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
   );
 };
 
-export default ListFiles;
+export default ListDrafts;

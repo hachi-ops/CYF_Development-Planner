@@ -37,8 +37,8 @@ function Dashboard({ setAuth }) {
       <header className="header">
         <Logout setAuth={setAuth} />
         <h1>{user.username}'s Dashboard</h1>
-        <DashboardNavigation user={user} handleUpdate={handleUpdate} />
       </header>
+      <DashboardNavigation user={user} handleUpdate={handleUpdate} />
     </>
   );
 }

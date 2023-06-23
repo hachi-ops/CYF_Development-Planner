@@ -1,29 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 
-import trashIcon from "../../../images/Graphicrating-Koloria-Trash-Delete.32.png";
 import sendIcon from "../../../images/icons8-send-64.png";
 import editIcon3 from "../../../images/Graphicrating-Koloria-File-Edit.32.png";
-
-import DeletePrompt from "../prompts/DeletePrompt";
-import EditDraft from "./EditDraft";
+import DeleteButton from "./DeleteButton";
 
 function NavigationButtons({
   handleToggleSendToMentor,
   draft,
   deleteDraft,
   setDraftsChange,
+  handleShowEdit,
+  handleDeletePrompt,
 }) {
-  const [deletePrompt, setDeletePrompt] = useState(false);
-
-  const handleDeletePrompt = () => {
-    setDeletePrompt(!deletePrompt);
-  };
-
-  const [showEdit, setShowEdit] = useState(false);
-
-  const handleShowEdit = () => {
-    setShowEdit(!showEdit);
-  };
   return (
     <>
       <div className="navigation-buttons">
@@ -33,13 +21,7 @@ function NavigationButtons({
           onClick={handleShowEdit}
           className="icon"
         />
-        <img
-          className="icon"
-          alt="delete"
-          src={trashIcon}
-          onClick={handleDeletePrompt}
-        />
-
+        <DeleteButton handleDeletePrompt={handleDeletePrompt} />
         <img
           className="icon"
           alt="send"
@@ -47,21 +29,6 @@ function NavigationButtons({
           onClick={handleToggleSendToMentor}
         />
       </div>
-      {deletePrompt && (
-        <DeletePrompt
-          handleDeletePrompt={handleDeletePrompt}
-          draft={draft}
-          deleteDraft={deleteDraft}
-        />
-      )}
-
-      {showEdit && (
-        <EditDraft
-          draft={draft}
-          setDraftsChange={setDraftsChange}
-          setShowEdit={setShowEdit}
-        />
-      )}
     </>
   );
 }

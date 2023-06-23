@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import DeleteButton from "../files/DeleteButton";
 function MessageText({ message }) {
   const [openButton, setOpenButton] = useState(false);
   const handleOpenButton = () => {
@@ -27,7 +28,7 @@ function MessageText({ message }) {
 function MessageModal({ message, setOpenButton }) {
   return (
     <>
-      <div className="show-element">
+      <div className="relative">
         <div
           className="titleCloseBtn"
           onClick={() => {
@@ -36,6 +37,8 @@ function MessageModal({ message, setOpenButton }) {
         >
           X
         </div>
+        <DeleteButton />
+        <div>{message.message_title}</div>
         <div>{message.message_text}</div>
       </div>
     </>

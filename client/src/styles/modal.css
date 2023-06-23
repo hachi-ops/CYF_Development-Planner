@@ -3,18 +3,20 @@
   height: 100vh;
   background-color: rgb(255, 255, 255);
   position: absolute;
-  top: 60px;
-
+  top:0;
+  left: 0;
   margin: auto; 
 }
+
+
 
 .show-element {
   width: 100vw;
   height: 100vh;
   background-color: rgb(255, 255, 255);
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 200px;
+  left: 0;
   margin: auto; 
 }
 
@@ -25,6 +27,15 @@
     top: 0;
   }
 
+  .titleCloseBtn {
+    /* background-color: transparent; */
+   font-weight: 900;
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-align: right;
+    margin: 30px;
+    color: brown;
+}
   
   
 

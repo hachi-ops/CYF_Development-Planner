@@ -16,6 +16,7 @@ function AddNewFile({ senderUsername, setShowAddNew }) {
         <h1>New Draft</h1>
         <SendNewMessage
           senderUsername={senderUsername}
+          setShowAddNew={setShowAddNew}
           // receipientId={receipientId}
         />
       </div>

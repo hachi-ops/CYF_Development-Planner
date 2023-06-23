@@ -1,7 +1,6 @@
 import React from "react";
 
 import NavigationButtons from "./NavigationButtons";
-import CloseButton from "../CloseButton";
 
 function Draft({
   draft,
@@ -10,17 +9,18 @@ function Draft({
   setOpenText,
   setDraftsChange,
   handleToggleSendToMentor,
+  handleDeletePrompt,
 }) {
   return (
     <>
-      <div className="show-element">
+      <div className="relative">
         <div
           className="titleCloseBtn"
           onClick={() => {
             setOpenText(false);
           }}
         >
-          <CloseButton />
+          X
         </div>
         <h1>{draft.draft_title}</h1>
         <NavigationButtons
@@ -30,6 +30,7 @@ function Draft({
           handleToggleSendToMentor={handleToggleSendToMentor}
           setOpenText={setOpenText}
           setDraftsChange={setDraftsChange}
+          handleDeletePrompt={handleDeletePrompt}
         />
 
         <h2 className="element-title">{`Title: ${draft.draft_title}`} </h2>

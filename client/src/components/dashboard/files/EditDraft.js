@@ -39,7 +39,7 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
 
   return (
     <>
-      <div className="show-element">
+      <div className="relative">
         <div
           onClick={() => {
             setShowEdit(false);
