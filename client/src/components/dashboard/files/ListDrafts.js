@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Element from "./Element";
 import EmptyList from "../EmptyList";
 
-const ListFiles = ({ senderUsername, setShowDrafts }) => {
+const ListDrafts = ({ senderUsername, setShowDrafts }) => {
   console.log(senderUsername);
   const [allDrafts, setAllDrafts] = useState([]);
   const [draftsChange, setDraftsChange] = useState(false);
@@ -86,4 +86,4 @@ const ListFiles = ({ senderUsername, setShowDrafts }) => {
   );
 };
 
-export default ListFiles;
+export default ListDrafts;
