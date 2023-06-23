@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NavigationButtons from "../files/NavigationButtons";
+
 import DeleteButton from "../files/DeleteButton";
 function MessageText({ message }) {
   const [openButton, setOpenButton] = useState(false);
