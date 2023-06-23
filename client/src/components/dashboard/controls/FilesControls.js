@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // components
-import ListDrafts from "../files/ListDrafts";
+import DraftsList from "../files/DraftsList";
 
 import AddNewFile from "../files/AddNewFile";
 
@@ -24,7 +24,7 @@ function FilesControls({ name }) {
         <button onClick={handleShowAddNew}>new</button>
       </div>
       {showDrafts && (
-        <ListDrafts senderUsername={name} setShowDrafts={setShowDrafts} />
+        <DraftsList senderUsername={name} setShowDrafts={setShowDrafts} />
       )}
 
       {showAddNew && (

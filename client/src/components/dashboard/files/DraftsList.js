@@ -9,7 +9,7 @@ const ListDrafts = ({ senderUsername, setShowDrafts }) => {
   const [allDrafts, setAllDrafts] = useState([]);
   const [draftsChange, setDraftsChange] = useState(false);
 
-  const getFiles = async () => {
+  const getDrafts = async () => {
     try {
       const res = await fetch("/dashboard/drafts", {
         method: "GET",
@@ -25,7 +25,7 @@ const ListDrafts = ({ senderUsername, setShowDrafts }) => {
   };
 
   useEffect(() => {
-    getFiles();
+    getDrafts();
     setDraftsChange(false);
   }, [draftsChange]);
 
