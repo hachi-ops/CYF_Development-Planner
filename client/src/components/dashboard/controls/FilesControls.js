@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // components
-import ListFiles from "../files/ListFiles";
+import ListDrafts from "../files/ListDrafts";
 import SentFiles from "../files/SentFiles";
 import AddNewFile from "../files/AddNewFile";
 import AllMessages from "../messages/AllMessages";
@@ -44,13 +44,9 @@ function FilesControls({ name }) {
         <button onClick={handleShowDrafts}>drafts</button>
         <button onClick={handleShowAddNew}>new</button>
       </div>
-      {showDrafts && (
-        <ListFiles senderUsername={name} setShowDrafts={setShowDrafts} />
-      )}
+
       {showSent && <SentFiles setShowSent={setShowSent} />}
-      {showAddNew && (
-        <AddNewFile senderUsername={name} setShowAddNew={setShowAddNew} />
-      )}
+
       {showAllFiles && (
         <AllMessages name={name} setShowAllMessages={setShowAllFiles} />
       )}
@@ -59,6 +55,14 @@ function FilesControls({ name }) {
           name={name}
           handleShowReceivedMessages={handleShowReceivedMessages}
         />
+      )}
+
+      {showDrafts && (
+        <ListDrafts senderUsername={name} setShowDrafts={setShowDrafts} />
+      )}
+
+      {showAddNew && (
+        <AddNewFile senderUsername={name} setShowAddNew={setShowAddNew} />
       )}
     </>
   );

@@ -1,24 +1,24 @@
 import { render, screen, cleanup } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom";
-import ListFiles from "../../components/dashboard/files/ListFiles";
+import ListDrafts from "../../components/dashboard/files/ListDrafts";
 
 afterEach(() => {
   cleanup();
 });
 
 test("should render List Files component", () => {
-  render(<ListFiles />);
+  render(<ListDrafts />);
 
-  const listFilesElement = screen.getByTestId("list-files");
+  const ListDraftsElement = screen.getByTestId("list-files");
 
-  expect(listFilesElement).toBeInTheDocument();
+  expect(ListDraftsElement).toBeInTheDocument();
 });
 
 // open files menu on click of an icon/ icon-text
 
-// test("ListFiles matches snapshot", () => {
-//   const component = renderer.create(<ListFiles />);
+// test("ListDrafts matches snapshot", () => {
+//   const component = renderer.create(<ListDrafts />);
 
 //   let tree = component.toJSON();
 //   expect(tree).toMatchSnapshot();

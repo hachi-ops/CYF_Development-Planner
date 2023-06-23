@@ -26,6 +26,11 @@ function ReceivedMessages({
   useEffect(() => {
     getReceivedMessages();
   }, []);
+
+  const [messageClicked, setMessageClicked] = useState(false);
+  function handleMessageClicked() {
+    setMessageClicked(!messageClicked);
+  }
   return (
     <>
       <div className="show-element">
@@ -49,10 +54,31 @@ function ReceivedMessages({
 
                     <div className="flex">
                       {" "}
-                      <button>open</button>
+                      <button onClick={handleMessageClicked}>open</button>
                       {/* <button>delete</button> */}
                     </div>
                   </div>
+                  {messageClicked && (
+                    <div className="show-element">
+                      <div
+                        className="titleCloseBtn"
+                        onClick={() => {
+                          setMessageClicked(false);
+                        }}
+                      >
+                        X
+                      </div>
+
+                      <div className="element-container">
+                        <div className="element-title">
+                          {message.message_title}
+                        </div>
+                        <div className="element-text">
+                          {message.message_text}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </>
               );
             })
