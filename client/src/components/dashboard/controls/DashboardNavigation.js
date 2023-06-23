@@ -33,15 +33,6 @@ function DashboardNavigation({ user, handleUpdate }) {
     setMessagesControlButtons(false);
   };
 
-  const [clickThis, setClickThis] = useState("click this");
-
-  const handleClick3 = (e) => {
-    console.log(e.target.innerText);
-
-    const change = e.target.innerText === "click this" ? "close" : "click this";
-    setClickThis(change);
-  };
-
   return (
     <>
       <div className="buttons flex" data-testid="dashboard-navigation">
@@ -107,8 +98,6 @@ function DashboardNavigation({ user, handleUpdate }) {
           />
         )}
       </div>
-
-      <button onClick={(e) => handleClick3(e)}>{clickThis}</button>
     </>
   );
 }
