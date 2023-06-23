@@ -1,7 +1,6 @@
 import React from "react";
 
 import NavigationButtons from "./NavigationButtons";
-import CloseButton from "../CloseButton";
 
 function Draft({
   draft,
@@ -21,7 +20,7 @@ function Draft({
             setOpenText(false);
           }}
         >
-          <CloseButton />
+          X
         </div>
         <h1>{draft.draft_title}</h1>
         <NavigationButtons
