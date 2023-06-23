@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import NavigationButtons from "../files/NavigationButtons";
+import DeleteButton from "../files/DeleteButton";
 function MessageText({ message }) {
   const [openButton, setOpenButton] = useState(false);
   const handleOpenButton = () => {
@@ -36,6 +37,8 @@ function MessageModal({ message, setOpenButton }) {
         >
           X
         </div>
+        <DeleteButton />
+        <div>{message.message_title}</div>
         <div>{message.message_text}</div>
       </div>
     </>

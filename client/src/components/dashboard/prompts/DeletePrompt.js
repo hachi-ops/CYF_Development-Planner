@@ -21,7 +21,6 @@ function DeletePrompt({
         </div>
         <div>Do you want to delete this file????</div>
         <div className="buttons">
-          {/* <button onClick={handleDeleteConfirmation}>yes</button> */}
           <button
             onClick={() => {
               deleteDraft(draft.draft_id);
@@ -33,13 +32,6 @@ function DeletePrompt({
           <button onClick={handleDeletePrompt}>no</button>
         </div>
       </div>
-      {/* {deleteConfirmation && (
-        <DeleteConfirmation
-          handleDeleteConfirmation={handleDeleteConfirmation}
-          setDeleteConfirmation={setDeleteConfirmation}
-          handleDeletePrompt={handleDeletePrompt}
-        />
-      )} */}
     </>
   );
 }

@@ -15,7 +15,6 @@ function FilesControls({ name }) {
   const handleShowAddNew = () => {
     setShowAddNew(true);
   };
-
   return (
     <>
       <div className="buttons">

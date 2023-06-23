@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
-import trashIcon from "../../../images/Graphicrating-Koloria-Trash-Delete.32.png";
 import sendIcon from "../../../images/icons8-send-64.png";
 import editIcon3 from "../../../images/Graphicrating-Koloria-File-Edit.32.png";
+import DeleteButton from "./DeleteButton";
 
 function NavigationButtons({
   handleToggleSendToMentor,
@@ -21,13 +21,7 @@ function NavigationButtons({
           onClick={handleShowEdit}
           className="icon"
         />
-        <img
-          className="icon"
-          alt="delete"
-          src={trashIcon}
-          onClick={handleDeletePrompt}
-        />
-
+        <DeleteButton handleDeletePrompt={handleDeletePrompt} />
         <img
           className="icon"
           alt="send"

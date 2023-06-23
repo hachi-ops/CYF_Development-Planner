@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SendNewMessage from "./SendNewMessage";
+import DeleteButton from "../files/DeleteButton";
 
 function Message({ message, name, setShowAllMessages }) {
   const [messageClicked, setMessageClicked] = useState(false);
@@ -15,6 +16,7 @@ function Message({ message, name, setShowAllMessages }) {
     setAnswerField(!answerField);
     setAnswerButtonText((state) => (state === "answer" ? "cancel" : "answer"));
   };
+
   return (
     <>
       <hr />
@@ -29,7 +31,7 @@ function Message({ message, name, setShowAllMessages }) {
         <div className="flex">
           {" "}
           <button onClick={handleMessageClicked}>open</button>
-          {/* <button>delete</button> */}
+          <DeleteButton />
         </div>
       </div>
 
@@ -47,6 +49,7 @@ function Message({ message, name, setShowAllMessages }) {
           <div className="buttons">
             <button onClick={() => setMessageClicked(false)}>cancel</button>
             <button onClick={sendAnswer}>{answerButtonText}</button>
+            <DeleteButton />
           </div>
           <div className="element-container">
             <div className="element-title">{message.message_title}</div>
