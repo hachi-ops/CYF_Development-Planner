@@ -7,10 +7,6 @@ function Login({ setAuth }) {
     password: "",
   });
 
-  const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
-  const [serverErrorMessage, setServerErrorMessage] = useState("");
-
   const { email, password } = inputs;
 
   const handleChange = (e) => {
@@ -23,32 +19,25 @@ function Login({ setAuth }) {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
-    setEmailError(false);
-    setPasswordError(false);
-    if (!email) {
-      setEmailError(true);
-    } else if (!password) {
-      setEmailError(false);
-      setPasswordError(true);
-    } else {
-      try {
-        const body = { email, password };
-        const response = await fetch("/authentication/login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        });
-        const parseRes = await response.json();
-        setServerErrorMessage(parseRes);
-        if (parseRes.jwtToken) {
-          localStorage.setItem("token", parseRes.jwtToken);
-          setAuth(true);
-        } else {
-          setAuth(false);
-        }
-      } catch (err) {
-        console.error(err.message);
+    try {
+      const body = { email, password };
+      const response = await fetch("/authentication/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      const parseRes = await response.json();
+      console.log("Login file line 31 => ", parseRes);
+      if (parseRes.jwtToken) {
+        localStorage.setItem("token", parseRes.jwtToken);
+
+        setAuth(true);
+      } else {
+        setAuth(false);
       }
+    } catch (err) {
+      console.error(err.message);
     }
   };
 
@@ -70,9 +59,6 @@ function Login({ setAuth }) {
           value={password}
           onChange={(e) => handleChange(e)}
         />
-        {emailError && <p>Please enter your email</p>}
-        {passwordError && <p>Please enter your password</p>}
-        <p>{serverErrorMessage}</p>
         <div className="buttons">
           <button>Login</button>
         </div>
