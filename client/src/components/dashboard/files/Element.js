@@ -8,13 +8,7 @@ import EditDraft from "./EditDraft";
 import Draft from "./Draft";
 import DeletePrompt from "../prompts/DeletePrompt";
 
-function Element({
-  draft,
-  deleteDraft,
-  setDraftsChange,
-  senderUsername,
-  allDrafts,
-}) {
+function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
   const [toggleSend, setToggleSend] = useState(false);
   const [openText, setOpenText] = useState(false);
 
@@ -40,36 +34,30 @@ function Element({
 
   return (
     <>
-      <div>
-        <div className="flex-list ">
-          <div onClick={handleOpenText}>
-            <p className="">
-              <span>Title: </span>
-              {draft.draft_title}
-            </p>
-          </div>
-          <div className="flex-list-buttons">
-            <NavigationButtons
-              deleteDraft={deleteDraft}
-              draft={draft}
-              handleToggleSend={handleToggleSend}
-              setOpenText={setOpenText}
-              setDraftsChange={setDraftsChange}
-              handleShowEdit={handleShowEdit}
-              handleDeletePrompt={handleDeletePrompt}
-            />
+      <div className="flex-list ">
+        <div onClick={handleOpenText}>
+          <p className="">
+            <span>Title: </span>
+            {draft.draft_title}
+          </p>
+        </div>
+        <div className="flex-list-buttons">
+          <NavigationButtons
+            handleToggleSend={handleToggleSend}
+            handleShowEdit={handleShowEdit}
+            handleDeletePrompt={handleDeletePrompt}
+          />
 
-            <button onClick={handleOpenText}>open</button>
-          </div>
+          <button onClick={handleOpenText}>open</button>
         </div>
       </div>
+
       {openText && (
         <Draft
           draft={draft}
           deleteDraft={deleteDraft}
           setOpenText={setOpenText}
           handleToggleSend={handleToggleSend}
-          allDrafts={allDrafts}
           handleDeletePrompt={handleDeletePrompt}
           handleShowEdit={handleShowEdit}
         />

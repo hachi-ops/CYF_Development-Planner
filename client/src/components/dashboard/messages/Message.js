@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import SendNewMessage from "./SendNewMessage";
-import DeleteButton from "../files/DeleteButton";
+import DeleteMessageButton from "./DeleteMessageButton";
+import DeleteMessagePrompt from "./DeleteMessagePrompt";
 
-function Message({ message, name, setShowAllMessages }) {
+function Message({
+  message,
+  name,
+  setShowAllMessages,
+  deleteMessage,
+  setMessagesChange,
+  allMessages,
+}) {
   const [messageClicked, setMessageClicked] = useState(false);
   function handleMessageClicked() {
     setMessageClicked(!messageClicked);
@@ -17,6 +25,13 @@ function Message({ message, name, setShowAllMessages }) {
     setAnswerButtonText((state) => (state === "answer" ? "cancel" : "answer"));
   };
 
+  const [toggleDeleteMessagePrompt, setToggleDeleteMessagePrompt] =
+    useState(false);
+
+  const handleToggleDeleteMessagePrompt = () => {
+    setToggleDeleteMessagePrompt(!toggleDeleteMessagePrompt);
+  };
+
   return (
     <>
       <hr />
@@ -26,15 +41,29 @@ function Message({ message, name, setShowAllMessages }) {
           {" "}
           <h4>{message.sender_username}</h4>
           <div>{message.message_title}</div>
+          <div>{message.message_id}</div>
         </div>
 
         <div className="flex">
           {" "}
           <button onClick={handleMessageClicked}>open</button>
-          <DeleteButton />
+          <DeleteMessageButton
+            handleToggleDeleteMessagePrompt={handleToggleDeleteMessagePrompt}
+            message={message}
+            deleteMessage={deleteMessage}
+            setMessagesChange={setMessagesChange}
+          />
         </div>
       </div>
 
+      {toggleDeleteMessagePrompt && (
+        <DeleteMessagePrompt
+          handleToggleDeleteMessagePrompt={handleToggleDeleteMessagePrompt}
+          message={message}
+          deleteMessage={deleteMessage}
+          setMessagesChange={setMessagesChange}
+        />
+      )}
       {messageClicked && (
         <div className="relative">
           <div
@@ -49,7 +78,12 @@ function Message({ message, name, setShowAllMessages }) {
           <div className="buttons">
             <button onClick={() => setMessageClicked(false)}>cancel</button>
             <button onClick={sendAnswer}>{answerButtonText}</button>
-            <DeleteButton />
+            <DeleteMessageButton
+              handleToggleDeleteMessagePrompt={handleToggleDeleteMessagePrompt}
+              deleteMessage={deleteMessage}
+              message={message}
+              setMessagesChange={setMessagesChange}
+            />
           </div>
           <div className="element-container">
             <div className="element-title">{message.message_title}</div>

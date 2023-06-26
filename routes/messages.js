@@ -97,41 +97,23 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-//delete a message
+// delete message
 
-router.post("/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
-    const { messageId } = req.params;
-    const { message } = req.body;
+    const { id } = req.params;
     const deleteMessage = await pool.query(
-      "DELETE FROM messages WHERE message_id = $1 AND user_id = $2 RETURNING *",
-      [messageId, req.user.id]
+      "DELETE FROM messages WHERE message_id = $1 AND receipient_id = $2 OR sender_id = $2 RETURNING *",
+      [id, req.user.id]
     );
 
     if (deleteMessage.rows.length === 0) {
       return res.json("This message is not yours");
     }
-    res.json("deleted");
+
+    res.json("Message was deleted");
   } catch (err) {
     console.error(err.message);
   }
 });
-
-// delete from sent messages
-
-// router.post("/bin-sent", async (req, res) => {
-//   try {
-//     const { receipientId, messageTitle, messageText, senderUsername } =
-//       req.body;
-//     const newMessage = await pool.query(
-//       "INSERT INTO messages (sender_id, receipient_id, message_title, message_text, sender_username) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-//       [req.user.id, receipientId, messageTitle, messageText, senderUsername]
-//     );
-//     res.json(newMessage.rows[0]);
-//   } catch (err) {
-//     console.error(err.message);
-//     res.status(500).json("server error");
-//   }
-// });
-
 module.exports = router;
