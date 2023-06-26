@@ -42,6 +42,19 @@ router.get("/mentors/:id", async (req, res) => {
   }
 });
 
+router.get("/students", async (req, res) => {
+  try {
+    const user = await pool.query(
+      "SELECT user_id, username from users where user_role='student'"
+    );
+
+    res.json(user.rows);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 // checking password that is entered is the same as the existing one
 router.post("/validPword", async (req, res) => {
   try {
@@ -79,7 +92,7 @@ router.put("/updatePword", async (req, res) => {
 router.put("/updateEmail", async (req, res) => {
   try {
     const { newEmail, userId } = req.body;
-    console.log(newEmail, userId)
+    console.log(newEmail, userId);
     const hasUpdated = await pool.query(
       "UPDATE users SET user_email=$1 WHERE user_id=$2 RETURNING *",
       [newEmail, userId]

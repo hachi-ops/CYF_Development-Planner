@@ -15,11 +15,11 @@ function Element({
   senderUsername,
   allDrafts,
 }) {
-  const [toggleSendToMentor, setToggleSendToMentor] = useState(false);
+  const [toggleSend, setToggleSend] = useState(false);
   const [openText, setOpenText] = useState(false);
 
-  const handleToggleSendToMentor = () => {
-    setToggleSendToMentor(true);
+  const handleToggleSend = () => {
+    setToggleSend(true);
   };
 
   const handleOpenText = () => {
@@ -52,7 +52,7 @@ function Element({
             <NavigationButtons
               deleteDraft={deleteDraft}
               draft={draft}
-              handleToggleSendToMentor={handleToggleSendToMentor}
+              handleToggleSend={handleToggleSend}
               setOpenText={setOpenText}
               setDraftsChange={setDraftsChange}
               handleShowEdit={handleShowEdit}
@@ -68,19 +68,20 @@ function Element({
           draft={draft}
           deleteDraft={deleteDraft}
           setOpenText={setOpenText}
-          handleToggleSendToMentor={handleToggleSendToMentor}
+          handleToggleSend={handleToggleSend}
           allDrafts={allDrafts}
           handleDeletePrompt={handleDeletePrompt}
           handleShowEdit={handleShowEdit}
         />
       )}
-      {toggleSendToMentor && (
+      {toggleSend && (
         <MentorsDropdown
           senderUsername={senderUsername}
           draft={draft}
-          setToggleSendToMentor={setToggleSendToMentor}
+          setToggleSend={setToggleSend}
         />
       )}
+
       {showEdit && (
         <EditDraft
           draft={draft}

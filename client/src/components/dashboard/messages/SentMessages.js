@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MessageText from "./MessageText";
 import EmptyList from "../EmptyList";
+import DeleteButton from "../files/DeleteButton";
 
 function SentMessages({ setShowSentMessages }) {
   const [allMessages, setAllMessages] = useState([]);

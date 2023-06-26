@@ -15,6 +15,7 @@ router.get("/", async (req, res) => {
     res.status(500).json("server error");
   }
 });
+
 // get all user received messages
 router.get("/received", async (req, res) => {
   try {
@@ -98,7 +99,7 @@ router.put("/:id", async (req, res) => {
 
 //delete a message
 
-router.delete("/:id", async (req, res) => {
+router.post("/:id", async (req, res) => {
   try {
     const { messageId } = req.params;
     const { message } = req.body;
@@ -115,5 +116,22 @@ router.delete("/:id", async (req, res) => {
     console.error(err.message);
   }
 });
+
+// delete from sent messages
+
+// router.post("/bin-sent", async (req, res) => {
+//   try {
+//     const { receipientId, messageTitle, messageText, senderUsername } =
+//       req.body;
+//     const newMessage = await pool.query(
+//       "INSERT INTO messages (sender_id, receipient_id, message_title, message_text, sender_username) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+//       [req.user.id, receipientId, messageTitle, messageText, senderUsername]
+//     );
+//     res.json(newMessage.rows[0]);
+//   } catch (err) {
+//     console.error(err.message);
+//     res.status(500).json("server error");
+//   }
+// });
 
 module.exports = router;

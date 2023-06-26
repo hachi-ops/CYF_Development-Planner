@@ -20,8 +20,8 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
       });
 
       setDraftsChange(true);
-      setDraftTitle("");
-      setDraftText("");
+      // setDraftTitle("");
+      // setDraftText("");
 
       // window.location = "/";
     } catch (err) {
@@ -33,8 +33,9 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
   const [draftTitle, setDraftTitle] = useState(draft.draft_title);
 
   const [editedDraftConfirmation, setEditedDraftConfimation] = useState(false);
-  const handleEitedDraftConfirmation = () => {
+  const handleEditedDraftConfirmation = () => {
     setEditedDraftConfimation(!editedDraftConfirmation);
+    // setShowEdit(true);
   };
 
   return (
@@ -59,7 +60,7 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
           <button
             type="button"
             onClick={() =>
-              handleEitedDraftConfirmation(editText(draft.draft_id))
+              handleEditedDraftConfirmation(editText(draft.draft_id))
             }
           >
             save
@@ -88,7 +89,7 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
       </div>
       {editedDraftConfirmation && (
         <SaveEditedDraftConfirmation
-          handleEditedDraftConfirmation={handleEitedDraftConfirmation}
+          handleEditedDraftConfirmation={handleEditedDraftConfirmation}
         />
       )}
     </>

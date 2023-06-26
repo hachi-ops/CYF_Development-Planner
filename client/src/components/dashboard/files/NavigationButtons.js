@@ -1,14 +1,11 @@
 import React from "react";
 
-import sendIcon from "../../../images/icons8-send-64.png";
 import editIcon3 from "../../../images/Graphicrating-Koloria-File-Edit.32.png";
 import DeleteButton from "./DeleteButton";
+import SendButton from "./SendButton";
 
 function NavigationButtons({
-  handleToggleSendToMentor,
-  draft,
-  deleteDraft,
-  setDraftsChange,
+  handleToggleSend,
   handleShowEdit,
   handleDeletePrompt,
 }) {
@@ -22,12 +19,7 @@ function NavigationButtons({
           className="icon"
         />
         <DeleteButton handleDeletePrompt={handleDeletePrompt} />
-        <img
-          className="icon"
-          alt="send"
-          src={sendIcon}
-          onClick={handleToggleSendToMentor}
-        />
+        <SendButton handleToggleSend={handleToggleSend} />
       </div>
     </>
   );

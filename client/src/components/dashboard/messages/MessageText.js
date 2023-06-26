@@ -16,6 +16,7 @@ function MessageText({ message }) {
           <div> {message.message_title}</div>
         </div>
         <button onClick={handleOpenButton}>open</button>
+        <DeleteButton />
       </div>
 
       {openButton && (
