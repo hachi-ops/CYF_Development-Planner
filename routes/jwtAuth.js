@@ -69,6 +69,7 @@ router.get("/verify", authorize, (req, res) => {
   }
 });
 
+// checks that username and email aren't already in use
 router.post("/validUser", async (req, res) => {
   const { username, email } = req.body;
   const userObj = { name: true, e_mail: true };
@@ -81,12 +82,17 @@ router.post("/validUser", async (req, res) => {
       "SELECT * FROM users WHERE user_email = $1",
       [email]
     );
-    if (getName.rows.length > 0) { userObj.name = false };
-    if (getEmail.rows.length > 0) { userObj.e_mail = false };
+    if (getName.rows.length > 0) {
+      userObj.name = false;
+    }
+    if (getEmail.rows.length > 0) {
+      userObj.e_mail = false;
+    }
     return res.json(userObj);
   } catch (err) {
     console.log(err.message);
   }
 });
+
 
 module.exports = router;

@@ -20,6 +20,7 @@ import RegisterConfirmation from "./components/login-and-register/RegisterConfir
 import Navbar from "./components/navbar/Navbar";
 import Home from "./components/home/Home";
 import Dashboard from "./components/dashboard/Dashboard";
+import PasswordLink from "./components/login-and-register/PasswordLink";
 import Footer from "./components/Footer";
 
 function App() {
@@ -103,7 +104,14 @@ function App() {
             )
           }
         />
+        <Route
+          path="password-link"
+          element={
+            <PasswordLink/>
+          }
+        />
       </Routes>
+     
       <Footer />
     </>
   );

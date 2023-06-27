@@ -79,7 +79,7 @@ router.put("/updatePword", async (req, res) => {
 router.put("/updateEmail", async (req, res) => {
   try {
     const { newEmail, userId } = req.body;
-    console.log(newEmail, userId)
+    console.log(newEmail, userId);
     const hasUpdated = await pool.query(
       "UPDATE users SET user_email=$1 WHERE user_id=$2 RETURNING *",
       [newEmail, userId]
