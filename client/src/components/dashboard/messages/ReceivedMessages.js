@@ -20,6 +20,12 @@ function ReceivedMessages({ setShowReceivedMessages }) {
   useEffect(() => {
     getReceivedMessages();
   }, []);
+
+  const [visible, setVisible] = useState(true);
+
+  const removeElement = () => {
+    setVisible((prev) => !prev);
+  };
   return (
     <>
       <div className="show-element">

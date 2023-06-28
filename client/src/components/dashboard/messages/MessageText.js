@@ -1,22 +1,35 @@
 import React, { useState } from "react";
 
 import DeleteButton from "../files/DeleteButton";
+import DeleteMessageButton from "./DeleteMessageButton";
 function MessageText({ message }) {
   const [openButton, setOpenButton] = useState(false);
   const handleOpenButton = () => {
     setOpenButton(!openButton);
   };
 
+  const [visible, setVisible] = useState(true);
+
+  const removeElement = () => {
+    setVisible((prev) => !prev);
+  };
+
   return (
     <>
-      <hr />
-      <div className="flex">
-        {" "}
-        <div className="flex">
-          <div> {message.message_title}</div>
-        </div>
-        <button onClick={handleOpenButton}>open</button>
-        <DeleteButton />
+      <div>
+        {visible && (
+          <div>
+            <hr />
+            <div className="flex">
+              <h4>{message.sender_username}</h4>
+              <div>{message.message_title}</div>
+              <div>{message.message_id}</div>
+            </div>
+            <div className="flex">
+              <DeleteMessageButton removeElement={removeElement} />
+            </div>
+          </div>
+        )}
       </div>
 
       {openButton && (

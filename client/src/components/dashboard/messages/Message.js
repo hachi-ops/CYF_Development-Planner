@@ -3,7 +3,7 @@ import SendNewMessage from "./SendNewMessage";
 import DeleteMessageButton from "./DeleteMessageButton";
 import DeleteMessagePrompt from "./DeleteMessagePrompt";
 
-function Message({ message, name, deleteMessage, setMessagesChange }) {
+function Message({ message, name, setMessagesChange }) {
   const [messageClicked, setMessageClicked] = useState(false);
   function handleMessageClicked() {
     setMessageClicked(!messageClicked);
@@ -91,21 +91,6 @@ function Message({ message, name, deleteMessage, setMessagesChange }) {
         </div>
       )}
     </>
-  );
-}
-
-function Remove() {
-  const [visible, setVisible] = useState(true);
-
-  const removeElement = () => {
-    setVisible((prev) => !prev);
-  };
-
-  return (
-    <div>
-      <br />
-      {visible && <button onClick={removeElement}>Remove</button>}
-    </div>
   );
 }
 
