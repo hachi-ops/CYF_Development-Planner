@@ -31,18 +31,7 @@ function AllMessages({ name, setShowAllMessages }) {
   //delete message function
 
   const [messages, setMessages] = useState([]); //empty array
-  async function deleteMessage(id) {
-    try {
-      await fetch(`/dashboard/messages/${id}`, {
-        method: "DELETE",
-        headers: { jwt_token: localStorage.token },
-      });
-
-      setMessages(messages.filter((message) => message.message_id !== id));
-    } catch (err) {
-      console.error(err.message);
-    }
-  }
+  async function deleteMessage(id) {}
 
   useEffect(() => {
     setMessages(allMessages);

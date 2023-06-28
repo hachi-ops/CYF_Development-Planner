@@ -3,14 +3,7 @@ import SendNewMessage from "./SendNewMessage";
 import DeleteMessageButton from "./DeleteMessageButton";
 import DeleteMessagePrompt from "./DeleteMessagePrompt";
 
-function Message({
-  message,
-  name,
-  setShowAllMessages,
-  deleteMessage,
-  setMessagesChange,
-  allMessages,
-}) {
+function Message({ message, name, deleteMessage, setMessagesChange }) {
   const [messageClicked, setMessageClicked] = useState(false);
   function handleMessageClicked() {
     setMessageClicked(!messageClicked);
@@ -47,12 +40,7 @@ function Message({
         <div className="flex">
           {" "}
           <button onClick={handleMessageClicked}>open</button>
-          <DeleteMessageButton
-            handleToggleDeleteMessagePrompt={handleToggleDeleteMessagePrompt}
-            message={message}
-            deleteMessage={deleteMessage}
-            setMessagesChange={setMessagesChange}
-          />
+          <Remove />
         </div>
       </div>
 
@@ -99,6 +87,22 @@ function Message({
         </div>
       )}
     </>
+  );
+}
+
+function Remove() {
+  const [visible, setVisible] = useState(true);
+
+  const removeElement = () => {
+    setVisible((prev) => !prev);
+  };
+
+  return (
+    <div>
+      Click to remove element
+      <br />
+      {visible && <button onClick={removeElement}>Remove</button>}
+    </div>
   );
 }
 
