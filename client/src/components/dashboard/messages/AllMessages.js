@@ -31,7 +31,7 @@ function AllMessages({ name, setShowAllMessages }) {
   //delete message function
 
   const [messages, setMessages] = useState([]); //empty array
-  async function deleteMessage(id) {}
+  async function deleteMessage(i) {}
 
   useEffect(() => {
     setMessages(allMessages);
@@ -56,7 +56,6 @@ function AllMessages({ name, setShowAllMessages }) {
                   message={message}
                   name={name}
                   setShowAllMessages={setShowAllMessages}
-                  deleteMessage={deleteMessage}
                   setMessagesChange={setMessagesChange}
                   allMessages={allMessages}
                 />
