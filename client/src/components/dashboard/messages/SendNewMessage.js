@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import SavedDraftConfirmation from "./SavedDraftConfirmation";
 import SelectMentor from "./SelectMentor";
-function SendNewMessage({ senderUsername }) {
+
+function SendNewMessage({ senderUsername, setShowAddNew }) {
   const [messageTitle, setMessageTitle] = useState("");
   const [messageText, setMessageText] = useState("");
 
@@ -42,7 +43,8 @@ function SendNewMessage({ senderUsername }) {
   const onMentorDropdownMenuChange = (e) => {
     setReceipientId(e.target.value);
   };
-  async function sendMessage(isDraft) {
+  async function sendMessage(e, isDraft) {
+    e.preventDefault();
     try {
       const myHeaders = new Headers();
 
@@ -82,39 +84,50 @@ function SendNewMessage({ senderUsername }) {
   };
   return (
     <>
-      <form className="add-form">
-        <div className="buttons">
-          <button type="button" onClick={handleShowDropdown}>
-            send
-          </button>
-          {showDropdown && (
-            <SelectMentor
-              onMentorDropdownMenuChange={onMentorDropdownMenuChange}
-              list={list}
-              setShowDropdown={setShowDropdown}
-              sendMessage={sendMessage}
-            />
-          )}
-          <button
-            type="button"
-            onClick={() => handleOpenSaveModal(sendMessage(true))}
-          >
-            save
-          </button>
+      <div className="relative">
+        <div
+          className="titleCloseBtn"
+          onClick={() => {
+            setShowAddNew(false);
+          }}
+        >
+          X
         </div>
+        <form className="add-form">
+          <div className="buttons">
+            <button type="button" onClick={handleShowDropdown}>
+              send
+            </button>
+            {showDropdown && (
+              <SelectMentor
+                onMentorDropdownMenuChange={onMentorDropdownMenuChange}
+                list={list}
+                setShowDropdown={setShowDropdown}
+                sendMessage={sendMessage}
+              />
+            )}
+            <button
+              type="button"
+              onClick={() => handleOpenSaveModal(sendMessage(true))}
+            >
+              save
+            </button>
+          </div>
 
-        <input
-          type="text"
-          placeholder="add title"
-          value={messageTitle}
-          onChange={(e) => setMessageTitle(e.target.value)}
-        />
-        <textarea
-          placeholder="add text"
-          value={messageText}
-          onChange={(e) => setMessageText(e.target.value)}
-        />
-      </form>
+          <input
+            type="text"
+            placeholder="add title"
+            value={messageTitle}
+            onChange={(e) => setMessageTitle(e.target.value)}
+          />
+          <textarea
+            placeholder="add text"
+            value={messageText}
+            onChange={(e) => setMessageText(e.target.value)}
+          />
+        </form>
+      </div>
+
       {openSaveDraftModal && (
         <SavedDraftConfirmation setOpenSaveDraftModal={setOpenSaveDraftModal} />
       )}

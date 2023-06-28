@@ -1,29 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
-import trashIcon from "../../../images/Graphicrating-Koloria-Trash-Delete.32.png";
-import sendIcon from "../../../images/icons8-send-64.png";
 import editIcon3 from "../../../images/Graphicrating-Koloria-File-Edit.32.png";
-
-import DeletePrompt from "../prompts/DeletePrompt";
-import EditDraft from "./EditDraft";
+import DeleteButton from "./DeleteButton";
+import SendButton from "./SendButton";
 
 function NavigationButtons({
-  handleToggleSendToMentor,
-  draft,
-  deleteDraft,
-  setDraftsChange,
+  handleToggleSend,
+  handleShowEdit,
+  handleDeletePrompt,
 }) {
-  const [deletePrompt, setDeletePrompt] = useState(false);
-
-  const handleDeletePrompt = () => {
-    setDeletePrompt(!deletePrompt);
-  };
-
-  const [showEdit, setShowEdit] = useState(false);
-
-  const handleShowEdit = () => {
-    setShowEdit(!showEdit);
-  };
   return (
     <>
       <div className="navigation-buttons">
@@ -33,35 +18,9 @@ function NavigationButtons({
           onClick={handleShowEdit}
           className="icon"
         />
-        <img
-          className="icon"
-          alt="delete"
-          src={trashIcon}
-          onClick={handleDeletePrompt}
-        />
-
-        <img
-          className="icon"
-          alt="send"
-          src={sendIcon}
-          onClick={handleToggleSendToMentor}
-        />
+        <DeleteButton handleDeletePrompt={handleDeletePrompt} />
+        <SendButton handleToggleSend={handleToggleSend} />
       </div>
-      {deletePrompt && (
-        <DeletePrompt
-          handleDeletePrompt={handleDeletePrompt}
-          draft={draft}
-          deleteDraft={deleteDraft}
-        />
-      )}
-
-      {showEdit && (
-        <EditDraft
-          draft={draft}
-          setDraftsChange={setDraftsChange}
-          setShowEdit={setShowEdit}
-        />
-      )}
     </>
   );
 }

@@ -4,7 +4,7 @@ import CloseButton from "../CloseButton";
 function SaveEditedDraftConfirmation({ handleEditedDraftConfirmation }) {
   return (
     <>
-      <div className="show-element">
+      <div className="relative">
         <div onClick={handleEditedDraftConfirmation}>
           <CloseButton />
         </div>

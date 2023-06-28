@@ -12,16 +12,16 @@ function DeletePrompt({
 
   const handleDeleteConfirmation = () => {
     setDeleteConfirmation(!deleteConfirmation);
+    setDeletePrompt(false);
   };
   return (
     <>
-      <div className="show-element">
+      <div className="relative">
         <div onClick={handleDeletePrompt}>
           <CloseButton setDeleteConfirmation={setDeleteConfirmation} />
         </div>
         <div>Do you want to delete this file????</div>
         <div className="buttons">
-          {/* <button onClick={handleDeleteConfirmation}>yes</button> */}
           <button
             onClick={() => {
               deleteDraft(draft.draft_id);
@@ -30,16 +30,14 @@ function DeletePrompt({
           >
             yes
           </button>
+          {deleteConfirmation && (
+            <DeleteConfirmation
+              handleDeleteConfirmation={handleDeleteConfirmation}
+            />
+          )}
           <button onClick={handleDeletePrompt}>no</button>
         </div>
       </div>
-      {deleteConfirmation && (
-        <DeleteConfirmation
-          handleDeleteConfirmation={handleDeleteConfirmation}
-          setDeleteConfirmation={setDeleteConfirmation}
-          handleDeletePrompt={handleDeletePrompt}
-        />
-      )}
     </>
   );
 }

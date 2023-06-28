@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import SendNewMessage from "./SendNewMessage";
+import DeleteMessageButton from "./DeleteMessageButton";
+import DeleteMessagePrompt from "./DeleteMessagePrompt";
 
-function Message({ message, name, setShowAllMessages }) {
+function Message({ message, name, setMessagesChange }) {
   const [messageClicked, setMessageClicked] = useState(false);
   function handleMessageClicked() {
     setMessageClicked(!messageClicked);
@@ -15,26 +17,53 @@ function Message({ message, name, setShowAllMessages }) {
     setAnswerField(!answerField);
     setAnswerButtonText((state) => (state === "answer" ? "cancel" : "answer"));
   };
+
+  const [toggleDeleteMessagePrompt, setToggleDeleteMessagePrompt] =
+    useState(false);
+
+  const handleToggleDeleteMessagePrompt = () => {
+    setToggleDeleteMessagePrompt(!toggleDeleteMessagePrompt);
+  };
+
+  const [visible, setVisible] = useState(true);
+
+  const removeElement = () => {
+    setVisible((prev) => !prev);
+  };
   return (
     <>
-      <hr />
+      <div>
+        {visible && (
+          <div>
+            <hr />
+            <div className="flex">
+              <h4>{message.sender_username}</h4>
+              <div>{message.message_title}</div>
+              <div>{message.message_id}</div>
+            </div>
+            <div className="flex">
+              <button onClick={handleMessageClicked}>open</button>
 
-      <div className="flex">
-        <div className="flex">
-          {" "}
-          <h4>{message.sender_username}</h4>
-          <div>{message.message_title}</div>
-        </div>
-
-        <div className="flex">
-          {" "}
-          <button onClick={handleMessageClicked}>open</button>
-          {/* <button>delete</button> */}
-        </div>
+              <DeleteMessageButton
+                removeElement={removeElement}
+                handleToggleDeleteMessagePrompt={
+                  handleToggleDeleteMessagePrompt
+                }
+              />
+            </div>
+          </div>
+        )}
       </div>
 
+      {toggleDeleteMessagePrompt && (
+        <DeleteMessagePrompt
+          handleToggleDeleteMessagePrompt={handleToggleDeleteMessagePrompt}
+          message={message}
+          setMessagesChange={setMessagesChange}
+        />
+      )}
       {messageClicked && (
-        <div className="show-element">
+        <div className="relative">
           <div
             className="titleCloseBtn"
             onClick={() => {

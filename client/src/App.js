@@ -9,7 +9,7 @@ import "./styles/form.css";
 import "./styles/account.css";
 import "./styles/home.css";
 import "./styles/dashboard.css";
-import "./styles/listFiles.css";
+
 import "./styles/modal.css";
 
 //components
@@ -24,7 +24,7 @@ import Footer from "./components/Footer";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  
+
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };

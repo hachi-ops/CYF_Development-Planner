@@ -15,6 +15,7 @@ router.get("/", async (req, res) => {
     res.status(500).json("server error");
   }
 });
+
 // get all user received messages
 router.get("/received", async (req, res) => {
   try {
@@ -96,24 +97,23 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-//delete a message
+// delete message
 
 router.delete("/:id", async (req, res) => {
   try {
-    const { messageId } = req.params;
-    const { message } = req.body;
+    const { id } = req.params;
     const deleteMessage = await pool.query(
-      "DELETE FROM messages WHERE message_id = $1 AND user_id = $2 RETURNING *",
-      [messageId, req.user.id]
+      "DELETE FROM messages WHERE message_id = $1 AND receipient_id = $2 OR sender_id = $2 RETURNING *",
+      [id, req.user.id]
     );
 
     if (deleteMessage.rows.length === 0) {
       return res.json("This message is not yours");
     }
-    res.json("deleted");
+
+    res.json("Message was deleted");
   } catch (err) {
     console.error(err.message);
   }
 });
-
 module.exports = router;

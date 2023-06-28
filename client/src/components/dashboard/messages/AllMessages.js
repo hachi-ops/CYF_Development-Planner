@@ -6,10 +6,11 @@ import Message from "./Message";
 
 function AllMessages({ name, setShowAllMessages }) {
   const [allMessages, setAllMessages] = useState([]);
+  const [messagesChange, setMessagesChange] = useState(false);
 
   const getMessages = async () => {
     try {
-      const res = await fetch("/dashboard/messages/", {
+      const res = await fetch("/dashboard/messages", {
         method: "GET",
         headers: { jwt_token: localStorage.token },
       });
@@ -24,7 +25,8 @@ function AllMessages({ name, setShowAllMessages }) {
 
   useEffect(() => {
     getMessages();
-  }, []);
+    setMessagesChange(false);
+  }, [messagesChange]);
 
   return (
     <>
@@ -38,7 +40,7 @@ function AllMessages({ name, setShowAllMessages }) {
           X
         </div>
         <h1>All Messages</h1>
-        {allMessages.length !== 0 && allMessages[0].messageid !== null ? (
+        {allMessages.length !== 0 && allMessages[0].message_id !== null ? (
           allMessages.map((message) => {
             return (
               <>
@@ -46,6 +48,8 @@ function AllMessages({ name, setShowAllMessages }) {
                   message={message}
                   name={name}
                   setShowAllMessages={setShowAllMessages}
+                  setMessagesChange={setMessagesChange}
+                  allMessages={allMessages}
                 />
               </>
             );
