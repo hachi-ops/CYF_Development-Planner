@@ -1,23 +1,41 @@
-// import React, { useState } from "react";
-// import SentConfirmation from "../confirmations/SentConfirmation";
+import React, { useState } from "react";
+import SentConfirmation from "../confirmations/SentConfirmation";
 
-// function SelectMentor({ onMentorDropdownMenuChange, list }) {
-//   return (
-//     <>
-//       <div className="select-dropdown">
-//         <button type="button">send</button>
+function SelectMentor({
+  onMentorDropdownMenuChange,
+  list,
+  setShowDropdown,
+  sendMessage,
+}) {
+  const [showSentConfirmation, setShowSentConfirmation] = useState(false);
 
-//         <select onChange={onMentorDropdownMenuChange}>
-//           <option>--select mentor--</option>
-//           {list.map((mentor) => (
-//             <option value={mentor.user_id} key={mentor.mentor_id}>
-//               {mentor.username}
-//             </option>
-//           ))}
-//         </select>
-//       </div>
-//     </>
-//   );
-// }
+  const handleShowSentConfirmation = () => {
+    sendMessage(false);
+    setShowSentConfirmation(true);
+  };
+  return (
+    <>
+      <div className="select-dropdown">
+        <button type="button" onClick={handleShowSentConfirmation}>
+          send
+        </button>
 
-// export default SelectMentor;
+        <select onChange={onMentorDropdownMenuChange}>
+          <option>--select mentor--</option>
+          {list.map((mentor) => (
+            <option value={mentor.user_id} key={mentor.mentor_id}>
+              {mentor.username}
+            </option>
+          ))}
+        </select>
+        {showSentConfirmation && (
+          <SentConfirmation
+            setShowSentConfirmation={() => setShowSentConfirmation(true)}
+          />
+        )}
+      </div>
+    </>
+  );
+}
+
+export default SelectMentor;

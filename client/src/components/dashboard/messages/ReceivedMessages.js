@@ -31,15 +31,19 @@ function ReceivedMessages({ setShowReceivedMessages }) {
         >
           X
         </div>
-        <h1>Sent Messages</h1>
+        <h1>Received Messages</h1>
+
         {receivedMessages.length !== 0 &&
         receivedMessages[0].message_id !== null ? (
           receivedMessages.map((message) => {
             return (
               <div>
-                <h2>{message.sender_username}</h2>
-                <h2>{message.message_title}</h2>
-                <p>{message.message_text}</p>
+                <hr />
+                <div className="flex">
+                  <p>{message.sender_username}</p>
+                  <p>{message.message_title}</p>
+                  {/* <p>{message.message_text}</p> */}
+                </div>
               </div>
             );
           })

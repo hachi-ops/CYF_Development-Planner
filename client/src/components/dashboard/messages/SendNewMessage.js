@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import SavedDraftConfirmation from "./SavedDraftConfirmation";
 import SelectMentor from "./SelectMentor";
-function SendNewMessage({ senderUsername, setOpenButton, setShowAddNew }) {
+
+function SendNewMessage({ senderUsername, setShowAddNew }) {
   const [messageTitle, setMessageTitle] = useState("");
   const [messageText, setMessageText] = useState("");
 

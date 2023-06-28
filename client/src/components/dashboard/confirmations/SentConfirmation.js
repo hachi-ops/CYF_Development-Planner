@@ -4,14 +4,11 @@ function SentConfirmation({ setSentConfirmation, setToggleSend }) {
   return (
     <>
       <div className="relative">
-        <div className="titleCloseBtn" onClick={() => setToggleSend(false)}>
-          X
-        </div>
         <button
           className="titleCloseBtn"
           onClick={() => {
             setSentConfirmation(false);
-            setToggleSend(false);
+            // setToggleSend(false);
           }}
           id="cancelBtn"
         >
