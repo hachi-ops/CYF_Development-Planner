@@ -1,6 +1,9 @@
 import React from "react";
 import trashIcon from "../../../images/Graphicrating-Koloria-Trash-Delete.32.png";
-function DeleteMessageButton({ handleToggleDeleteMessagePrompt }) {
+function DeleteMessageButton({
+  handleToggleDeleteMessagePrompt,
+  removeElement,
+}) {
   return (
     <>
       <div>
@@ -9,7 +12,8 @@ function DeleteMessageButton({ handleToggleDeleteMessagePrompt }) {
           className="icon"
           alt="delete"
           src={trashIcon}
-          onClick={handleToggleDeleteMessagePrompt}
+          // onClick={handleToggleDeleteMessagePrompt}
+          onClick={removeElement}
         />
       </div>
     </>

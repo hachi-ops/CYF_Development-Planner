@@ -4,7 +4,7 @@ import SentConfirmation from "../confirmations/SentConfirmation";
 function SelectMentor({
   onMentorDropdownMenuChange,
   list,
-  setShowDropdown,
+
   sendMessage,
 }) {
   const [showSentConfirmation, setShowSentConfirmation] = useState(false);

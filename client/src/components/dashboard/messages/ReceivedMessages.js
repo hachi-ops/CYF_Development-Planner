@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import EmptyList from "../EmptyList";
+import DeleteMessageButton from "./DeleteMessageButton";
 function ReceivedMessages({ setShowReceivedMessages }) {
   const [receivedMessages, setReceivedMessages] = useState([]);
   const getReceivedMessages = async () => {
@@ -20,6 +21,12 @@ function ReceivedMessages({ setShowReceivedMessages }) {
   useEffect(() => {
     getReceivedMessages();
   }, []);
+
+  const [visible, setVisible] = useState(true);
+
+  const removeElement = () => {
+    setVisible((prev) => !prev);
+  };
   return (
     <>
       <div className="show-element">
@@ -38,12 +45,20 @@ function ReceivedMessages({ setShowReceivedMessages }) {
           receivedMessages.map((message) => {
             return (
               <div>
-                <hr />
-                <div className="flex">
-                  <p>{message.sender_username}</p>
-                  <p>{message.message_title}</p>
-                  {/* <p>{message.message_text}</p> */}
-                </div>
+                {visible && (
+                  <div>
+                    {" "}
+                    <hr />
+                    <div className="flex">
+                      <p>{message.sender_username}</p>
+                      <p>{message.message_title}</p>
+                      {/* <p>{message.message_text}</p> */}
+                    </div>
+                    <div className="flex">
+                      <DeleteMessageButton removeElement={removeElement} />
+                    </div>
+                  </div>
+                )}
               </div>
             );
           })

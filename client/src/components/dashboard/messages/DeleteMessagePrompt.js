@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 function DeleteMessagePrompt({
   handleToggleDeleteMessagePrompt,
   deleteMessage,
   message,
-
-  setMessagesChange,
 }) {
+  const [visible, setVisible] = useState(true);
+
+  const removeElement = () => {
+    setVisible((prev) => !prev);
+  };
   return (
     <>
       <div className="relative">
@@ -23,6 +26,7 @@ function DeleteMessagePrompt({
             {" "}
             yes
           </button>
+          {visible && <button onClick={removeElement}>Remove</button>}
           <button onClick={handleToggleDeleteMessagePrompt}>cancel</button>
         </div>
       </div>

@@ -28,25 +28,6 @@ function AllMessages({ name, setShowAllMessages }) {
     setMessagesChange(false);
   }, [messagesChange]);
 
-  //delete message function
-
-  const [messages, setMessages] = useState([]); //empty array
-  async function deleteMessage(id) {
-    try {
-      await fetch(`/dashboard/messages/${id}`, {
-        method: "DELETE",
-        headers: { jwt_token: localStorage.token },
-      });
-
-      setMessages(messages.filter((message) => message.message_id !== id));
-    } catch (err) {
-      console.error(err.message);
-    }
-  }
-
-  useEffect(() => {
-    setMessages(allMessages);
-  }, [allMessages]);
   return (
     <>
       <div className="show-element">
@@ -59,15 +40,14 @@ function AllMessages({ name, setShowAllMessages }) {
           X
         </div>
         <h1>All Messages</h1>
-        {messages.length !== 0 && messages[0].message_id !== null ? (
-          messages.map((message) => {
+        {allMessages.length !== 0 && allMessages[0].message_id !== null ? (
+          allMessages.map((message) => {
             return (
               <>
                 <Message
                   message={message}
                   name={name}
                   setShowAllMessages={setShowAllMessages}
-                  deleteMessage={deleteMessage}
                   setMessagesChange={setMessagesChange}
                   allMessages={allMessages}
                 />
