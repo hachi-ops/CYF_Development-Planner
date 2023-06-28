@@ -42,7 +42,7 @@ function PasswordLink() {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <h1>RESET PASSWORD</h1>
+      <h1>PASSWORD RESET</h1>
       <h5>
         Forgotten your password? Please enter your email address. You will
         receive a link to create a new password via email.
