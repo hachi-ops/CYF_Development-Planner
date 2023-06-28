@@ -12,6 +12,7 @@ function DeletePrompt({
 
   const handleDeleteConfirmation = () => {
     setDeleteConfirmation(!deleteConfirmation);
+    setDeletePrompt(false);
   };
   return (
     <>
@@ -29,6 +30,11 @@ function DeletePrompt({
           >
             yes
           </button>
+          {deleteConfirmation && (
+            <DeleteConfirmation
+              handleDeleteConfirmation={handleDeleteConfirmation}
+            />
+          )}
           <button onClick={handleDeletePrompt}>no</button>
         </div>
       </div>

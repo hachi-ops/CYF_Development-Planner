@@ -8,18 +8,12 @@ import EditDraft from "./EditDraft";
 import Draft from "./Draft";
 import DeletePrompt from "../prompts/DeletePrompt";
 
-function Element({
-  draft,
-  deleteDraft,
-  setDraftsChange,
-  senderUsername,
-  allDrafts,
-}) {
-  const [toggleSendToMentor, setToggleSendToMentor] = useState(false);
+function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
+  const [toggleSend, setToggleSend] = useState(false);
   const [openText, setOpenText] = useState(false);
 
-  const handleToggleSendToMentor = () => {
-    setToggleSendToMentor(true);
+  const handleToggleSend = () => {
+    setToggleSend(true);
   };
 
   const handleOpenText = () => {
@@ -40,47 +34,42 @@ function Element({
 
   return (
     <>
-      <div>
-        <div className="flex-list ">
-          <div onClick={handleOpenText}>
-            <p className="">
-              <span>Title: </span>
-              {draft.draft_title}
-            </p>
-          </div>
-          <div className="flex-list-buttons">
-            <NavigationButtons
-              deleteDraft={deleteDraft}
-              draft={draft}
-              handleToggleSendToMentor={handleToggleSendToMentor}
-              setOpenText={setOpenText}
-              setDraftsChange={setDraftsChange}
-              handleShowEdit={handleShowEdit}
-              handleDeletePrompt={handleDeletePrompt}
-            />
+      <div className="flex-list ">
+        <div onClick={handleOpenText}>
+          <p className="">
+            <span>Title: </span>
+            {draft.draft_title}
+          </p>
+        </div>
+        <div className="flex-list-buttons">
+          <NavigationButtons
+            handleToggleSend={handleToggleSend}
+            handleShowEdit={handleShowEdit}
+            handleDeletePrompt={handleDeletePrompt}
+          />
 
-            <button onClick={handleOpenText}>open</button>
-          </div>
+          <button onClick={handleOpenText}>open</button>
         </div>
       </div>
+
       {openText && (
         <Draft
           draft={draft}
           deleteDraft={deleteDraft}
           setOpenText={setOpenText}
-          handleToggleSendToMentor={handleToggleSendToMentor}
-          allDrafts={allDrafts}
+          handleToggleSend={handleToggleSend}
           handleDeletePrompt={handleDeletePrompt}
           handleShowEdit={handleShowEdit}
         />
       )}
-      {toggleSendToMentor && (
+      {toggleSend && (
         <MentorsDropdown
           senderUsername={senderUsername}
           draft={draft}
-          setToggleSendToMentor={setToggleSendToMentor}
+          setToggleSend={setToggleSend}
         />
       )}
+
       {showEdit && (
         <EditDraft
           draft={draft}

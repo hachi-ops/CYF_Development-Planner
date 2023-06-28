@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import SentConfirmation from "../confirmations/SentConfirmation";
 
-function SelectMentor({ onMentorDropdownMenuChange, list, sendMessage }) {
+function SelectMentor({
+  onMentorDropdownMenuChange,
+  list,
+  setShowDropdown,
+  sendMessage,
+}) {
   const [showSentConfirmation, setShowSentConfirmation] = useState(false);
 
   const handleShowSentConfirmation = () => {
     sendMessage(false);
     setShowSentConfirmation(true);
   };
-
   return (
     <>
       <div className="select-dropdown">

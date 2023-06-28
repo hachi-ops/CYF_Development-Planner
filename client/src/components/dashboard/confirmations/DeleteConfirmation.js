@@ -4,13 +4,13 @@ import CloseButton from "../CloseButton";
 function DeleteConfirmation({ handleDeleteConfirmation }) {
   return (
     <>
-      <div className="show-element">
+      <div className="relative">
         <div onClick={handleDeleteConfirmation}>
           <CloseButton handleDeleteConfirmation={handleDeleteConfirmation} />
         </div>
 
         <div>file deleted</div>
-        <button>OK</button>
+        <button onClick={handleDeleteConfirmation}>OK</button>
       </div>
     </>
   );

@@ -8,7 +8,7 @@ function Draft({
   handleShowEdit,
   setOpenText,
   setDraftsChange,
-  handleToggleSendToMentor,
+  handleToggleSend,
   handleDeletePrompt,
 }) {
   return (
@@ -27,7 +27,7 @@ function Draft({
           handleShowEdit={handleShowEdit}
           deleteDraft={deleteDraft}
           draft={draft}
-          handleToggleSendToMentor={handleToggleSendToMentor}
+          handleToggleSend={handleToggleSend}
           setOpenText={setOpenText}
           setDraftsChange={setDraftsChange}
           handleDeletePrompt={handleDeletePrompt}

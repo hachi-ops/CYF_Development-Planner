@@ -1,13 +1,14 @@
 import React from "react";
 
-function SentConfirmation({ setShowSentConfirmation }) {
+function SentConfirmation({ setSentConfirmation, setToggleSend }) {
   return (
     <>
       <div className="relative">
         <button
           className="titleCloseBtn"
           onClick={() => {
-            setShowSentConfirmation(false);
+            setSentConfirmation(false);
+            // setToggleSend(false);
           }}
           id="cancelBtn"
         >
