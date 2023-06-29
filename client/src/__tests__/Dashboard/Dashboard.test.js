@@ -62,8 +62,8 @@ describe("should render: icons on dashboard, icons captions, open link on click 
 
 // render DashboardNavigation buttons on click of Drafts and Messages
 // renders DraftsControls component
-test("should render MessagesControls component", () => {
-  render(<DraftsControlsControls />);
+test("should render DraftsControls component", () => {
+  render(<DraftsControls />);
   const draftsControls = screen.getByTestId("drafts-controls");
   expect(draftsControls).toBeInTheDocument();
 });
@@ -71,7 +71,7 @@ test("should render MessagesControls component", () => {
 // renders drafts buttons
 test("should render buttons", () => {
   render(<DraftsControls />);
-  const allDrafts = screen.getByRole("button", { name: /all/i });
+  const allDrafts = screen.getByRole("button", { name: /drafts/i });
   expect(allDrafts).toBeInTheDocument();
 
   const newDraft = screen.getByRole("button", { name: /new/i });
