@@ -43,8 +43,7 @@ function SendNewMessage({ senderUsername, setShowAddNew }) {
   const onMentorDropdownMenuChange = (e) => {
     setReceipientId(e.target.value);
   };
-  async function sendMessage(e, isDraft) {
-    e.preventDefault();
+  async function sendMessage(isDraft) {
     try {
       const myHeaders = new Headers();
 
