@@ -6,7 +6,7 @@ import accountIcon from "../../../images/icons8-test-account-96.png";
 import filesIcon from "../../../images/Rokey-Eicodesign-Folder-with-file.128.png";
 
 //components
-import FilesControls from "./FilesControls";
+import DraftsControls from "./DraftsControls";
 import MessagesControls from "./MessagesControls";
 import AccountControls from "./AccountControls";
 
@@ -52,7 +52,7 @@ function DashboardNavigation({ user, handleUpdate }) {
             style={{ transform: filesControlButtons && "scale(1.4)" }}
           />
         </div>
-        {filesControlButtons && <FilesControls name={user.username} />}
+        {filesControlButtons && <DraftsControls name={user.username} />}
         <div className="icon-heading flex" onClick={handleToggleMessages}>
           <h2
             style={{

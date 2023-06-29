@@ -1,10 +1,11 @@
-import { render, screen, cleanup } from "@testing-library/react";
-import renderer from "react-test-renderer";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import Dashboard from "../../components/Dashboard";
-import Logout from "../../components/dashboard/Logout";
-import DashboardNavigation from "../../components/dashboard/DashboardNavigation";
+import Dashboard from "../../components/dashboard/Dashboard";
+import Logout from "../../components/dashboard/controls/Logout";
+import DashboardNavigation from "../../components/dashboard/controls/DashboardNavigation";
+import MessagesControls from "../../components/dashboard/controls/MessagesControls";
+import DraftsControls from "../../components/dashboard/controls/DraftsControls";
 
 // render Dashboard component
 test("should render Dashboard component", () => {
@@ -12,26 +13,26 @@ test("should render Dashboard component", () => {
 
   const dashboard = screen.getByTestId("dashboard");
 
-  expect(dashboardElement).toBeInTheDocument();
+  expect(dashboard).toBeInTheDocument();
 });
 
 // render Logout component
 test("should render Logout component", () => {
   render(<Logout />);
 
-  const logoutElement = screen.getByTestId("logout");
-  expect(logoutElement).toBeInTheDocument();
+  const logout = screen.getByTestId("logout");
+  expect(logout).toBeInTheDocument();
 });
 
 // render DashboardNavigation component
 test("should render DashboardNavigation component", () => {
   render(<DashboardNavigation />);
 
-  const dashboardNavigationEl = screen.getByTestId("dashboard-navigation");
-  expect(dashboardNavigationEl).toBeInTheDocument();
+  const dashboardNavigation = screen.getByTestId("dashboard-navigation");
+  expect(dashboardNavigation).toBeInTheDocument();
 });
 
-// render icons/icons text
+// render icons/icons captions
 
 describe("should render: icons on dashboard, icons captions, open link on click of the icon, open link on click of the ico caption", () => {
   test("should render icons on dashboard", () => {
@@ -57,4 +58,42 @@ describe("should render: icons on dashboard, icons captions, open link on click 
     const accountCaption = screen.getByText("Account");
     expect(accountCaption).toBeInTheDocument();
   });
+});
+
+// render DashboardNavigation buttons on click of Drafts and Messages
+// renders DraftsControls component
+test("should render MessagesControls component", () => {
+  render(<DraftsControlsControls />);
+  const draftsControls = screen.getByTestId("drafts-controls");
+  expect(draftsControls).toBeInTheDocument();
+});
+
+// renders drafts buttons
+test("should render buttons", () => {
+  render(<DraftsControls />);
+  const allDrafts = screen.getByRole("button", { name: /all/i });
+  expect(allDrafts).toBeInTheDocument();
+
+  const newDraft = screen.getByRole("button", { name: /new/i });
+  expect(newDraft).toBeInTheDocument();
+});
+
+// renders MessagesControls component
+test("should render MessagesControls component", () => {
+  render(<MessagesControls />);
+  const messagesControls = screen.getByTestId("messages-controls");
+  expect(messagesControls).toBeInTheDocument();
+});
+
+// renders messages buttons
+test("should render buttons", () => {
+  render(<MessagesControls />);
+  const all = screen.getByRole("button", { name: /all/i });
+  expect(all).toBeInTheDocument();
+
+  const sent = screen.getByRole("button", { name: /sent/i });
+  expect(sent).toBeInTheDocument();
+
+  const received = screen.getByRole("button", { name: /received/i });
+  expect(received).toBeInTheDocument();
 });
