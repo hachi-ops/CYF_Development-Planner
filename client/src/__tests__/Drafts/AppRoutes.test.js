@@ -43,7 +43,7 @@ describe('App Routes', () => {
     render(<App />, {wrapper: BrowserRouter});
     const user = userEvent.setup();
     const signupButton = screen.getByRole('button', {
-      name: /sign up/i
+      name: /register/i
     })
     
     await user.click(signupButton);

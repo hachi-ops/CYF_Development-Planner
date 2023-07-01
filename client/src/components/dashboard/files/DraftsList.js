@@ -5,7 +5,6 @@ import Element from "./Element";
 import EmptyList from "../EmptyList";
 
 const ListDrafts = ({ senderUsername, setShowDrafts }) => {
-  console.log(senderUsername);
   const [allDrafts, setAllDrafts] = useState([]);
   const [draftsChange, setDraftsChange] = useState(false);
 
@@ -51,7 +50,7 @@ const ListDrafts = ({ senderUsername, setShowDrafts }) => {
 
   return (
     <>
-      <div className="show-element">
+      <div className="show-element" data-testid="drafts-list">
         <div
           className="titleCloseBtn"
           onClick={() => {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SentConfirmation from "../confirmations/SentConfirmation";
 
-function MentorsDropdown({ senderUsername, draft, setToggleSend }) {
+function Dropdown({ senderUsername, draft, setToggleSend }) {
   const msgTitle = draft.draft_title;
   const msgText = draft.draft_text;
   console.log(msgText);
@@ -154,19 +154,15 @@ function MentorsDropdown({ senderUsername, draft, setToggleSend }) {
           </div>
         </form>
 
-        <div>
-          {sentConfirmation && (
-            <SentConfirmation
-              setSentConfirmation={setSentConfirmation}
-              setToggleSend={setToggleSend}
-            />
-          )}
-          <div>{messageTitle}</div>
-          <div>{messageText}</div>
-        </div>
+        {sentConfirmation && (
+          <SentConfirmation
+            setSentConfirmation={setSentConfirmation}
+            setToggleSend={setToggleSend}
+          />
+        )}
       </div>
     </>
   );
 }
 
-export default MentorsDropdown;
+export default Dropdown;

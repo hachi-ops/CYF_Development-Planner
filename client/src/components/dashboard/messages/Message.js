@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SendNewMessage from "./SendNewMessage";
+
 import DeleteMessageButton from "./DeleteMessageButton";
 import DeleteMessagePrompt from "./DeleteMessagePrompt";
 
@@ -81,13 +81,6 @@ function Message({ message, name, setMessagesChange }) {
             <div className="element-title">{message.message_title}</div>
             <div className="element-text">{message.message_text}</div>
           </div>
-
-          {answerField && (
-            <SendNewMessage
-              senderUsername={name}
-              receipientId={message.sender_id}
-            />
-          )}
         </div>
       )}
     </>

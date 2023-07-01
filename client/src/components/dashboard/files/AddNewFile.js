@@ -1,10 +1,43 @@
-import React from "react";
-import SendNewMessage from "../messages/SendNewMessage";
+import React, { useState } from "react";
 
-function AddNewFile({ senderUsername, setShowAddNew }) {
+import SavedDraftConfirmation from "../confirmations/SavedDraftConfirmation";
+
+function AddNewFile({ setShowAddNew }) {
+  const [messageTitle, setMessageTitle] = useState("");
+  const [messageText, setMessageText] = useState("");
+
+  const [openSaveDraftModal, setOpenSaveDraftModal] = useState(false);
+  const handleOpenSaveModal = () => {
+    setOpenSaveDraftModal(true);
+  };
+
+  async function saveMessage() {
+    try {
+      const myHeaders = new Headers();
+
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("jwt_token", localStorage.token);
+
+      const body = { draftTitle: messageTitle, draftText: messageText };
+      const endpoint = "/dashboard/drafts";
+
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: myHeaders,
+        body: JSON.stringify(body),
+      });
+
+      const parseResponse = await response.json();
+
+      console.log(parseResponse);
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
+
   return (
     <>
-      <div className="show-element">
+      <div className="relative">
         <div
           className="titleCloseBtn"
           onClick={() => {
@@ -13,13 +46,33 @@ function AddNewFile({ senderUsername, setShowAddNew }) {
         >
           X
         </div>
-        <h1>New Draft</h1>
-        <SendNewMessage
-          senderUsername={senderUsername}
-          setShowAddNew={setShowAddNew}
-          // receipientId={receipientId}
-        />
+        <form className="add-form">
+          <div className="buttons">
+            <button
+              type="button"
+              onClick={() => handleOpenSaveModal(saveMessage(true))}
+            >
+              save
+            </button>
+          </div>
+
+          <input
+            type="text"
+            placeholder="add title"
+            value={messageTitle}
+            onChange={(e) => setMessageTitle(e.target.value)}
+          />
+          <textarea
+            placeholder="add text"
+            value={messageText}
+            onChange={(e) => setMessageText(e.target.value)}
+          />
+        </form>
       </div>
+
+      {openSaveDraftModal && (
+        <SavedDraftConfirmation setOpenSaveDraftModal={setOpenSaveDraftModal} />
+      )}
     </>
   );
 }

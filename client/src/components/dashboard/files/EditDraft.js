@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SaveEditedDraftConfirmation from "../confirmations/SaveEditedDraftConfirmation";
+import SavedDraftConfirmation from "../confirmations/SavedDraftConfirmation";
 import CloseButton from "../CloseButton";
 const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
   //editText function
@@ -88,7 +88,7 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
         </div>
       </div>
       {editedDraftConfirmation && (
-        <SaveEditedDraftConfirmation
+        <SavedDraftConfirmation
           handleEditedDraftConfirmation={handleEditedDraftConfirmation}
         />
       )}

@@ -1,18 +1,19 @@
-import { render, screen, cleanup } from "@testing-library/react";
-import renderer from "react-test-renderer";
+import { render, screen } from "@testing-library/react";
+
 import "@testing-library/jest-dom";
-import ListDrafts from "../../components/dashboard/files/ListDrafts";
 
-afterEach(() => {
-  cleanup();
-});
+import DraftsList from "../../components/dashboard/files/DraftsList";
 
-test("should render List Drafts component", () => {
-  render(<ListDrafts />);
+// afterEach(() => {
+//   cleanup();
+// });
 
-  const ListDraftsElement = screen.getByTestId("list-files");
+test("should render DraftsList component", () => {
+  render(<DraftsList />);
 
-  expect(ListDraftsElement).toBeInTheDocument();
+  const draftsList = screen.getByTestId("drafts-list");
+
+  expect(draftsList).toBeInTheDocument();
 });
 
 // open files menu on click of an icon/ icon-text
