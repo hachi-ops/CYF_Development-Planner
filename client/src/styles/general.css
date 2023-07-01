@@ -185,7 +185,7 @@ button:hover,
 .element {
     display: flex;
     align-items: center;
-    justify-content: center;    
+    /* justify-content: center;     */
 }
 
 
@@ -193,7 +193,7 @@ button:hover,
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
-    align-items: center;
+    /* align-items: center; */
     width: 90%;
     margin: 0 auto;
 }
@@ -207,9 +207,11 @@ button:hover,
 
 .flex-list-buttons {
     display: flex;
-    gap: 30px;
+    /* gap: 30px; */
     justify-content: space-between;
-    border: 1px solid blue;
+    width: 100%;
+    align-items: center;
+
 }
 
 @media only screen and (min-width: 400px) {
@@ -225,13 +227,13 @@ button:hover,
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        gap: 60px;
+        /* gap: 60px; */
         align-items: center;
     }
 
     .element-buttons {
         display: flex;
-        width: 40%;
+        /* width: 40%; */
     }
 }
 
@@ -248,7 +250,7 @@ button:hover,
     width: 90%;
     margin: 50px auto;
     font-size: 1.2rem;
-    padding: 20px;
+    /* padding: 20px; */
     /* outline: 1px solid red; */
 }
 

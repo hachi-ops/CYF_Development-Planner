@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SavedDraftConfirmation from "../confirmations/SavedDraftConfirmation";
+import EditedDraftConfirmation from "../confirmations/EditedDraftConfirmation";
 import CloseButton from "../CloseButton";
 const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
   //editText function
@@ -20,10 +20,6 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
       });
 
       setDraftsChange(true);
-      // setDraftTitle("");
-      // setDraftText("");
-
-      // window.location = "/";
     } catch (err) {
       console.error(err.message);
     }
@@ -35,7 +31,7 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
   const [editedDraftConfirmation, setEditedDraftConfimation] = useState(false);
   const handleEditedDraftConfirmation = () => {
     setEditedDraftConfimation(!editedDraftConfirmation);
-    // setShowEdit(true);
+    setShowEdit(true);
   };
 
   return (
@@ -88,7 +84,7 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
         </div>
       </div>
       {editedDraftConfirmation && (
-        <SavedDraftConfirmation
+        <EditedDraftConfirmation
           handleEditedDraftConfirmation={handleEditedDraftConfirmation}
         />
       )}

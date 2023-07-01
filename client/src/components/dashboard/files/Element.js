@@ -14,16 +14,16 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
   return (
     <>
       <div className="flex-list ">
-        <div onClick={handleToggleOpenDraftButton}>
-          <p className="">
+        <div
+          onClick={handleToggleOpenDraftButton}
+          className="flex-list-buttons "
+        >
+          <p>
             <span>Title: </span>
             {draft.draft_title}
           </p>
         </div>
-
-        <div className="flex-list-buttons">
-          <button onClick={handleToggleOpenDraftButton}>open</button>
-        </div>
+        <button onClick={handleToggleOpenDraftButton}>open</button>
       </div>
       {toggleOpenDraft && (
         <Draft
