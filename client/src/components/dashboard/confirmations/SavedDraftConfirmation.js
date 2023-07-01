@@ -3,7 +3,15 @@ import React from "react";
 function SavedDraftConfirmation({ setOpenSaveDraftModal }) {
   return (
     <>
-      <div className="save-confirmation-modal">
+      <div className="relative">
+        <div
+          className="titleCloseBtn"
+          onClick={() => {
+            setOpenSaveDraftModal(false);
+          }}
+        >
+          X
+        </div>
         <button
           onClick={() => {
             setOpenSaveDraftModal(false);

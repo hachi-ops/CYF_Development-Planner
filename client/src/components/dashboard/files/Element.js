@@ -3,52 +3,36 @@ import React, { useState } from "react";
 // components
 
 import Draft from "./Draft";
-import DeletePrompt from "../prompts/DeletePrompt";
+import OpenDraftButton from "../controls/OpenDraftButton";
 
 function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
-  const [openText, setOpenText] = useState(false);
+  const [toggleOpenDraft, setToggleOpenDraft] = useState(false);
 
-  const handleOpenText = () => {
-    setOpenText(true);
-  };
-
-  const [deletePrompt, setDeletePrompt] = useState(false);
-
-  const handleDeletePrompt = () => {
-    setDeletePrompt(!deletePrompt);
+  const handleToggleOpenDraftButton = () => {
+    setToggleOpenDraft(!toggleOpenDraft);
   };
 
   return (
     <>
       <div className="flex-list ">
-        <div onClick={handleOpenText}>
+        <div onClick={handleToggleOpenDraftButton}>
           <p className="">
             <span>Title: </span>
             {draft.draft_title}
           </p>
         </div>
-        <div className="flex-list-buttons">
-          <button onClick={handleOpenText}>open</button>
-        </div>
-      </div>
 
-      {openText && (
+        <OpenDraftButton
+          handleToggleOpenDraftButton={handleToggleOpenDraftButton}
+        />
+      </div>
+      {toggleOpenDraft && (
         <Draft
           draft={draft}
           deleteDraft={deleteDraft}
-          setOpenText={setOpenText}
-          handleDeletePrompt={handleDeletePrompt}
+          handleToggleOpenDraftButton={handleToggleOpenDraftButton}
           setDraftsChange={setDraftsChange}
           senderUsername={senderUsername}
-        />
-      )}
-
-      {deletePrompt && (
-        <DeletePrompt
-          handleDeletePrompt={handleDeletePrompt}
-          draft={draft}
-          deleteDraft={deleteDraft}
-          setDeletePrompt={setDeletePrompt}
         />
       )}
     </>

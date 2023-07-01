@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import NavigationButtons from "./NavigationButtons";
 
 import EditDraft from "./EditDraft";
@@ -7,10 +6,10 @@ import EditDraft from "./EditDraft";
 function Draft({
   draft,
   deleteDraft,
-  setOpenText,
   setDraftsChange,
   senderUsername,
-  handleDeletePrompt,
+  handleToggleOpenDraftButton,
+  allDrafts,
 }) {
   const [showEdit, setShowEdit] = useState(false);
 
@@ -20,12 +19,7 @@ function Draft({
   return (
     <>
       <div className="relative">
-        <div
-          className="titleCloseBtn"
-          onClick={() => {
-            setOpenText(false);
-          }}
-        >
+        <div className="titleCloseBtn" onClick={handleToggleOpenDraftButton}>
           X
         </div>
         <h1>{draft.draft_title}</h1>
@@ -33,9 +27,7 @@ function Draft({
           handleShowEdit={handleShowEdit}
           deleteDraft={deleteDraft}
           draft={draft}
-          setOpenText={setOpenText}
           setDraftsChange={setDraftsChange}
-          handleDeletePrompt={handleDeletePrompt}
           senderUsername={senderUsername}
         />
 

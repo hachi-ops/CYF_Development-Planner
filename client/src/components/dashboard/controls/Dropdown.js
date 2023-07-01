@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SentConfirmation from "../confirmations/SentConfirmation";
 
-function Dropdown({ senderUsername, draft, setToggleSend }) {
+function Dropdown({ senderUsername, draft, setToggleSend, handleToggleSend }) {
   const msgTitle = draft.draft_title;
   const msgText = draft.draft_text;
   console.log(msgText);
@@ -101,12 +101,7 @@ function Dropdown({ senderUsername, draft, setToggleSend }) {
   return (
     <>
       <div className="relative">
-        <div
-          className="titleCloseBtn"
-          onClick={() => {
-            setToggleSend(false);
-          }}
-        >
+        <div className="titleCloseBtn" onClick={handleToggleSend}>
           X
         </div>
         <h1>Send File</h1>
@@ -143,14 +138,7 @@ function Dropdown({ senderUsername, draft, setToggleSend }) {
           </select>
           <div className="buttons">
             <button onClick={onClickSend}>send</button>
-            <button
-              onClick={() => {
-                setSentConfirmation(false);
-                setToggleSend(false);
-              }}
-            >
-              cancel
-            </button>
+            <button onClick={handleToggleSend}>cancel</button>
           </div>
         </form>
 
