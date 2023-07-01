@@ -16,7 +16,6 @@ function SavedDraftConfirmation({ setOpenSaveDraftModal }) {
           onClick={() => {
             setOpenSaveDraftModal(false);
           }}
-          id="cancelBtn"
         >
           OK
         </button>

@@ -7,9 +7,7 @@ function EditedDraftConfirmation({ handleEditedDraftConfirmation }) {
         <div className="titleCloseBtn" onClick={handleEditedDraftConfirmation}>
           X
         </div>
-        <button onClick={handleEditedDraftConfirmation} id="cancelBtn">
-          OK
-        </button>
+        <button onClick={handleEditedDraftConfirmation}>OK</button>
         <p>file saved</p>
       </div>
     </>

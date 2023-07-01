@@ -13,12 +13,10 @@ function SentConfirmation({ setSentConfirmation, setToggleSend }) {
           X
         </div>
         <button
-          className="titleCloseBtn"
           onClick={() => {
             setSentConfirmation(false);
             setToggleSend(false);
           }}
-          id="cancelBtn"
         >
           OK
         </button>
