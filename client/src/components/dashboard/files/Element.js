@@ -4,7 +4,14 @@ import React, { useState } from "react";
 
 import Draft from "./Draft";
 
-function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
+function Element({
+  draft,
+  deleteDraft,
+  setDraftsChange,
+  senderUsername,
+  user,
+}) {
+  console.log(user);
   const [toggleOpenDraft, setToggleOpenDraft] = useState(false);
 
   const handleToggleOpenDraftButton = () => {
@@ -32,6 +39,7 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
           setDraftsChange={setDraftsChange}
           senderUsername={senderUsername}
           handleToggleOpenDraftButton={handleToggleOpenDraftButton}
+          user={user}
         />
       )}
     </>

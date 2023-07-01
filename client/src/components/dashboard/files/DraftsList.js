@@ -4,7 +4,8 @@ import React, { useState, useEffect } from "react";
 import Element from "./Element";
 import EmptyList from "../EmptyList";
 
-const ListDrafts = ({ senderUsername, setShowDrafts }) => {
+const ListDrafts = ({ senderUsername, setShowDrafts, user }) => {
+  console.log(user);
   const [allDrafts, setAllDrafts] = useState([]);
   const [draftsChange, setDraftsChange] = useState(false);
 
@@ -72,6 +73,7 @@ const ListDrafts = ({ senderUsername, setShowDrafts }) => {
                   deleteDraft={deleteDraft}
                   setDraftsChange={setDraftsChange}
                   senderUsername={senderUsername}
+                  user={user}
                 />
               </>
             );

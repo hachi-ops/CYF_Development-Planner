@@ -9,7 +9,9 @@ function Draft({
   setDraftsChange,
   senderUsername,
   handleToggleOpenDraftButton,
+  user,
 }) {
+  console.log(user);
   const [showEdit, setShowEdit] = useState(false);
 
   const handleShowEdit = () => {
@@ -29,6 +31,7 @@ function Draft({
           draft={draft}
           setDraftsChange={setDraftsChange}
           senderUsername={senderUsername}
+          user={user}
         />
         <div className="element-container">
           <p className="text">{draft.draft_text}</p>

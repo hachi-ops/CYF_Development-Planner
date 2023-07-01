@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import SentConfirmation from "../confirmations/SentConfirmation";
 
-function Dropdown({ senderUsername, draft, setToggleSend, handleToggleSend }) {
+function Dropdown({
+  senderUsername,
+  draft,
+  setToggleSend,
+  handleToggleSend,
+  user,
+}) {
   const msgTitle = draft.draft_title;
   const msgText = draft.draft_text;
-  console.log(msgText);
+  console.log(senderUsername);
 
   const [messageTitle, setMessageTitle] = useState("");
   const [messageText, setMessageText] = useState("");
@@ -98,6 +104,10 @@ function Dropdown({ senderUsername, draft, setToggleSend, handleToggleSend }) {
     setMessageText(msgText);
     setSentConfirmation(true);
   };
+
+  const userRole = user.user_role;
+  console.log(userRole);
+
   return (
     <>
       <div className="relative">
@@ -120,22 +130,26 @@ function Dropdown({ senderUsername, draft, setToggleSend, handleToggleSend }) {
               </div>
             </div>
           )}
-          <select onChange={onMentorDropdownMenuChange}>
-            <option>--select mentor--</option>
-            {mentorsList.map((mentor) => (
-              <option value={mentor.user_id} key={mentor.mentor_id}>
-                {mentor.username}
-              </option>
-            ))}
-          </select>
-          <select onChange={onStudentsDropdownMenuChange}>
-            <option>--select student--</option>
-            {studentsList.map((student) => (
-              <option value={student.user_id} key={student.student_id}>
-                {student.username}
-              </option>
-            ))}
-          </select>
+          {userRole === "student" ? (
+            <select onChange={onMentorDropdownMenuChange}>
+              <option>--select mentor--</option>
+              {mentorsList.map((mentor) => (
+                <option value={mentor.user_id} key={mentor.mentor_id}>
+                  {mentor.username}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <select onChange={onStudentsDropdownMenuChange}>
+              <option>--select student--</option>
+              {studentsList.map((student) => (
+                <option value={student.user_id} key={student.student_id}>
+                  {student.username}
+                </option>
+              ))}
+            </select>
+          )}
+
           <div className="buttons">
             <button onClick={onClickSend}>send</button>
             <button onClick={handleToggleSend}>cancel</button>

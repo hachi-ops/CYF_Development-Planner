@@ -11,6 +11,7 @@ import MessagesControls from "./MessagesControls";
 import AccountControls from "./AccountControls";
 
 function DashboardNavigation({ user, handleUpdate }) {
+  // console.log(user);
   const [filesControlButtons, setFilesControlButtons] = useState(false);
   const [messagesControlButtons, setMessagesControlButtons] = useState(false);
   const [accountControlButtons, setAccountControlButtons] = useState(false);
@@ -52,7 +53,9 @@ function DashboardNavigation({ user, handleUpdate }) {
             style={{ transform: filesControlButtons && "scale(1.4)" }}
           />
         </div>
-        {filesControlButtons && <DraftsControls name={user.username} />}
+        {filesControlButtons && (
+          <DraftsControls name={user.username} user={user} />
+        )}
         <div className="icon-heading flex" onClick={handleToggleMessages}>
           <h2
             style={{

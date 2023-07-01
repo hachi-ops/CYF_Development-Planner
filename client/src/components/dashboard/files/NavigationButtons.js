@@ -7,12 +7,13 @@ import SendButton from "./SendButton";
 function NavigationButtons({
   handleToggleSend,
   handleShowEdit,
-
+  user,
   draft,
   senderUsername,
   deleteDraft,
   setDraftsChange,
 }) {
+  console.log(user);
   return (
     <>
       <div className="navigation-buttons">
@@ -32,6 +33,7 @@ function NavigationButtons({
           handleToggleSend={handleToggleSend}
           draft={draft}
           senderUsername={senderUsername}
+          user={user}
         />
       </div>
     </>

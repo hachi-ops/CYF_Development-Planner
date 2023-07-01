@@ -3,15 +3,17 @@ import React from "react";
 function SentConfirmation({ setSentConfirmation, setToggleSend }) {
   return (
     <>
-      <div className="relative">
+      <div className="relative prompt">
         <div
           className="titleCloseBtn"
           onClick={() => {
             setToggleSend(false);
+            setSentConfirmation(false);
           }}
         >
           X
         </div>
+        <div>file sent</div>
         <button
           onClick={() => {
             setSentConfirmation(false);
@@ -20,7 +22,6 @@ function SentConfirmation({ setSentConfirmation, setToggleSend }) {
         >
           OK
         </button>
-        <div>file sent</div>
       </div>
     </>
   );
