@@ -7,10 +7,13 @@ import SendButton from "./SendButton";
 function NavigationButtons({
   handleToggleSend,
   handleShowEdit,
-  handleDeletePrompt,
+  user,
   draft,
   senderUsername,
+  deleteDraft,
+  setDraftsChange,
 }) {
+  console.log(user);
   return (
     <>
       <div className="navigation-buttons">
@@ -20,11 +23,17 @@ function NavigationButtons({
           onClick={handleShowEdit}
           className="icon"
         />
-        <DeleteButton handleDeletePrompt={handleDeletePrompt} />
+        <DeleteButton
+          draft={draft}
+          deleteDraft={deleteDraft}
+          setDraftsChange={setDraftsChange}
+          senderUsername={senderUsername}
+        />
         <SendButton
           handleToggleSend={handleToggleSend}
           draft={draft}
           senderUsername={senderUsername}
+          user={user}
         />
       </div>
     </>

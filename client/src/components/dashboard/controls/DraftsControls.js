@@ -5,7 +5,8 @@ import DraftsList from "../files/DraftsList";
 
 import AddNewFile from "../files/AddNewFile";
 
-function DraftsControls({ name }) {
+function DraftsControls({ name, user }) {
+  // console.log(user);
   const [showDrafts, setShowDrafts] = useState(false);
 
   const handleShowDrafts = () => {
@@ -24,7 +25,11 @@ function DraftsControls({ name }) {
           <button onClick={handleShowAddNew}>new</button>
         </div>
         {showDrafts && (
-          <DraftsList senderUsername={name} setShowDrafts={setShowDrafts} />
+          <DraftsList
+            senderUsername={name}
+            setShowDrafts={setShowDrafts}
+            user={user}
+          />
         )}
         {showAddNew && (
           <AddNewFile senderUsername={name} setShowAddNew={setShowAddNew} />

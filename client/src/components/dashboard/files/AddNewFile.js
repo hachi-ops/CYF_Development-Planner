@@ -37,7 +37,7 @@ function AddNewFile({ setShowAddNew }) {
 
   return (
     <>
-      <div className="relative">
+      <div className="show-element">
         <div
           className="titleCloseBtn"
           onClick={() => {
@@ -68,11 +68,12 @@ function AddNewFile({ setShowAddNew }) {
             onChange={(e) => setMessageText(e.target.value)}
           />
         </form>
+        {openSaveDraftModal && (
+          <SavedDraftConfirmation
+            setOpenSaveDraftModal={setOpenSaveDraftModal}
+          />
+        )}
       </div>
-
-      {openSaveDraftModal && (
-        <SavedDraftConfirmation setOpenSaveDraftModal={setOpenSaveDraftModal} />
-      )}
     </>
   );
 }

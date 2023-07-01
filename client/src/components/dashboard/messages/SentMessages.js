@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import MessageText from "./MessageText";
+import Message from "./Message";
 import EmptyList from "../EmptyList";
 
-function SentMessages({ setShowSentMessages }) {
+function SentMessages({ setShowSentMessages, name }) {
   const [allMessages, setAllMessages] = useState([]);
   const getMessages = async () => {
     try {
@@ -38,12 +38,11 @@ function SentMessages({ setShowSentMessages }) {
         {allMessages.length !== 0 && allMessages[0].message_id !== null ? (
           allMessages.map((message) => {
             return (
-              <div>
-                <MessageText
-                  message={message}
-                  setShowSentMessages={setShowSentMessages}
-                />
-              </div>
+              <Message
+                message={message}
+                name={name}
+                setShowSentMessages={setShowSentMessages}
+              />
             );
           })
         ) : (

@@ -19,7 +19,7 @@ function DeleteMessagePrompt({
         >
           X
         </div>
-        <div>Do you want to delete this message?</div>
+        <div className="prompt">Do you want to delete this message?</div>
         <div className="buttons">
           {" "}
           <button onClick={() => deleteMessage(message.message_id)}>

@@ -3,26 +3,25 @@ import React from "react";
 function SentConfirmation({ setSentConfirmation, setToggleSend }) {
   return (
     <>
-      <div className="relative">
+      <div className="relative prompt">
         <div
           className="titleCloseBtn"
           onClick={() => {
             setToggleSend(false);
+            setSentConfirmation(false);
           }}
         >
           X
         </div>
+        <div>file sent</div>
         <button
-          className="titleCloseBtn"
           onClick={() => {
             setSentConfirmation(false);
             setToggleSend(false);
           }}
-          id="cancelBtn"
         >
           OK
         </button>
-        <div>file sent</div>
       </div>
     </>
   );

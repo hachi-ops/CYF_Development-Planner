@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import SentConfirmation from "../confirmations/SentConfirmation";
 
-function Dropdown({ senderUsername, draft, setToggleSend }) {
+function Dropdown({
+  senderUsername,
+  draft,
+  setToggleSend,
+  handleToggleSend,
+  user,
+}) {
   const msgTitle = draft.draft_title;
   const msgText = draft.draft_text;
-  console.log(msgText);
+  console.log(senderUsername);
 
   const [messageTitle, setMessageTitle] = useState("");
   const [messageText, setMessageText] = useState("");
@@ -98,15 +104,14 @@ function Dropdown({ senderUsername, draft, setToggleSend }) {
     setMessageText(msgText);
     setSentConfirmation(true);
   };
+
+  const userRole = user.user_role;
+  console.log(userRole);
+
   return (
     <>
       <div className="relative">
-        <div
-          className="titleCloseBtn"
-          onClick={() => {
-            setToggleSend(false);
-          }}
-        >
+        <div className="titleCloseBtn" onClick={handleToggleSend}>
           X
         </div>
         <h1>Send File</h1>
@@ -125,32 +130,29 @@ function Dropdown({ senderUsername, draft, setToggleSend }) {
               </div>
             </div>
           )}
-          <select onChange={onMentorDropdownMenuChange}>
-            <option>--select mentor--</option>
-            {mentorsList.map((mentor) => (
-              <option value={mentor.user_id} key={mentor.mentor_id}>
-                {mentor.username}
-              </option>
-            ))}
-          </select>
-          <select onChange={onStudentsDropdownMenuChange}>
-            <option>--select student--</option>
-            {studentsList.map((student) => (
-              <option value={student.user_id} key={student.student_id}>
-                {student.username}
-              </option>
-            ))}
-          </select>
+          {userRole === "student" ? (
+            <select onChange={onMentorDropdownMenuChange}>
+              <option>--select mentor--</option>
+              {mentorsList.map((mentor) => (
+                <option value={mentor.user_id} key={mentor.mentor_id}>
+                  {mentor.username}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <select onChange={onStudentsDropdownMenuChange}>
+              <option>--select student--</option>
+              {studentsList.map((student) => (
+                <option value={student.user_id} key={student.student_id}>
+                  {student.username}
+                </option>
+              ))}
+            </select>
+          )}
+
           <div className="buttons">
             <button onClick={onClickSend}>send</button>
-            <button
-              onClick={() => {
-                setSentConfirmation(false);
-                setToggleSend(false);
-              }}
-            >
-              cancel
-            </button>
+            <button onClick={handleToggleSend}>cancel</button>
           </div>
         </form>
 
