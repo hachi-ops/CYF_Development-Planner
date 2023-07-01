@@ -9,7 +9,6 @@ function Draft({
   setDraftsChange,
   senderUsername,
   handleToggleOpenDraftButton,
-  allDrafts,
 }) {
   const [showEdit, setShowEdit] = useState(false);
 
@@ -22,6 +21,7 @@ function Draft({
         <div className="titleCloseBtn" onClick={handleToggleOpenDraftButton}>
           X
         </div>
+
         <h1>{draft.draft_title}</h1>
         <NavigationButtons
           handleShowEdit={handleShowEdit}
@@ -30,9 +30,9 @@ function Draft({
           setDraftsChange={setDraftsChange}
           senderUsername={senderUsername}
         />
-
-        <h2 className="element-title">{`Title: ${draft.draft_title}`} </h2>
-        <p className="element-text">{draft.draft_text}</p>
+        <div className="element-container">
+          <p className="text">{draft.draft_text}</p>
+        </div>
       </div>
 
       {showEdit && (

@@ -3,7 +3,6 @@ import React, { useState } from "react";
 // components
 
 import Draft from "./Draft";
-import OpenDraftButton from "../controls/OpenDraftButton";
 
 function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
   const [toggleOpenDraft, setToggleOpenDraft] = useState(false);
@@ -22,17 +21,17 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
           </p>
         </div>
 
-        <OpenDraftButton
-          handleToggleOpenDraftButton={handleToggleOpenDraftButton}
-        />
+        <div className="flex-list-buttons">
+          <button onClick={handleToggleOpenDraftButton}>open</button>
+        </div>
       </div>
       {toggleOpenDraft && (
         <Draft
           draft={draft}
           deleteDraft={deleteDraft}
-          handleToggleOpenDraftButton={handleToggleOpenDraftButton}
           setDraftsChange={setDraftsChange}
           senderUsername={senderUsername}
+          handleToggleOpenDraftButton={handleToggleOpenDraftButton}
         />
       )}
     </>

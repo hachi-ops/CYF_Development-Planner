@@ -73,14 +73,14 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
           onClick={() => setDraftText(draft.draft_text)}
         >
           <input
-            className="element-title"
+            className="edit-title"
             type="text"
             value={draftTitle}
             onChange={(e) => setDraftTitle(e.target.value)}
           />
 
           <textarea
-            className="element-text"
+            className="edit-text"
             type="text"
             value={draftText}
             onChange={(e) => setDraftText(e.target.value)}
