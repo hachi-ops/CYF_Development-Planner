@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import sendIcon from "../../../images/icons8-send-64.png";
 import Dropdown from "../controls/Dropdown";
 
-function SendButton() {
+function SendButton({ draft, senderUsername }) {
   const [toggleSend, setToggleSend] = useState(false);
 
   const handleToggleSend = () => {
@@ -17,7 +17,13 @@ function SendButton() {
         onClick={handleToggleSend}
       />
 
-      {toggleSend && <Dropdown handleToggleSend={handleToggleSend} />}
+      {toggleSend && (
+        <Dropdown
+          handleToggleSend={handleToggleSend}
+          draft={draft}
+          senderUsername={senderUsername}
+        />
+      )}
     </>
   );
 }

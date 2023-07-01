@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import SavedDraftConfirmation from "../confirmations/SavedDraftConfirmation";
 
-function AddNewFile({ senderUsername, setShowAddNew }) {
+function AddNewFile({ setShowAddNew }) {
   const [messageTitle, setMessageTitle] = useState("");
   const [messageText, setMessageText] = useState("");
 
@@ -11,26 +11,16 @@ function AddNewFile({ senderUsername, setShowAddNew }) {
     setOpenSaveDraftModal(true);
   };
 
-  const [receipientId, setReceipientId] = useState("");
-
-  async function sendMessage(isDraft) {
+  async function saveMessage() {
     try {
       const myHeaders = new Headers();
 
       myHeaders.append("Content-Type", "application/json");
       myHeaders.append("jwt_token", localStorage.token);
 
-      let body;
-      let endpoint;
-      if (isDraft) {
-        body = { draftTitle: messageTitle, draftText: messageText };
-        endpoint = "/dashboard/drafts";
-      } else {
-        body = { messageTitle, messageText, receipientId, senderUsername };
-        endpoint = "/dashboard/messages";
-      }
+      const body = { draftTitle: messageTitle, draftText: messageText };
+      const endpoint = "/dashboard/drafts";
 
-      // const body = { messageTitle, messageText, receipientId, senderUsername };
       const response = await fetch(endpoint, {
         method: "POST",
         headers: myHeaders,
@@ -60,7 +50,7 @@ function AddNewFile({ senderUsername, setShowAddNew }) {
           <div className="buttons">
             <button
               type="button"
-              onClick={() => handleOpenSaveModal(sendMessage(true))}
+              onClick={() => handleOpenSaveModal(saveMessage(true))}
             >
               save
             </button>

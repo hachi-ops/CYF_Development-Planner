@@ -8,6 +8,8 @@ function NavigationButtons({
   handleToggleSend,
   handleShowEdit,
   handleDeletePrompt,
+  draft,
+  senderUsername,
 }) {
   return (
     <>
@@ -19,7 +21,11 @@ function NavigationButtons({
           className="icon"
         />
         <DeleteButton handleDeletePrompt={handleDeletePrompt} />
-        <SendButton handleToggleSend={handleToggleSend} />
+        <SendButton
+          handleToggleSend={handleToggleSend}
+          draft={draft}
+          senderUsername={senderUsername}
+        />
       </div>
     </>
   );

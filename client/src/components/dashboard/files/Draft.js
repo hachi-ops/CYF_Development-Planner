@@ -7,10 +7,9 @@ import EditDraft from "./EditDraft";
 function Draft({
   draft,
   deleteDraft,
-
   setOpenText,
   setDraftsChange,
-
+  senderUsername,
   handleDeletePrompt,
 }) {
   const [showEdit, setShowEdit] = useState(false);
@@ -37,6 +36,7 @@ function Draft({
           setOpenText={setOpenText}
           setDraftsChange={setDraftsChange}
           handleDeletePrompt={handleDeletePrompt}
+          senderUsername={senderUsername}
         />
 
         <h2 className="element-title">{`Title: ${draft.draft_title}`} </h2>

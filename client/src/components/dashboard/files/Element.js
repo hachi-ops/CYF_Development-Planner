@@ -39,6 +39,7 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
           setOpenText={setOpenText}
           handleDeletePrompt={handleDeletePrompt}
           setDraftsChange={setDraftsChange}
+          senderUsername={senderUsername}
         />
       )}
 
