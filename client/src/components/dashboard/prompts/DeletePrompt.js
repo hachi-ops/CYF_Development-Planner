@@ -16,7 +16,7 @@ function DeletePrompt({
   };
   return (
     <>
-      <div className="relative">
+      <div className="relative prompt">
         <div onClick={handleDeletePrompt}>
           <CloseButton setDeleteConfirmation={setDeleteConfirmation} />
         </div>

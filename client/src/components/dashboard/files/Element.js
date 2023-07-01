@@ -13,7 +13,7 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
 
   return (
     <>
-      <div className="flex-list ">
+      <div className="flex-list">
         <div
           onClick={handleToggleOpenDraftButton}
           className="flex-list-buttons "

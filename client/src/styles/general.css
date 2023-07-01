@@ -257,3 +257,8 @@ button:hover,
 .element-container .edit-title, .edit-text {
     box-shadow: rgba(214, 3, 3, 0.3) 0px 0px 0px 3px;
 }
+
+.prompt {
+    width: 80%;
+    text-align: center;
+    }

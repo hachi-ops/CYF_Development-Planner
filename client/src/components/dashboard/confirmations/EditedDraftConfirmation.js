@@ -3,12 +3,14 @@ import React from "react";
 function EditedDraftConfirmation({ handleEditedDraftConfirmation }) {
   return (
     <>
-      <div className="relative">
+      <div className="relative prompt">
         <div className="titleCloseBtn" onClick={handleEditedDraftConfirmation}>
           X
         </div>
-        <button onClick={handleEditedDraftConfirmation}>OK</button>
+
         <p>file saved</p>
+
+        <button onClick={handleEditedDraftConfirmation}>OK</button>
       </div>
     </>
   );

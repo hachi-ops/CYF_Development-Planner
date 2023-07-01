@@ -3,7 +3,7 @@ import React from "react";
 function SavedDraftConfirmation({ setOpenSaveDraftModal }) {
   return (
     <>
-      <div className="relative">
+      <div className="relative prompt">
         <div
           className="titleCloseBtn"
           onClick={() => {
@@ -12,6 +12,8 @@ function SavedDraftConfirmation({ setOpenSaveDraftModal }) {
         >
           X
         </div>
+
+        <p>file saved</p>
         <button
           onClick={() => {
             setOpenSaveDraftModal(false);
@@ -19,7 +21,6 @@ function SavedDraftConfirmation({ setOpenSaveDraftModal }) {
         >
           OK
         </button>
-        <p>file saved</p>
       </div>
     </>
   );
