@@ -7,6 +7,7 @@ import AddNewFile from "../files/AddNewFile";
 
 function DraftsControls({ name }) {
   const [showDrafts, setShowDrafts] = useState(false);
+
   const handleShowDrafts = () => {
     setShowDrafts(true);
   };
@@ -18,7 +19,6 @@ function DraftsControls({ name }) {
   return (
     <>
       <div data-testid="drafts-controls">
-        {" "}
         <div className="buttons">
           <button onClick={handleShowDrafts}>drafts</button>
           <button onClick={handleShowAddNew}>new</button>

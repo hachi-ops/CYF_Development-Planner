@@ -33,7 +33,6 @@ test("should render DashboardNavigation component", () => {
 });
 
 // render icons/icons captions
-
 describe("should render: icons on dashboard, icons captions, open link on click of the icon, open link on click of the ico caption", () => {
   test("should render icons on dashboard", () => {
     render(<DashboardNavigation />);
@@ -60,7 +59,7 @@ describe("should render: icons on dashboard, icons captions, open link on click 
   });
 });
 
-// render DashboardNavigation buttons on click of Drafts and Messages
+// render DashboardNavigation buttons on click of Drafts and/or Messages
 // renders DraftsControls component
 test("should render DraftsControls component", () => {
   render(<DraftsControls />);
@@ -69,7 +68,7 @@ test("should render DraftsControls component", () => {
 });
 
 // renders drafts buttons
-test("should render buttons", () => {
+test("should render Drafts buttons", () => {
   render(<DraftsControls />);
   const allDrafts = screen.getByRole("button", { name: /drafts/i });
   expect(allDrafts).toBeInTheDocument();
@@ -86,7 +85,7 @@ test("should render MessagesControls component", () => {
 });
 
 // renders messages buttons
-test("should render buttons", () => {
+test("should render Messages buttons", () => {
   render(<MessagesControls />);
   const all = screen.getByRole("button", { name: /all/i });
   expect(all).toBeInTheDocument();
@@ -97,3 +96,14 @@ test("should render buttons", () => {
   const received = screen.getByRole("button", { name: /received/i });
   expect(received).toBeInTheDocument();
 });
+
+// renders DraftsList component on click of a button
+// renders AddNewFile component on click of a button
+// render drafts list in the DraftsList component
+// renders Element component
+// renders navigation buttons for each item in a DraftsList component
+// renders EditDraft on click
+// renders Delete Prompt on click
+// renders Send
+// renders X button to close a window
+// renders on click of an open button

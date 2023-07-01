@@ -2,28 +2,14 @@ import React, { useState } from "react";
 
 // components
 
-import MentorsDropdown from "./MentorsDropdown";
-import NavigationButtons from "./NavigationButtons";
-import EditDraft from "./EditDraft";
 import Draft from "./Draft";
 import DeletePrompt from "../prompts/DeletePrompt";
 
 function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
-  const [toggleSend, setToggleSend] = useState(false);
   const [openText, setOpenText] = useState(false);
-
-  const handleToggleSend = () => {
-    setToggleSend(true);
-  };
 
   const handleOpenText = () => {
     setOpenText(true);
-  };
-
-  const [showEdit, setShowEdit] = useState(false);
-
-  const handleShowEdit = () => {
-    setShowEdit(!showEdit);
   };
 
   const [deletePrompt, setDeletePrompt] = useState(false);
@@ -42,12 +28,6 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
           </p>
         </div>
         <div className="flex-list-buttons">
-          <NavigationButtons
-            handleToggleSend={handleToggleSend}
-            handleShowEdit={handleShowEdit}
-            handleDeletePrompt={handleDeletePrompt}
-          />
-
           <button onClick={handleOpenText}>open</button>
         </div>
       </div>
@@ -57,27 +37,11 @@ function Element({ draft, deleteDraft, setDraftsChange, senderUsername }) {
           draft={draft}
           deleteDraft={deleteDraft}
           setOpenText={setOpenText}
-          handleToggleSend={handleToggleSend}
           handleDeletePrompt={handleDeletePrompt}
-          handleShowEdit={handleShowEdit}
-        />
-      )}
-      {toggleSend && (
-        <MentorsDropdown
-          senderUsername={senderUsername}
-          draft={draft}
-          setToggleSend={setToggleSend}
+          setDraftsChange={setDraftsChange}
         />
       )}
 
-      {showEdit && (
-        <EditDraft
-          draft={draft}
-          setDraftsChange={setDraftsChange}
-          setShowEdit={setShowEdit}
-          handleShowEdit={handleShowEdit}
-        />
-      )}
       {deletePrompt && (
         <DeletePrompt
           handleDeletePrompt={handleDeletePrompt}

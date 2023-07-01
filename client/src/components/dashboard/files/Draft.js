@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 import NavigationButtons from "./NavigationButtons";
+
+import EditDraft from "./EditDraft";
 
 function Draft({
   draft,
   deleteDraft,
-  handleShowEdit,
+
   setOpenText,
   setDraftsChange,
-  handleToggleSend,
+
   handleDeletePrompt,
 }) {
+  const [showEdit, setShowEdit] = useState(false);
+
+  const handleShowEdit = () => {
+    setShowEdit(!showEdit);
+  };
   return (
     <>
       <div className="relative">
@@ -27,7 +34,6 @@ function Draft({
           handleShowEdit={handleShowEdit}
           deleteDraft={deleteDraft}
           draft={draft}
-          handleToggleSend={handleToggleSend}
           setOpenText={setOpenText}
           setDraftsChange={setDraftsChange}
           handleDeletePrompt={handleDeletePrompt}
@@ -36,6 +42,15 @@ function Draft({
         <h2 className="element-title">{`Title: ${draft.draft_title}`} </h2>
         <p className="element-text">{draft.draft_text}</p>
       </div>
+
+      {showEdit && (
+        <EditDraft
+          draft={draft}
+          setDraftsChange={setDraftsChange}
+          setShowEdit={setShowEdit}
+          handleShowEdit={handleShowEdit}
+        />
+      )}
     </>
   );
 }
