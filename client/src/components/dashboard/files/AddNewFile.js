@@ -27,7 +27,7 @@ function AddNewFile({ setShowAddNew }) {
         body: JSON.stringify(body),
       });
 
-      const parseResponse = await response.json();
+      await response.json();
     } catch (err) {
       console.error(err.message);
     }

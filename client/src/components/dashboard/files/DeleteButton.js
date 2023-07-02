@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import trashIcon from "../../../images/Graphicrating-Koloria-Trash-Delete.32.png";
 import DeletePrompt from "../prompts/DeletePrompt";
 
-function DeleteButton({ draft, deleteDraft, setDraftsChange, senderUsername }) {
+function DeleteButton({
+  draft,
+  deleteDraft,
+  setDraftsChange,
+  senderUsername,
+  handleToggleOpenDraftButton,
+  setToggleOpenDraft,
+}) {
   const [deletePrompt, setDeletePrompt] = useState(false);
 
   const handleDeletePrompt = () => {
@@ -24,6 +31,8 @@ function DeleteButton({ draft, deleteDraft, setDraftsChange, senderUsername }) {
           deleteDraft={deleteDraft}
           setDeletePrompt={setDeletePrompt}
           setDraftsChange={setDraftsChange}
+          handleToggleOpenDraftButton={handleToggleOpenDraftButton}
+          setToggleOpenDraft={setToggleOpenDraft}
         />
       )}
     </>

@@ -37,6 +37,7 @@ function Element({
           deleteDraft={deleteDraft}
           setDraftsChange={setDraftsChange}
           senderUsername={senderUsername}
+          setToggleOpenDraft={setToggleOpenDraft}
           handleToggleOpenDraftButton={handleToggleOpenDraftButton}
           user={user}
         />
