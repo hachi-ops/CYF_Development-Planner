@@ -11,7 +11,6 @@ function Draft({
   handleToggleOpenDraftButton,
   user,
 }) {
-  console.log(user);
   const [showEdit, setShowEdit] = useState(false);
 
   const handleShowEdit = () => {

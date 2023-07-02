@@ -10,14 +10,13 @@ function Dropdown({
 }) {
   const msgTitle = draft.draft_title;
   const msgText = draft.draft_text;
-  console.log(senderUsername);
 
   const [messageTitle, setMessageTitle] = useState("");
   const [messageText, setMessageText] = useState("");
   const [mentorsList, setMentorsList] = useState([]);
 
   const [receipientId, setReceipientId] = useState("");
-  console.log(senderUsername);
+
   const getMentors = async () => {
     try {
       const res = await fetch("/dashboard/mentors", {
@@ -26,7 +25,6 @@ function Dropdown({
       });
 
       const parseData = await res.json();
-      console.log(parseData);
 
       setMentorsList(parseData);
     } catch (err) {
@@ -47,7 +45,6 @@ function Dropdown({
       });
 
       const parseData = await res.json();
-      console.log(parseData);
 
       setStudentsList(parseData);
     } catch (err) {
@@ -84,19 +81,16 @@ function Dropdown({
 
       const parseResponse = await response.json();
 
-      console.log(parseResponse);
       setMessageTitle(msgTitle);
-      // console.log(messageTitle);
+
       setMessageText(msgText);
-      console.log(msgText);
+
       // setConfirmation("file sent");
       // setDraftsChange(true);
     } catch (err) {
       console.error(err.message);
     }
   };
-
-  console.log(receipientId);
 
   const [sentConfirmation, setSentConfirmation] = useState(false);
   const onClickSend = () => {
@@ -106,7 +100,6 @@ function Dropdown({
   };
 
   const userRole = user.user_role;
-  console.log(userRole);
 
   return (
     <>

@@ -3,7 +3,6 @@ import sendIcon from "../../../images/icons8-send-64.png";
 import Dropdown from "../controls/Dropdown";
 
 function SendButton({ draft, senderUsername, user }) {
-  console.log(user.user_role);
   const [toggleSend, setToggleSend] = useState(false);
 
   const handleToggleSend = () => {

@@ -192,10 +192,11 @@ button:hover,
 .flex-list {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    /* align-items: center; */
+    /* justify-content: center;
+    align-items: center; */
     width: 90%;
     margin: 0 auto;
+    outline: 1px solid red;
 }
 
 .navigation-buttons {

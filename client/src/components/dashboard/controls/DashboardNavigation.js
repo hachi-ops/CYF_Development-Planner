@@ -11,7 +11,6 @@ import MessagesControls from "./MessagesControls";
 import AccountControls from "./AccountControls";
 
 function DashboardNavigation({ user, handleUpdate }) {
-  // console.log(user);
   const [filesControlButtons, setFilesControlButtons] = useState(false);
   const [messagesControlButtons, setMessagesControlButtons] = useState(false);
   const [accountControlButtons, setAccountControlButtons] = useState(false);

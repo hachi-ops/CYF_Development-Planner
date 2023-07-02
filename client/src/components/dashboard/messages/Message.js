@@ -10,7 +10,6 @@ function Message({ message }) {
   const [answerButtonText, setAnswerButtonText] = useState("answer");
 
   const sendAnswer = () => {
-    // console.log("I was clicked");
     setAnswerField(!answerField);
     setAnswerButtonText((state) => (state === "answer" ? "cancel" : "answer"));
   };

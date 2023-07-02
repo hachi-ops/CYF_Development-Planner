@@ -6,7 +6,6 @@ import DraftsList from "../files/DraftsList";
 import AddNewFile from "../files/AddNewFile";
 
 function DraftsControls({ name, user }) {
-  // console.log(user);
   const [showDrafts, setShowDrafts] = useState(false);
 
   const handleShowDrafts = () => {

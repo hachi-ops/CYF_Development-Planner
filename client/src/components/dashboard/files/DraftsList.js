@@ -5,7 +5,6 @@ import Element from "./Element";
 import EmptyList from "../EmptyList";
 
 const ListDrafts = ({ senderUsername, setShowDrafts, user }) => {
-  console.log(user);
   const [allDrafts, setAllDrafts] = useState([]);
   const [draftsChange, setDraftsChange] = useState(false);
 
@@ -17,7 +16,7 @@ const ListDrafts = ({ senderUsername, setShowDrafts, user }) => {
       });
 
       const parseData = await res.json();
-      console.log(parseData);
+
       setAllDrafts(parseData);
     } catch (err) {
       console.error(err.message);

@@ -11,7 +11,7 @@ function ReceivedMessages({ setShowReceivedMessages }) {
       });
 
       const parseData = await res.json();
-      console.log(parseData);
+
       setReceivedMessages(parseData);
     } catch (err) {
       console.error(err.message);
@@ -22,11 +22,6 @@ function ReceivedMessages({ setShowReceivedMessages }) {
     getReceivedMessages();
   }, []);
 
-  const [visible, setVisible] = useState(true);
-
-  const removeElement = () => {
-    setVisible((prev) => !prev);
-  };
   return (
     <>
       <div className="show-element">
@@ -44,22 +39,18 @@ function ReceivedMessages({ setShowReceivedMessages }) {
         receivedMessages[0].message_id !== null ? (
           receivedMessages.map((message) => {
             return (
-              <div>
-                {visible && (
-                  <div>
-                    {" "}
-                    <hr />
-                    <div className="flex">
-                      <p>{message.sender_username}</p>
-                      <p>{message.message_title}</p>
-                      {/* <p>{message.message_text}</p> */}
-                    </div>
-                    <div className="flex">
-                      <DeleteMessageButton removeElement={removeElement} />
-                    </div>
+              <>
+                <hr />
+                <div className="flex-list">
+                  <div className="flex-list-buttons ">
+                    <p>
+                      <span>Title: </span>
+                      {message.message_title}
+                    </p>
                   </div>
-                )}
-              </div>
+                  <button>open</button>
+                </div>
+              </>
             );
           })
         ) : (

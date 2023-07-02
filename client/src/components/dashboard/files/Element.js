@@ -11,7 +11,6 @@ function Element({
   senderUsername,
   user,
 }) {
-  console.log(user);
   const [toggleOpenDraft, setToggleOpenDraft] = useState(false);
 
   const handleToggleOpenDraftButton = () => {
