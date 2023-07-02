@@ -7,12 +7,15 @@ function DeletePrompt({
   draft,
   handleDeletePrompt,
   setDeletePrompt,
+
+  setToggleOpenDraft,
 }) {
   const [deleteConfirmation, setDeleteConfirmation] = useState(false);
 
   const handleDeleteConfirmation = () => {
     setDeleteConfirmation(!deleteConfirmation);
     setDeletePrompt(false);
+    setToggleOpenDraft(false);
   };
   return (
     <>

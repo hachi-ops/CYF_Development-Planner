@@ -79,7 +79,7 @@ function Dropdown({
         body: JSON.stringify(body),
       });
 
-      const parseResponse = await response.json();
+      await response.json();
 
       setMessageTitle(msgTitle);
 

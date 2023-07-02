@@ -81,7 +81,7 @@ const UpdatePword = ({ user, handleUpdate }) => {
         headers: headers,
         body: JSON.stringify(body),
       });
-      const result = await response.json();
+      await response.json();
 
       handleUpdate();
     } catch (err) {

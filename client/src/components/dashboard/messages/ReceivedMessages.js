@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import EmptyList from "../EmptyList";
-import DeleteMessageButton from "./DeleteMessageButton";
+
 function ReceivedMessages({ setShowReceivedMessages }) {
   const [receivedMessages, setReceivedMessages] = useState([]);
   const getReceivedMessages = async () => {

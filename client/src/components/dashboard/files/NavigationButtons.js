@@ -12,6 +12,8 @@ function NavigationButtons({
   senderUsername,
   deleteDraft,
   setDraftsChange,
+  handleToggleOpenDraftButton,
+  setToggleOpenDraft,
 }) {
   return (
     <>
@@ -27,6 +29,8 @@ function NavigationButtons({
           deleteDraft={deleteDraft}
           setDraftsChange={setDraftsChange}
           senderUsername={senderUsername}
+          handleToggleOpenDraftButton={handleToggleOpenDraftButton}
+          setToggleOpenDraft={setToggleOpenDraft}
         />
         <SendButton
           handleToggleSend={handleToggleSend}
