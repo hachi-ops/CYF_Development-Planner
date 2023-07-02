@@ -28,8 +28,6 @@ function AddNewFile({ setShowAddNew }) {
       });
 
       const parseResponse = await response.json();
-
-      console.log(parseResponse);
     } catch (err) {
       console.error(err.message);
     }

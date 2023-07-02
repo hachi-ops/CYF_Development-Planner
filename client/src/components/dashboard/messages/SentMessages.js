@@ -12,7 +12,7 @@ function SentMessages({ setShowSentMessages, name }) {
       });
 
       const parseData = await res.json();
-      console.log(parseData);
+
       setAllMessages(parseData);
     } catch (err) {
       console.error(err.message);

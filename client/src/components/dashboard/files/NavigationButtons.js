@@ -13,7 +13,6 @@ function NavigationButtons({
   deleteDraft,
   setDraftsChange,
 }) {
-  console.log(user);
   return (
     <>
       <div className="navigation-buttons">
