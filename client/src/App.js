@@ -20,12 +20,12 @@ import RegisterConfirmation from "./components/login-and-register/RegisterConfir
 import Navbar from "./components/navbar/Navbar";
 import Home from "./components/home/Home";
 import Dashboard from "./components/dashboard/Dashboard";
-import PasswordLink from "./components/login-and-register/PasswordLink";
+import ResetLink from "./components/login-and-register/ResetLink";
 import Footer from "./components/Footer";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  
+
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
@@ -104,14 +104,9 @@ function App() {
             )
           }
         />
-        <Route
-          path="password-link"
-          element={
-            <PasswordLink/>
-          }
-        />
+        <Route path="reset-link" element={<ResetLink />} />
       </Routes>
-     
+
       <Footer />
     </>
   );

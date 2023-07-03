@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcrypt");
 const pool = require("../db");
 const nodemailer = require("nodemailer");
+const jwt = require("jsonwebtoken");
 
-// function creates 
-const mailer = async (email) => {
+// function creates smtp transporter object, message object and uses the sendMail method to send the mail/message.
+const mailer = async (user) => {
   try {
     const transporter = nodemailer.createTransport({
       host: process.env.MAIL_HOST,
@@ -17,12 +17,15 @@ const mailer = async (email) => {
       },
     });
 
+    
+    // create jwt token
+    const token = jwt.sign({ id: user.user_id }, process.env.JWT_EMAIL_SECRET, { expiresIn: "1h" });
+
     const message = {
       from: '"dev_planner" <dev_planner@example.com>',
-      to: email,
-      subject: "Test email", // Subject line
-      text: "Hello john", // plain text body
-      html: "<b>Hello john</b>", // html body
+      to: user.user_email,
+      subject: "Reset Password",
+      html: `http://localhost:3000/password-reset?token=${token}`,
     };
 
     const response = await transporter.sendMail(message);
@@ -37,14 +40,13 @@ const mailer = async (email) => {
 router.post("/checkEmail", async (req, res) => {
   try {
     const { email } = req.body;
-    const getEmail = await pool.query(
-      "SELECT * FROM users WHERE user_email = $1",
-      [email]
-    );
-    if (getEmail.rows.length === 1) {
-      mailer(email);
+    const user = await pool.query("SELECT * FROM users WHERE user_email = $1", [
+      email,
+    ]);
+    if (user.rows.length === 1) {
+      mailer(user.rows[0]);
     }
-    return res.json({ rows: getEmail.rows.length });
+    return res.json({ rows: user.rows.length });
   } catch (err) {
     console.log(err.message);
   }
