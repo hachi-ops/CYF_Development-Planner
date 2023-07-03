@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-function PasswordLink() {
+function ResetLink() {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [linkSent, setLinkSent] = useState(false);
@@ -68,4 +68,4 @@ function PasswordLink() {
   );
 }
 
-export default PasswordLink;
+export default ResetLink;
