@@ -152,7 +152,7 @@ hr {
 
 #cancelBtn {
     background-color: rgba(255, 0, 0, 0.125);
-    color: rgba(255, 0, 0, 0.568);   
+    color: rgba(255, 0, 0, 0.568);
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
@@ -178,6 +178,7 @@ button:hover,
     position: absolute;
     top: 60px;
 }
+
 .icon {
     width: 30px;
 }
@@ -247,7 +248,7 @@ button:hover,
     border-radius: 8px;
 }
 
-.element-container { 
+.element-container {
     width: 90%;
     margin: 50px auto;
     font-size: 1.2rem;
@@ -255,11 +256,18 @@ button:hover,
     /* outline: 1px solid red; */
 }
 
-.element-container .edit-title, .edit-text {
+.element-container .edit-title,
+.edit-text {
     box-shadow: rgba(214, 3, 3, 0.3) 0px 0px 0px 3px;
 }
 
 .prompt {
     width: 80%;
     text-align: center;
-    }
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
