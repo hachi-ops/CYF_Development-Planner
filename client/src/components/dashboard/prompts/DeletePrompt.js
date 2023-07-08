@@ -7,16 +7,19 @@ function DeletePrompt({
   draft,
   handleDeletePrompt,
   setDeletePrompt,
+
+  setToggleOpenDraft,
 }) {
   const [deleteConfirmation, setDeleteConfirmation] = useState(false);
 
   const handleDeleteConfirmation = () => {
     setDeleteConfirmation(!deleteConfirmation);
     setDeletePrompt(false);
+    setToggleOpenDraft(false);
   };
   return (
     <>
-      <div className="relative">
+      <div className="relative prompt">
         <div onClick={handleDeletePrompt}>
           <CloseButton setDeleteConfirmation={setDeleteConfirmation} />
         </div>

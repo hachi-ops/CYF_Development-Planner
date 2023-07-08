@@ -1,41 +1,53 @@
-import React from "react";
-
+import React, { useState } from "react";
 import NavigationButtons from "./NavigationButtons";
+
+import EditDraft from "./EditDraft";
 
 function Draft({
   draft,
   deleteDraft,
-  handleShowEdit,
-  setOpenText,
   setDraftsChange,
-  handleToggleSend,
-  handleDeletePrompt,
+  senderUsername,
+  handleToggleOpenDraftButton,
+  user,
+  setToggleOpenDraft,
 }) {
+  const [showEdit, setShowEdit] = useState(false);
+
+  const handleShowEdit = () => {
+    setShowEdit(!showEdit);
+  };
   return (
     <>
       <div className="relative">
-        <div
-          className="titleCloseBtn"
-          onClick={() => {
-            setOpenText(false);
-          }}
-        >
+        <div className="titleCloseBtn" onClick={handleToggleOpenDraftButton}>
           X
         </div>
+
         <h1>{draft.draft_title}</h1>
         <NavigationButtons
           handleShowEdit={handleShowEdit}
           deleteDraft={deleteDraft}
           draft={draft}
-          handleToggleSend={handleToggleSend}
-          setOpenText={setOpenText}
           setDraftsChange={setDraftsChange}
-          handleDeletePrompt={handleDeletePrompt}
+          senderUsername={senderUsername}
+          user={user}
+          handleToggleOpenDraftButton={handleToggleOpenDraftButton}
+          setToggleOpenDraft={setToggleOpenDraft}
         />
-
-        <h2 className="element-title">{`Title: ${draft.draft_title}`} </h2>
-        <p className="element-text">{draft.draft_text}</p>
+        <div className="element-container">
+          <p className="text">{draft.draft_text}</p>
+        </div>
       </div>
+
+      {showEdit && (
+        <EditDraft
+          draft={draft}
+          setDraftsChange={setDraftsChange}
+          setShowEdit={setShowEdit}
+          handleShowEdit={handleShowEdit}
+        />
+      )}
     </>
   );
 }

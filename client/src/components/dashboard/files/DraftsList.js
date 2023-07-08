@@ -4,8 +4,7 @@ import React, { useState, useEffect } from "react";
 import Element from "./Element";
 import EmptyList from "../EmptyList";
 
-const ListDrafts = ({ senderUsername, setShowDrafts }) => {
-  console.log(senderUsername);
+const ListDrafts = ({ senderUsername, setShowDrafts, user }) => {
   const [allDrafts, setAllDrafts] = useState([]);
   const [draftsChange, setDraftsChange] = useState(false);
 
@@ -17,7 +16,7 @@ const ListDrafts = ({ senderUsername, setShowDrafts }) => {
       });
 
       const parseData = await res.json();
-      console.log(parseData);
+
       setAllDrafts(parseData);
     } catch (err) {
       console.error(err.message);
@@ -51,7 +50,7 @@ const ListDrafts = ({ senderUsername, setShowDrafts }) => {
 
   return (
     <>
-      <div className="show-element">
+      <div className="show-element" data-testid="drafts-list">
         <div
           className="titleCloseBtn"
           onClick={() => {
@@ -73,7 +72,7 @@ const ListDrafts = ({ senderUsername, setShowDrafts }) => {
                   deleteDraft={deleteDraft}
                   setDraftsChange={setDraftsChange}
                   senderUsername={senderUsername}
-                  allDrafts={allDrafts}
+                  user={user}
                 />
               </>
             );

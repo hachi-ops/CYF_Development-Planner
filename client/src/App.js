@@ -41,7 +41,6 @@ function App() {
 
       // Could this be simpified to not need two calls to `setIsAuthenticated`?
       parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
-      // console.log(parseRes);
     } catch (err) {
       console.error(err.message);
     }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SaveEditedDraftConfirmation from "../confirmations/SaveEditedDraftConfirmation";
+import EditedDraftConfirmation from "../confirmations/EditedDraftConfirmation";
 import CloseButton from "../CloseButton";
 const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
   //editText function
@@ -20,10 +20,6 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
       });
 
       setDraftsChange(true);
-      // setDraftTitle("");
-      // setDraftText("");
-
-      // window.location = "/";
     } catch (err) {
       console.error(err.message);
     }
@@ -35,7 +31,7 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
   const [editedDraftConfirmation, setEditedDraftConfimation] = useState(false);
   const handleEditedDraftConfirmation = () => {
     setEditedDraftConfimation(!editedDraftConfirmation);
-    // setShowEdit(true);
+    setShowEdit(true);
   };
 
   return (
@@ -73,14 +69,14 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
           onClick={() => setDraftText(draft.draft_text)}
         >
           <input
-            className="element-title"
+            className="edit-title"
             type="text"
             value={draftTitle}
             onChange={(e) => setDraftTitle(e.target.value)}
           />
 
           <textarea
-            className="element-text"
+            className="edit-text"
             type="text"
             value={draftText}
             onChange={(e) => setDraftText(e.target.value)}
@@ -88,7 +84,7 @@ const EditDraft = ({ draft, setDraftsChange, setShowEdit }) => {
         </div>
       </div>
       {editedDraftConfirmation && (
-        <SaveEditedDraftConfirmation
+        <EditedDraftConfirmation
           handleEditedDraftConfirmation={handleEditedDraftConfirmation}
         />
       )}

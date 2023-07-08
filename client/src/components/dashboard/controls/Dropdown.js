@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
 import SentConfirmation from "../confirmations/SentConfirmation";
 
-function MentorsDropdown({ senderUsername, draft, setToggleSend }) {
+function Dropdown({
+  senderUsername,
+  draft,
+  setToggleSend,
+  handleToggleSend,
+  user,
+}) {
   const msgTitle = draft.draft_title;
   const msgText = draft.draft_text;
-  console.log(msgText);
 
   const [messageTitle, setMessageTitle] = useState("");
   const [messageText, setMessageText] = useState("");
   const [mentorsList, setMentorsList] = useState([]);
 
   const [receipientId, setReceipientId] = useState("");
-  console.log(senderUsername);
+
   const getMentors = async () => {
     try {
       const res = await fetch("/dashboard/mentors", {
@@ -20,7 +25,6 @@ function MentorsDropdown({ senderUsername, draft, setToggleSend }) {
       });
 
       const parseData = await res.json();
-      console.log(parseData);
 
       setMentorsList(parseData);
     } catch (err) {
@@ -41,7 +45,6 @@ function MentorsDropdown({ senderUsername, draft, setToggleSend }) {
       });
 
       const parseData = await res.json();
-      console.log(parseData);
 
       setStudentsList(parseData);
     } catch (err) {
@@ -76,13 +79,12 @@ function MentorsDropdown({ senderUsername, draft, setToggleSend }) {
         body: JSON.stringify(body),
       });
 
-      const parseResponse = await response.json();
+      await response.json();
 
-      console.log(parseResponse);
       setMessageTitle(msgTitle);
-      // console.log(messageTitle);
+
       setMessageText(msgText);
-      console.log(msgText);
+
       // setConfirmation("file sent");
       // setDraftsChange(true);
     } catch (err) {
@@ -90,23 +92,19 @@ function MentorsDropdown({ senderUsername, draft, setToggleSend }) {
     }
   };
 
-  console.log(receipientId);
-
   const [sentConfirmation, setSentConfirmation] = useState(false);
   const onClickSend = () => {
     setMessageTitle(msgTitle);
     setMessageText(msgText);
     setSentConfirmation(true);
   };
+
+  const userRole = user.user_role;
+
   return (
     <>
       <div className="relative">
-        <div
-          className="titleCloseBtn"
-          onClick={() => {
-            setToggleSend(false);
-          }}
-        >
+        <div className="titleCloseBtn" onClick={handleToggleSend}>
           X
         </div>
         <h1>Send File</h1>
@@ -125,48 +123,41 @@ function MentorsDropdown({ senderUsername, draft, setToggleSend }) {
               </div>
             </div>
           )}
-          <select onChange={onMentorDropdownMenuChange}>
-            <option>--select mentor--</option>
-            {mentorsList.map((mentor) => (
-              <option value={mentor.user_id} key={mentor.mentor_id}>
-                {mentor.username}
-              </option>
-            ))}
-          </select>
-          <select onChange={onStudentsDropdownMenuChange}>
-            <option>--select student--</option>
-            {studentsList.map((student) => (
-              <option value={student.user_id} key={student.student_id}>
-                {student.username}
-              </option>
-            ))}
-          </select>
+          {userRole === "student" ? (
+            <select onChange={onMentorDropdownMenuChange}>
+              <option>--select mentor--</option>
+              {mentorsList.map((mentor) => (
+                <option value={mentor.user_id} key={mentor.mentor_id}>
+                  {mentor.username}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <select onChange={onStudentsDropdownMenuChange}>
+              <option>--select student--</option>
+              {studentsList.map((student) => (
+                <option value={student.user_id} key={student.student_id}>
+                  {student.username}
+                </option>
+              ))}
+            </select>
+          )}
+
           <div className="buttons">
             <button onClick={onClickSend}>send</button>
-            <button
-              onClick={() => {
-                setSentConfirmation(false);
-                setToggleSend(false);
-              }}
-            >
-              cancel
-            </button>
+            <button onClick={handleToggleSend}>cancel</button>
           </div>
         </form>
 
-        <div>
-          {sentConfirmation && (
-            <SentConfirmation
-              setSentConfirmation={setSentConfirmation}
-              setToggleSend={setToggleSend}
-            />
-          )}
-          <div>{messageTitle}</div>
-          <div>{messageText}</div>
-        </div>
+        {sentConfirmation && (
+          <SentConfirmation
+            setSentConfirmation={setSentConfirmation}
+            setToggleSend={setToggleSend}
+          />
+        )}
       </div>
     </>
   );
 }
 
-export default MentorsDropdown;
+export default Dropdown;

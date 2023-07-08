@@ -136,14 +136,6 @@ hr {
     width: 150px;
 }
 
-.title {
-    width: 300px;
-}
-
-.text {
-    max-width: 80%;
-}
-
 .add-form {
     width: 90%;
     margin: auto;
@@ -160,12 +152,7 @@ hr {
 
 #cancelBtn {
     background-color: rgba(255, 0, 0, 0.125);
-    color: rgba(255, 0, 0, 0.568);
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    color: rgba(255, 0, 0, 0.568);   
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
@@ -191,67 +178,25 @@ button:hover,
     position: absolute;
     top: 60px;
 }
-
-.element-container {
-    margin-top: 40px;
-    width: 90%;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    font-size: 1.2rem;
-}
-
-.element-title {
-    padding: 10px;
-    border-radius: 4px;
-    color: #902323;
-    font-weight: 600;
-    font-size: 1.2rem;
-    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-    box-shadow: rgba(214, 3, 3, 0.3) 0px 0px 0px 3px;
-    width: 50%;
-
-    margin: 20px auto;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-}
-
-.element-text {
-    height: 500px;
-    width: 90%;
-    margin: 0 auto;
-    border-style: none;
-    padding: 20px;
-    overflow-wrap: break-word;
-    overflow-y: scroll;
-    box-shadow: rgba(214, 3, 3, 0.3) 0px 0px 0px 3px;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
-    border-radius: 4px;
-    letter-spacing: 0.03rem;
-    line-height: 1.7rem;
-    font-size: 1.1rem;
-}
-
 .icon {
     width: 30px;
 }
 
 .element {
-
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center;     */
 }
 
 
 .flex-list {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-
+    /* justify-content: center;
+    align-items: center; */
     width: 90%;
     margin: 0 auto;
+    outline: 1px solid red;
 }
 
 .navigation-buttons {
@@ -263,9 +208,11 @@ button:hover,
 
 .flex-list-buttons {
     display: flex;
-    gap: 30px;
+    /* gap: 30px; */
     justify-content: space-between;
-    border: 1px solid blue;
+    width: 100%;
+    align-items: center;
+
 }
 
 @media only screen and (min-width: 400px) {
@@ -281,19 +228,17 @@ button:hover,
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        gap: 60px;
+        /* gap: 60px; */
         align-items: center;
- 
     }
 
     .element-buttons {
         display: flex;
-        width: 40%;
+        /* width: 40%; */
     }
 }
 
 .dropdown {
-
     width: 90%;
     max-width: 400px;
     margin: auto;
@@ -302,3 +247,19 @@ button:hover,
     border-radius: 8px;
 }
 
+.element-container { 
+    width: 90%;
+    margin: 50px auto;
+    font-size: 1.2rem;
+    /* padding: 20px; */
+    /* outline: 1px solid red; */
+}
+
+.element-container .edit-title, .edit-text {
+    box-shadow: rgba(214, 3, 3, 0.3) 0px 0px 0px 3px;
+}
+
+.prompt {
+    width: 80%;
+    text-align: center;
+    }

@@ -27,7 +27,7 @@ const UpdateEmail = ({ user, handleUpdate }) => {
   // function to handle inputs from text boxes
   const handleEmailInput = (e) => {
     e.preventDefault();
-    // console.log(e.target.id, e.target.value);
+
     if (e.target.id === "current-email") {
       setCurrent(e.target.value);
     } else if (e.target.id === "new-email") {
@@ -72,8 +72,8 @@ const UpdateEmail = ({ user, handleUpdate }) => {
         headers: headers,
         body: JSON.stringify(body),
       });
-      const result = await response.json();
-      console.log(result);
+      await response.json();
+
       handleUpdate();
     } catch (err) {
       console.error(err.message);

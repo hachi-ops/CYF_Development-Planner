@@ -17,7 +17,6 @@ function Dashboard({ setAuth }) {
 
       const parseRes = await res.json();
 
-      console.log(parseRes);
       setUser(parseRes);
     } catch (err) {
       console.error(err.message);
@@ -34,11 +33,13 @@ function Dashboard({ setAuth }) {
 
   return (
     <>
-      <header className="header">
-        <Logout setAuth={setAuth} />
-        <h1>{user.username}'s Dashboard</h1>
-      </header>
-      <DashboardNavigation user={user} handleUpdate={handleUpdate} />
+      <div data-testid="dashboard">
+        <header className="header">
+          <Logout setAuth={setAuth} />
+          <h1>{user.username}'s Dashboard</h1>
+        </header>
+        <DashboardNavigation user={user} handleUpdate={handleUpdate} />
+      </div>
     </>
   );
 }
