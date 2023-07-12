@@ -76,7 +76,7 @@ function Login({ setAuth }) {
         <div className="buttons">
           <button>Login</button>
         </div>
-        <Link to="/password-link">
+        <Link to="/reset-link">
           <h6>Forgotten password?</h6>
         </Link>
         <Link to="/register" className="form-link">
