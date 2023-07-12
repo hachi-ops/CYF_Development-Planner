@@ -4,7 +4,6 @@ import { useState } from "react";
 function ResetLink() {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState(false);
-  const [linkSent, setLinkSent] = useState(false);
   const [backToLogin, setBackToLogin] = useState(false);
 
   const handleEmailInput = (e) => {
@@ -35,7 +34,6 @@ function ResetLink() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setLinkSent(false);
     setEmailError(false);
     checkEmail(email);
     console.log("submitted");
