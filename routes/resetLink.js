@@ -3,6 +3,9 @@ const router = express.Router();
 const pool = require("../db");
 const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
+const path = require("path");
+const fs = require("fs");
+const handlebars = require("handlebars");
 
 // function creates smtp transporter object, message object and uses the sendMail method to send the mail/message.
 const mailer = async (user) => {
@@ -17,15 +20,29 @@ const mailer = async (user) => {
       },
     });
 
-    
-    // create jwt token
-    const token = jwt.sign({ id: user.user_id }, process.env.JWT_EMAIL_SECRET, { expiresIn: "1h" });
+    // creates a jwt token
+    const token = jwt.sign({ id: user.user_id }, process.env.JWT_EMAIL_SECRET, {
+      expiresIn: "1h",
+    });
 
+    // creates an html template
+    const emailTemplateFile = fs.readFileSync(
+      path.join(__dirname, "./../templates/template.hbs"),
+      "utf-8"
+    );
+    const template = handlebars.compile(emailTemplateFile);
+    const html_message = template({
+      email: user.user_email,
+      link: `http://localhost:3000/password-reset?token=${token}`,
+    });
+
+    // sends token in message
     const message = {
       from: '"dev_planner" <dev_planner@example.com>',
       to: user.user_email,
       subject: "Reset Password",
-      html: `http://localhost:3000/password-reset?token=${token}`,
+
+      html: html_message
     };
 
     const response = await transporter.sendMail(message);
