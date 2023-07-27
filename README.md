@@ -51,7 +51,7 @@ The flags needed in this project are;
 `psql -U postgres -f db.sql` -> Run this first to ensure the dev_planner database is created.  
 `psql -U postgres -d dev_planner -f db.sql` -> Run this second to ensure the database contains the correct tables and schema.
 
-## Implementing an Ethereal account
+## Getting an Ethereal account
 
 Ethereal is a fake email service. It is implemented to test the functionality of the 'forgotten password' process.
 
