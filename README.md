@@ -64,4 +64,4 @@ MAIL_PORT=587
 MAIL_EMAIL= [ your Ethereal email ]
 MAIL_PASSWORD= [ your Ethereal password ]
 
-When you access your ethereal account, you can click on 'messages' where you will be able to preview the fake emails sent with the 'forgotten password' process. Alternatively you can access the emails through a url, this is explained in the FAQ on the Ethereal site. Once created, messages are only stored for a few hours.
+When you access your ethereal account, you can click on 'messages' where you will be able to preview the fake emails. Alternatively you can access the emails through a url, this is explained in the FAQ on the Ethereal site. Once created, messages are only stored for a few hours.
