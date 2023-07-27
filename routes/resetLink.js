@@ -15,7 +15,7 @@ const mailer = async (user) => {
       port: process.env.MAIL_PORT,
       secure: false,
       auth: {
-        user: process.env.MAIL_USERNAME,
+        user: process.env.MAIL_EMAIL,
         pass: process.env.MAIL_PASSWORD,
       },
     });
@@ -36,12 +36,11 @@ const mailer = async (user) => {
       link: `http://localhost:3000/password-reset?token=${token}`,
     });
 
-    // sends token in message
+    // the token is sent as part of the html property in the message
     const message = {
       from: '"dev_planner" <dev_planner@example.com>',
       to: user.user_email,
       subject: "Reset Password",
-
       html: html_message
     };
 
