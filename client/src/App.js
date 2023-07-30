@@ -20,6 +20,7 @@ import RegisterConfirmation from "./components/login-and-register/RegisterConfir
 import Navbar from "./components/navbar/Navbar";
 import Home from "./components/home/Home";
 import Dashboard from "./components/dashboard/Dashboard";
+import ResetLink from "./components/login-and-register/ResetLink";
 import Footer from "./components/Footer";
 
 function App() {
@@ -102,7 +103,9 @@ function App() {
             )
           }
         />
+        <Route path="reset-link" element={<ResetLink />} />
       </Routes>
+
       <Footer />
     </>
   );
