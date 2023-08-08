@@ -50,3 +50,18 @@ The flags needed in this project are;
 
 `psql -U postgres -f db.sql` -> Run this first to ensure the dev_planner database is created.  
 `psql -U postgres -d dev_planner -f db.sql` -> Run this second to ensure the database contains the correct tables and schema.
+
+## Getting an Ethereal account
+
+Ethereal is a fake email service. It is implemented to test the functionality of the 'forgotten password' process.
+
+To get an Ethereal account, head to https://ethereal.email/, sign up and download your credentials(e.g in a .csv file). You can then add the credentials to your .env file, they should look similar to these :-
+
+JWT_EMAIL_SECRET= [ your chosen secret ]
+MAIL_SERVICE=SMTP
+MAIL_HOST=smtp.ethereal.email
+MAIL_PORT=587
+MAIL_EMAIL= [ your Ethereal email ]
+MAIL_PASSWORD= [ your Ethereal password ]
+
+When you access your ethereal account, you can click on 'messages' where you will be able to preview the fake emails. Alternatively you can access the emails through a url, this is explained in the FAQ on the Ethereal site. Once created, messages are only stored for a few hours.
