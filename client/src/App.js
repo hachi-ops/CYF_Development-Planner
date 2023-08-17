@@ -106,7 +106,7 @@ function App() {
         <Route path="reset-link" element={<ResetLink />} />
       </Routes>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
