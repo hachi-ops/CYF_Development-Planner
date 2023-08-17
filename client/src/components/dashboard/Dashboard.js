@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-// images
-import messagesIcon from "../../images/Harwen-Pleasant-E-mail.128.png";
-import accountIcon from "../../images/icons8-test-account-96.png";
-import filesIcon from "../../images/Rokey-Eicodesign-Folder-with-file.128.png";
-
+import boxes from "./boxes";
+import DraftsList from './files/DraftsList'
 // components
 import Logout from "./controls/Logout";
 // import DashboardNavigation from "./controls/DashboardNavigation";
@@ -38,29 +35,14 @@ function Dashboard({ setAuth }) {
 
   const [currentTab, setCurrentTab] = useState("1");
   const handleTabClick = (e) => {
+    
     setCurrentTab(e.target.id);
-  };
-  const boxes = [
-    {
-      id: 1,
-      title: "Files",
-      img: filesIcon,
-      alt: "files icon",
-    },
-    {
-      id: 2,
-      title: "Messages",
-      img: messagesIcon,
-      alt: "messages icon",
-    },
 
-    {
-      id: 3,
-      title: "Account",
-      img: accountIcon,
-      alt: "account icon",
-    },
-  ];
+
+
+
+  };
+
   return (
     <>
       <div data-testid="dashboard">
@@ -101,8 +83,10 @@ function Dashboard({ setAuth }) {
                       style={tab.imgStyle}
                       className="dashboard-icon"
                     />
-                    <p>{tab.content}</p>
+                    <div>{tab.controls}</div>
+                 {/* <DraftsList/> */}
                   </div>
+          
                 )}
               </div>
             ))}
